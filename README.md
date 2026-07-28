@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DWFPMC — Restaurant Website
 
-## Getting Started
+A customer-facing restaurant website built with **Next.js (App Router)**,
+**Tailwind CSS v4**, and **Supabase**. It ships with pages for the home,
+menu, about, and reservations, and is fully config-driven so it can be
+rebranded for any restaurant by editing two files.
 
-First, run the development server:
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site works out of the box with **no configuration** — the menu is served
+from local seed data and reservation requests are accepted (but not stored)
+until Supabase is connected.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Connecting Supabase
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a Supabase project.
+2. Run the migration in `supabase/migrations/0001_init.sql` (SQL editor or
+   `supabase db push`). It creates `menu_categories`, `menu_items`, and
+   `reservations`, enables RLS (public read for menu, insert-only for
+   reservations), and seeds the menu.
+3. Copy `.env.example` to `.env.local` and fill in
+   `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` from
+   Project Settings → API.
 
-## Learn More
+Once configured, the menu is read live from Supabase and reservation
+requests land in the `reservations` table (readable from the Supabase
+dashboard, with a `status` field for confirming/cancelling).
 
-To learn more about Next.js, take a look at the following resources:
+## Rebranding for another restaurant
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All identity lives in two places:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `src/lib/site-config.ts` — name, tagline, address, phone, email, hours,
+  social links.
+- Menu content — either edit the seed rows in
+  `supabase/migrations/0001_init.sql` (when using Supabase) or
+  `src/lib/menu-data.ts` (local fallback).
 
-## Deploy on Vercel
+Colors and fonts are defined once in `src/app/globals.css`
+(`@theme` tokens) and `src/app/layout.tsx` (Google fonts).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+  app/
+    page.tsx               Home (hero, featured dishes, hours/location)
+    menu/page.tsx          Full menu, grouped by category
+    about/page.tsx         Story page
+    reservations/          Reservation form (server action → Supabase)
+  components/              Header, footer
+  lib/
+    site-config.ts         Branding & contact info
+    data.ts                Data access (Supabase with seed-data fallback)
+    menu-data.ts           Local seed menu
+    supabase.ts            Supabase client factory
+supabase/migrations/       Database schema + seed
+```
+
+## Deploying
+
+Deploys cleanly to Vercel: import the repo, set the two `NEXT_PUBLIC_*`
+environment variables, and ship.
