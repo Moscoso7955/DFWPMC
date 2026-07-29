@@ -1,105 +1,139 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/site-config";
-import { getFeaturedItems } from "@/lib/data";
+import { collective, concepts } from "@/lib/concepts";
+import { BuildingHero } from "@/components/building-hero";
 
-export default async function HomePage() {
-  const featured = await getFeaturedItems();
-
+export default function LandingPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="bg-espresso text-cream">
-        <div className="mx-auto max-w-6xl px-6 py-28 text-center sm:py-36">
-          <p className="text-sm font-medium uppercase tracking-[0.3em] text-ember">
-            {siteConfig.address.city}, {siteConfig.address.state}
+    <div className="flex min-h-screen flex-col bg-night text-cream">
+      {/* Top bar */}
+      <header className="border-b border-cream/10">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+          <p className="font-display text-sm uppercase tracking-[0.25em] text-cream/90">
+            {collective.shortName}{" "}
+            <span className="text-cream/50">{collective.suffix}</span>
           </p>
-          <h1 className="mt-4 font-display text-5xl leading-tight sm:text-6xl">
-            {siteConfig.tagline}
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-cream/80">
-            {siteConfig.description}
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <nav className="flex items-center gap-5 text-sm text-cream/70">
+            {concepts.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/${c.slug}`}
+                className="hidden transition-colors hover:text-glow sm:block"
+              >
+                {c.name}
+              </Link>
+            ))}
             <Link
-              href="/reservations"
-              className="rounded-full bg-ember px-8 py-3 font-medium transition-colors hover:bg-ember-dark"
+              href="/events"
+              className="rounded-full border border-cream/30 px-4 py-1.5 transition-colors hover:border-glow hover:text-glow"
             >
-              Book a table
+              Private Events
             </Link>
-            <Link
-              href="/menu"
-              className="rounded-full border border-cream/40 px-8 py-3 font-medium transition-colors hover:border-cream hover:bg-cream/10"
-            >
-              View the menu
-            </Link>
-          </div>
+          </nav>
         </div>
-      </section>
+      </header>
 
-      {/* Featured dishes */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <h2 className="text-center font-display text-4xl">From the kitchen</h2>
-        <p className="mt-3 text-center text-charcoal/60">
-          A few favorites our guests keep coming back for.
-        </p>
-        <div className="mt-12 grid gap-8 sm:grid-cols-3">
-          {featured.map((item) => (
-            <div
-              key={item.id}
-              className="rounded-2xl border border-charcoal/10 bg-white p-8 shadow-sm"
+      <main className="flex-1">
+        {/* Hero */}
+        <section className="mx-auto max-w-5xl px-6 pt-14 text-center sm:pt-20">
+          <p className="rise text-xs font-medium uppercase tracking-[0.35em] text-glow">
+            Fort Worth, Texas · Est. 1930
+          </p>
+          <h1 className="rise mt-4 font-display text-4xl leading-tight sm:text-6xl">
+            {collective.tagline}
+          </h1>
+          <p className="rise-1 mx-auto mt-5 max-w-2xl text-base leading-relaxed text-cream/70 sm:text-lg">
+            {collective.description}
+          </p>
+          <p className="rise-2 mt-8 text-xs uppercase tracking-[0.25em] text-cream/50">
+            Explore the building — each door is its own world
+          </p>
+        </section>
+
+        {/* Interactive building */}
+        <section className="mx-auto mt-8 max-w-5xl px-4 sm:px-6">
+          <BuildingHero concepts={concepts} />
+        </section>
+
+        {/* Concept cards (mobile path + detail) */}
+        <section className="mx-auto grid max-w-5xl gap-5 px-6 py-14 sm:grid-cols-3">
+          {concepts.map((c) => (
+            <Link
+              key={c.slug}
+              href={`/${c.slug}`}
+              className="group rounded-2xl border border-cream/10 bg-dusk p-7 transition-colors hover:border-glow/50"
             >
-              <div className="flex items-baseline justify-between gap-4">
-                <h3 className="font-display text-xl">{item.name}</h3>
-                <span className="font-medium text-ember">${item.price}</span>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-charcoal/70">
-                {item.description}
+              <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-glow">
+                {c.kicker}
+              </p>
+              <h2 className={`${c.theme.displayClass} mt-2 text-3xl`}>
+                {c.name}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-cream/70">
+                {c.description}
+              </p>
+              <p className="mt-4 text-xs text-cream/50">{c.location}</p>
+              <p className="mt-5 text-sm font-medium text-glow">
+                Enter <span className="transition-transform group-hover:translate-x-1 inline-block">→</span>
+              </p>
+            </Link>
+          ))}
+        </section>
+
+        {/* The building */}
+        <section className="border-t border-cream/10 bg-dusk">
+          <div className="mx-auto grid max-w-5xl gap-10 px-6 py-16 sm:grid-cols-2">
+            <div>
+              <h2 className="font-display text-3xl">The building</h2>
+              <p className="mt-4 text-sm leading-relaxed text-cream/70">
+                Opened in 1930, the Public Market building fed Fort Worth for
+                a generation — farmers&apos; stalls in the hall, the tower
+                marking
+                the corner. Nearly a century later, the collective brings it
+                back to the table: three concepts under one roof, sharing a
+                kitchen along the west wall and the historical corridor that
+                ties them together.
               </p>
             </div>
-          ))}
-        </div>
-        <div className="mt-10 text-center">
-          <Link
-            href="/menu"
-            className="font-medium text-ember underline-offset-4 hover:underline"
-          >
-            See the full menu →
-          </Link>
-        </div>
-      </section>
+            <div>
+              <h2 className="font-display text-3xl">Visit</h2>
+              <p className="mt-4 text-sm text-cream/70">
+                {collective.address.street}
+                <br />
+                {collective.address.city}, {collective.address.state}{" "}
+                {collective.address.zip}
+              </p>
+              <div className="mt-5 space-y-1 text-sm text-cream/70">
+                {concepts.map((c) => (
+                  <p key={c.slug} className="flex justify-between gap-6 border-b border-cream/10 pb-1.5">
+                    <span>{c.name}</span>
+                    <span className="text-cream/50">
+                      {c.hours[0]?.days}, {c.hours[0]?.time}
+                    </span>
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
-      {/* Hours & location */}
-      <section className="bg-charcoal text-cream">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:grid-cols-2">
-          <div>
-            <h2 className="font-display text-3xl">Find us</h2>
-            <p className="mt-4 text-cream/80">
-              {siteConfig.address.street}
-              <br />
-              {siteConfig.address.city}, {siteConfig.address.state}{" "}
-              {siteConfig.address.zip}
-            </p>
-            <p className="mt-4 text-cream/80">
-              <a href={`tel:${siteConfig.phone}`} className="hover:text-ember">
-                {siteConfig.phone}
-              </a>
-            </p>
-          </div>
-          <div>
-            <h2 className="font-display text-3xl">Hours</h2>
-            <ul className="mt-4 space-y-2 text-cream/80">
-              {siteConfig.hours.map((h) => (
-                <li key={h.days} className="flex justify-between gap-6">
-                  <span>{h.days}</span>
-                  <span>
-                    {h.open} – {h.close}
-                  </span>
-                </li>
-              ))}
-            </ul>
+      <footer className="border-t border-cream/10">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-xs text-cream/50">
+          <p>
+            © {new Date().getFullYear()} {collective.name} {collective.suffix}
+          </p>
+          <div className="flex gap-5">
+            {concepts.map((c) => (
+              <Link key={c.slug} href={`/${c.slug}`} className="hover:text-glow">
+                {c.name}
+              </Link>
+            ))}
+            <Link href="/events" className="hover:text-glow">
+              Private Events
+            </Link>
           </div>
         </div>
-      </section>
-    </>
+      </footer>
+    </div>
   );
 }

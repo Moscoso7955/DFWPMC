@@ -1,26 +1,40 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
-import { siteConfig } from "@/lib/site-config";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+import {
+  Playfair_Display,
+  Inter,
+  Cormorant_Garamond,
+  Fraunces,
+} from "next/font/google";
+import { collective } from "@/lib/concepts";
 import "./globals.css";
 
-const display = Playfair_Display({
-  variable: "--font-display-src",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
 });
 
-const body = Inter({
-  variable: "--font-body-src",
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: `${siteConfig.name} — ${siteConfig.tagline}`,
-    template: `%s — ${siteConfig.name}`,
+    default: `${collective.name} ${collective.suffix}`,
+    template: `%s — ${collective.shortName}`,
   },
-  description: siteConfig.description,
+  description: collective.description,
 };
 
 export default function RootLayout({
@@ -29,12 +43,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
-      <body className="flex min-h-full flex-col antialiased">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
+    <html
+      lang="en"
+      className={`${playfair.variable} ${inter.variable} ${cormorant.variable} ${fraunces.variable} h-full`}
+    >
+      <body className="flex min-h-full flex-col antialiased">{children}</body>
     </html>
   );
 }

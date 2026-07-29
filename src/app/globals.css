@@ -1,18 +1,51 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #faf6f0;
-  --color-charcoal: #1f1c19;
-  --color-espresso: #2e2822;
-  --color-ember: #c2571b;
-  --color-ember-dark: #a34715;
-  --color-sage: #7d8b6f;
-  --font-display: var(--font-display-src), Georgia, serif;
-  --font-body: var(--font-body-src), system-ui, sans-serif;
+  /* Collective (landing) palette — historic brick, dusk, warm light */
+  --color-night: #17140f;
+  --color-dusk: #241e17;
+  --color-cream: #f5efe4;
+  --color-brick: #a34724;
+  --color-glow: #e0a96d;
+
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
 }
 
 body {
-  background: var(--color-cream);
-  color: var(--color-charcoal);
+  background: var(--color-night);
+  color: var(--color-cream);
   font-family: var(--font-body);
+}
+
+/* Per-concept display faces */
+.display-cafe {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+.display-madrone {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+.display-willow {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+/* Entrance animation for the landing hero */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: rise 0.8s ease-out both;
+}
+.rise-1 {
+  animation: rise 0.8s ease-out 0.15s both;
+}
+.rise-2 {
+  animation: rise 0.8s ease-out 0.3s both;
 }
