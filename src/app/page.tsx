@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { collective, concepts } from "@/lib/concepts";
 import { BuildingHero } from "@/components/building-hero";
+import { NewsletterSignup } from "@/components/newsletter-signup";
 
 export default function LandingPage() {
   return (
@@ -113,6 +114,18 @@ export default function LandingPage() {
                 ))}
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Newsletter */}
+        <section className="border-t border-cream/10">
+          <div className="mx-auto max-w-5xl px-6 py-14 text-center">
+            <h2 className="font-display text-3xl">Stay in the loop</h2>
+            <p className="mt-3 text-sm text-cream/70">
+              News from the hall — openings, events, and what&apos;s on the
+              table.
+            </p>
+            <NewsletterSignup />
           </div>
         </section>
       </main>
