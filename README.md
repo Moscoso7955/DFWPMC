@@ -2,6 +2,8 @@
 
 The Public Market website, admin selector, three branded login screens and three venue website/admin applications live in **one repository: `Moscoso7955/DFWPMC`**.
 
+**Deployment status, October 2 handoff:** the client code is ready here. The live projects still deploy from `alphacotv/fwpublicmarket` until the repository owner connects this personal GitHub repository in Vercel. The existing production deployments remain live.
+
 Each application keeps its own Next.js build, package lock, Vercel project, environment settings and CMS storage. Vercel deploys each application from its directory in this repository.
 
 | Directory | Vercel project | Public path | Admin entry |
@@ -42,3 +44,9 @@ See [docs/architecture.md](docs/architecture.md) for routing and data boundaries
 The application snapshot was imported from `alphacotv/fwpublicmarket` commit `02440e5613f67fc64f0a423fc1db005f155cc8cd`, with credential defaults removed for this public repository. The client’s existing Git history and `archive/legacy-site` are preserved. Private source history and deployment secrets were not imported.
 
 The root `vercel.json` intentionally skips the client’s older root-directory deployment. The four active Vercel projects build from their `apps/` directories and use each app’s own `vercel.json`. Keep root-level legacy builds paused while these four projects serve the live website. Hosting remains with the existing Vercel team; this handoff changes the Git source.
+
+### Owner connection required
+
+Vercel requires the owner of a personal GitHub repository to connect it to a project. The owner of `Moscoso7955/DFWPMC` must open **Settings → Git** on all four existing Vercel projects in `alphacotv-gmailcom-s-team`, connect this repository, and retain production branch `main` plus the app Root Directories above. Preserve environment values, storage, domains and disabled **Include files outside Root Directory**. The repository owner is already a member of this existing Vercel team.
+
+After connection, validate Git-sourced previews from the client commit, then deploy that commit from `main` on all four projects. Verify the public website, selector, native logins and existing content/media before calling the production-source cutover complete. See [Vercel’s personal-repository permission rule](https://vercel.com/docs/git/vercel-for-github#personal-account-repositories).

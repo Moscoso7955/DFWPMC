@@ -44,6 +44,8 @@
       "Remove embedded credential defaults and references",
       "Add blank per-app environment templates",
       "Update client ownership and setup documentation"
-    ]
+    ],
+    "deploymentConnectionStatus": "pending-repository-owner-git-connection",
+    "liveGitRepositoryAtHandoff": "https://github.com/alphacotv/fwpublicmarket"
   }
 }
