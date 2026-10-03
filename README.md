@@ -1,32 +1,25 @@
-# Fort Worth Public Market Collective
+# DFWPMC
 
-✅ **This is the LIVE repo — keep this one.**
+Repository for the next Fort Worth Public Market Collective build. Place the replacement application at the repository root.
 
-One landmark, three concepts: **Public Market Cafe** (day market &
-brunch, north hall), **Madrone** (fine dining, center hall), and
-**Willow** (bar, south hall) — inside the historic 1930 Public Market
-building at 1400 Henderson Street, Fort Worth.
+## Archived site
 
-- **Live site:** https://dfwpmc.vercel.app (future home: fwpublicmarket.com)
-- **Deploys:** every push to `main` auto-deploys via Vercel
-- **Stack:** Next.js (App Router) · Tailwind CSS v4 · Supabase · Tock (reservations) · Tipsy (events)
+The previous marketing site is preserved unchanged in [`archive/legacy-site/`](archive/legacy-site/), including its source, assets, documentation, database migration, and dependency lockfile.
 
-## Structure
+- Source commit: [`3876dbeb2e7058bbadea56a041d00a89aa380d3e`](https://github.com/Moscoso7955/DFWPMC/commit/3876dbeb2e7058bbadea56a041d00a89aa380d3e).
+- Archived: October 2, 2026.
+- Original setup instructions: [`archive/legacy-site/README.md`](archive/legacy-site/README.md).
 
-```
-src/
-  lib/concepts.ts        Concept registry — names, themes, menus, hours, Tock links
-  app/page.tsx           Collective landing (interactive building facade)
-  app/[concept]/page.tsx Themed sub-sites: /willow, /madrone, /cafe
-  app/events/page.tsx    Private events (Tipsy embed)
-  components/building-hero.tsx  Hover-zone facade component
-docs/PROJECT-NOTES.md    Decisions & pending items
-supabase/migrations/     Schema for the upcoming admin/content layer
-```
+To run the archived site locally:
 
-## Local development
-
-```bash
-npm install
+```sh
+cd archive/legacy-site
+npm ci
 npm run dev
 ```
+
+## Deployment during replacement
+
+The root `vercel.json` skips Git-triggered builds while the root has no `package.json`, preserving the currently published deployment during the transition. Adding a root `package.json` allows builds to resume. Review or replace this temporary guard when adding the new application's deployment configuration.
+
+The root `.gitignore` retains the previous project's ignore rules. Keep the archived snapshot separate from changes to the replacement application.
