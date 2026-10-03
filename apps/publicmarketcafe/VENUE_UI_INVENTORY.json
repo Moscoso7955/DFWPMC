@@ -1,0 +1,312 @@
+{
+  "venue": "Public Market Cafe & Goods",
+  "id": "publicmarketcafe",
+  "sourceProject": "/Users/rtm/Developer/codex-sandboxes/PMCAFE-LOCAL",
+  "sourceCommit": "1978e56c4b9c6f5c7c6e28dbac04138d3c4e0563",
+  "palette": {
+    "primary": "#0d0d0d",
+    "accent": "#cda787",
+    "paper": "#f4f0e9",
+    "ink": "#28231f",
+    "heroImage": "/assets/pmcafe/public-market-cafe-hero.png",
+    "bodyFont": "Overpass Mono",
+    "headingFont": "Overpass Mono"
+  },
+  "pageCount": 41,
+  "themeImport": "src/app/venue-ui.css",
+  "globalDeclarationsRebranded": 157,
+  "defaultContentAssetsReplaced": 14,
+  "themeHash": "268dc4906a1c0ad0173ff0ee61d434669bbd6333584053f23b9fcc1901ad1c98",
+  "pages": [
+    {
+      "route": "/publicmarketcafe/accessibility",
+      "file": "src/app/accessibility/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/accessibility"
+    },
+    {
+      "route": "/publicmarketcafe/admin/analytics",
+      "file": "src/app/admin/analytics/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/analytics"
+    },
+    {
+      "route": "/publicmarketcafe/admin/calendar",
+      "file": "src/app/admin/calendar/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/calendar"
+    },
+    {
+      "route": "/publicmarketcafe/admin/careers",
+      "file": "src/app/admin/careers/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/careers"
+    },
+    {
+      "route": "/publicmarketcafe/admin/contact",
+      "file": "src/app/admin/contact/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/contact"
+    },
+    {
+      "route": "/publicmarketcafe/admin/hours",
+      "file": "src/app/admin/hours/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/hours"
+    },
+    {
+      "route": "/publicmarketcafe/admin/login",
+      "file": "src/app/admin/login/page.tsx",
+      "theme": "Existing approved venue login screen retained",
+      "status": "passed",
+      "checkedUrl": "http://127.0.0.1:3014/admin/login/pmcafe"
+    },
+    {
+      "route": "/publicmarketcafe/admin/mailing-list",
+      "file": "src/app/admin/mailing-list/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/mailing-list"
+    },
+    {
+      "route": "/publicmarketcafe/admin/menu",
+      "file": "src/app/admin/menu/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/menu"
+    },
+    {
+      "route": "/publicmarketcafe/admin",
+      "file": "src/app/admin/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin"
+    },
+    {
+      "route": "/publicmarketcafe/admin/private-events",
+      "file": "src/app/admin/private-events/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/private-events"
+    },
+    {
+      "route": "/publicmarketcafe/admin/reservations",
+      "file": "src/app/admin/reservations/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/reservations"
+    },
+    {
+      "route": "/publicmarketcafe/admin/story",
+      "file": "src/app/admin/story/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/story"
+    },
+    {
+      "route": "/publicmarketcafe/admin/submissions",
+      "file": "src/app/admin/submissions/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/submissions"
+    },
+    {
+      "route": "/publicmarketcafe/admin/visit",
+      "file": "src/app/admin/visit/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/admin/visit"
+    },
+    {
+      "route": "/publicmarketcafe/blackbook/login",
+      "file": "src/app/blackbook/login/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/blackbook/login"
+    },
+    {
+      "route": "/publicmarketcafe/blackbook",
+      "file": "src/app/blackbook/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/blackbook"
+    },
+    {
+      "route": "/publicmarketcafe/calendar/[slug]/checkout",
+      "file": "src/app/calendar/[slug]/checkout/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/calendar/preview-evening/checkout?order=33333333-0000-4000-8000-000000000005"
+    },
+    {
+      "route": "/publicmarketcafe/calendar/[slug]/confirmation",
+      "file": "src/app/calendar/[slug]/confirmation/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/calendar/preview-evening/confirmation?order=33333333-0000-4000-8000-000000000004"
+    },
+    {
+      "route": "/publicmarketcafe/calendar/[slug]",
+      "file": "src/app/calendar/[slug]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/calendar/preview-evening"
+    },
+    {
+      "route": "/publicmarketcafe/calendar",
+      "file": "src/app/calendar/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/calendar"
+    },
+    {
+      "route": "/publicmarketcafe/careers",
+      "file": "src/app/careers/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/careers"
+    },
+    {
+      "route": "/publicmarketcafe/contact",
+      "file": "src/app/contact/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/contact"
+    },
+    {
+      "route": "/publicmarketcafe/menu",
+      "file": "src/app/menu/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/menu"
+    },
+    {
+      "route": "/publicmarketcafe",
+      "file": "src/app/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe"
+    },
+    {
+      "route": "/publicmarketcafe/privacy",
+      "file": "src/app/privacy/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/privacy"
+    },
+    {
+      "route": "/publicmarketcafe/private-events",
+      "file": "src/app/private-events/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/private-events"
+    },
+    {
+      "route": "/publicmarketcafe/reservations",
+      "file": "src/app/reservations/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/reservations"
+    },
+    {
+      "route": "/publicmarketcafe/story",
+      "file": "src/app/story/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/story"
+    },
+    {
+      "route": "/publicmarketcafe/t/[token]",
+      "file": "src/app/t/[token]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/t/publicmarketcafe-preview-ticket-1"
+    },
+    {
+      "route": "/publicmarketcafe/terms",
+      "file": "src/app/terms/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/terms"
+    },
+    {
+      "route": "/publicmarketcafe/ticketing/door",
+      "file": "src/app/ticketing/door/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/blackbook"
+    },
+    {
+      "route": "/publicmarketcafe/ticketing/events/[id]/orders",
+      "file": "src/app/ticketing/events/[id]/orders/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/ticketing/events/33333333-0000-4000-8000-000000000001/orders"
+    },
+    {
+      "route": "/publicmarketcafe/ticketing/events/[id]",
+      "file": "src/app/ticketing/events/[id]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/ticketing/events/33333333-0000-4000-8000-000000000001"
+    },
+    {
+      "route": "/publicmarketcafe/ticketing/login",
+      "file": "src/app/ticketing/login/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/ticketing/login"
+    },
+    {
+      "route": "/publicmarketcafe/ticketing/orders/[id]",
+      "file": "src/app/ticketing/orders/[id]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/ticketing/orders/33333333-0000-4000-8000-000000000004"
+    },
+    {
+      "route": "/publicmarketcafe/ticketing",
+      "file": "src/app/ticketing/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/ticketing"
+    },
+    {
+      "route": "/publicmarketcafe/ticketing/qbo-connect",
+      "file": "src/app/ticketing/qbo-connect/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/ticketing/qbo-connect"
+    },
+    {
+      "route": "/publicmarketcafe/ticketing/qbo-disconnected",
+      "file": "src/app/ticketing/qbo-disconnected/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/ticketing/qbo-disconnected"
+    },
+    {
+      "route": "/publicmarketcafe/ticketing/settings",
+      "file": "src/app/ticketing/settings/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/ticketing/settings"
+    },
+    {
+      "route": "/publicmarketcafe/visit",
+      "file": "src/app/visit/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3113/publicmarketcafe/visit"
+    }
+  ],
+  "verifiedAt": "2026-10-02T03:32:46.608685+00:00",
+  "verification": "41/41 routes loaded in HTTP and a real browser; all latest appearance checks passed",
+  "details": "docs/venue-ui-route-verification.json"
+}

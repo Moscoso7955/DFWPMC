@@ -1,0 +1,490 @@
+.page {
+  --entry-background: var(--public-market-green);
+  --entry-paper: var(--public-market-bone);
+  --entry-button: var(--public-market-green);
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--entry-background);
+  color: var(--entry-paper);
+  color-scheme: only light;
+}
+
+.stack {
+  width: min(560px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.selectorStack {
+  gap: 24px;
+}
+
+.marketLogo {
+  display: block;
+  width: 120px;
+  height: 120px;
+}
+
+.card {
+  width: 100%;
+  border: 3px solid var(--entry-background);
+  padding: clamp(24px, 5vw, 42px);
+  background: var(--entry-paper);
+  color: var(--black);
+}
+
+.title {
+  margin: 0 0 28px;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.selectorTitle {
+  color: var(--public-market-green);
+  font-family: "Storica", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.brandList {
+  display: grid;
+  gap: 12px;
+}
+
+.brandCard {
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 32px;
+  background: var(--entry-background);
+  transition: box-shadow 160ms ease;
+}
+
+.brandCard:hover {
+  box-shadow: inset 0 0 0 2px var(--entry-paper);
+}
+
+.brandCard:focus-visible,
+.backLink:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.brandCard img {
+  display: block;
+  width: 200px;
+  max-width: 100%;
+  max-height: 56px;
+  object-fit: contain;
+}
+
+.brandCard.pmcafe img {
+  width: 154px;
+}
+
+.willow {
+  --entry-background: var(--willow-dark-green);
+  --entry-paper: var(--cream);
+  --entry-button: #855d32;
+}
+
+.madrone {
+  --entry-background: var(--madrone-berry);
+  --entry-paper: var(--cream);
+  --entry-button: var(--madrone-berry);
+}
+
+.pmcafe {
+  --entry-background: var(--pmcafe-black);
+  --entry-paper: var(--cream);
+  --entry-button: var(--pmcafe-black);
+}
+
+.loginLogoSlot {
+  width: 100%;
+  height: 136px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginLogo {
+  display: block;
+  width: 230px;
+  max-width: 70%;
+  max-height: 100px;
+  object-fit: contain;
+}
+
+.backLink {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  color: var(--entry-paper);
+  font-size: 0.75rem;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.passwordField {
+  position: relative;
+  display: block;
+}
+
+.input {
+  display: block;
+  min-height: 44px;
+  width: 100%;
+  padding: 9px 48px 9px 10px;
+  border: 2px solid var(--black);
+  background: #fff;
+  color: var(--black);
+  font: inherit;
+}
+
+.input:focus-visible,
+.submit:focus-visible {
+  outline: 2px solid var(--entry-button);
+  outline-offset: 3px;
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #777;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.passwordToggle svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.passwordToggle:focus-visible {
+  outline: 2px solid var(--entry-button);
+  outline-offset: 2px;
+}
+
+.submit {
+  width: 100%;
+  min-height: 41px;
+  padding: 10px 14px;
+  border: 2px solid var(--entry-button);
+  background: var(--entry-button);
+  color: var(--entry-paper);
+  font-size: 0.72rem;
+  font-weight: 300;
+  line-height: 1.5;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background: var(--entry-background);
+  border-color: var(--entry-background);
+}
+
+.status {
+  margin: 0;
+  color: var(--entry-background);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+/* Brand details apply only to the login screens. */
+.loginPage {
+  font-family: var(--entry-font-body);
+  font-weight: 400;
+}
+
+.loginPage .card {
+  border: 1px solid var(--entry-button);
+  color: var(--entry-ink);
+}
+
+.loginPage .title {
+  font-family: var(--entry-font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.loginPage .label {
+  font-size: 0.75rem;
+  letter-spacing: 0.045em;
+}
+
+.loginPage .input {
+  min-height: 46px;
+  border: 1px solid var(--entry-ink);
+  background: color-mix(in srgb, var(--entry-paper) 35%, white);
+  color: var(--entry-ink);
+}
+
+.loginPage .submit {
+  position: relative;
+  isolation: isolate;
+  min-height: 46px;
+  padding: 12px 42px;
+  font-weight: 400;
+  letter-spacing: 0.045em;
+}
+
+.loginPage .submit span {
+  position: relative;
+  z-index: 1;
+  font-size: 1.2em;
+}
+
+.loginPage.willow {
+  --entry-font-body: var(--entry-willow-body), Arial, sans-serif;
+  --entry-font-display: var(--entry-willow-display), "Times New Roman", serif;
+  --entry-ink: var(--willow-dark-green);
+}
+
+.loginPage.willow .card {
+  box-shadow:
+    inset 0 0 0 5px var(--entry-paper),
+    inset 0 0 0 6px color-mix(in srgb, var(--entry-button) 45%, var(--entry-paper));
+}
+
+.loginPage.willow .title {
+  font-family: var(--entry-font-body);
+  font-size: 1.35rem;
+}
+
+.loginPage.willow .input {
+  border-color: var(--entry-button);
+}
+
+.loginPage.willow .submit {
+  background: var(--entry-background);
+  color: var(--entry-button);
+}
+
+.loginPage.willow .submit span {
+  color: var(--entry-paper);
+  text-shadow: 0 0 5px rgb(242 241 235 / 35%);
+}
+
+.loginPage.willow .submit:hover {
+  background: color-mix(in srgb, var(--entry-background) 90%, black);
+  border-color: var(--entry-button);
+}
+
+.loginPage.willow .submit::before,
+.loginPage.willow .submit::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 28px;
+  height: 100%;
+  background: var(--entry-button);
+  mask: url("/assets/admin-entry/willow-badge.svg") center / auto 125% no-repeat;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.loginPage.willow .submit::before {
+  left: 0;
+  mask-position: right center;
+}
+
+.loginPage.willow .submit::after {
+  right: 0;
+  mask-position: left center;
+}
+
+.loginPage.madrone {
+  --entry-background: #79242e;
+  --entry-paper: #debbb0;
+  --entry-button: #79242e;
+  --entry-ink: #79242e;
+  --entry-font-body: var(--entry-madrone-body), "Arial Narrow", Arial, sans-serif;
+  --entry-font-display: var(--entry-font-body);
+}
+
+.loginPage.madrone .card {
+  border-color: var(--entry-paper);
+}
+
+.loginPage.madrone .title {
+  letter-spacing: 0.08em;
+}
+
+.loginPage.madrone .label,
+.loginPage.madrone .backLink {
+  letter-spacing: 0.12em;
+}
+
+.loginPage.madrone .input {
+  border-radius: 999px 0 0 999px;
+  padding-left: 20px;
+}
+
+.loginPage.madrone .submit {
+  border-radius: 999px 0 0 999px;
+  background: var(--entry-button);
+  color: var(--entry-paper);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+}
+
+.loginPage.madrone .submit::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid currentColor;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.loginPage.madrone .submit::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  width: 30px;
+  height: 30px;
+  background: url("/assets/admin-entry/madrone-mosaic.png") center / contain no-repeat;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.loginPage.madrone .submit:hover {
+  background: var(--entry-background);
+  color: var(--entry-paper);
+}
+
+.loginPage.pmcafe {
+  --entry-paper: #b7a99a;
+  --entry-ink: var(--pmcafe-black);
+  --entry-font-body: var(--entry-pmcafe-body), "Courier New", monospace;
+  --entry-font-display: var(--entry-font-body);
+  font-weight: 500;
+}
+
+.loginPage.pmcafe .card {
+  border: 2px solid var(--entry-paper);
+  box-shadow: inset 0 0 0 1px var(--entry-ink);
+}
+
+.loginPage.pmcafe .title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+.loginPage.pmcafe .input {
+  background: #e1d7cb;
+}
+
+.loginPage.pmcafe .submit {
+  border-width: 1px 0;
+  border-color: var(--entry-paper);
+  background: var(--entry-ink);
+  color: var(--entry-paper);
+  box-shadow:
+    inset 0 3px 0 var(--entry-ink),
+    inset 0 4px 0 var(--entry-paper),
+    inset 0 -3px 0 var(--entry-ink),
+    inset 0 -4px 0 var(--entry-paper);
+  font-weight: 500;
+}
+
+.loginPage.pmcafe .submit::before,
+.loginPage.pmcafe .submit::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  background: url("/assets/admin-entry/pmcafe-latte.png") center / contain no-repeat;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.loginPage.pmcafe .submit::before {
+  left: 5px;
+}
+
+.loginPage.pmcafe .submit::after {
+  right: 5px;
+}
+
+.loginPage.pmcafe .submit:hover {
+  background: #222;
+  border-color: var(--entry-paper);
+}
+
+@media (max-width: 620px) {
+  .page {
+    padding: 64px 18px 32px;
+  }
+
+  .marketLogo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .card {
+    padding: 28px 22px;
+  }
+
+  .brandCard {
+    min-height: 88px;
+    padding-inline: 24px;
+  }
+
+  .backLink {
+    top: 16px;
+    left: 24px;
+  }
+
+  .loginLogoSlot {
+    height: 120px;
+  }
+}

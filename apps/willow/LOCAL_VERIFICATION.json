@@ -1,0 +1,73 @@
+{
+  "sourceCommit": "e08fbc80a72e412f61deef60faf38285c917cffb",
+  "sourcePageRoutes": 41,
+  "sourceApiRoutes": 57,
+  "inventory": "exact match",
+  "build": "passed",
+  "cmsEditingUploadPublishDiscard": "passed",
+  "localInboxSubscribersStats": "passed",
+  "persistenceAfterRestart": "passed",
+  "crossVenueDataAndAuthIsolation": "passed",
+  "all41PagesHttp": "passed",
+  "disconnectedServiceHandlers": "33 per venue passed",
+  "loginRedirectChainsAfterFix": "CMS redirects to original hub login; successful login enters only the selected venue; Ticketing/Blackbook independent role routes retained.",
+  "browser": {
+    "status": "completed; expected disconnected service response observed",
+    "captureConfirmed": true,
+    "captureStartedBeforeNavigation": true,
+    "checked": "Original selector and all three branded login flows; wrong password; isolated cookie paths; CMS edit modal, Save Draft and Discard Draft; sample order/disconnected email; logout.",
+    "unexpectedConsoleOrPageErrors": 0,
+    "expectedDisconnected503Responses": 1,
+    "totalElapsedMs": 7234,
+    "localAnalyticsLoader": "The existing hub requested the Vercel development script during the flow. Local origin settings now suppress that component; final build and HTTP omission check passed.",
+    "coverage": "Focused flows above; complete source page inventory was checked through HTTP, rather than individually in the browser."
+  },
+  "entryFlow": "Existing Public Market selector and approved three branded login screens, connected locally.",
+  "postLoginFlow": "passed for all three venues",
+  "venueHomepage": {
+    "source": "/Users/rtm/Developer/codex-sandboxes/WILLOW-LOCAL",
+    "sourceCommit": "c44fa242f002daec20513e25ce488b22327545d3",
+    "build": "passed",
+    "desktopComparison": "all checked geometry, colors, menu labels and styles matched the live homepage",
+    "mobileComparison": "source mobile menu-height override copied after a 2px difference was observed; final correction source-verified, not rechecked in a browser",
+    "imageAndLogoEditors": "passed in all three venues",
+    "saveUploadPublishDiscard": "Willow homepage browser flow passed",
+    "consoleAndPageErrors": "none observed on local admin flows",
+    "details": "docs/homepage-browser-verification.json"
+  },
+  "venueUi": {
+    "verifiedAt": "2026-10-02T03:32:46.608685+00:00",
+    "scope": "All 41 retained page routes, CMS/public/app screens, navigation, forms, modals and controls",
+    "source": "/Users/rtm/Developer/codex-sandboxes/WILLOW-LOCAL",
+    "sourceCommit": "c44fa242f002daec20513e25ce488b22327545d3",
+    "brand": {
+      "primary": "#22372b",
+      "accent": "#855d32",
+      "paper": "#f3f0e6",
+      "ink": "#243329",
+      "heroImage": "/assets/willow/willow-hero-lounge-full.png",
+      "bodyFont": "Nord Book",
+      "headingFont": "TAN Whistling"
+    },
+    "build": "passed",
+    "sourcePageAndApiInventories": "41 pages and 57 API routes preserved",
+    "httpPages": "41/41 passed",
+    "browserPages": "41/41 latest appearance checks passed",
+    "mobile": "3/3 sampled pages fit without horizontal overflow",
+    "editorAndDatePicker": "Both opened and closed with venue styling",
+    "consoleCapture": {
+      "installedBeforeNavigation": true,
+      "initialPassWarnings": 5,
+      "initialWarningReason": "Screenshot caret hiding modified input style attributes before hydration; React reported style={{caret-color:transparent}} differences.",
+      "uncaughtPageErrors": 0,
+      "targetedRecheckRoutes": 9,
+      "targetedRecheckErrors": 0,
+      "targetedRecheckStatus": "no_errors_observed",
+      "screenshotCorrection": "caret:initial",
+      "initialReceipt": "browser-initial-verification.json",
+      "finalRecheckReceipt": "browser-final-recheck-verification.json"
+    },
+    "buildWarning": "Next.js reports a broad file-tracing warning through next.config.ts and the local content store; all builds and TypeScript checks passed.",
+    "details": "docs/venue-ui-route-verification.json"
+  }
+}

@@ -1,0 +1,1344 @@
+{
+  "verifiedAt": "2026-10-02T03:32:46.608685+00:00",
+  "scope": "All retained source page routes in the three independent local applications, including existing approved CMS login destinations and role redirects.",
+  "pageRoutesPerVenue": 41,
+  "totalPageRoutes": 123,
+  "httpRoutesPassed": 123,
+  "browserRoutesPassed": 123,
+  "builds": "3 passed",
+  "mobileChecksPassed": 9,
+  "editorInteractionsPassed": 6,
+  "consoleCapture": {
+    "installedBeforeNavigation": true,
+    "initialPassWarnings": 5,
+    "initialWarningReason": "Screenshot caret hiding modified input style attributes before hydration; React reported style={{caret-color:transparent}} differences.",
+    "uncaughtPageErrors": 0,
+    "targetedRecheckRoutes": 9,
+    "targetedRecheckErrors": 0,
+    "targetedRecheckStatus": "no_errors_observed",
+    "screenshotCorrection": "caret:initial",
+    "initialReceipt": "browser-initial-verification.json",
+    "finalRecheckReceipt": "browser-final-recheck-verification.json"
+  },
+  "buildWarning": "Next.js reports a broad file-tracing warning through next.config.ts and the local content store; all builds and TypeScript checks passed.",
+  "existingHub": "Selector and approved login screen source preserved.",
+  "originalVenueProjects": "All three original local venue source projects remained clean.",
+  "previewProviders": "Tipsy, Callidus, Stripe, QuickBooks, outbound delivery and scheduled integrations remain disconnected.",
+  "venue": "Public Market Cafe & Goods",
+  "http": {
+    "venue": "Public Market Cafe & Goods",
+    "id": "publicmarketcafe",
+    "passed": true,
+    "routes": [
+      {
+        "sourceRoute": "/accessibility",
+        "url": "http://localhost:3113/publicmarketcafe/accessibility",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/accessibility",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/analytics",
+        "url": "http://localhost:3113/publicmarketcafe/admin/analytics",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/analytics",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/calendar",
+        "url": "http://localhost:3113/publicmarketcafe/admin/calendar",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/calendar",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/careers",
+        "url": "http://localhost:3113/publicmarketcafe/admin/careers",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/careers",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/contact",
+        "url": "http://localhost:3113/publicmarketcafe/admin/contact",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/contact",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/hours",
+        "url": "http://localhost:3113/publicmarketcafe/admin/hours",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/hours",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/login",
+        "url": "http://localhost:3113/publicmarketcafe/admin/login",
+        "finalUrl": "http://127.0.0.1:3014/admin/login/pmcafe",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/mailing-list",
+        "url": "http://localhost:3113/publicmarketcafe/admin/mailing-list",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/mailing-list",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/menu",
+        "url": "http://localhost:3113/publicmarketcafe/admin/menu",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/menu",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin",
+        "url": "http://localhost:3113/publicmarketcafe/admin",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/private-events",
+        "url": "http://localhost:3113/publicmarketcafe/admin/private-events",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/private-events",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/reservations",
+        "url": "http://localhost:3113/publicmarketcafe/admin/reservations",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/reservations",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/story",
+        "url": "http://localhost:3113/publicmarketcafe/admin/story",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/story",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/submissions",
+        "url": "http://localhost:3113/publicmarketcafe/admin/submissions",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/submissions",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/visit",
+        "url": "http://localhost:3113/publicmarketcafe/admin/visit",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/admin/visit",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/blackbook/login",
+        "url": "http://localhost:3113/publicmarketcafe/blackbook/login",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/blackbook/login",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/blackbook",
+        "url": "http://localhost:3113/publicmarketcafe/blackbook",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/blackbook",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar/[slug]/checkout",
+        "url": "http://localhost:3113/publicmarketcafe/calendar/preview-evening/checkout?order=33333333-0000-4000-8000-000000000005",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/calendar/preview-evening/checkout?order=33333333-0000-4000-8000-000000000005",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar/[slug]/confirmation",
+        "url": "http://localhost:3113/publicmarketcafe/calendar/preview-evening/confirmation?order=33333333-0000-4000-8000-000000000004",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/calendar/preview-evening/confirmation?order=33333333-0000-4000-8000-000000000004",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar/[slug]",
+        "url": "http://localhost:3113/publicmarketcafe/calendar/preview-evening",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/calendar/preview-evening",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar",
+        "url": "http://localhost:3113/publicmarketcafe/calendar",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/calendar",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/careers",
+        "url": "http://localhost:3113/publicmarketcafe/careers",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/careers",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/contact",
+        "url": "http://localhost:3113/publicmarketcafe/contact",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/contact",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/menu",
+        "url": "http://localhost:3113/publicmarketcafe/menu",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/menu",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/",
+        "url": "http://localhost:3113/publicmarketcafe",
+        "finalUrl": "http://localhost:3113/publicmarketcafe",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/privacy",
+        "url": "http://localhost:3113/publicmarketcafe/privacy",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/privacy",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/private-events",
+        "url": "http://localhost:3113/publicmarketcafe/private-events",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/private-events",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/reservations",
+        "url": "http://localhost:3113/publicmarketcafe/reservations",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/reservations",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/story",
+        "url": "http://localhost:3113/publicmarketcafe/story",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/story",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/t/[token]",
+        "url": "http://localhost:3113/publicmarketcafe/t/publicmarketcafe-preview-ticket-1",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/t/publicmarketcafe-preview-ticket-1",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/terms",
+        "url": "http://localhost:3113/publicmarketcafe/terms",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/terms",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/door",
+        "url": "http://localhost:3113/publicmarketcafe/ticketing/door",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/blackbook",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/events/[id]/orders",
+        "url": "http://localhost:3113/publicmarketcafe/ticketing/events/33333333-0000-4000-8000-000000000001/orders",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/events/33333333-0000-4000-8000-000000000001/orders",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/events/[id]",
+        "url": "http://localhost:3113/publicmarketcafe/ticketing/events/33333333-0000-4000-8000-000000000001",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/events/33333333-0000-4000-8000-000000000001",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/login",
+        "url": "http://localhost:3113/publicmarketcafe/ticketing/login",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/login",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/orders/[id]",
+        "url": "http://localhost:3113/publicmarketcafe/ticketing/orders/33333333-0000-4000-8000-000000000004",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/orders/33333333-0000-4000-8000-000000000004",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing",
+        "url": "http://localhost:3113/publicmarketcafe/ticketing",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/qbo-connect",
+        "url": "http://localhost:3113/publicmarketcafe/ticketing/qbo-connect",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/qbo-connect",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/qbo-disconnected",
+        "url": "http://localhost:3113/publicmarketcafe/ticketing/qbo-disconnected",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/qbo-disconnected",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/settings",
+        "url": "http://localhost:3113/publicmarketcafe/ticketing/settings",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/settings",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/visit",
+        "url": "http://localhost:3113/publicmarketcafe/visit",
+        "finalUrl": "http://localhost:3113/publicmarketcafe/visit",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      }
+    ],
+    "sourceChecks": {
+      "pages": 41,
+      "apis": 57,
+      "inventoryPreserved": true,
+      "legacyFonts": [],
+      "legacyBrandColors": []
+    }
+  },
+  "browserRoutes": [
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/accessibility",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/accessibility",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-accessibility.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/analytics",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/analytics",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-analytics.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/calendar",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/calendar",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-calendar.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/careers",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/careers",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-careers.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/contact",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/contact",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-contact.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/hours",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/hours",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-hours.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/login",
+      "finalUrl": "http://127.0.0.1:3014/admin/login/pmcafe",
+      "status": 200,
+      "styles": {
+        "primary": "",
+        "bodyFont": "\"Roboto Mono\", \"Roboto Mono Fallback\", monospace",
+        "fonts": [
+          "pmcafeBody, \"Courier New\", \"Courier New\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-login.png",
+      "checkPass": "targeted correction"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/mailing-list",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/mailing-list",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-mailing-list.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/menu",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/menu",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-menu.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/private-events",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/private-events",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-private-events.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/reservations",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/reservations",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-reservations.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/story",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/story",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-story.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/submissions",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/submissions",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-submissions.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/admin/visit",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/admin/visit",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-admin-visit.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/blackbook/login",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/blackbook/login",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-blackbook-login.png",
+      "checkPass": "targeted correction"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/blackbook",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/blackbook",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-blackbook.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/calendar/[slug]/checkout",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/calendar/preview-evening/checkout?order=33333333-0000-4000-8000-000000000005",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-calendar-slug-checkout.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/calendar/[slug]/confirmation",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/calendar/preview-evening/confirmation?order=33333333-0000-4000-8000-000000000004",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-calendar-slug-confirmation.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/calendar/[slug]",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/calendar/preview-evening",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-calendar-slug.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/calendar",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/calendar",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-calendar.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/careers",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/careers",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-careers.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/contact",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/contact",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-contact.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/menu",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/menu",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-menu.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/",
+      "finalUrl": "http://localhost:3113/publicmarketcafe",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-home.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/privacy",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/privacy",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-privacy.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/private-events",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/private-events",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-private-events.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/reservations",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/reservations",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-reservations.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/story",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/story",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-story.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/t/[token]",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/t/publicmarketcafe-preview-ticket-1",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-t-token.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/terms",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/terms",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-terms.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/ticketing/door",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/blackbook",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-ticketing-door.png",
+      "checkPass": "targeted correction"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/ticketing/events/[id]/orders",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/events/33333333-0000-4000-8000-000000000001/orders",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-ticketing-events-id-orders.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/ticketing/events/[id]",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/events/33333333-0000-4000-8000-000000000001",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-ticketing-events-id.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/ticketing/login",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/login",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-ticketing-login.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/ticketing/orders/[id]",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/orders/33333333-0000-4000-8000-000000000004",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-ticketing-orders-id.png",
+      "checkPass": "targeted correction"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/ticketing",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-ticketing.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/ticketing/qbo-connect",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/qbo-connect",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-ticketing-qbo-connect.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/ticketing/qbo-disconnected",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/qbo-disconnected",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-ticketing-qbo-disconnected.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/ticketing/settings",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/ticketing/settings",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-ticketing-settings.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "sourceRoute": "/visit",
+      "finalUrl": "http://localhost:3113/publicmarketcafe/visit",
+      "status": 200,
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/publicmarketcafe-visit.png",
+      "checkPass": "full inventory"
+    }
+  ],
+  "mobileChecks": [
+    {
+      "venue": "publicmarketcafe",
+      "route": "/admin/visit",
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true
+    },
+    {
+      "venue": "publicmarketcafe",
+      "route": "/ticketing",
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true
+    },
+    {
+      "venue": "publicmarketcafe",
+      "route": "/blackbook",
+      "styles": {
+        "venueTheme": "publicmarketcafe",
+        "primary": "#0d0d0d",
+        "bodyFont": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "fonts": [
+          "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true
+    }
+  ],
+  "interactions": [
+    {
+      "venue": "publicmarketcafe",
+      "check": "Contact editor opens with venue font and panel",
+      "appearance": {
+        "font": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "background": "rgb(244, 240, 233)"
+      }
+    },
+    {
+      "venue": "publicmarketcafe",
+      "check": "Event date picker opens and closes",
+      "appearance": {
+        "font": "\"Overpass Mono\", \"Overpass Mono Fallback\", monospace",
+        "background": "rgb(244, 240, 233)"
+      }
+    }
+  ]
+}

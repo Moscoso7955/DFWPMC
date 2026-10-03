@@ -1,0 +1,20 @@
+{
+  "id": "willow",
+  "name": "Willow",
+  "basePath": "/willow",
+  "port": 3112,
+  "logo": "/assets/brand/venue-logo.svg",
+  "fixturePrefix": "22222222",
+  "localPreview": true,
+  "entryOrigin": "https://fwpublicmarket.com",
+  "entryLoginPath": "/admin/login/willow",
+  "brand": {
+    "primary": "#22372b",
+    "accent": "#855d32",
+    "paper": "#f3f0e6",
+    "ink": "#243329",
+    "heroImage": "/assets/willow/willow-hero-lounge-full.png",
+    "bodyFont": "Nord Book",
+    "headingFont": "TAN Whistling"
+  }
+}

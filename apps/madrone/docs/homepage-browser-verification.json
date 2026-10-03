@@ -1,0 +1,1964 @@
+{
+  "status": "issues_found",
+  "completed": true,
+  "failure": null,
+  "captureInstalled": true,
+  "captureStartedBeforeNavigation": true,
+  "navigationCount": 8,
+  "elapsedMs": 4727,
+  "checks": [
+    "madrone: configured-password login, homepage image/logo editors, and Pages navigation passed",
+    "publicmarketcafe: configured-password login, homepage image/logo editors, and Pages navigation passed",
+    "willow: configured-password login, homepage image/logo editors, and Pages navigation passed",
+    "Willow: actual logo upload, paired desktop/mobile Save Draft, public draft isolation, Discard Draft, and Publish Changes passed"
+  ],
+  "comparisons": [
+    {
+      "venue": "willow",
+      "size": "desktop",
+      "mismatches": [],
+      "admin": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgb(34, 55, 43)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "cover",
+            "image": "url(\"http://localhost:3112/willow/assets/willow/willow-hero-lounge-full.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 440,
+              "y": 300.90625,
+              "width": 560,
+              "height": 148.1875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 440,
+              "y": 300.90625,
+              "width": 560,
+              "height": 148.1875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"http://localhost:3112/willow/assets/willow/willow-logo-bronze-rgb.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 794,
+              "width": 1440,
+              "height": 106
+            },
+            "background": "rgb(34, 55, 43)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 55, 43)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 797,
+              "width": 1434,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 55, 43)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 50
+            },
+            "background": "rgba(34, 55, 43, 0.38)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(133, 93, 50)",
+            "fontSize": "14.4px",
+            "letterSpacing": "1.728px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/willow/admin/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/willow/admin/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/willow/admin/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/willow/admin/story"
+          }
+        ],
+        "overflow": false
+      },
+      "live": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgb(34, 55, 43)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "cover",
+            "image": "url(\"https://fwpublicmarket.com/willow/assets/willow/willow-hero-lounge-full.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 440,
+              "y": 300.90625,
+              "width": 560,
+              "height": 148.1875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 440,
+              "y": 300.90625,
+              "width": 560,
+              "height": 148.1875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"https://fwpublicmarket.com/willow/assets/willow/willow-logo-bronze-rgb.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 794,
+              "width": 1440,
+              "height": 106
+            },
+            "background": "rgb(34, 55, 43)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 55, 43)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 797,
+              "width": 1434,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 55, 43)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 50
+            },
+            "background": "rgba(34, 55, 43, 0.38)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(133, 93, 50)",
+            "fontSize": "14.4px",
+            "letterSpacing": "1.728px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/willow/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/willow/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/willow/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/willow/story"
+          }
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "venue": "madrone",
+      "size": "desktop",
+      "mismatches": [],
+      "admin": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 791
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 791
+            },
+            "background": "rgb(121, 36, 46)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 791
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "cover",
+            "image": "url(\"http://localhost:3111/madrone/assets/madrone/madrone-hero-tree-room.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 440,
+              "y": 294.921875,
+              "width": 560,
+              "height": 157.15625
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 440,
+              "y": 294.921875,
+              "width": 560,
+              "height": 115.640625
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"http://localhost:3111/madrone/assets/madrone/madrone-master-logo.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 791,
+              "width": 1440,
+              "height": 109
+            },
+            "background": "rgb(121, 36, 46)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(121, 36, 46)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 797,
+              "width": 1434,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(121, 36, 46)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 66
+            },
+            "background": "rgba(121, 36, 46, 0.22)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(222, 187, 176)",
+            "fontSize": "18.4px",
+            "letterSpacing": "1.656px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/madrone/admin/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/madrone/admin/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/madrone/admin/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/madrone/admin/story"
+          }
+        ],
+        "overflow": false
+      },
+      "live": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 791
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 791
+            },
+            "background": "rgb(121, 36, 46)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 791
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "cover",
+            "image": "url(\"https://fwpublicmarket.com/madrone/assets/madrone/madrone-hero-tree-room.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 440,
+              "y": 294.921875,
+              "width": 560,
+              "height": 157.15625
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 440,
+              "y": 294.921875,
+              "width": 560,
+              "height": 115.640625
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"https://fwpublicmarket.com/madrone/assets/madrone/madrone-master-logo.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 791,
+              "width": 1440,
+              "height": 109
+            },
+            "background": "rgb(121, 36, 46)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(121, 36, 46)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 797,
+              "width": 1434,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(121, 36, 46)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 66
+            },
+            "background": "rgba(121, 36, 46, 0.22)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(222, 187, 176)",
+            "fontSize": "18.4px",
+            "letterSpacing": "1.656px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/madrone/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/madrone/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/madrone/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/madrone/story"
+          }
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "venue": "publicmarketcafe",
+      "size": "desktop",
+      "mismatches": [],
+      "admin": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgb(13, 13, 13)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "cover",
+            "image": "url(\"http://localhost:3113/publicmarketcafe/assets/pmcafe/public-market-cafe-hero.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 380,
+              "y": 250.953125,
+              "width": 680,
+              "height": 248.09375
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 380,
+              "y": 250.953125,
+              "width": 680,
+              "height": 248.09375
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"http://localhost:3113/publicmarketcafe/assets/pmcafe/public-market-logo.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 794,
+              "width": 1440,
+              "height": 106
+            },
+            "background": "rgb(13, 13, 13)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(13, 13, 13)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 797,
+              "width": 1434,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(13, 13, 13)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 64
+            },
+            "background": "rgba(13, 13, 13, 0.24)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(222, 187, 176)",
+            "fontSize": "16px",
+            "letterSpacing": "1.44px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/publicmarketcafe/admin/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/publicmarketcafe/admin/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/publicmarketcafe/admin/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/publicmarketcafe/admin/story"
+          }
+        ],
+        "overflow": false
+      },
+      "live": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgb(13, 13, 13)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 794
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "cover",
+            "image": "url(\"https://fwpublicmarket.com/publicmarketcafe/assets/pmcafe/public-market-cafe-hero.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 380,
+              "y": 250.953125,
+              "width": 680,
+              "height": 248.09375
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 380,
+              "y": 250.953125,
+              "width": 680,
+              "height": 248.09375
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"https://fwpublicmarket.com/publicmarketcafe/assets/pmcafe/public-market-logo.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 794,
+              "width": 1440,
+              "height": 106
+            },
+            "background": "rgb(13, 13, 13)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(13, 13, 13)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 797,
+              "width": 1434,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(13, 13, 13)",
+            "fontSize": "18.4px",
+            "letterSpacing": "0.828px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 64
+            },
+            "background": "rgba(13, 13, 13, 0.24)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(222, 187, 176)",
+            "fontSize": "16px",
+            "letterSpacing": "1.44px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/publicmarketcafe/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/publicmarketcafe/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/publicmarketcafe/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/publicmarketcafe/story"
+          }
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "venue": "madrone",
+      "size": "mobile",
+      "mismatches": [
+        ".hero height",
+        ".hero-panel--full height",
+        ".hero-photo-bleed height"
+      ],
+      "admin": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 735
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 735
+            },
+            "background": "rgb(121, 36, 46)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 735
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "61% 50%",
+            "size": "cover",
+            "image": "url(\"http://localhost:3111/madrone/assets/madrone/madrone-hero-tree-room.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 46.796875,
+              "y": 311.140625,
+              "width": 296.390625,
+              "height": 84.71875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 46.796875,
+              "y": 311.140625,
+              "width": 296.390625,
+              "height": 61.203125
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"http://localhost:3111/madrone/assets/madrone/madrone-master-logo.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 738,
+              "width": 390,
+              "height": 106
+            },
+            "background": "rgb(121, 36, 46)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(121, 36, 46)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 744,
+              "width": 384,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(121, 36, 46)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 50
+            },
+            "background": "rgba(121, 36, 46, 0.22)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(222, 187, 176)",
+            "fontSize": "12.48px",
+            "letterSpacing": "1.656px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/madrone/admin/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/madrone/admin/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/madrone/admin/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/madrone/admin/story"
+          }
+        ],
+        "overflow": false
+      },
+      "live": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 733
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 733
+            },
+            "background": "rgb(121, 36, 46)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 733
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "61% 50%",
+            "size": "cover",
+            "image": "url(\"https://fwpublicmarket.com/madrone/assets/madrone/madrone-hero-tree-room.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 46.796875,
+              "y": 310.140625,
+              "width": 296.390625,
+              "height": 84.71875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 46.796875,
+              "y": 310.140625,
+              "width": 296.390625,
+              "height": 61.203125
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"https://fwpublicmarket.com/madrone/assets/madrone/madrone-master-logo.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 738,
+              "width": 390,
+              "height": 106
+            },
+            "background": "rgb(121, 36, 46)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(121, 36, 46)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 744,
+              "width": 384,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(121, 36, 46)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 50
+            },
+            "background": "rgba(121, 36, 46, 0.22)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(222, 187, 176)",
+            "fontSize": "12.48px",
+            "letterSpacing": "1.656px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/madrone/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/madrone/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/madrone/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/madrone/story"
+          }
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "venue": "publicmarketcafe",
+      "size": "mobile",
+      "mismatches": [
+        ".hero height",
+        ".hero-panel--full height",
+        ".hero-photo-bleed height"
+      ],
+      "admin": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 738
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 738
+            },
+            "background": "rgb(13, 13, 13)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 738
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "61% 50%",
+            "size": "cover",
+            "image": "url(\"http://localhost:3113/publicmarketcafe/assets/pmcafe/public-market-cafe-hero.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 35.09375,
+              "y": 296.65625,
+              "width": 319.796875,
+              "height": 116.671875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 35.09375,
+              "y": 296.65625,
+              "width": 319.796875,
+              "height": 116.671875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"http://localhost:3113/publicmarketcafe/assets/pmcafe/public-market-logo.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 741,
+              "width": 390,
+              "height": 103
+            },
+            "background": "rgb(13, 13, 13)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(13, 13, 13)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 744,
+              "width": 384,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(13, 13, 13)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 52
+            },
+            "background": "rgba(13, 13, 13, 0.24)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(222, 187, 176)",
+            "fontSize": "14.04px",
+            "letterSpacing": "1.44px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/publicmarketcafe/admin/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/publicmarketcafe/admin/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/publicmarketcafe/admin/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/publicmarketcafe/admin/story"
+          }
+        ],
+        "overflow": false
+      },
+      "live": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 736
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 736
+            },
+            "background": "rgb(13, 13, 13)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 736
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "61% 50%",
+            "size": "cover",
+            "image": "url(\"https://fwpublicmarket.com/publicmarketcafe/assets/pmcafe/public-market-cafe-hero.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 35.09375,
+              "y": 295.65625,
+              "width": 319.796875,
+              "height": 116.671875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 35.09375,
+              "y": 295.65625,
+              "width": 319.796875,
+              "height": 116.671875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"https://fwpublicmarket.com/publicmarketcafe/assets/pmcafe/public-market-logo.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 741,
+              "width": 390,
+              "height": 103
+            },
+            "background": "rgb(13, 13, 13)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(13, 13, 13)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 744,
+              "width": 384,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(13, 13, 13)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 52
+            },
+            "background": "rgba(13, 13, 13, 0.24)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(222, 187, 176)",
+            "fontSize": "14.04px",
+            "letterSpacing": "1.44px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/publicmarketcafe/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/publicmarketcafe/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/publicmarketcafe/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/publicmarketcafe/story"
+          }
+        ],
+        "overflow": false
+      }
+    },
+    {
+      "venue": "willow",
+      "size": "mobile",
+      "mismatches": [
+        ".hero height",
+        ".hero-panel--full height",
+        ".hero-photo-bleed height"
+      ],
+      "admin": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 738
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 738
+            },
+            "background": "rgb(34, 55, 43)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 738
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "61% 50%",
+            "size": "cover",
+            "image": "url(\"http://localhost:3112/willow/assets/willow/willow-hero-lounge-full.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 46.796875,
+              "y": 315.78125,
+              "width": 296.390625,
+              "height": 78.421875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 46.796875,
+              "y": 315.78125,
+              "width": 296.390625,
+              "height": 78.421875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"http://localhost:3112/willow/assets/willow/willow-logo-bronze-rgb.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 741,
+              "width": 390,
+              "height": 103
+            },
+            "background": "rgb(34, 55, 43)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 55, 43)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 744,
+              "width": 384,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 55, 43)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 48
+            },
+            "background": "rgba(34, 55, 43, 0.38)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(133, 93, 50)",
+            "fontSize": "13.26px",
+            "letterSpacing": "1.728px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/willow/admin/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/willow/admin/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/willow/admin/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/willow/admin/story"
+          }
+        ],
+        "overflow": false
+      },
+      "live": {
+        "elements": {
+          ".hero": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 736
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-panel--full": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 736
+            },
+            "background": "rgb(34, 55, 43)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".hero-photo-bleed": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 736
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "61% 50%",
+            "size": "cover",
+            "image": "url(\"https://fwpublicmarket.com/willow/assets/willow/willow-hero-lounge-full.png\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark-link": {
+            "rect": {
+              "x": 46.796875,
+              "y": 314.78125,
+              "width": 296.390625,
+              "height": 78.421875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".brand-mark": {
+            "rect": {
+              "x": 46.796875,
+              "y": 314.78125,
+              "width": 296.390625,
+              "height": 78.421875
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "50% 50%",
+            "size": "contain",
+            "image": "url(\"https://fwpublicmarket.com/willow/assets/willow/willow-logo-bronze-rgb.svg\")",
+            "color": "rgb(34, 32, 32)",
+            "fontSize": "16px",
+            "letterSpacing": "normal"
+          },
+          ".bottom-menu": {
+            "rect": {
+              "x": 0,
+              "y": 741,
+              "width": 390,
+              "height": 103
+            },
+            "background": "rgb(34, 55, 43)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 55, 43)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".menu-row": {
+            "rect": {
+              "x": 3,
+              "y": 744,
+              "width": 384,
+              "height": 50
+            },
+            "background": "rgba(0, 0, 0, 0)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(34, 55, 43)",
+            "fontSize": "14.04px",
+            "letterSpacing": "0.351px"
+          },
+          ".top-event-bar, .hero-event-bar, .homepage-event-bar": {
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 48
+            },
+            "background": "rgba(34, 55, 43, 0.38)",
+            "position": "0% 0%",
+            "size": "auto",
+            "image": "none",
+            "color": "rgb(133, 93, 50)",
+            "fontSize": "13.26px",
+            "letterSpacing": "1.728px"
+          }
+        },
+        "menu": [
+          {
+            "label": "Menu",
+            "href": "/willow/menu"
+          },
+          {
+            "label": "Careers",
+            "href": "/willow/careers"
+          },
+          {
+            "label": "Reservations",
+            "href": "/willow/reservations"
+          },
+          {
+            "label": "Story",
+            "href": "/willow/story"
+          }
+        ],
+        "overflow": false
+      }
+    }
+  ],
+  "localErrors": [],
+  "liveErrors": [
+    {
+      "page": "publicmarketcafe live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/publicmarketcafe/story?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "publicmarketcafe live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/publicmarketcafe/careers?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "publicmarketcafe live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/publicmarketcafe/menu?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "willow live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/willow/story?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "willow live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/willow/menu?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "willow live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/willow/careers?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "willow live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/willow/reservations?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "publicmarketcafe live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/publicmarketcafe/reservations?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "publicmarketcafe live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/publicmarketcafe/private-events?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "willow live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/willow/private-events?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "madrone live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/madrone/menu?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "madrone live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/madrone/careers?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "madrone live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/madrone/reservations?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "madrone live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/madrone/story?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "page": "madrone live",
+      "kind": "console.error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://fwpublicmarket.com/madrone/private-events?_rsc=1r34m",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "testContentRestored": true,
+  "removedTestUploads": [
+    "/Users/rtm/Desktop/codex-sandboxes/WILLOW-ADMIN-LOCAL/public/assets/admin-uploads/1790908964155-willow-logo-bronze-rgb.svg",
+    "/Users/rtm/Desktop/codex-sandboxes/WILLOW-ADMIN-LOCAL/public/assets/admin-uploads/1790908962972-willow-logo-bronze-rgb.svg"
+  ],
+  "totalElapsedMs": 36787
+}

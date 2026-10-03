@@ -1,0 +1,32 @@
+{
+  "liveReference": "https://fwpublicmarket.com/madrone",
+  "localSource": "/Users/rtm/Developer/codex-sandboxes/MADRONE-LOCAL",
+  "sourceHomepage": {
+    "desktopHeroImage": "/madrone/assets/madrone/madrone-hero-tree-room.png",
+    "mobileHeroImageOne": "/madrone/assets/madrone/madrone-hero-tree-room.png",
+    "mobileHeroImageTwo": "/madrone/assets/madrone/madrone-hero-tree-room.png",
+    "desktopLogo": "/madrone/assets/madrone/madrone-master-logo.svg",
+    "mobileLogo": "/madrone/assets/madrone/madrone-master-logo.svg"
+  },
+  "assets": [
+    {
+      "path": "/assets/madrone/madrone-hero-tree-room.png",
+      "sha256": "4699509b0d6550b3f1758ccf6f9e4cd1aef36a72c716f177b84214dfd3155fe7"
+    },
+    {
+      "path": "/assets/madrone/madrone-master-logo.svg",
+      "sha256": "b4a99a44e29b72254584057c404d7f2a4127754e2c0ab7e84f2dd91fa526d375"
+    },
+    {
+      "path": "/assets/madrone/madrone-menu-badge-radial.svg",
+      "sha256": "d1828263fd7da65bea1f90426c8eec6c1417cf5cd679bc17b6fd9558f193d765"
+    },
+    {
+      "path": "/assets/madrone/madrone-menu-mosaic-star-dark-rose.png",
+      "sha256": "257c6c188ff4406693fb439214a43cf065bc83097c0185bb7ca8a7952f338115"
+    }
+  ],
+  "approach": "Reuse original local homepage component, menu, scoped CSS and fonts; retain local Phoebe CMS APIs and admin controls.",
+  "localSourceCommit": "4a441abdb97f3eef4de5352bf2bac353454fff4f",
+  "mobileMenuHeightPx": 111
+}

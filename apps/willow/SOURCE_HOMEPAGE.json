@@ -1,0 +1,32 @@
+{
+  "liveReference": "https://fwpublicmarket.com/willow",
+  "localSource": "/Users/rtm/Developer/codex-sandboxes/WILLOW-LOCAL",
+  "sourceHomepage": {
+    "desktopHeroImage": "/willow/assets/willow/willow-hero-lounge-full.png",
+    "mobileHeroImageOne": "/willow/assets/willow/willow-hero-lounge-full.png",
+    "mobileHeroImageTwo": "/willow/assets/willow/willow-hero-lounge-full.png",
+    "desktopLogo": "/willow/assets/willow/willow-logo-bronze-rgb.svg",
+    "mobileLogo": "/willow/assets/willow/willow-logo-bronze-rgb.svg"
+  },
+  "assets": [
+    {
+      "path": "/assets/willow/willow-hero-lounge-full.png",
+      "sha256": "b4ab691d24df9283c4ec4696755579f8356c88950f5adc0b98279d6347c7cf86"
+    },
+    {
+      "path": "/assets/willow/willow-logo-bronze-rgb.svg",
+      "sha256": "0b214acf43ee014a4a61f1e2896fdb75959c84a10310935889f8f643a96eab9b"
+    },
+    {
+      "path": "/assets/willow/green-paper-texture.jpeg",
+      "sha256": "ddba02f029c12958ec474d6ddbd007733acd84204b1e934d8151c5568fa48faa"
+    },
+    {
+      "path": "/assets/willow/willow-badge-radial-dark-green-rgb.svg",
+      "sha256": "7f4d958422d1cf0a65da89f31dfec08e8733cc261c1f78477a3dee5c80fdb3f0"
+    }
+  ],
+  "approach": "Reuse original local homepage component, menu, scoped CSS and fonts; retain local Phoebe CMS APIs and admin controls.",
+  "localSourceCommit": "c44fa242f002daec20513e25ce488b22327545d3",
+  "mobileMenuHeightPx": 108
+}

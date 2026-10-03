@@ -1,0 +1,1344 @@
+{
+  "verifiedAt": "2026-10-02T03:32:46.608685+00:00",
+  "scope": "All retained source page routes in the three independent local applications, including existing approved CMS login destinations and role redirects.",
+  "pageRoutesPerVenue": 41,
+  "totalPageRoutes": 123,
+  "httpRoutesPassed": 123,
+  "browserRoutesPassed": 123,
+  "builds": "3 passed",
+  "mobileChecksPassed": 9,
+  "editorInteractionsPassed": 6,
+  "consoleCapture": {
+    "installedBeforeNavigation": true,
+    "initialPassWarnings": 5,
+    "initialWarningReason": "Screenshot caret hiding modified input style attributes before hydration; React reported style={{caret-color:transparent}} differences.",
+    "uncaughtPageErrors": 0,
+    "targetedRecheckRoutes": 9,
+    "targetedRecheckErrors": 0,
+    "targetedRecheckStatus": "no_errors_observed",
+    "screenshotCorrection": "caret:initial",
+    "initialReceipt": "browser-initial-verification.json",
+    "finalRecheckReceipt": "browser-final-recheck-verification.json"
+  },
+  "buildWarning": "Next.js reports a broad file-tracing warning through next.config.ts and the local content store; all builds and TypeScript checks passed.",
+  "existingHub": "Selector and approved login screen source preserved.",
+  "originalVenueProjects": "All three original local venue source projects remained clean.",
+  "previewProviders": "Tipsy, Callidus, Stripe, QuickBooks, outbound delivery and scheduled integrations remain disconnected.",
+  "venue": "Madrone",
+  "http": {
+    "venue": "Madrone",
+    "id": "madrone",
+    "passed": true,
+    "routes": [
+      {
+        "sourceRoute": "/accessibility",
+        "url": "http://localhost:3111/madrone/accessibility",
+        "finalUrl": "http://localhost:3111/madrone/accessibility",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/analytics",
+        "url": "http://localhost:3111/madrone/admin/analytics",
+        "finalUrl": "http://localhost:3111/madrone/admin/analytics",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/calendar",
+        "url": "http://localhost:3111/madrone/admin/calendar",
+        "finalUrl": "http://localhost:3111/madrone/admin/calendar",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/careers",
+        "url": "http://localhost:3111/madrone/admin/careers",
+        "finalUrl": "http://localhost:3111/madrone/admin/careers",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/contact",
+        "url": "http://localhost:3111/madrone/admin/contact",
+        "finalUrl": "http://localhost:3111/madrone/admin/contact",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/hours",
+        "url": "http://localhost:3111/madrone/admin/hours",
+        "finalUrl": "http://localhost:3111/madrone/admin/hours",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/login",
+        "url": "http://localhost:3111/madrone/admin/login",
+        "finalUrl": "http://127.0.0.1:3014/admin/login/madrone",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/mailing-list",
+        "url": "http://localhost:3111/madrone/admin/mailing-list",
+        "finalUrl": "http://localhost:3111/madrone/admin/mailing-list",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/menu",
+        "url": "http://localhost:3111/madrone/admin/menu",
+        "finalUrl": "http://localhost:3111/madrone/admin/menu",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin",
+        "url": "http://localhost:3111/madrone/admin",
+        "finalUrl": "http://localhost:3111/madrone/admin",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/private-events",
+        "url": "http://localhost:3111/madrone/admin/private-events",
+        "finalUrl": "http://localhost:3111/madrone/admin/private-events",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/reservations",
+        "url": "http://localhost:3111/madrone/admin/reservations",
+        "finalUrl": "http://localhost:3111/madrone/admin/reservations",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/story",
+        "url": "http://localhost:3111/madrone/admin/story",
+        "finalUrl": "http://localhost:3111/madrone/admin/story",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/submissions",
+        "url": "http://localhost:3111/madrone/admin/submissions",
+        "finalUrl": "http://localhost:3111/madrone/admin/submissions",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/visit",
+        "url": "http://localhost:3111/madrone/admin/visit",
+        "finalUrl": "http://localhost:3111/madrone/admin/visit",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/blackbook/login",
+        "url": "http://localhost:3111/madrone/blackbook/login",
+        "finalUrl": "http://localhost:3111/madrone/blackbook/login",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/blackbook",
+        "url": "http://localhost:3111/madrone/blackbook",
+        "finalUrl": "http://localhost:3111/madrone/blackbook",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar/[slug]/checkout",
+        "url": "http://localhost:3111/madrone/calendar/preview-evening/checkout?order=11111111-0000-4000-8000-000000000005",
+        "finalUrl": "http://localhost:3111/madrone/calendar/preview-evening/checkout?order=11111111-0000-4000-8000-000000000005",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar/[slug]/confirmation",
+        "url": "http://localhost:3111/madrone/calendar/preview-evening/confirmation?order=11111111-0000-4000-8000-000000000004",
+        "finalUrl": "http://localhost:3111/madrone/calendar/preview-evening/confirmation?order=11111111-0000-4000-8000-000000000004",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar/[slug]",
+        "url": "http://localhost:3111/madrone/calendar/preview-evening",
+        "finalUrl": "http://localhost:3111/madrone/calendar/preview-evening",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar",
+        "url": "http://localhost:3111/madrone/calendar",
+        "finalUrl": "http://localhost:3111/madrone/calendar",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/careers",
+        "url": "http://localhost:3111/madrone/careers",
+        "finalUrl": "http://localhost:3111/madrone/careers",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/contact",
+        "url": "http://localhost:3111/madrone/contact",
+        "finalUrl": "http://localhost:3111/madrone/contact",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/menu",
+        "url": "http://localhost:3111/madrone/menu",
+        "finalUrl": "http://localhost:3111/madrone/menu",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/",
+        "url": "http://localhost:3111/madrone",
+        "finalUrl": "http://localhost:3111/madrone",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/privacy",
+        "url": "http://localhost:3111/madrone/privacy",
+        "finalUrl": "http://localhost:3111/madrone/privacy",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/private-events",
+        "url": "http://localhost:3111/madrone/private-events",
+        "finalUrl": "http://localhost:3111/madrone/private-events",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/reservations",
+        "url": "http://localhost:3111/madrone/reservations",
+        "finalUrl": "http://localhost:3111/madrone/reservations",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/story",
+        "url": "http://localhost:3111/madrone/story",
+        "finalUrl": "http://localhost:3111/madrone/story",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/t/[token]",
+        "url": "http://localhost:3111/madrone/t/madrone-preview-ticket-1",
+        "finalUrl": "http://localhost:3111/madrone/t/madrone-preview-ticket-1",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/terms",
+        "url": "http://localhost:3111/madrone/terms",
+        "finalUrl": "http://localhost:3111/madrone/terms",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/door",
+        "url": "http://localhost:3111/madrone/ticketing/door",
+        "finalUrl": "http://localhost:3111/madrone/blackbook",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/events/[id]/orders",
+        "url": "http://localhost:3111/madrone/ticketing/events/11111111-0000-4000-8000-000000000001/orders",
+        "finalUrl": "http://localhost:3111/madrone/ticketing/events/11111111-0000-4000-8000-000000000001/orders",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/events/[id]",
+        "url": "http://localhost:3111/madrone/ticketing/events/11111111-0000-4000-8000-000000000001",
+        "finalUrl": "http://localhost:3111/madrone/ticketing/events/11111111-0000-4000-8000-000000000001",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/login",
+        "url": "http://localhost:3111/madrone/ticketing/login",
+        "finalUrl": "http://localhost:3111/madrone/ticketing/login",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/orders/[id]",
+        "url": "http://localhost:3111/madrone/ticketing/orders/11111111-0000-4000-8000-000000000004",
+        "finalUrl": "http://localhost:3111/madrone/ticketing/orders/11111111-0000-4000-8000-000000000004",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing",
+        "url": "http://localhost:3111/madrone/ticketing",
+        "finalUrl": "http://localhost:3111/madrone/ticketing",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/qbo-connect",
+        "url": "http://localhost:3111/madrone/ticketing/qbo-connect",
+        "finalUrl": "http://localhost:3111/madrone/ticketing/qbo-connect",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/qbo-disconnected",
+        "url": "http://localhost:3111/madrone/ticketing/qbo-disconnected",
+        "finalUrl": "http://localhost:3111/madrone/ticketing/qbo-disconnected",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/settings",
+        "url": "http://localhost:3111/madrone/ticketing/settings",
+        "finalUrl": "http://localhost:3111/madrone/ticketing/settings",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/visit",
+        "url": "http://localhost:3111/madrone/visit",
+        "finalUrl": "http://localhost:3111/madrone/visit",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      }
+    ],
+    "sourceChecks": {
+      "pages": 41,
+      "apis": 57,
+      "inventoryPreserved": true,
+      "legacyFonts": [],
+      "legacyBrandColors": []
+    }
+  },
+  "browserRoutes": [
+    {
+      "venue": "madrone",
+      "sourceRoute": "/accessibility",
+      "finalUrl": "http://localhost:3111/madrone/accessibility",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-accessibility.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/analytics",
+      "finalUrl": "http://localhost:3111/madrone/admin/analytics",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-analytics.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/calendar",
+      "finalUrl": "http://localhost:3111/madrone/admin/calendar",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-calendar.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/careers",
+      "finalUrl": "http://localhost:3111/madrone/admin/careers",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-careers.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/contact",
+      "finalUrl": "http://localhost:3111/madrone/admin/contact",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-contact.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/hours",
+      "finalUrl": "http://localhost:3111/madrone/admin/hours",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-hours.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/login",
+      "finalUrl": "http://127.0.0.1:3014/admin/login/madrone",
+      "status": 200,
+      "styles": {
+        "primary": "",
+        "bodyFont": "\"Roboto Mono\", \"Roboto Mono Fallback\", monospace",
+        "fonts": [
+          "madroneBody, Arial, \"Arial Narrow\", Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-login.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/mailing-list",
+      "finalUrl": "http://localhost:3111/madrone/admin/mailing-list",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-mailing-list.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/menu",
+      "finalUrl": "http://localhost:3111/madrone/admin/menu",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-menu.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin",
+      "finalUrl": "http://localhost:3111/madrone/admin",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/private-events",
+      "finalUrl": "http://localhost:3111/madrone/admin/private-events",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-private-events.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/reservations",
+      "finalUrl": "http://localhost:3111/madrone/admin/reservations",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-reservations.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/story",
+      "finalUrl": "http://localhost:3111/madrone/admin/story",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-story.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/submissions",
+      "finalUrl": "http://localhost:3111/madrone/admin/submissions",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-submissions.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/admin/visit",
+      "finalUrl": "http://localhost:3111/madrone/admin/visit",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-admin-visit.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/blackbook/login",
+      "finalUrl": "http://localhost:3111/madrone/blackbook/login",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-blackbook-login.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/blackbook",
+      "finalUrl": "http://localhost:3111/madrone/blackbook",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-blackbook.png",
+      "checkPass": "targeted correction"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/calendar/[slug]/checkout",
+      "finalUrl": "http://localhost:3111/madrone/calendar/preview-evening/checkout?order=11111111-0000-4000-8000-000000000005",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-calendar-slug-checkout.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/calendar/[slug]/confirmation",
+      "finalUrl": "http://localhost:3111/madrone/calendar/preview-evening/confirmation?order=11111111-0000-4000-8000-000000000004",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-calendar-slug-confirmation.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/calendar/[slug]",
+      "finalUrl": "http://localhost:3111/madrone/calendar/preview-evening",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-calendar-slug.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/calendar",
+      "finalUrl": "http://localhost:3111/madrone/calendar",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-calendar.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/careers",
+      "finalUrl": "http://localhost:3111/madrone/careers",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-careers.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/contact",
+      "finalUrl": "http://localhost:3111/madrone/contact",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-contact.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/menu",
+      "finalUrl": "http://localhost:3111/madrone/menu",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-menu.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/",
+      "finalUrl": "http://localhost:3111/madrone",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-home.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/privacy",
+      "finalUrl": "http://localhost:3111/madrone/privacy",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-privacy.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/private-events",
+      "finalUrl": "http://localhost:3111/madrone/private-events",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-private-events.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/reservations",
+      "finalUrl": "http://localhost:3111/madrone/reservations",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-reservations.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/story",
+      "finalUrl": "http://localhost:3111/madrone/story",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-story.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/t/[token]",
+      "finalUrl": "http://localhost:3111/madrone/t/madrone-preview-ticket-1",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-t-token.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/terms",
+      "finalUrl": "http://localhost:3111/madrone/terms",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-terms.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/ticketing/door",
+      "finalUrl": "http://localhost:3111/madrone/blackbook",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-ticketing-door.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/ticketing/events/[id]/orders",
+      "finalUrl": "http://localhost:3111/madrone/ticketing/events/11111111-0000-4000-8000-000000000001/orders",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-ticketing-events-id-orders.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/ticketing/events/[id]",
+      "finalUrl": "http://localhost:3111/madrone/ticketing/events/11111111-0000-4000-8000-000000000001",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-ticketing-events-id.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/ticketing/login",
+      "finalUrl": "http://localhost:3111/madrone/ticketing/login",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-ticketing-login.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/ticketing/orders/[id]",
+      "finalUrl": "http://localhost:3111/madrone/ticketing/orders/11111111-0000-4000-8000-000000000004",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-ticketing-orders-id.png",
+      "checkPass": "targeted correction"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/ticketing",
+      "finalUrl": "http://localhost:3111/madrone/ticketing",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-ticketing.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/ticketing/qbo-connect",
+      "finalUrl": "http://localhost:3111/madrone/ticketing/qbo-connect",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-ticketing-qbo-connect.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/ticketing/qbo-disconnected",
+      "finalUrl": "http://localhost:3111/madrone/ticketing/qbo-disconnected",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-ticketing-qbo-disconnected.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/ticketing/settings",
+      "finalUrl": "http://localhost:3111/madrone/ticketing/settings",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-ticketing-settings.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "madrone",
+      "sourceRoute": "/visit",
+      "finalUrl": "http://localhost:3111/madrone/visit",
+      "status": 200,
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/madrone-visit.png",
+      "checkPass": "full inventory"
+    }
+  ],
+  "mobileChecks": [
+    {
+      "venue": "madrone",
+      "route": "/admin/visit",
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true
+    },
+    {
+      "venue": "madrone",
+      "route": "/ticketing",
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true
+    },
+    {
+      "venue": "madrone",
+      "route": "/blackbook",
+      "styles": {
+        "venueTheme": "madrone",
+        "primary": "#79242e",
+        "bodyFont": "body, Arial, Arial, sans-serif",
+        "fonts": [
+          "body, Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true
+    }
+  ],
+  "interactions": [
+    {
+      "venue": "madrone",
+      "check": "Contact editor opens with venue font and panel",
+      "appearance": {
+        "font": "body, Arial, Arial, sans-serif",
+        "background": "rgb(245, 238, 233)"
+      }
+    },
+    {
+      "venue": "madrone",
+      "check": "Event date picker opens and closes",
+      "appearance": {
+        "font": "body, Arial, Arial, sans-serif",
+        "background": "rgb(245, 238, 233)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "publicmarketcafe",
+  "name": "Public Market Cafe & Goods",
+  "basePath": "/publicmarketcafe",
+  "port": 3113,
+  "logo": "/assets/brand/venue-logo.svg",
+  "fixturePrefix": "33333333",
+  "localPreview": true,
+  "entryOrigin": "https://fwpublicmarket.com",
+  "entryLoginPath": "/admin/login/pmcafe",
+  "brand": {
+    "primary": "#0d0d0d",
+    "accent": "#cda787",
+    "paper": "#f4f0e9",
+    "ink": "#28231f",
+    "heroImage": "/assets/pmcafe/public-market-cafe-hero.png",
+    "bodyFont": "Overpass Mono",
+    "headingFont": "Overpass Mono"
+  }
+}

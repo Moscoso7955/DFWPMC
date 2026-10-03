@@ -1,0 +1,1385 @@
+{
+  "verifiedAt": "2026-10-02T03:32:46.608685+00:00",
+  "scope": "All retained source page routes in the three independent local applications, including existing approved CMS login destinations and role redirects.",
+  "pageRoutesPerVenue": 41,
+  "totalPageRoutes": 123,
+  "httpRoutesPassed": 123,
+  "browserRoutesPassed": 123,
+  "builds": "3 passed",
+  "mobileChecksPassed": 9,
+  "editorInteractionsPassed": 6,
+  "consoleCapture": {
+    "installedBeforeNavigation": true,
+    "initialPassWarnings": 5,
+    "initialWarningReason": "Screenshot caret hiding modified input style attributes before hydration; React reported style={{caret-color:transparent}} differences.",
+    "uncaughtPageErrors": 0,
+    "targetedRecheckRoutes": 9,
+    "targetedRecheckErrors": 0,
+    "targetedRecheckStatus": "no_errors_observed",
+    "screenshotCorrection": "caret:initial",
+    "initialReceipt": "browser-initial-verification.json",
+    "finalRecheckReceipt": "browser-final-recheck-verification.json"
+  },
+  "buildWarning": "Next.js reports a broad file-tracing warning through next.config.ts and the local content store; all builds and TypeScript checks passed.",
+  "existingHub": "Selector and approved login screen source preserved.",
+  "originalVenueProjects": "All three original local venue source projects remained clean.",
+  "previewProviders": "Tipsy, Callidus, Stripe, QuickBooks, outbound delivery and scheduled integrations remain disconnected.",
+  "venue": "Willow",
+  "http": {
+    "venue": "Willow",
+    "id": "willow",
+    "passed": true,
+    "routes": [
+      {
+        "sourceRoute": "/accessibility",
+        "url": "http://localhost:3112/willow/accessibility",
+        "finalUrl": "http://localhost:3112/willow/accessibility",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/analytics",
+        "url": "http://localhost:3112/willow/admin/analytics",
+        "finalUrl": "http://localhost:3112/willow/admin/analytics",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/calendar",
+        "url": "http://localhost:3112/willow/admin/calendar",
+        "finalUrl": "http://localhost:3112/willow/admin/calendar",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/careers",
+        "url": "http://localhost:3112/willow/admin/careers",
+        "finalUrl": "http://localhost:3112/willow/admin/careers",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/contact",
+        "url": "http://localhost:3112/willow/admin/contact",
+        "finalUrl": "http://localhost:3112/willow/admin/contact",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/hours",
+        "url": "http://localhost:3112/willow/admin/hours",
+        "finalUrl": "http://localhost:3112/willow/admin/hours",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/login",
+        "url": "http://localhost:3112/willow/admin/login",
+        "finalUrl": "http://127.0.0.1:3014/admin/login/willow",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/mailing-list",
+        "url": "http://localhost:3112/willow/admin/mailing-list",
+        "finalUrl": "http://localhost:3112/willow/admin/mailing-list",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/menu",
+        "url": "http://localhost:3112/willow/admin/menu",
+        "finalUrl": "http://localhost:3112/willow/admin/menu",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin",
+        "url": "http://localhost:3112/willow/admin",
+        "finalUrl": "http://localhost:3112/willow/admin",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/private-events",
+        "url": "http://localhost:3112/willow/admin/private-events",
+        "finalUrl": "http://localhost:3112/willow/admin/private-events",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/reservations",
+        "url": "http://localhost:3112/willow/admin/reservations",
+        "finalUrl": "http://localhost:3112/willow/admin/reservations",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/story",
+        "url": "http://localhost:3112/willow/admin/story",
+        "finalUrl": "http://localhost:3112/willow/admin/story",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/submissions",
+        "url": "http://localhost:3112/willow/admin/submissions",
+        "finalUrl": "http://localhost:3112/willow/admin/submissions",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/admin/visit",
+        "url": "http://localhost:3112/willow/admin/visit",
+        "finalUrl": "http://localhost:3112/willow/admin/visit",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/blackbook/login",
+        "url": "http://localhost:3112/willow/blackbook/login",
+        "finalUrl": "http://localhost:3112/willow/blackbook/login",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/blackbook",
+        "url": "http://localhost:3112/willow/blackbook",
+        "finalUrl": "http://localhost:3112/willow/blackbook",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar/[slug]/checkout",
+        "url": "http://localhost:3112/willow/calendar/preview-evening/checkout?order=22222222-0000-4000-8000-000000000005",
+        "finalUrl": "http://localhost:3112/willow/calendar/preview-evening/checkout?order=22222222-0000-4000-8000-000000000005",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar/[slug]/confirmation",
+        "url": "http://localhost:3112/willow/calendar/preview-evening/confirmation?order=22222222-0000-4000-8000-000000000004",
+        "finalUrl": "http://localhost:3112/willow/calendar/preview-evening/confirmation?order=22222222-0000-4000-8000-000000000004",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar/[slug]",
+        "url": "http://localhost:3112/willow/calendar/preview-evening",
+        "finalUrl": "http://localhost:3112/willow/calendar/preview-evening",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/calendar",
+        "url": "http://localhost:3112/willow/calendar",
+        "finalUrl": "http://localhost:3112/willow/calendar",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/careers",
+        "url": "http://localhost:3112/willow/careers",
+        "finalUrl": "http://localhost:3112/willow/careers",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/contact",
+        "url": "http://localhost:3112/willow/contact",
+        "finalUrl": "http://localhost:3112/willow/contact",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/menu",
+        "url": "http://localhost:3112/willow/menu",
+        "finalUrl": "http://localhost:3112/willow/menu",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/",
+        "url": "http://localhost:3112/willow",
+        "finalUrl": "http://localhost:3112/willow",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/privacy",
+        "url": "http://localhost:3112/willow/privacy",
+        "finalUrl": "http://localhost:3112/willow/privacy",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/private-events",
+        "url": "http://localhost:3112/willow/private-events",
+        "finalUrl": "http://localhost:3112/willow/private-events",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/reservations",
+        "url": "http://localhost:3112/willow/reservations",
+        "finalUrl": "http://localhost:3112/willow/reservations",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/story",
+        "url": "http://localhost:3112/willow/story",
+        "finalUrl": "http://localhost:3112/willow/story",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/t/[token]",
+        "url": "http://localhost:3112/willow/t/willow-preview-ticket-1",
+        "finalUrl": "http://localhost:3112/willow/t/willow-preview-ticket-1",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/terms",
+        "url": "http://localhost:3112/willow/terms",
+        "finalUrl": "http://localhost:3112/willow/terms",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/door",
+        "url": "http://localhost:3112/willow/ticketing/door",
+        "finalUrl": "http://localhost:3112/willow/blackbook",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/events/[id]/orders",
+        "url": "http://localhost:3112/willow/ticketing/events/22222222-0000-4000-8000-000000000001/orders",
+        "finalUrl": "http://localhost:3112/willow/ticketing/events/22222222-0000-4000-8000-000000000001/orders",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/events/[id]",
+        "url": "http://localhost:3112/willow/ticketing/events/22222222-0000-4000-8000-000000000001",
+        "finalUrl": "http://localhost:3112/willow/ticketing/events/22222222-0000-4000-8000-000000000001",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/login",
+        "url": "http://localhost:3112/willow/ticketing/login",
+        "finalUrl": "http://localhost:3112/willow/ticketing/login",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/orders/[id]",
+        "url": "http://localhost:3112/willow/ticketing/orders/22222222-0000-4000-8000-000000000004",
+        "finalUrl": "http://localhost:3112/willow/ticketing/orders/22222222-0000-4000-8000-000000000004",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing",
+        "url": "http://localhost:3112/willow/ticketing",
+        "finalUrl": "http://localhost:3112/willow/ticketing",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/qbo-connect",
+        "url": "http://localhost:3112/willow/ticketing/qbo-connect",
+        "finalUrl": "http://localhost:3112/willow/ticketing/qbo-connect",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/qbo-disconnected",
+        "url": "http://localhost:3112/willow/ticketing/qbo-disconnected",
+        "finalUrl": "http://localhost:3112/willow/ticketing/qbo-disconnected",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/ticketing/settings",
+        "url": "http://localhost:3112/willow/ticketing/settings",
+        "finalUrl": "http://localhost:3112/willow/ticketing/settings",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      },
+      {
+        "sourceRoute": "/visit",
+        "url": "http://localhost:3112/willow/visit",
+        "finalUrl": "http://localhost:3112/willow/visit",
+        "http": 200,
+        "venueTheme": true,
+        "phoebeText": [],
+        "passed": true
+      }
+    ],
+    "sourceChecks": {
+      "pages": 41,
+      "apis": 57,
+      "inventoryPreserved": true,
+      "legacyFonts": [],
+      "legacyBrandColors": []
+    }
+  },
+  "browserRoutes": [
+    {
+      "venue": "willow",
+      "sourceRoute": "/accessibility",
+      "finalUrl": "http://localhost:3112/willow/accessibility",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-accessibility.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/analytics",
+      "finalUrl": "http://localhost:3112/willow/admin/analytics",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-analytics.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/calendar",
+      "finalUrl": "http://localhost:3112/willow/admin/calendar",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-calendar.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/careers",
+      "finalUrl": "http://localhost:3112/willow/admin/careers",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-careers.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/contact",
+      "finalUrl": "http://localhost:3112/willow/admin/contact",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-contact.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/hours",
+      "finalUrl": "http://localhost:3112/willow/admin/hours",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-hours.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/login",
+      "finalUrl": "http://127.0.0.1:3014/admin/login/willow",
+      "status": 200,
+      "styles": {
+        "primary": "",
+        "bodyFont": "\"Roboto Mono\", \"Roboto Mono Fallback\", monospace",
+        "fonts": [
+          "willowBody, \"willowBody Fallback\", Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-login.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/mailing-list",
+      "finalUrl": "http://localhost:3112/willow/admin/mailing-list",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-mailing-list.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/menu",
+      "finalUrl": "http://localhost:3112/willow/admin/menu",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-menu.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin",
+      "finalUrl": "http://localhost:3112/willow/admin",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/private-events",
+      "finalUrl": "http://localhost:3112/willow/admin/private-events",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-private-events.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/reservations",
+      "finalUrl": "http://localhost:3112/willow/admin/reservations",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-reservations.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/story",
+      "finalUrl": "http://localhost:3112/willow/admin/story",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-story.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/submissions",
+      "finalUrl": "http://localhost:3112/willow/admin/submissions",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-submissions.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/admin/visit",
+      "finalUrl": "http://localhost:3112/willow/admin/visit",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-admin-visit.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/blackbook/login",
+      "finalUrl": "http://localhost:3112/willow/blackbook/login",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "display, \"Times New Roman\", Georgia, serif",
+          "body, \"body Fallback\", Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-blackbook-login.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/blackbook",
+      "finalUrl": "http://localhost:3112/willow/blackbook",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-blackbook.png",
+      "checkPass": "targeted correction"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/calendar/[slug]/checkout",
+      "finalUrl": "http://localhost:3112/willow/calendar/preview-evening/checkout?order=22222222-0000-4000-8000-000000000005",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-calendar-slug-checkout.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/calendar/[slug]/confirmation",
+      "finalUrl": "http://localhost:3112/willow/calendar/preview-evening/confirmation?order=22222222-0000-4000-8000-000000000004",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-calendar-slug-confirmation.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/calendar/[slug]",
+      "finalUrl": "http://localhost:3112/willow/calendar/preview-evening",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-calendar-slug.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/calendar",
+      "finalUrl": "http://localhost:3112/willow/calendar",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-calendar.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/careers",
+      "finalUrl": "http://localhost:3112/willow/careers",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-careers.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/contact",
+      "finalUrl": "http://localhost:3112/willow/contact",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-contact.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/menu",
+      "finalUrl": "http://localhost:3112/willow/menu",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-menu.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/",
+      "finalUrl": "http://localhost:3112/willow",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-home.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/privacy",
+      "finalUrl": "http://localhost:3112/willow/privacy",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-privacy.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/private-events",
+      "finalUrl": "http://localhost:3112/willow/private-events",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-private-events.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/reservations",
+      "finalUrl": "http://localhost:3112/willow/reservations",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-reservations.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/story",
+      "finalUrl": "http://localhost:3112/willow/story",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-story.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/t/[token]",
+      "finalUrl": "http://localhost:3112/willow/t/willow-preview-ticket-1",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-t-token.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/terms",
+      "finalUrl": "http://localhost:3112/willow/terms",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-terms.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/ticketing/door",
+      "finalUrl": "http://localhost:3112/willow/blackbook",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-ticketing-door.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/ticketing/events/[id]/orders",
+      "finalUrl": "http://localhost:3112/willow/ticketing/events/22222222-0000-4000-8000-000000000001/orders",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-ticketing-events-id-orders.png",
+      "checkPass": "targeted correction"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/ticketing/events/[id]",
+      "finalUrl": "http://localhost:3112/willow/ticketing/events/22222222-0000-4000-8000-000000000001",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-ticketing-events-id.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/ticketing/login",
+      "finalUrl": "http://localhost:3112/willow/ticketing/login",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-ticketing-login.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/ticketing/orders/[id]",
+      "finalUrl": "http://localhost:3112/willow/ticketing/orders/22222222-0000-4000-8000-000000000004",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-ticketing-orders-id.png",
+      "checkPass": "targeted correction"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/ticketing",
+      "finalUrl": "http://localhost:3112/willow/ticketing",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-ticketing.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/ticketing/qbo-connect",
+      "finalUrl": "http://localhost:3112/willow/ticketing/qbo-connect",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-ticketing-qbo-connect.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/ticketing/qbo-disconnected",
+      "finalUrl": "http://localhost:3112/willow/ticketing/qbo-disconnected",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-ticketing-qbo-disconnected.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/ticketing/settings",
+      "finalUrl": "http://localhost:3112/willow/ticketing/settings",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-ticketing-settings.png",
+      "checkPass": "full inventory"
+    },
+    {
+      "venue": "willow",
+      "sourceRoute": "/visit",
+      "finalUrl": "http://localhost:3112/willow/visit",
+      "status": 200,
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true,
+      "screenshot": "/Users/rtm/Documents/ChatGPT/DFW/phoebe-admin-comparison-2026-10-01/all-page-reskin/output/playwright/willow-visit.png",
+      "checkPass": "full inventory"
+    }
+  ],
+  "mobileChecks": [
+    {
+      "venue": "willow",
+      "route": "/admin/visit",
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true
+    },
+    {
+      "venue": "willow",
+      "route": "/ticketing",
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true
+    },
+    {
+      "venue": "willow",
+      "route": "/blackbook",
+      "styles": {
+        "venueTheme": "willow",
+        "primary": "#22372b",
+        "bodyFont": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "fonts": [
+          "body, \"body Fallback\", Arial, Arial, sans-serif",
+          "display, \"Times New Roman\", Georgia, serif"
+        ],
+        "legacyColors": [],
+        "phoebeText": false,
+        "overflow": false,
+        "brokenImages": []
+      },
+      "passed": true
+    }
+  ],
+  "interactions": [
+    {
+      "venue": "willow",
+      "check": "Contact editor opens with venue font and panel",
+      "appearance": {
+        "font": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "background": "rgb(243, 240, 230)"
+      }
+    },
+    {
+      "venue": "willow",
+      "check": "Event date picker opens and closes",
+      "appearance": {
+        "font": "body, \"body Fallback\", Arial, Arial, sans-serif",
+        "background": "rgb(243, 240, 230)"
+      }
+    }
+  ]
+}

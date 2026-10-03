@@ -1,0 +1,28 @@
+{
+  "liveReference": "https://fwpublicmarket.com/publicmarketcafe",
+  "localSource": "/Users/rtm/Developer/codex-sandboxes/PMCAFE-LOCAL",
+  "sourceHomepage": {
+    "desktopHeroImage": "/publicmarketcafe/assets/pmcafe/public-market-cafe-hero.png",
+    "mobileHeroImageOne": "/publicmarketcafe/assets/pmcafe/public-market-cafe-hero.png",
+    "mobileHeroImageTwo": "/publicmarketcafe/assets/pmcafe/public-market-cafe-hero.png",
+    "desktopLogo": "/publicmarketcafe/assets/pmcafe/public-market-logo.svg",
+    "mobileLogo": "/publicmarketcafe/assets/pmcafe/public-market-logo.svg"
+  },
+  "assets": [
+    {
+      "path": "/assets/pmcafe/public-market-cafe-hero.png",
+      "sha256": "b9182c00448513d92678e0fa8bcd46e50c528887e9709f3688f43a253a07c911"
+    },
+    {
+      "path": "/assets/pmcafe/public-market-logo.svg",
+      "sha256": "b23c30b276938e9350f9d4070b068261adbd2aa21c0d04f4a7f1cecafbed475d"
+    },
+    {
+      "path": "/assets/pmcafe/public-market-latte-badge.png",
+      "sha256": "4dc80f066bce39890a0a0f92d14b7cf2d649d64f9075bd1452a52b547e102ee6"
+    }
+  ],
+  "approach": "Reuse original local homepage component, menu, scoped CSS and fonts; retain local Phoebe CMS APIs and admin controls.",
+  "localSourceCommit": "1978e56c4b9c6f5c7c6e28dbac04138d3c4e0563",
+  "mobileMenuHeightPx": 108
+}

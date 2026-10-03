@@ -1,0 +1,17 @@
+{
+  "name": "fwpublicmarket",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Public Market hub and three independently deployed venue applications",
+  "scripts": {
+    "dev:publicmarket": "npm --prefix apps/publicmarket run dev -- --port 3014",
+    "dev:madrone": "npm --prefix apps/madrone run dev",
+    "dev:willow": "npm --prefix apps/willow run dev",
+    "dev:publicmarketcafe": "npm --prefix apps/publicmarketcafe run dev",
+    "build:publicmarket": "npm --prefix apps/publicmarket run build",
+    "build:madrone": "npm --prefix apps/madrone run build",
+    "build:willow": "npm --prefix apps/willow run build",
+    "build:publicmarketcafe": "npm --prefix apps/publicmarketcafe run build",
+    "build:all": "npm run build:publicmarket && npm run build:madrone && npm run build:willow && npm run build:publicmarketcafe"
+  }
+}

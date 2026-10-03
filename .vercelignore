@@ -1,0 +1,10 @@
+**/node_modules/**
+**/.next/**
+**/.vercel/**
+**/.env*
+**/content/local-data/**
+**/docs/**
+**/*.log
+**/LOCAL_VERIFICATION.json
+**/VENUE_UI_INVENTORY.json
+.secrets/**

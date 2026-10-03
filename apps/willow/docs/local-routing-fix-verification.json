@@ -1,0 +1,77 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "venue": "madrone",
+      "scope": "admin",
+      "protectedRedirect": "passed",
+      "nativeLoginRedirect": "passed",
+      "authenticatedPage": "passed",
+      "authenticatedLoginRedirect": "passed"
+    },
+    {
+      "venue": "madrone",
+      "scope": "ticketing",
+      "protectedRedirect": "passed",
+      "nativeLoginRedirect": "passed",
+      "authenticatedPage": "passed",
+      "authenticatedLoginRedirect": "passed"
+    },
+    {
+      "venue": "madrone",
+      "scope": "blackbook",
+      "protectedRedirect": "passed",
+      "nativeLoginRedirect": "passed",
+      "authenticatedPage": "passed",
+      "authenticatedLoginRedirect": "passed"
+    },
+    {
+      "venue": "willow",
+      "scope": "admin",
+      "protectedRedirect": "passed",
+      "nativeLoginRedirect": "passed",
+      "authenticatedPage": "passed",
+      "authenticatedLoginRedirect": "passed"
+    },
+    {
+      "venue": "willow",
+      "scope": "ticketing",
+      "protectedRedirect": "passed",
+      "nativeLoginRedirect": "passed",
+      "authenticatedPage": "passed",
+      "authenticatedLoginRedirect": "passed"
+    },
+    {
+      "venue": "willow",
+      "scope": "blackbook",
+      "protectedRedirect": "passed",
+      "nativeLoginRedirect": "passed",
+      "authenticatedPage": "passed",
+      "authenticatedLoginRedirect": "passed"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "scope": "admin",
+      "protectedRedirect": "passed",
+      "nativeLoginRedirect": "passed",
+      "authenticatedPage": "passed",
+      "authenticatedLoginRedirect": "passed"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "scope": "ticketing",
+      "protectedRedirect": "passed",
+      "nativeLoginRedirect": "passed",
+      "authenticatedPage": "passed",
+      "authenticatedLoginRedirect": "passed"
+    },
+    {
+      "venue": "publicmarketcafe",
+      "scope": "blackbook",
+      "protectedRedirect": "passed",
+      "nativeLoginRedirect": "passed",
+      "authenticatedPage": "passed",
+      "authenticatedLoginRedirect": "passed"
+    }
+  ]
+}

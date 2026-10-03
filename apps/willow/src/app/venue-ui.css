@@ -1,0 +1,226 @@
+:root {
+  --brand-primary: #22372b; --brand-primary-rgb: 34, 55, 43;
+  --brand-accent: #855d32; --brand-accent-rgb: 133, 93, 50; --brand-on-accent: #fffaf1;
+  --brand-paper: #f3f0e6; --brand-paper-rgb: 243, 240, 230; --brand-surface: #fcfbf6;
+  --brand-muted: #e4e8dc; --brand-secondary: #45614c; --brand-ink: #243329; --brand-ink-rgb: 36, 51, 41;
+  --brand-line: #c4cbbb; --brand-radius: 8px; --brand-control-radius: 5px;
+  --font-venue-body: var(--font-willow-nord), Arial, sans-serif; --font-venue-heading: var(--font-willow-whistling), Georgia, serif;
+  --black: var(--brand-ink); --cream: var(--brand-paper); --deep-red: var(--brand-primary);
+  --red: var(--brand-primary); --blue: var(--brand-primary); --yellow: var(--brand-muted); --frame-line: 1px solid var(--brand-line);
+}
+/* Shared local UI, using each venue's configured palette and fonts. */
+html { color-scheme: light; }
+body { background: var(--brand-paper); color: var(--brand-ink); font-family: var(--font-venue-body); font-weight: 400; }
+button, input, select, textarea { font-family: var(--font-venue-body); }
+code, kbd, samp, pre { font-family: var(--font-venue-body); }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--brand-accent); color: var(--brand-paper); }
+:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 3px; }
+input[type="checkbox"], input[type="radio"] { accent-color: var(--brand-primary); }
+input, select, textarea { border-radius: var(--brand-control-radius); }
+button:not(.admin-edit-hotspot):not(.hamburger):not(.drawer-close),
+.contact-form button, .ticketing-portal-primary, .ticketing-portal-secondary,
+.ticket-confirmation-action, .admin-mailing-list-export, .blackbook-tab,
+.apple-wallet-button, .google-wallet-button { border-radius: var(--brand-control-radius); }
+input::placeholder, textarea::placeholder { color: currentColor; opacity: .55; }
+
+/* One clear editor header across the entire CMS. */
+.venue-admin-header {
+  position: fixed; z-index: 35; top: 0; right: 0; left: 0;
+  min-height: 78px; padding: 12px 24px; display: flex; align-items: center;
+  gap: 20px; background: var(--brand-primary); color: var(--brand-paper);
+  border-bottom: 1px solid rgba(var(--brand-accent-rgb), .55);
+}
+.venue-admin-brand { display: flex; align-items: center; gap: 14px; min-width: 210px; }
+.venue-admin-brand img { width: 104px; height: 40px; object-fit: contain; }
+.venue-admin-brand span { display: grid; gap: 4px; }
+.venue-admin-brand strong { font-size: 14px; font-weight: 400; }
+.venue-admin-brand small { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; opacity: .72; }
+.venue-admin-nav { display: flex; align-items: center; gap: 8px; margin-left: auto; font-size: 12px; }
+.venue-admin-nav > a, .venue-admin-header .admin-home-pages summary { padding: 9px 12px; border: 1px solid rgba(var(--brand-paper-rgb), .3); border-radius: var(--brand-control-radius); background: transparent; color: var(--brand-paper); }
+.venue-admin-header .admin-home-pages { position: relative; z-index: 40; top: auto; left: auto; font-size: 12px; }
+.venue-admin-header .admin-home-pages summary { cursor: pointer; text-transform: none; }
+.venue-admin-header .admin-home-pages nav { position: absolute; top: calc(100% + 10px); left: 0; width: min(380px, calc(100vw - 32px)); background: var(--brand-paper); border: 1px solid var(--brand-line); border-radius: var(--brand-radius); padding: 10px; color: var(--brand-ink); box-shadow: 0 12px 30px rgba(var(--brand-ink-rgb), .15); text-transform: none; }
+.venue-admin-header .admin-home-pages nav a { padding: 10px; border-radius: var(--brand-control-radius); }
+.venue-admin-header .admin-home-pages nav a:hover { background: var(--brand-muted); color: var(--brand-primary); }
+.venue-admin-header .admin-toolbar { position: static; inset: auto; display: flex; align-items: center; gap: 6px; max-width: none; flex-wrap: nowrap; }
+.venue-admin-header .admin-toolbar :is(button, a) { min-height: 36px; padding: 8px 11px; border: 1px solid rgba(var(--brand-paper-rgb), .3); border-radius: var(--brand-control-radius); background: transparent; color: var(--brand-paper); font-size: 11px; letter-spacing: .02em; text-transform: none; white-space: nowrap; }
+.venue-admin-header .admin-toolbar button:first-of-type { background: var(--brand-accent); border-color: var(--brand-accent); color: var(--brand-on-accent); }
+.venue-admin-header :is(button, a, summary):hover { filter: brightness(1.06); }
+.admin-shell--venue-home .venue-admin-header { top: 64px; min-height: 64px; background: rgba(var(--brand-primary-rgb), .95); }
+.admin-shell--venue-home .venue-admin-brand img { width: 86px; height: 34px; }
+.admin-shell--venue-pages .holder-home-icon,
+.admin-shell--venue-pages .holder-mobile-header-bg,
+.admin-shell--venue-pages .hamburger { display: none; }
+.admin-shell--venue-pages .page { min-height: 100svh; padding: 126px 24px 90px; }
+.admin-shell--venue-pages :is(.visit-page, .menu-page-intro) { padding-top: 0; }
+.admin-shell--venue-pages :is(.admin-analytics, .admin-operating-hours, .admin-submissions, .admin-mailing-list) { padding-top: 124px; }
+
+/* Public pages and compact editorial content. */
+.holder-mobile-header-bg { display: block; position: fixed; z-index: 8; top: 0; left: 0; right: 0; height: 90px; background: var(--brand-paper); border-bottom: 1px solid var(--brand-line); }
+.holder-home-icon, body.holder-header-compact .holder-home-icon { top: 21px; left: 50%; width: 160px; height: 45px; transform: translateX(-50%); }
+.holder-home-icon img { display: block; width: 100%; height: 100%; object-fit: contain; filter: none; }
+.hamburger:not(.homepage-hamburger), body.holder-header-compact .hamburger:not(.homepage-hamburger) { top: 33px; left: 24px; width: 27px; height: 23px; color: var(--brand-primary); }
+.drawer-menu { width: min(380px, 92vw); border: 0; background: var(--brand-primary); color: var(--brand-paper); font-family: var(--font-venue-body); grid-template-rows: 76px repeat(9, minmax(40px, 1fr)) auto; }
+.venue-drawer-heading { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid rgba(var(--brand-paper-rgb), .2); }
+.venue-drawer-heading img { width: 146px; height: 40px; object-fit: contain; }
+.venue-drawer-heading .drawer-close { position: relative; width: 28px; height: 28px; padding: 0; background: transparent; color: var(--brand-paper); }
+.drawer-menu > a { border-bottom: 1px solid rgba(var(--brand-paper-rgb), .16); text-align: left; padding: 12px 24px; font-size: 14px; letter-spacing: .04em; }
+.drawer-menu > a:hover { background: rgba(var(--brand-paper-rgb), .12); color: var(--brand-paper); }
+.drawer-menu .legal-links { color: var(--brand-paper); border-top: 0; }
+.page { background: var(--brand-paper); padding: 128px 24px 86px; color: var(--brand-ink); }
+.page h1, .admin-analytics h1, .admin-operating-hours h1, .admin-submissions h1, .admin-mailing-list h1 { font-family: var(--font-venue-heading); font-size: clamp(24px, 3vw, 34px); font-weight: 400; line-height: 1.25; letter-spacing: .025em; color: var(--brand-primary); text-transform: none; }
+.page-menu { z-index: 20; background: var(--brand-primary); color: var(--brand-paper); border-top: 1px solid rgba(var(--brand-accent-rgb), .4); font-size: 13px; letter-spacing: .06em; }
+.page-menu a { min-height: 48px; }
+.page-menu a:hover { background: var(--brand-accent); color: var(--brand-on-accent); }
+.visit-page { max-width: 780px; margin: 0 auto; gap: 28px; padding: 0 0 34px; }
+.visit-card, .contact-completion, .ticket-confirmation-ticket, .ticket-page-card, .admin-analytics-card, .admin-submission { border: 1px solid var(--brand-line); border-radius: var(--brand-radius); background: var(--brand-surface); box-shadow: none; }
+.visit-card { padding: 40px 28px; gap: 24px; text-transform: none; }
+.visit-card button, .contact-form button { border: 1px solid var(--brand-primary); background: var(--brand-primary); color: var(--brand-paper); font-size: 14px; letter-spacing: .03em; text-transform: none; }
+.visit-map-links { font-size: 12px; color: var(--brand-secondary); }
+.menu-page-intro { width: min(100%, 860px); margin: 0 auto; }
+.menu-image-trigger { border: 1px solid var(--brand-line); border-radius: var(--brand-radius); overflow: hidden; background: var(--brand-surface); }
+.menu-lightbox { background: rgba(var(--brand-primary-rgb), .97); }
+.contact-page { width: min(100%, 860px); margin: 0 auto; }
+.contact-form :is(input, textarea), .newsletter-input { border: 1px solid var(--brand-line); background: var(--brand-surface); }
+.calendar-shell, .calendar-modal, .embed-frame { border-color: var(--brand-line); border-radius: var(--brand-radius); }
+.calendar-month-nav button, .calendar-event, .calendar-day { font-family: var(--font-venue-body); }
+.calendar-header, .calendar-month-label { color: var(--brand-primary); }
+.legal-page { width: min(100%, 820px); font-size: 14px; line-height: 1.7; }
+.legal-page-header { border-bottom: 1px solid var(--brand-line); padding-bottom: 22px; }
+.legal-page h2 { color: var(--brand-primary); font-family: var(--font-venue-body); font-weight: 400; font-size: 18px; letter-spacing: .02em; }
+.story-layout { min-height: 0; width: min(100%, 1000px); margin: 0 auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.story-copy { grid-column: 1 / -1; grid-row: 1; width: 100%; max-width: none; max-height: none; padding: 28px; border: 1px solid var(--brand-line); border-radius: var(--brand-radius); background: var(--brand-surface); font-size: 16px; line-height: 1.65; overflow: visible; }
+.story-copy-text, .story-copy-text--collapsed { max-height: none; overflow: visible; }
+.story-copy-text--collapsed::after, .story-copy-expand { display: none; }
+.story-copy h1.sr-only { position: static; width: auto; height: auto; margin: 0 0 18px; clip: auto; overflow: visible; }
+.story-image { border-radius: var(--brand-radius); border: 1px solid var(--brand-line); }
+
+/* Editors and overlays use the venue's accent, with restrained borders. */
+.admin-edit-hotspot { border: 1px dashed var(--brand-accent); border-radius: var(--brand-control-radius); background: transparent; color: var(--brand-primary); font-family: var(--font-venue-body); }
+.admin-edit-hotspot span { padding: 7px 10px; background: var(--brand-primary); color: var(--brand-paper); border-radius: var(--brand-control-radius); font-size: 11px; font-weight: 400; letter-spacing: .025em; line-height: 1.2; text-transform: none; }
+.admin-edit-hotspot:hover, .admin-edit-hotspot:focus-visible { background: rgba(var(--brand-accent-rgb), .06); outline: 0; border-style: solid; }
+.venue-homepage .admin-edit-hotspot { font-family: var(--font-venue-body); background: transparent; border: 1px dashed var(--brand-accent); }
+.venue-homepage .hero-panel--full .admin-edit-hotspot--desktopHeroImage { inset: 154px 18px 18px; }
+.venue-homepage .hero-panel--full .admin-edit-hotspot--desktopLogo { width: min(62vw, 760px); height: min(27vw, 300px); }
+.admin-modal-panel, .admin-confirm-panel, .calendar-modal { padding: 28px; border: 1px solid var(--brand-line); border-radius: var(--brand-radius); background: var(--brand-paper); color: var(--brand-ink); box-shadow: 0 18px 60px rgba(var(--brand-ink-rgb), .18); }
+.admin-modal-panel h2, .admin-confirm-panel h2 { font-family: var(--font-venue-heading); font-size: 26px; line-height: 1.25; text-transform: none; font-weight: 400; }
+.admin-modal-preview, .admin-asset-details { border: 1px solid var(--brand-line); border-radius: var(--brand-control-radius); }
+.admin-asset-details { background: var(--brand-muted); }
+.admin-upload-label input, .admin-upload-label select, .admin-textarea { background: var(--brand-surface); border: 1px solid var(--brand-line); }
+.admin-modal-actions button, .admin-calendar-add-event, .admin-login-submit { border: 1px solid var(--brand-primary); background: var(--brand-primary); color: var(--brand-paper); font-size: 13px; font-family: var(--font-venue-body); text-transform: none; }
+.admin-modal-actions button:last-child:not(:first-child) { background: transparent; color: var(--brand-primary); }
+.admin-login-page { background: var(--brand-primary); }
+.admin-login-card { background: var(--brand-paper); color: var(--brand-ink); border: 1px solid var(--brand-line); border-radius: var(--brand-radius); }
+.admin-login-card input { background: var(--brand-surface); border-color: var(--brand-line); }
+.admin-login-card h1 { color: var(--brand-primary); font-family: var(--font-venue-heading); text-transform: none; }
+.admin-hours-table, .admin-mailing-list-table { border: 1px solid var(--brand-line); background: var(--brand-surface); }
+.admin-hours-table :is(th, td), .admin-mailing-list-table :is(th, td) { border-color: var(--brand-line); }
+.admin-hours-table input[type="time"] { background: var(--brand-paper); border: 1px solid var(--brand-line); padding: 9px; }
+.admin-analytics-card { padding: 22px; }
+.admin-analytics-card h2, .admin-mailing-list-table th { font-family: var(--font-venue-body); font-weight: 400; }
+.admin-analytics-link, .admin-mailing-list-export { color: var(--brand-primary); }
+.version-badge { position: fixed; z-index: 22; right: 10px; bottom: 7px; padding: 3px 7px; border: 0; border-radius: 4px; background: rgba(var(--brand-primary-rgb), .9); color: var(--brand-paper); opacity: .7; pointer-events: none; font-family: var(--font-venue-body); font-size: 9px; }
+
+/* Ticketing, Blackbook, their forms, detail pages, and date picker. */
+.ticketing-portal, .blackbook-shell, .ticketing-login, .ticket-page { background: var(--brand-primary); font-family: var(--font-venue-body); color: var(--brand-paper); }
+.ticketing-portal-header { background: var(--brand-primary); border-bottom: 1px solid rgba(var(--brand-accent-rgb), .5); padding: 16px 28px; }
+.ticketing-portal-brand-mark { width: 120px; height: 36px; }
+.ticketing-portal-brand-mark img { width: 100%; }
+.ticketing-portal-brand-name { font-size: 14px; letter-spacing: .025em; text-transform: none; }
+.ticketing-portal-nav-link, .ticketing-portal-logout, .ticketing-portal-role { border-radius: var(--brand-control-radius); letter-spacing: .025em; text-transform: none; }
+.ticketing-portal-nav-link--active { background: rgba(var(--brand-accent-rgb), .2); color: var(--brand-paper); border-color: var(--brand-accent); }
+.ticketing-portal-main { padding-top: 26px; }
+.ticketing-portal-header-row h1 { font-family: var(--font-venue-heading); font-weight: 400; font-size: 30px; line-height: 1.25; letter-spacing: .02em; text-transform: none; }
+.ticketing-portal-pane, .ticketing-portal-event, .ticketing-portal-empty, .qbo-card { border: 1px solid rgba(var(--brand-paper-rgb), .2); border-radius: var(--brand-radius); background: rgba(var(--brand-paper-rgb), .05); }
+.ticketing-portal-event-date { border: 0; border-radius: var(--brand-control-radius); background: rgba(var(--brand-accent-rgb), .15); color: var(--brand-paper); }
+.ticketing-portal-event-body h3 { font-weight: 400; text-transform: none; }
+.ticketing-portal-primary, .blackbook-add, .door-camera-start { background: var(--brand-accent); color: var(--brand-on-accent); border-color: var(--brand-accent); }
+.ticketing-portal-secondary { border: 1px solid rgba(var(--brand-paper-rgb), .35); }
+.ticketing-portal-field :is(input, select, textarea), .blackbook-search { border: 1px solid rgba(var(--brand-paper-rgb), .35); background: rgba(var(--brand-paper-rgb), .06); color: var(--brand-paper); }
+.ticketing-portal-field select option { background: var(--brand-primary); color: var(--brand-paper); }
+.ticketing-portal-table :is(th, td) { border-color: rgba(var(--brand-paper-rgb), .2); }
+.ticketing-portal-modal-panel, .blackbook-modal-panel { background: var(--brand-primary); border: 1px solid var(--brand-accent); border-radius: var(--brand-radius); }
+.ticketing-login-card { background: rgba(var(--brand-paper-rgb), .05); border: 1px solid rgba(var(--brand-accent-rgb), .6); border-radius: var(--brand-radius); }
+.ticketing-login-card h1 { font-family: var(--font-venue-heading); font-weight: 400; text-transform: none; }
+.ticketing-login-logo { width: 180px; height: 58px; object-fit: contain; margin: 0 0 14px; }
+.venue-picker-panel { background: var(--brand-paper); color: var(--brand-ink); border: 1px solid var(--brand-line); border-radius: var(--brand-radius); font-family: var(--font-venue-body); }
+.venue-picker-trigger { border: 1px solid rgba(var(--brand-paper-rgb), .35); border-radius: var(--brand-control-radius); font-family: var(--font-venue-body); }
+.venue-picker-month, .venue-picker-times { background: var(--brand-primary); color: var(--brand-paper); }
+.venue-picker-day--selected, .venue-picker-slot[data-active="true"], .venue-picker-done { background: var(--brand-accent); color: var(--brand-on-accent); }
+.blackbook-shell { padding: 24px 28px 64px; }
+.blackbook-topbar { background: var(--brand-primary); border-bottom: 1px solid rgba(var(--brand-accent-rgb), .5); padding: 18px 0; }
+.blackbook-header { align-items: center; }
+.venue-app-identity { display: flex; gap: 18px; align-items: center; }
+.venue-app-identity > img { width: 136px; height: 42px; object-fit: contain; }
+.venue-app-identity p { margin: 0 0 5px; opacity: .65; font-size: 11px; }
+.blackbook-topbar .blackbook-header h1 { margin: 0; font-family: var(--font-venue-heading); font-size: 26px; font-weight: 400; text-transform: none; }
+.blackbook-topbar .blackbook-logout { font-size: 12px; padding: 9px 14px; }
+.blackbook-tabs { border: 1px solid rgba(var(--brand-paper-rgb), .25); border-radius: var(--brand-control-radius); padding: 3px; gap: 3px; }
+.blackbook-tab, .blackbook-tab + .blackbook-tab { border: 0; font-size: 12px; text-transform: none; }
+.blackbook-tab--active { background: var(--brand-accent); color: var(--brand-on-accent); }
+.blackbook-card { border: 1px solid rgba(var(--brand-paper-rgb), .25); border-radius: var(--brand-radius); background: rgba(var(--brand-paper-rgb), .05); }
+.door-camera { border-radius: var(--brand-radius); }
+.ticket-page-card { background: var(--brand-paper); color: var(--brand-ink); padding: 28px; }
+.ticket-page-header h1, .ticket-confirmation-header h1, .ticketed-event-header h1 { font-family: var(--font-venue-heading); font-weight: 400; color: var(--brand-primary); text-transform: none; }
+.ticket-page-qr, .ticket-confirmation-qr { background: white; border: 1px solid var(--brand-line); border-radius: var(--brand-control-radius); }
+.ticket-page-mono, .ticketing-ticket-token, .ticket-confirmation-ticket-id, .ticket-token, .door-ticket-token { font-family: var(--font-venue-body); }
+.apple-wallet-button, .google-wallet-button { background: var(--brand-primary); color: var(--brand-paper); font-family: var(--font-venue-body); font-size: 12px; font-weight: 400; }
+.ticketed-event-hero { border: 1px solid var(--brand-line); border-radius: var(--brand-radius); }
+.ticketed-event-cta { background: var(--brand-primary); color: var(--brand-paper); border: 1px solid var(--brand-primary); border-radius: var(--brand-control-radius); font-size: 14px; text-transform: none; }
+.embedded-checkout-header h1 { font-family: var(--font-venue-heading); color: var(--brand-primary); text-transform: none; }
+.local-preview-notice { border: 1px solid var(--brand-line); border-radius: var(--brand-control-radius); background: var(--brand-muted); color: var(--brand-ink); }
+.local-preview-links a { color: var(--brand-primary); }
+.local-checkout-placeholder { background: var(--brand-surface); color: var(--brand-ink); border: 1px dashed var(--brand-accent); border-radius: var(--brand-radius); }
+.local-provider-note { font-family: var(--font-venue-body); }
+.local-provider-placeholder { border-color: var(--brand-line); border-radius: var(--brand-radius); }
+
+/* Error colors communicate status separately from venue accents. */
+:is(.admin-login-error, .contact-form-error, .ticketing-portal-modal-error, .ticketing-login-error) { color: #9c302d; background: #fff1ed; border-color: #d9b1a8; }
+.ticketing-portal-danger { border-color: #bd6c60; }
+.ticketing-portal-primary.ticketing-portal-danger { background: #923c35; color: #fff; }
+
+@media (max-width: 1000px) {
+  .venue-admin-header { flex-wrap: wrap; gap: 9px 16px; padding: 12px 16px; }
+  .venue-admin-brand { min-width: 0; margin-right: auto; }
+  .venue-admin-nav { margin-left: 0; }
+  .venue-admin-header .admin-toolbar { width: 100%; justify-content: flex-end; }
+  .admin-shell--venue-pages .page { padding-top: 160px; }
+  .admin-shell--venue-pages :is(.admin-analytics, .admin-operating-hours, .admin-submissions, .admin-mailing-list) { padding-top: 160px; }
+  .admin-shell--venue-home .venue-admin-header { top: 60px; }
+  .venue-homepage .hero-panel--full .admin-edit-hotspot--desktopHeroImage { inset-block-start: 186px; }
+  .venue-homepage .hero-panel--full .admin-edit-hotspot--desktopLogo { width: min(86vw, 720px); height: clamp(150px, 28vw, 280px); }
+}
+@media (max-width: 760px) {
+  .venue-admin-header { gap: 8px 12px; }
+  .venue-admin-brand img { width: 80px; height: 32px; }
+  .venue-admin-brand strong { font-size: 12px; }
+  .venue-admin-brand small { font-size: 9px; }
+  .venue-admin-nav > a, .venue-admin-header .admin-home-pages summary { font-size: 11px; padding: 8px; }
+  .venue-admin-header .admin-home-pages nav { left: auto; right: 0; }
+  .venue-admin-header .admin-toolbar { flex-wrap: wrap; justify-content: center; gap: 5px; }
+  .venue-admin-header .admin-toolbar :is(button, a) { padding: 7px 10px; min-height: 33px; font-size: 10px; }
+  .admin-shell--venue-home .venue-admin-header { top: 50px; }
+  .page { padding: 124px 16px 78px; }
+  .admin-shell--venue-pages .page { padding: 154px 16px 78px; }
+  .admin-shell--venue-pages :is(.admin-analytics, .admin-operating-hours, .admin-submissions, .admin-mailing-list) { padding-top: 154px; }
+  .venue-homepage .hero-panel--full .admin-edit-hotspot--desktopHeroImage { inset: 185px 12px 12px; }
+  .venue-homepage .hero-panel--full .admin-edit-hotspot--desktopLogo { width: min(86vw, 520px); height: clamp(140px, 46vw, 230px); }
+  .venue-admin-brand span { display: none; }
+  .story-layout { gap: 14px; }
+  .story-copy { padding: 20px; font-size: 14px; }
+  .story-media-column { display: grid; }
+  .visit-card { padding: 28px 18px; }
+  .visit-map-links { flex-wrap: wrap; }
+  .ticketing-portal-header { padding: 14px 16px; grid-template-columns: 1fr auto; gap: 12px; }
+  .ticketing-portal-nav { grid-row: 2; grid-column: 1 / -1; }
+  .ticketing-portal-header-actions { grid-column: 2; grid-row: 1; }
+  .ticketing-portal-brand-mark { width: 86px; }
+  .ticketing-portal-brand-name { font-size: 12px; }
+  .blackbook-shell { padding: 16px 14px 64px; }
+  .venue-app-identity { gap: 10px; }
+  .venue-app-identity > img { width: 90px; height: 30px; }
+  .blackbook-topbar .blackbook-header h1 { font-size: 22px; }
+  .blackbook-topbar { padding: 12px 0; }
+  .version-badge { max-width: 44vw; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 8px; }
+}

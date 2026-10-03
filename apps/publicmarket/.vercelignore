@@ -1,0 +1,9 @@
+.git
+.env*
+.local-data
+output
+node_modules
+docs
+AGENTS.md
+README.md
+DEPLOYMENT-NOTES.md

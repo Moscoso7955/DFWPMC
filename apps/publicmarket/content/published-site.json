@@ -1,0 +1,45 @@
+{
+  "homepage": {
+    "desktopHeroImage": "/assets/images/public-market-historic-hero.png",
+    "mobileHeroImageOne": "/assets/images/public-market-historic-hero.png",
+    "mobileHeroImageTwo": "/assets/images/public-market-historic-hero.png",
+    "desktopLogo": "/assets/admin-uploads/1779325217679-primary-logo-cream.png",
+    "mobileLogo": "/assets/admin-uploads/1779325217679-primary-logo-cream.png"
+  },
+  "menu": {
+    "title": "MENU - SUMMER 2026",
+    "image": "/assets/images/menu-holder-1.jpeg"
+  },
+  "story": {
+    "copy": "A modern, artful take on the Midwestern bar—one that doesn’t pretend to be anything it’s not. Inspired by the legacy of Phoebe Jane Ess, Kansas City’s original firebrand: a suffragist, steadfast leader, and unapologetic force who believed the heartland deserved a seat at the table. \n\nShe championed progress without pretense, women’s rights, and the quiet strength found in the middle of the map. Long before the Midwest was celebrated, she saw its beauty—the grit, charm, and the quiet magic of growing up in a place often overlooked. A place that felt like it was growing up alongside you. \n\nBar Phoebe is a love letter to her and to Kansas City, the heart of the heartland. Paying homage to the nostalgia of Midwestern summers, capturing that warmth year-round—long after the patio is closed. A place where everyone’s welcome, where both sides of the aisle can raise a glass, take a breath, and just be. It’s the feeling of coming home and a night out, all at once. \n\nA place to be, be seen, and comfortably coexist. A refreshing yet familiar twist on what makes Kansas City tried and true. \n\nA cheers to then, a toast to now: Bar Phoebe",
+    "imageShadow": "/assets/admin-uploads/1779327480709-dts-dive-bar-agusti-n-fari-as-photos-id13714.jpg",
+    "imageNapkin": "/assets/admin-uploads/1779327509897-dts-bandits-pali-mendez-photos-id14226.jpg",
+    "imageBar": "/assets/admin-uploads/1779327525715-dts-dive-bar-agusti-n-fari-as-photos-id13675.jpg",
+    "imageLetter": "/assets/admin-uploads/1779327503612-dts-last-supper-pali-mendez-photos-id13833.jpg",
+    "imageCards": "/assets/admin-uploads/1779327625496-dts-eat-rich-fanette-guilloud-photos-id13871.jpg",
+    "imagePhotoBooth": "/assets/admin-uploads/1779327631345-dts-dive-bar-agusti-n-fari-as-photos-id13680.jpg"
+  },
+  "contact": {
+    "title": "CONTACT BAR PHOEBE",
+    "email": "info@barphoebe.com",
+    "phone": "(816) 777-7788",
+    "instagram": "https://www.instagram.com/bar__phoebe?igsh=MjRnbjI0NDFmeWZy",
+    "instagramLabel": ""
+  },
+  "privateEvents": {
+    "title": "Private Event Booking Inquiry",
+    "embedCode": "<iframe src=\"https://tipsyapp.io/embed/bar-phoebe\" title=\"Private event request form\" style=\"width:100%;border:0;height:760px\" scrolling=\"no\"></iframe>"
+  },
+  "careers": {
+    "title": "Join the Bar Phoebe Team",
+    "embedCode": ""
+  },
+  "reservations": {
+    "title": "Reserve at Bar Phoebe",
+    "embedCode": ""
+  },
+  "calendar": {
+    "title": "PHOEBE THIS MONTH",
+    "events": []
+  }
+}

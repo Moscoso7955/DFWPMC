@@ -1,0 +1,312 @@
+{
+  "venue": "Willow",
+  "id": "willow",
+  "sourceProject": "/Users/rtm/Developer/codex-sandboxes/WILLOW-LOCAL",
+  "sourceCommit": "c44fa242f002daec20513e25ce488b22327545d3",
+  "palette": {
+    "primary": "#22372b",
+    "accent": "#855d32",
+    "paper": "#f3f0e6",
+    "ink": "#243329",
+    "heroImage": "/assets/willow/willow-hero-lounge-full.png",
+    "bodyFont": "Nord Book",
+    "headingFont": "TAN Whistling"
+  },
+  "pageCount": 41,
+  "themeImport": "src/app/venue-ui.css",
+  "globalDeclarationsRebranded": 157,
+  "defaultContentAssetsReplaced": 14,
+  "themeHash": "9c431dbc6598fb99c9139e93dc5daed6629d9323994a7bcd3772ae80d453a2d2",
+  "pages": [
+    {
+      "route": "/willow/accessibility",
+      "file": "src/app/accessibility/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/accessibility"
+    },
+    {
+      "route": "/willow/admin/analytics",
+      "file": "src/app/admin/analytics/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/analytics"
+    },
+    {
+      "route": "/willow/admin/calendar",
+      "file": "src/app/admin/calendar/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/calendar"
+    },
+    {
+      "route": "/willow/admin/careers",
+      "file": "src/app/admin/careers/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/careers"
+    },
+    {
+      "route": "/willow/admin/contact",
+      "file": "src/app/admin/contact/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/contact"
+    },
+    {
+      "route": "/willow/admin/hours",
+      "file": "src/app/admin/hours/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/hours"
+    },
+    {
+      "route": "/willow/admin/login",
+      "file": "src/app/admin/login/page.tsx",
+      "theme": "Existing approved venue login screen retained",
+      "status": "passed",
+      "checkedUrl": "http://127.0.0.1:3014/admin/login/willow"
+    },
+    {
+      "route": "/willow/admin/mailing-list",
+      "file": "src/app/admin/mailing-list/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/mailing-list"
+    },
+    {
+      "route": "/willow/admin/menu",
+      "file": "src/app/admin/menu/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/menu"
+    },
+    {
+      "route": "/willow/admin",
+      "file": "src/app/admin/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin"
+    },
+    {
+      "route": "/willow/admin/private-events",
+      "file": "src/app/admin/private-events/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/private-events"
+    },
+    {
+      "route": "/willow/admin/reservations",
+      "file": "src/app/admin/reservations/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/reservations"
+    },
+    {
+      "route": "/willow/admin/story",
+      "file": "src/app/admin/story/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/story"
+    },
+    {
+      "route": "/willow/admin/submissions",
+      "file": "src/app/admin/submissions/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/submissions"
+    },
+    {
+      "route": "/willow/admin/visit",
+      "file": "src/app/admin/visit/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/admin/visit"
+    },
+    {
+      "route": "/willow/blackbook/login",
+      "file": "src/app/blackbook/login/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/blackbook/login"
+    },
+    {
+      "route": "/willow/blackbook",
+      "file": "src/app/blackbook/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/blackbook"
+    },
+    {
+      "route": "/willow/calendar/[slug]/checkout",
+      "file": "src/app/calendar/[slug]/checkout/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/calendar/preview-evening/checkout?order=22222222-0000-4000-8000-000000000005"
+    },
+    {
+      "route": "/willow/calendar/[slug]/confirmation",
+      "file": "src/app/calendar/[slug]/confirmation/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/calendar/preview-evening/confirmation?order=22222222-0000-4000-8000-000000000004"
+    },
+    {
+      "route": "/willow/calendar/[slug]",
+      "file": "src/app/calendar/[slug]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/calendar/preview-evening"
+    },
+    {
+      "route": "/willow/calendar",
+      "file": "src/app/calendar/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/calendar"
+    },
+    {
+      "route": "/willow/careers",
+      "file": "src/app/careers/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/careers"
+    },
+    {
+      "route": "/willow/contact",
+      "file": "src/app/contact/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/contact"
+    },
+    {
+      "route": "/willow/menu",
+      "file": "src/app/menu/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/menu"
+    },
+    {
+      "route": "/willow",
+      "file": "src/app/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow"
+    },
+    {
+      "route": "/willow/privacy",
+      "file": "src/app/privacy/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/privacy"
+    },
+    {
+      "route": "/willow/private-events",
+      "file": "src/app/private-events/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/private-events"
+    },
+    {
+      "route": "/willow/reservations",
+      "file": "src/app/reservations/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/reservations"
+    },
+    {
+      "route": "/willow/story",
+      "file": "src/app/story/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/story"
+    },
+    {
+      "route": "/willow/t/[token]",
+      "file": "src/app/t/[token]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/t/willow-preview-ticket-1"
+    },
+    {
+      "route": "/willow/terms",
+      "file": "src/app/terms/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/terms"
+    },
+    {
+      "route": "/willow/ticketing/door",
+      "file": "src/app/ticketing/door/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/blackbook"
+    },
+    {
+      "route": "/willow/ticketing/events/[id]/orders",
+      "file": "src/app/ticketing/events/[id]/orders/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/ticketing/events/22222222-0000-4000-8000-000000000001/orders"
+    },
+    {
+      "route": "/willow/ticketing/events/[id]",
+      "file": "src/app/ticketing/events/[id]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/ticketing/events/22222222-0000-4000-8000-000000000001"
+    },
+    {
+      "route": "/willow/ticketing/login",
+      "file": "src/app/ticketing/login/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/ticketing/login"
+    },
+    {
+      "route": "/willow/ticketing/orders/[id]",
+      "file": "src/app/ticketing/orders/[id]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/ticketing/orders/22222222-0000-4000-8000-000000000004"
+    },
+    {
+      "route": "/willow/ticketing",
+      "file": "src/app/ticketing/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/ticketing"
+    },
+    {
+      "route": "/willow/ticketing/qbo-connect",
+      "file": "src/app/ticketing/qbo-connect/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/ticketing/qbo-connect"
+    },
+    {
+      "route": "/willow/ticketing/qbo-disconnected",
+      "file": "src/app/ticketing/qbo-disconnected/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/ticketing/qbo-disconnected"
+    },
+    {
+      "route": "/willow/ticketing/settings",
+      "file": "src/app/ticketing/settings/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/ticketing/settings"
+    },
+    {
+      "route": "/willow/visit",
+      "file": "src/app/visit/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3112/willow/visit"
+    }
+  ],
+  "verifiedAt": "2026-10-02T03:32:46.608685+00:00",
+  "verification": "41/41 routes loaded in HTTP and a real browser; all latest appearance checks passed",
+  "details": "docs/venue-ui-route-verification.json"
+}

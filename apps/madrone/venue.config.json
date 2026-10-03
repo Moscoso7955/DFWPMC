@@ -1,0 +1,20 @@
+{
+  "id": "madrone",
+  "name": "Madrone",
+  "basePath": "/madrone",
+  "port": 3111,
+  "logo": "/assets/brand/venue-logo.svg",
+  "fixturePrefix": "11111111",
+  "localPreview": true,
+  "entryOrigin": "https://fwpublicmarket.com",
+  "entryLoginPath": "/admin/login/madrone",
+  "brand": {
+    "primary": "#79242e",
+    "accent": "#debbb0",
+    "paper": "#f5eee9",
+    "ink": "#542d33",
+    "heroImage": "/assets/madrone/madrone-hero-tree-room.png",
+    "bodyFont": "TAY Big Bird",
+    "headingFont": "TAY Big Bird"
+  }
+}

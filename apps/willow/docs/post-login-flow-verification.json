@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "approvedEntryFilesUnchanged": 26,
+  "selectorOrder": "Willow, Madrone, PM cafe",
+  "venues": [
+    {
+      "venue": "madrone",
+      "login": "http://127.0.0.1:3014/admin/login/madrone",
+      "portal": "http://localhost:3111/madrone/admin",
+      "status": "passed",
+      "checks": [
+        "original selector and branded login",
+        "native form posts to selected venue",
+        "wrong password returns to original branded login",
+        "copied login redirects to original entry",
+        "venue session and cookie path",
+        "authenticated portal",
+        "logout and re-entry",
+        "41 source pages and 57 source APIs retained"
+      ]
+    },
+    {
+      "venue": "willow",
+      "login": "http://127.0.0.1:3014/admin/login/willow",
+      "portal": "http://localhost:3112/willow/admin",
+      "status": "passed",
+      "checks": [
+        "original selector and branded login",
+        "native form posts to selected venue",
+        "wrong password returns to original branded login",
+        "copied login redirects to original entry",
+        "venue session and cookie path",
+        "authenticated portal",
+        "logout and re-entry",
+        "41 source pages and 57 source APIs retained"
+      ]
+    },
+    {
+      "venue": "pmcafe",
+      "login": "http://127.0.0.1:3014/admin/login/pmcafe",
+      "portal": "http://localhost:3113/publicmarketcafe/admin",
+      "status": "passed",
+      "checks": [
+        "original selector and branded login",
+        "native form posts to selected venue",
+        "wrong password returns to original branded login",
+        "copied login redirects to original entry",
+        "venue session and cookie path",
+        "authenticated portal",
+        "logout and re-entry",
+        "41 source pages and 57 source APIs retained"
+      ]
+    }
+  ]
+}

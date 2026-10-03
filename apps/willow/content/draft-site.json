@@ -1,0 +1,82 @@
+{
+  "homepage": {
+    "desktopHeroImage": "/assets/willow/willow-hero-lounge-full.png",
+    "mobileHeroImageOne": "/assets/willow/willow-hero-lounge-full.png",
+    "mobileHeroImageTwo": "/assets/willow/willow-hero-lounge-full.png",
+    "desktopLogo": "/assets/willow/willow-logo-bronze-rgb.svg",
+    "mobileLogo": "/assets/willow/willow-logo-bronze-rgb.svg"
+  },
+  "menu": {
+    "title": "MENU",
+    "image": "/assets/willow/willow-menu-coming-soon.svg"
+  },
+  "story": {
+    "copy": "Add the approved Willow story here.\n\nUpload approved venue photographs using the image editors.",
+    "imageShadow": "/assets/willow/willow-hero-lounge-full.png",
+    "imageNapkin": "/assets/brand/venue-photo-placeholder.svg",
+    "imageBar": "/assets/brand/venue-photo-placeholder.svg",
+    "imageLetter": "/assets/brand/venue-photo-placeholder.svg",
+    "imageCards": "/assets/brand/venue-photo-placeholder.svg",
+    "imagePhotoBooth": "/assets/brand/venue-photo-placeholder.svg"
+  },
+  "contact": {
+    "title": "CONTACT WILLOW",
+    "email": "",
+    "phone": "",
+    "instagram": "",
+    "instagramLabel": ""
+  },
+  "privateEvents": {
+    "title": "Private Event Booking Inquiry",
+    "embedCode": ""
+  },
+  "careers": {
+    "title": "Join the Willow Team",
+    "embedCode": ""
+  },
+  "reservations": {
+    "title": "Reserve at Willow",
+    "embedCode": ""
+  },
+  "calendar": {
+    "title": "WILLOW THIS MONTH",
+    "events": []
+  },
+  "operatingHours": {
+    "monday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "tuesday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "wednesday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "thursday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "friday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "saturday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "sunday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    }
+  }
+}

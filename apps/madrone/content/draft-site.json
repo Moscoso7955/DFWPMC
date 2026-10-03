@@ -1,0 +1,82 @@
+{
+  "homepage": {
+    "desktopHeroImage": "/assets/madrone/madrone-hero-tree-room.png",
+    "mobileHeroImageOne": "/assets/madrone/madrone-hero-tree-room.png",
+    "mobileHeroImageTwo": "/assets/madrone/madrone-hero-tree-room.png",
+    "desktopLogo": "/assets/madrone/madrone-master-logo.svg",
+    "mobileLogo": "/assets/madrone/madrone-master-logo.svg"
+  },
+  "menu": {
+    "title": "MENU",
+    "image": "/assets/madrone/madrone-menu-coming-soon.svg"
+  },
+  "story": {
+    "copy": "Add the approved Madrone story here.\n\nUpload approved venue photographs using the image editors.",
+    "imageShadow": "/assets/madrone/madrone-hero-tree-room.png",
+    "imageNapkin": "/assets/brand/venue-photo-placeholder.svg",
+    "imageBar": "/assets/brand/venue-photo-placeholder.svg",
+    "imageLetter": "/assets/brand/venue-photo-placeholder.svg",
+    "imageCards": "/assets/brand/venue-photo-placeholder.svg",
+    "imagePhotoBooth": "/assets/brand/venue-photo-placeholder.svg"
+  },
+  "contact": {
+    "title": "CONTACT MADRONE",
+    "email": "",
+    "phone": "",
+    "instagram": "",
+    "instagramLabel": ""
+  },
+  "privateEvents": {
+    "title": "Private Event Booking Inquiry",
+    "embedCode": ""
+  },
+  "careers": {
+    "title": "Join the Madrone Team",
+    "embedCode": ""
+  },
+  "reservations": {
+    "title": "Reserve at Madrone",
+    "embedCode": ""
+  },
+  "calendar": {
+    "title": "MADRONE THIS MONTH",
+    "events": []
+  },
+  "operatingHours": {
+    "monday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "tuesday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "wednesday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "thursday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "friday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "saturday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "sunday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    }
+  }
+}

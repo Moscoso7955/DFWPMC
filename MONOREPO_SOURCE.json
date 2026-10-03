@@ -1,0 +1,49 @@
+{
+  "repository": "https://github.com/Moscoso7955/DFWPMC",
+  "productionBranch": "main",
+  "importedOn": "2026-10-02",
+  "applications": [
+    {
+      "directory": "apps/publicmarket",
+      "sourceRepository": "https://github.com/alphacotv/fwpublicmarket",
+      "sourceCommit": "79c3cde9f7f014b7fedfc903f59ec0c6a8bd3531",
+      "vercelProject": "fwpublicmarket",
+      "vercelProjectId": "prj_0yiKHqxRALEof3COgN3z7z3kQmXO"
+    },
+    {
+      "directory": "apps/madrone",
+      "sourceRepository": "https://github.com/alphacotv/madrone",
+      "sourceCommit": "8fb2d3630b4c6915dd80d9e510b84b9f4971d4ae",
+      "vercelProject": "fwpublicmarket-madrone",
+      "vercelProjectId": "prj_76EcPP5TZxHrkswrbFF1wOy5VDBG"
+    },
+    {
+      "directory": "apps/willow",
+      "sourceRepository": "https://github.com/alphacotv/willow",
+      "sourceCommit": "661489e0350ee3c138fc9420f86c13fa48f9ef58",
+      "vercelProject": "fwpublicmarket-willow",
+      "vercelProjectId": "prj_i6HJ2s4fciJM1fFlsu2WjD11MP4R"
+    },
+    {
+      "directory": "apps/publicmarketcafe",
+      "sourceRepository": "https://github.com/alphacotv/publicmarketcafe",
+      "sourceCommit": "495e80192603405ca0b3dc2e184c124ff1cfa3b5",
+      "vercelProject": "fwpublicmarket-publicmarketcafe",
+      "vercelProjectId": "prj_ubmPGVghoA9IQJuc2hkiCHYNpyqZ"
+    }
+  ],
+  "handoff": {
+    "date": "2026-10-02",
+    "snapshotRepository": "https://github.com/alphacotv/fwpublicmarket",
+    "snapshotCommit": "02440e5613f67fc64f0a423fc1db005f155cc8cd",
+    "clientBaseCommit": "48f585f22e1b8daab48845208502c66142731a68",
+    "importedPrivateHistory": false,
+    "hostingTeamChanged": false,
+    "changes": [
+      "Require configured authentication credentials in all environments",
+      "Remove embedded credential defaults and references",
+      "Add blank per-app environment templates",
+      "Update client ownership and setup documentation"
+    ]
+  }
+}

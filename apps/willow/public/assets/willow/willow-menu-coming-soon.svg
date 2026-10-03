@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" role="img" aria-labelledby="title description">
+  <title id="title">Willow menu coming soon</title>
+  <desc id="description">A dark green Willow menu placeholder with bronze lettering.</desc>
+  <rect width="1200" height="1500" fill="#22372b"/>
+  <rect x="30" y="30" width="1140" height="1440" rx="4" fill="none" stroke="#855d32" stroke-width="6"/>
+  <circle cx="60" cy="60" r="190" fill="none" stroke="#855d32" stroke-opacity=".26" stroke-width="3"/>
+  <circle cx="60" cy="60" r="142" fill="none" stroke="#855d32" stroke-opacity=".18" stroke-width="3"/>
+  <circle cx="1140" cy="1440" r="190" fill="none" stroke="#855d32" stroke-opacity=".26" stroke-width="3"/>
+  <circle cx="1140" cy="1440" r="142" fill="none" stroke="#855d32" stroke-opacity=".18" stroke-width="3"/>
+  <g fill="#855d32" text-anchor="middle">
+    <text x="600" y="560" font-family="Georgia, 'Times New Roman', serif" font-size="168" letter-spacing="12">WILLOW</text>
+    <text x="600" y="625" font-family="Arial, sans-serif" font-size="24" letter-spacing="15">COCKTAIL BAR &amp; LOUNGE</text>
+    <text x="600" y="835" font-family="Arial, sans-serif" font-size="30" letter-spacing="18">MENU</text>
+    <text x="600" y="955" font-family="Arial, sans-serif" font-size="58" letter-spacing="16">COMING SOON</text>
+  </g>
+  <line x1="340" y1="710" x2="860" y2="710" stroke="#855d32" stroke-opacity=".7" stroke-width="3"/>
+  <line x1="430" y1="1050" x2="770" y2="1050" stroke="#855d32" stroke-opacity=".45" stroke-width="2"/>
+</svg>

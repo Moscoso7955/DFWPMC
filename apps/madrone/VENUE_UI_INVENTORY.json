@@ -1,0 +1,312 @@
+{
+  "venue": "Madrone",
+  "id": "madrone",
+  "sourceProject": "/Users/rtm/Developer/codex-sandboxes/MADRONE-LOCAL",
+  "sourceCommit": "4a441abdb97f3eef4de5352bf2bac353454fff4f",
+  "palette": {
+    "primary": "#79242e",
+    "accent": "#debbb0",
+    "paper": "#f5eee9",
+    "ink": "#542d33",
+    "heroImage": "/assets/madrone/madrone-hero-tree-room.png",
+    "bodyFont": "TAY Big Bird",
+    "headingFont": "TAY Big Bird"
+  },
+  "pageCount": 41,
+  "themeImport": "src/app/venue-ui.css",
+  "globalDeclarationsRebranded": 158,
+  "defaultContentAssetsReplaced": 14,
+  "themeHash": "a6dcaef014ad6fd3e341f753bd241e73c9e4566f71d5260b1edb42faae625fc4",
+  "pages": [
+    {
+      "route": "/madrone/accessibility",
+      "file": "src/app/accessibility/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/accessibility"
+    },
+    {
+      "route": "/madrone/admin/analytics",
+      "file": "src/app/admin/analytics/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/analytics"
+    },
+    {
+      "route": "/madrone/admin/calendar",
+      "file": "src/app/admin/calendar/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/calendar"
+    },
+    {
+      "route": "/madrone/admin/careers",
+      "file": "src/app/admin/careers/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/careers"
+    },
+    {
+      "route": "/madrone/admin/contact",
+      "file": "src/app/admin/contact/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/contact"
+    },
+    {
+      "route": "/madrone/admin/hours",
+      "file": "src/app/admin/hours/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/hours"
+    },
+    {
+      "route": "/madrone/admin/login",
+      "file": "src/app/admin/login/page.tsx",
+      "theme": "Existing approved venue login screen retained",
+      "status": "passed",
+      "checkedUrl": "http://127.0.0.1:3014/admin/login/madrone"
+    },
+    {
+      "route": "/madrone/admin/mailing-list",
+      "file": "src/app/admin/mailing-list/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/mailing-list"
+    },
+    {
+      "route": "/madrone/admin/menu",
+      "file": "src/app/admin/menu/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/menu"
+    },
+    {
+      "route": "/madrone/admin",
+      "file": "src/app/admin/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin"
+    },
+    {
+      "route": "/madrone/admin/private-events",
+      "file": "src/app/admin/private-events/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/private-events"
+    },
+    {
+      "route": "/madrone/admin/reservations",
+      "file": "src/app/admin/reservations/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/reservations"
+    },
+    {
+      "route": "/madrone/admin/story",
+      "file": "src/app/admin/story/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/story"
+    },
+    {
+      "route": "/madrone/admin/submissions",
+      "file": "src/app/admin/submissions/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/submissions"
+    },
+    {
+      "route": "/madrone/admin/visit",
+      "file": "src/app/admin/visit/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/admin/visit"
+    },
+    {
+      "route": "/madrone/blackbook/login",
+      "file": "src/app/blackbook/login/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/blackbook/login"
+    },
+    {
+      "route": "/madrone/blackbook",
+      "file": "src/app/blackbook/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/blackbook"
+    },
+    {
+      "route": "/madrone/calendar/[slug]/checkout",
+      "file": "src/app/calendar/[slug]/checkout/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/calendar/preview-evening/checkout?order=11111111-0000-4000-8000-000000000005"
+    },
+    {
+      "route": "/madrone/calendar/[slug]/confirmation",
+      "file": "src/app/calendar/[slug]/confirmation/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/calendar/preview-evening/confirmation?order=11111111-0000-4000-8000-000000000004"
+    },
+    {
+      "route": "/madrone/calendar/[slug]",
+      "file": "src/app/calendar/[slug]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/calendar/preview-evening"
+    },
+    {
+      "route": "/madrone/calendar",
+      "file": "src/app/calendar/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/calendar"
+    },
+    {
+      "route": "/madrone/careers",
+      "file": "src/app/careers/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/careers"
+    },
+    {
+      "route": "/madrone/contact",
+      "file": "src/app/contact/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/contact"
+    },
+    {
+      "route": "/madrone/menu",
+      "file": "src/app/menu/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/menu"
+    },
+    {
+      "route": "/madrone",
+      "file": "src/app/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone"
+    },
+    {
+      "route": "/madrone/privacy",
+      "file": "src/app/privacy/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/privacy"
+    },
+    {
+      "route": "/madrone/private-events",
+      "file": "src/app/private-events/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/private-events"
+    },
+    {
+      "route": "/madrone/reservations",
+      "file": "src/app/reservations/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/reservations"
+    },
+    {
+      "route": "/madrone/story",
+      "file": "src/app/story/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/story"
+    },
+    {
+      "route": "/madrone/t/[token]",
+      "file": "src/app/t/[token]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/t/madrone-preview-ticket-1"
+    },
+    {
+      "route": "/madrone/terms",
+      "file": "src/app/terms/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/terms"
+    },
+    {
+      "route": "/madrone/ticketing/door",
+      "file": "src/app/ticketing/door/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/blackbook"
+    },
+    {
+      "route": "/madrone/ticketing/events/[id]/orders",
+      "file": "src/app/ticketing/events/[id]/orders/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/ticketing/events/11111111-0000-4000-8000-000000000001/orders"
+    },
+    {
+      "route": "/madrone/ticketing/events/[id]",
+      "file": "src/app/ticketing/events/[id]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/ticketing/events/11111111-0000-4000-8000-000000000001"
+    },
+    {
+      "route": "/madrone/ticketing/login",
+      "file": "src/app/ticketing/login/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/ticketing/login"
+    },
+    {
+      "route": "/madrone/ticketing/orders/[id]",
+      "file": "src/app/ticketing/orders/[id]/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/ticketing/orders/11111111-0000-4000-8000-000000000004"
+    },
+    {
+      "route": "/madrone/ticketing",
+      "file": "src/app/ticketing/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/ticketing"
+    },
+    {
+      "route": "/madrone/ticketing/qbo-connect",
+      "file": "src/app/ticketing/qbo-connect/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/ticketing/qbo-connect"
+    },
+    {
+      "route": "/madrone/ticketing/qbo-disconnected",
+      "file": "src/app/ticketing/qbo-disconnected/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/ticketing/qbo-disconnected"
+    },
+    {
+      "route": "/madrone/ticketing/settings",
+      "file": "src/app/ticketing/settings/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/ticketing/settings"
+    },
+    {
+      "route": "/madrone/visit",
+      "file": "src/app/visit/page.tsx",
+      "theme": "root layout + venue UI",
+      "status": "passed",
+      "checkedUrl": "http://localhost:3111/madrone/visit"
+    }
+  ],
+  "verifiedAt": "2026-10-02T03:32:46.608685+00:00",
+  "verification": "41/41 routes loaded in HTTP and a real browser; all latest appearance checks passed",
+  "details": "docs/venue-ui-route-verification.json"
+}
