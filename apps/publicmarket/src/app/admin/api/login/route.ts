@@ -1,20 +1,32 @@
+import { NextRequest, NextResponse } from "next/server";
 import {
-  ADMIN_SESSION_COOKIE,
-  adminCookieOptions,
-  createAdminSessionValue,
-  verifyAdminPassword,
-} from "@/lib/adminAuth";
-import { NextResponse } from "next/server";
+  COLLECTIVE_SESSION_COOKIE,
+  createSessionValue,
+  sessionCookieOptions,
+  verifyCollectivePassword,
+} from "@/lib/collective/auth";
 
-export async function POST(request: Request) {
-  const formData = await request.formData();
-  const password = String(formData.get("password") || "");
+export const runtime = "nodejs";
 
-  if (!verifyAdminPassword(password)) {
-    return NextResponse.redirect(new URL("/admin/login?error=1", request.url), 303);
+export async function POST(request: NextRequest) {
+  let candidate = "";
+  try {
+    const form = await request.formData();
+    candidate = String(form.get("password") ?? "");
+  } catch {
+    return NextResponse.redirect(new URL("/admin/login?error=invalid", request.url), 303);
+  }
+
+  try {
+    if (!candidate || !verifyCollectivePassword(candidate)) {
+      return NextResponse.redirect(new URL("/admin/login?error=invalid", request.url), 303);
+    }
+  } catch {
+    // COLLECTIVE_ADMIN_PASSWORD / SESSION_SECRET missing from the environment.
+    return NextResponse.redirect(new URL("/admin/login?error=config", request.url), 303);
   }
 
   const response = NextResponse.redirect(new URL("/admin", request.url), 303);
-  response.cookies.set(ADMIN_SESSION_COOKIE, createAdminSessionValue(), adminCookieOptions);
+  response.cookies.set(COLLECTIVE_SESSION_COOKIE, createSessionValue(), sessionCookieOptions());
   return response;
 }

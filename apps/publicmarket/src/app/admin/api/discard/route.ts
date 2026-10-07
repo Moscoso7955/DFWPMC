@@ -1,11 +1,36 @@
-import { hasAdminSession } from "@/lib/adminAuth";
-import { discardDraftContent } from "@/lib/siteContent";
+import { NextRequest, NextResponse } from "next/server";
+import { hasCollectiveSession } from "@/lib/collective/auth";
+import { getCollectiveVenue } from "@/lib/collective/venues";
+import { discardDraft } from "@/lib/collective/content";
 
-export async function POST() {
-  if (!(await hasAdminSession())) {
-    return Response.json({ error: "Unauthorized" }, { status: 401 });
+export const runtime = "nodejs";
+
+export async function POST(request: NextRequest) {
+  if (!(await hasCollectiveSession())) {
+    return NextResponse.redirect(new URL("/admin/login?error=expired", request.url), 303);
   }
 
-  const content = await discardDraftContent();
-  return Response.json({ ok: true, content });
+  let venueSlug = "";
+  try {
+    const form = await request.formData();
+    venueSlug = String(form.get("venue") ?? "");
+  } catch {
+    return NextResponse.redirect(new URL("/admin", request.url), 303);
+  }
+  const venue = getCollectiveVenue(venueSlug);
+  if (!venue) return NextResponse.redirect(new URL("/admin", request.url), 303);
+
+  try {
+    await discardDraft(venue);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "discard failed";
+    const url = new URL(`/admin/${venue.slug}`, request.url);
+    url.searchParams.set("error", message.slice(0, 200));
+    return NextResponse.redirect(url, 303);
+  }
+
+  return NextResponse.redirect(
+    new URL(`/admin/${venue.slug}?notice=discarded`, request.url),
+    303,
+  );
 }

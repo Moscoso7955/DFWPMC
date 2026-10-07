@@ -1,8 +1,10 @@
-import { ADMIN_SESSION_COOKIE } from "@/lib/adminAuth";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { COLLECTIVE_SESSION_COOKIE, sessionCookieOptions } from "@/lib/collective/auth";
 
-export async function POST() {
-  const response = NextResponse.json({ ok: true });
-  response.cookies.set(ADMIN_SESSION_COOKIE, "", { maxAge: 0, path: "/admin" });
+export const runtime = "nodejs";
+
+export async function POST(request: NextRequest) {
+  const response = NextResponse.redirect(new URL("/admin/login", request.url), 303);
+  response.cookies.set(COLLECTIVE_SESSION_COOKIE, "", { ...sessionCookieOptions(), maxAge: 0 });
   return response;
 }
