@@ -4,6 +4,7 @@ import { useRef } from "react";
 import EmbedFrame from "./EmbedFrame";
 import HolderPage from "./HolderPage";
 import { fireBookingConversion } from "@/lib/googleAds";
+import { trackBooking } from "@/lib/tracking";
 import type { PrivateEventsContent, PrivateEventsContentField } from "@/lib/siteContentSchema";
 import { PRIVATE_EVENTS_FIELD_LABELS } from "@/lib/siteContentSchema";
 
@@ -47,6 +48,7 @@ export default function PrivateEventsPageView({
     if (firedIdsRef.current.has(bookingId)) return;
     firedIdsRef.current.add(bookingId);
     fireBookingConversion(bookingId);
+    trackBooking("private_event", bookingId);
   };
 
   return (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { trackNewsletterSignup } from "@/lib/tracking";
 
 type SignupStatus = "idle" | "sending" | "success" | "error";
 
@@ -23,6 +24,7 @@ export default function HomepageNewsletter() {
       const result = await response.json() as { ok?: boolean; added?: boolean; error?: string };
       if (!response.ok || !result.ok) throw new Error(result.error || "Please try again in a moment.");
       setStatus("success");
+      trackNewsletterSignup();
       setMessage(result.added ? "Thank you. You’re on the list for Public Market news and updates." : "You’re already on the list for Public Market news and updates.");
       setEmail("");
     } catch (error) {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackNewsletterSignup } from "@/lib/tracking";
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -25,6 +26,7 @@ export default function NewsletterSignup() {
         return;
       }
       setStatus("success");
+      trackNewsletterSignup();
       setMessage("You're on the list. Thanks.");
       setEmail("");
     } catch {

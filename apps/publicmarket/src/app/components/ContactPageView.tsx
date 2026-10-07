@@ -4,6 +4,7 @@ import { useState } from "react";
 import HolderPage from "./HolderPage";
 import NewsletterSignup from "./NewsletterSignup";
 import { getInstagramHref } from "@/lib/instagramLink";
+import { trackContactLead } from "@/lib/tracking";
 import type { ContactContent, ContactContentField } from "@/lib/siteContentSchema";
 import { CONTACT_FIELD_LABELS } from "@/lib/siteContentSchema";
 
@@ -80,6 +81,7 @@ export default function ContactPageView({
         return;
       }
       setIsSubmitted(true);
+      trackContactLead();
     } catch {
       setErrorMessage("Submission failed. Please try again.");
     } finally {

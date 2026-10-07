@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import TrackingScripts from "./components/TrackingScripts";
 import "./globals.css";
 
 const robotoMono = Roboto_Mono({ weight: "300", subsets: ["latin"], variable: "--font-mono" });
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <Analytics />
+        <TrackingScripts />
       </body>
     </html>
   );

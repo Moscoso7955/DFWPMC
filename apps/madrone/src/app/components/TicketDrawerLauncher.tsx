@@ -1,5 +1,6 @@
 "use client";
 import { venuePath } from "@/lib/venue";
+import { trackBeginCheckout } from "@/lib/tracking";
 import { useEffect, useMemo, useState } from "react";
 import type { AgeRestriction, PublicTier, TicketingSettings } from "@/lib/ticketingTypes";
 type EventInfo = {
@@ -157,7 +158,7 @@ export default function TicketDrawerLauncher({ event, tiers, settings, disabled 
     };
     return (<>
       <div className="ticketed-event-cta-row">
-        <button type="button" className="ticketed-event-cta" onClick={() => setOpen(true)} disabled={disabled}>
+        <button type="button" className="ticketed-event-cta" onClick={() => { setOpen(true); trackBeginCheckout(event.title); }} disabled={disabled}>
           {disabled ? disabledLabel : "Get Tickets"}
         </button>
         {!disabled ? (<p className="ticketed-event-cta-note">

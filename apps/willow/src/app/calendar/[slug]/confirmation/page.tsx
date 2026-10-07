@@ -1,6 +1,7 @@
 import { venue, venuePath } from "@/lib/venue";
 import PreviewNotice from "@/app/components/PreviewNotice";
 import HolderPage from "@/app/components/HolderPage";
+import PurchaseTracker from "@/app/components/PurchaseTracker";
 import Link from "next/link";
 import { getOrderById, getPublishedEventBySlug, getTicketsForOrder, } from "@/lib/ticketingStore";
 import { generateTicketQrDataUri } from "@/lib/qrCode";
@@ -51,6 +52,7 @@ export default async function ConfirmationPage({ params, searchParams }: PagePro
         </header>
 
         {order.status === "paid" ? (<>
+            <PurchaseTracker orderId={order.id} valueCents={order.totalCents} quantity={tickets.length} eventTitle={event.title}/>
             <section className="ticket-confirmation-note">
               <p>
                 {venue.localPreview ? <>Sample order for <strong>{order.buyerName}</strong>. Email delivery is not connected. These QR codes are preview tickets.</> : <>Thanks, {order.buyerName.split(" ")[0]}. We&apos;ve emailed your tickets to <strong>{order.buyerEmail}</strong>. Show the QR at the door.</>}

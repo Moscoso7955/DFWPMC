@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { venue, venueSiteUrl, venuePath } from "@/lib/venue";
+import TrackingScripts from "./components/TrackingScripts";
 import "./globals.css";
 import "./venue-homepage.css";
 import "./venue-ui.css";
@@ -38,8 +39,7 @@ export default function RootLayout({ children }: {
       </head>
       <body>
         {children}
-
-
+        <TrackingScripts />
       </body>
     </html>);
 }

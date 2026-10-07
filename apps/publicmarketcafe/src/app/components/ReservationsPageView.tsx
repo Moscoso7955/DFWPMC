@@ -4,6 +4,7 @@ import { useRef } from "react";
 import EmbedFrame from "./EmbedFrame";
 import HolderPage from "./HolderPage";
 import { fireBookingConversion } from "@/lib/googleAds";
+import { trackBooking } from "@/lib/tracking";
 import type { ReservationsContent, ReservationsContentField } from "@/lib/siteContentSchema";
 import { RESERVATIONS_FIELD_LABELS } from "@/lib/siteContentSchema";
 
@@ -47,6 +48,7 @@ export default function ReservationsPageView({
     if (firedIdsRef.current.has(bookingId)) return;
     firedIdsRef.current.add(bookingId);
     fireBookingConversion(bookingId);
+    trackBooking("reservation", bookingId);
   };
 
   return (

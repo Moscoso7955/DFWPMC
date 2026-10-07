@@ -1,5 +1,6 @@
 "use client";
 import { venuePath } from "@/lib/venue";
+import { trackNewsletterSignup } from "@/lib/tracking";
 import { useState } from "react";
 export default function NewsletterSignup() {
     const [name, setName] = useState("");
@@ -25,6 +26,7 @@ export default function NewsletterSignup() {
                 return;
             }
             setStatus("success");
+            trackNewsletterSignup();
             setMessage("Saved to this local preview list.");
             setName("");
             setEmail("");
