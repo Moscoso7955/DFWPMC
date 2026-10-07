@@ -3,22 +3,13 @@
 import { useState } from "react";
 import styles from "./AdminEntry.module.css";
 
-// The approved login form, now submitting the single collective password.
-// The optional hidden `venue` field tells the login API which venue portal
-// to open after sign-in.
-export default function AdminEntryLoginForm({
-  venue,
-  loginError = false,
-}: {
-  venue?: string;
-  loginError?: boolean;
-}) {
+// The approved login form, submitting the single collective password.
+export default function AdminEntryLoginForm({ loginError = false }: { loginError?: boolean }) {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <form className={styles.form} action="/admin/api/login" method="post">
-      {venue ? <input type="hidden" name="venue" value={venue} /> : null}
       <label className={styles.label} htmlFor="admin-brand-password">
         <span>Password</span>
         <span className={styles.passwordField}>
