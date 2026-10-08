@@ -5,9 +5,9 @@ import styles from "./AdminEntry.module.css";
 // The approved selector screen. With the single collective login, choosing
 // a brand goes straight into that venue's portal (/admin/enter/<slug> mints
 // the venue session) — no second password.
-export default function AdminBrandSelector() {
+export default function AdminBrandSelector({ overview }: { overview?: React.ReactNode }) {
   return (
-    <main className={styles.page}>
+    <main className={overview ? `${styles.page} ${styles.pageColumn}` : styles.page}>
       <div className={`${styles.stack} ${styles.selectorStack}`}>
         <img
           className={styles.marketLogo}
@@ -36,6 +36,7 @@ export default function AdminBrandSelector() {
           </nav>
         </section>
       </div>
+      {overview ? <div className={styles.overviewWrap}>{overview}</div> : null}
     </main>
   );
 }

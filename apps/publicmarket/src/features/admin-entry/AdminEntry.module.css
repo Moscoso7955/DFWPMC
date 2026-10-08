@@ -488,3 +488,122 @@
     height: 120px;
   }
 }
+
+/* ---- Collective overview (rendered below the approved selector card) ---- */
+
+.overviewTitle {
+  color: var(--entry-paper);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 400;
+  text-align: center;
+  margin: 2.2rem 0 0.9rem;
+}
+
+.overview {
+  width: min(900px, 92vw);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+}
+
+@media (max-width: 760px) {
+  .overview {
+    grid-template-columns: 1fr;
+  }
+}
+
+.overviewCard {
+  border: 3px solid var(--entry-background);
+  background: var(--entry-paper);
+  color: var(--black);
+  padding: 1rem 1.15rem 1.1rem;
+}
+
+.overviewVenue {
+  font-family: "Storica", Georgia, serif;
+  color: var(--public-market-green);
+  font-size: 1.05rem;
+  font-weight: 400;
+  margin: 0 0 0.55rem;
+}
+
+.statRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.3rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 0.78rem;
+}
+
+.statLabel {
+  letter-spacing: 0.04em;
+}
+
+.statValue {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.statMuted {
+  font-weight: 400;
+  opacity: 0.65;
+}
+
+.statDetail {
+  margin: 0.55rem 0 0;
+  padding-top: 0.45rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 0.72rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.statUnavailable {
+  margin: 0.4rem 0 0;
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+
+.toolRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.4rem 0 0.4rem;
+}
+
+.toolButton {
+  display: inline-block;
+  border: 2px solid var(--entry-paper);
+  color: var(--entry-paper);
+  background: transparent;
+  padding: 0.6rem 1.15rem;
+  font: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.toolButton:hover {
+  background: var(--entry-paper);
+  color: var(--public-market-green);
+}
+
+/* Selector page flows as a column when the overview is shown below the card. */
+.pageColumn {
+  flex-direction: column;
+}
+
+.overviewWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}

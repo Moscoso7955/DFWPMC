@@ -10,6 +10,8 @@ export type CollectiveVenue = {
   basePath: string;
   /** Hub env var holding that venue's ADMIN_SESSION_SECRET */
   sessionSecretEnv: string;
+  /** Hub env var holding that venue's CMS_STORAGE_READ_WRITE_TOKEN */
+  tokenEnv: string;
 };
 
 export const COLLECTIVE_VENUES: CollectiveVenue[] = [
@@ -19,6 +21,7 @@ export const COLLECTIVE_VENUES: CollectiveVenue[] = [
     name: "Willow",
     basePath: "/willow",
     sessionSecretEnv: "WILLOW_ADMIN_SESSION_SECRET",
+    tokenEnv: "CMS_WILLOW_TOKEN",
   },
   {
     slug: "madrone",
@@ -26,6 +29,7 @@ export const COLLECTIVE_VENUES: CollectiveVenue[] = [
     name: "Madrone",
     basePath: "/madrone",
     sessionSecretEnv: "MADRONE_ADMIN_SESSION_SECRET",
+    tokenEnv: "CMS_MADRONE_TOKEN",
   },
   {
     slug: "pmcafe",
@@ -33,6 +37,7 @@ export const COLLECTIVE_VENUES: CollectiveVenue[] = [
     name: "Public Market Cafe",
     basePath: "/publicmarketcafe",
     sessionSecretEnv: "PMCAFE_ADMIN_SESSION_SECRET",
+    tokenEnv: "CMS_PMCAFE_TOKEN",
   },
 ];
 

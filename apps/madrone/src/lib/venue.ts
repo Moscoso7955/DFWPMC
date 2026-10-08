@@ -23,6 +23,9 @@ export function appPath(value: string): string {
 }
 export function venueSiteUrl() { return process.env.NEXT_PUBLIC_SITE_URL || `http://localhost:${venue.port}${venue.basePath}`; }
 export function venueRequestUrl(request: Request) { return process.env.VERCEL ? venueSiteUrl() : request.url; }
+export function collectiveLogoutUrl() {
+  return new URL("/admin/logout", venue.entryOrigin).href;
+}
 export function adminEntryUrl(error?: string) {
   const url = new URL(venue.entryLoginPath, venue.entryOrigin);
   if (error) url.searchParams.set("error", error);
