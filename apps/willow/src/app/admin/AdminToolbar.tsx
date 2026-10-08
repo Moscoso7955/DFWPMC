@@ -1,5 +1,5 @@
 "use client";
-import { collectiveLogoutUrl, venuePath } from "@/lib/venue";
+import { adminSelectorUrl, venuePath } from "@/lib/venue";
 export default function AdminToolbar() {
     const runAction = async (url: string) => {
         await fetch(venuePath(url), { method: "POST" });
@@ -7,9 +7,9 @@ export default function AdminToolbar() {
     };
     const logOut = async () => {
         await fetch(venuePath("/admin/api/logout"), { method: "POST" });
-        // One sign-out for the collective: the hub clears its session and
-        // every venue session, otherwise it would sign us straight back in.
-        window.location.href = collectiveLogoutUrl();
+        // Leaving a venue returns to the collective selector; the real
+        // sign-out (ending the collective session) lives on that screen.
+        window.location.href = adminSelectorUrl();
     };
     return (<div className="admin-toolbar" aria-label="Admin actions">
       <a href={venuePath("/admin/hours")}>Hours</a>
