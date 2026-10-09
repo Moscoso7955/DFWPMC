@@ -72,6 +72,19 @@ export default function DrawerMenu({
     if (isOpen) menuRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
   }, [isOpen]);
 
+  // Clicking or tapping anywhere outside the open drawer closes it.
+  useEffect(() => {
+    if (!isOpen) return;
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target as Node;
+      if (menuRef.current?.contains(target)) return;
+      if (buttonRef.current?.contains(target)) return;
+      closeMenu();
+    };
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [closeMenu, isOpen]);
+
   useEffect(() => {
     if (hideOnDesktop || inTopbar) return;
 

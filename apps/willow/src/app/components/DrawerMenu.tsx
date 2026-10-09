@@ -51,6 +51,7 @@ export default function DrawerMenu({ adaptive = false, basePath = "", hideOnDesk
     const [isOpen, setIsOpen] = useState(false);
     const [hamburgerColor, setHamburgerColor] = useState("var(--brand-primary)");
     const buttonRef = useRef<HTMLButtonElement>(null);
+    const navRef = useRef<HTMLElement>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     useEffect(() => {
         document.body.classList.toggle("drawer-open", isOpen);
@@ -64,6 +65,21 @@ export default function DrawerMenu({ adaptive = false, basePath = "", hideOnDesk
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, []);
+    // Clicking or tapping anywhere outside the open drawer closes it.
+    useEffect(() => {
+        if (!isOpen)
+            return;
+        const handlePointerDown = (event: PointerEvent) => {
+            const target = event.target as Node;
+            if (navRef.current?.contains(target))
+                return;
+            if (buttonRef.current?.contains(target))
+                return;
+            setIsOpen(false);
+        };
+        document.addEventListener("pointerdown", handlePointerDown);
+        return () => document.removeEventListener("pointerdown", handlePointerDown);
+    }, [isOpen]);
     useEffect(() => {
         if (hideOnDesktop)
             return;
@@ -156,7 +172,7 @@ export default function DrawerMenu({ adaptive = false, basePath = "", hideOnDesk
         <span />
       </button>
 
-      <nav className={`drawer-menu${hideOnDesktop ? " homepage-drawer" : ""}${isOpen ? " is-open" : ""}`} id="site-menu" aria-label="Site menu" aria-hidden={!isOpen}>
+      <nav className={`drawer-menu${hideOnDesktop ? " homepage-drawer" : ""}${isOpen ? " is-open" : ""}`} id="site-menu" aria-label="Site menu" aria-hidden={!isOpen} ref={navRef}>
         <div className="venue-drawer-heading"><Link href={basePath || "/"}><img src={venuePath(venue.logo)} alt={venue.name} /></Link>
         <button className="drawer-close" type="button" aria-label="Close menu" onClick={() => setIsOpen(false)}>
           <span />
