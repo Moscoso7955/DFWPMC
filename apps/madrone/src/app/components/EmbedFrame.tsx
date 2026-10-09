@@ -3,6 +3,12 @@
 import { venue } from "@/lib/venue";
 import { useEffect, useRef } from "react";
 
+// Embeds have their own switch so provider forms (Tipsy) can go live
+// without flipping venue.localPreview, which also controls payments,
+// database and email. Set NEXT_PUBLIC_EMBEDS_ENABLED=true to load them.
+const EMBEDS_PAUSED =
+  venue.localPreview && process.env.NEXT_PUBLIC_EMBEDS_ENABLED !== "true";
+
 const TIPSY_BOTTOM_BUFFER = 120;
 const TIPSY_EMBED_ORIGIN = "https://tipsyapp.io";
 const TIPSY_SUBMISSION_TYPE = "tipsy:booking_submitted";
@@ -39,7 +45,7 @@ export default function EmbedFrame({
   }, [onSubmitted]);
 
   useEffect(() => {
-    if (venue.localPreview) return;
+    if (EMBEDS_PAUSED) return;
     const node = wrapRef.current;
     if (!node) return;
     node.innerHTML = trimmed;
@@ -47,7 +53,7 @@ export default function EmbedFrame({
   }, [trimmed]);
 
   useEffect(() => {
-    if (venue.localPreview) return;
+    if (EMBEDS_PAUSED) return;
     const handleMessage = (event: MessageEvent) => {
       const iframe = wrapRef.current?.querySelector("iframe");
       if (!iframe || event.source !== iframe.contentWindow) return;
@@ -76,7 +82,7 @@ export default function EmbedFrame({
     return () => window.removeEventListener("message", handleMessage);
   }, []);
 
-  if (venue.localPreview) return <div className="embed-empty local-embed-placeholder"><strong>Booking / form connection</strong><p>This form is not connected yet. Your client can add their provider later.</p>{trimmed ? <small>Embed code saved locally; provider loading is paused.</small> : null}</div>;
+  if (EMBEDS_PAUSED) return <div className="embed-empty local-embed-placeholder"><strong>Booking / form connection</strong><p>This form is not connected yet. Your client can add their provider later.</p>{trimmed ? <small>Embed code saved locally; provider loading is paused.</small> : null}</div>;
 
   if (!trimmed) {
     return <div className="embed-empty">{emptyMessage}</div>;
