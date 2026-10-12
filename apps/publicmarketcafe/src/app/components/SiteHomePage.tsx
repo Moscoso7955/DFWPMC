@@ -5,6 +5,7 @@ import { venuePath } from "@/lib/venue";
 import type { CSSProperties, ReactNode } from "react";
 import type { HomepageContent, HomepageContentField } from "@/lib/siteContentSchema";
 import BottomMenu from "./VenueHomeMenu";
+import DrawerMenu from "./DrawerMenu";
 
 type HomePageStyle = CSSProperties & {
   "--home-desktop-hero-image": string;
@@ -78,6 +79,7 @@ export default function SiteHomePage({
 
   return (
     <div className={isAdmin ? "site-shell venue-homepage admin-editable-site" : "site-shell venue-homepage"} style={style}>
+      <DrawerMenu adaptive basePath={basePath} hideOnDesktop />
       <Link className="homepage-event-bar" href={`${basePath}/private-events`}>
         BOOK AN EVENT
       </Link>
