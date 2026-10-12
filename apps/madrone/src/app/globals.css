@@ -1421,6 +1421,9 @@ body.drawer-open .hamburger {
   width: 100%;
   display: grid;
   justify-items: center;
+  /* Our own top edge: the Tipsy card is transparent round its rounded
+     corners, so it needs band above it rather than starting flush. */
+  padding-top: clamp(24px, 4vw, 40px);
   padding-bottom: 168px;
   background: var(--black);
   box-shadow: 0 0 0 100vmax var(--black);
@@ -1551,6 +1554,9 @@ body.drawer-open .hamburger {
   width: 100%;
   display: grid;
   justify-items: center;
+  /* Our own top edge: the Tipsy card is transparent round its rounded
+     corners, so it needs band above it rather than starting flush. */
+  padding-top: clamp(24px, 4vw, 40px);
   padding-bottom: 168px;
   background: var(--black);
   box-shadow: 0 0 0 100vmax var(--black);
@@ -1594,6 +1600,9 @@ body.drawer-open .hamburger {
   width: 100%;
   display: grid;
   justify-items: center;
+  /* Our own top edge: the Tipsy card is transparent round its rounded
+     corners, so it needs band above it rather than starting flush. */
+  padding-top: clamp(24px, 4vw, 40px);
   padding-bottom: 168px;
   background: var(--black);
   box-shadow: 0 0 0 100vmax var(--black);
