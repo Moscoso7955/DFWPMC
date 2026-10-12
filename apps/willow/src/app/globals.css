@@ -1456,6 +1456,12 @@ body.drawer-open .hamburger {
 .embed-frame {
   width: 100%;
   position: relative;
+  /* Our side of the provider embed wears the venue frame line; the
+     radius clips the provider's own background to match. */
+  border: var(--frame-line);
+  border-radius: var(--brand-radius);
+  overflow: hidden;
+  background: transparent;
 }
 
 .embed-frame iframe {
@@ -7382,12 +7388,13 @@ button.blackbook-photo--zoomable:focus-visible {
 .wallet-buttons button[disabled] { opacity:.65; cursor:default; }
 .blackbook-shell > .local-preview-notice { margin:12px; }
 
-/* Seamless provider embeds (careers): the iframe box IS the provider's
-   card. No frame of our own, 16px radius to match the card, height driven
-   entirely by the provider's tipsy-embed-height messages. Doubled class
-   for specificity over venue-ui.css's .embed-frame radius/border. */
+/* Seamless provider embeds (careers, contact join): the iframe box IS
+   the provider's card. The venue frame line hugs it at the card's own
+   16px radius; height is driven entirely by the provider's
+   tipsy-embed-height messages. Doubled class for specificity over
+   venue-ui.css's .embed-frame radius/border. */
 .embed-frame.embed-frame--seamless {
-  border: 0;
+  border: var(--frame-line);
   background: transparent;
   border-radius: 16px;
   overflow: hidden;
