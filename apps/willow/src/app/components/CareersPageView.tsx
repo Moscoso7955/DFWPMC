@@ -49,6 +49,8 @@ export default function CareersPageView({
           <EmbedFrame
             embedCode={content.embedCode}
             emptyMessage="Job application form not yet configured."
+            heightBuffer={0}
+            seamless
           />
           {isAdmin ? <CareersEditButton field="embedCode" onEdit={onEdit} /> : null}
         </div>

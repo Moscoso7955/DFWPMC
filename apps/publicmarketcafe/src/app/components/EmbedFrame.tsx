@@ -17,6 +17,12 @@ type EmbedFrameProps = {
   embedCode: string;
   emptyMessage?: string;
   onSubmitted?: (bookingId: string) => void;
+  /** Pixels added under the provider's reported height. Booking embeds
+   *  keep the historical 120px; seamless embeds (careers) pass 0 so the
+   *  box ends exactly where the card does. */
+  heightBuffer?: number;
+  /** The box is the provider's card: no frame, 16px radius, no min-height. */
+  seamless?: boolean;
 };
 
 function activateScripts(container: HTMLElement) {
@@ -35,6 +41,8 @@ export default function EmbedFrame({
   embedCode,
   emptyMessage = "Embed not configured.",
   onSubmitted,
+  heightBuffer = TIPSY_BOTTOM_BUFFER,
+  seamless = false,
 }: EmbedFrameProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const onSubmittedRef = useRef<EmbedFrameProps["onSubmitted"]>(onSubmitted);
@@ -65,7 +73,7 @@ export default function EmbedFrame({
       if (type === "tipsy-embed-height") {
         const nextHeight = Number((data as Record<string, unknown>).height);
         if (Number.isFinite(nextHeight) && nextHeight > 0) {
-          iframe.style.height = `${nextHeight + TIPSY_BOTTOM_BUFFER}px`;
+          iframe.style.height = `${nextHeight + heightBuffer}px`;
         }
         return;
       }
@@ -80,7 +88,7 @@ export default function EmbedFrame({
     };
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
-  }, []);
+  }, [heightBuffer]);
 
   if (EMBEDS_PAUSED) return <div className="embed-empty local-embed-placeholder"><strong>Booking / form connection</strong><p>This form is not connected yet. Your client can add their provider later.</p>{trimmed ? <small>Embed code saved locally; provider loading is paused.</small> : null}</div>;
 
@@ -88,5 +96,5 @@ export default function EmbedFrame({
     return <div className="embed-empty">{emptyMessage}</div>;
   }
 
-  return <div className="embed-frame" ref={wrapRef} />;
+  return <div className={`embed-frame${seamless ? " embed-frame--seamless" : ""}`} ref={wrapRef} />;
 }
