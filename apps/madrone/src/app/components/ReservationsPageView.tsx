@@ -63,6 +63,8 @@ export default function ReservationsPageView({
             embedCode={content.embedCode}
             emptyMessage="Reservation form not yet configured."
             onSubmitted={handleSubmitted}
+            heightBuffer={0}
+            seamless
           />
           {isAdmin ? <ReservationsEditButton field="embedCode" onEdit={onEdit} /> : null}
         </div>

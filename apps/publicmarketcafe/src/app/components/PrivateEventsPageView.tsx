@@ -66,6 +66,8 @@ export default function PrivateEventsPageView({
             embedCode={content.embedCode}
             emptyMessage="Inquiry form not yet configured."
             onSubmitted={handleSubmitted}
+            heightBuffer={0}
+            seamless
           />
           {isAdmin ? <PrivateEventsEditButton field="embedCode" onEdit={onEdit} /> : null}
         </div>
