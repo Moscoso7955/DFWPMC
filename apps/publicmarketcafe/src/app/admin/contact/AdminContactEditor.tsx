@@ -14,6 +14,7 @@ export default function AdminContactEditor({ initialContent }: AdminContactEdito
     const [draftLabel, setDraftLabel] = useState("");
     const [status, setStatus] = useState("");
     const isInstagram = activeField === "instagram";
+    const isEmbedField = activeField === "joinEmbedCode";
     const activeLabel = activeField ? (isInstagram ? "Instagram" : CONTACT_FIELD_LABELS[activeField]) : "";
     const openEditor = (field: ContactContentField) => {
         setActiveField(field);
@@ -83,7 +84,10 @@ export default function AdminContactEditor({ initialContent }: AdminContactEdito
                   <span>Link</span>
                   <input value={draftValue} placeholder="https://instagram.com/venue" onChange={(event) => setDraftValue(event.target.value)}/>
                 </label>
-              </>) : (<label className="admin-upload-label">
+              </>) : isEmbedField ? (<label className="admin-upload-label">
+                <span>{activeLabel}</span>
+                <textarea rows={6} spellCheck={false} value={draftValue} onChange={(event) => setDraftValue(event.target.value)}/>
+              </label>) : (<label className="admin-upload-label">
                 <span>{activeLabel}</span>
                 <input value={draftValue} onChange={(event) => setDraftValue(event.target.value)}/>
               </label>)}

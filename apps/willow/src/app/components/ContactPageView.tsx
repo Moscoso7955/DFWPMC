@@ -2,7 +2,7 @@
 import { venuePath } from "@/lib/venue";
 import { useState } from "react";
 import HolderPage from "./HolderPage";
-import NewsletterSignup from "./NewsletterSignup";
+import EmbedFrame from "./EmbedFrame";
 import { getInstagramHref } from "@/lib/instagramLink";
 import { trackContactLead } from "@/lib/tracking";
 import type { ContactContent, ContactContentField } from "@/lib/siteContentSchema";
@@ -77,6 +77,8 @@ export default function ContactPageView({ basePath = "", content, isAdmin = fals
           {isAdmin ? <ContactEditButton field="title" onEdit={onEdit}/> : null}
         </div>
 
+        <div className="contact-columns">
+        <div className="contact-left">
         <div className="contact-details" aria-label="Willow contact details">
           <p className={isAdmin ? "admin-contact-edit-target admin-contact-edit-target--email" : undefined}>
             {content.email ? <a href={venuePath(`mailto:${content.email}`)}>{content.email}</a> : <span>Email to be added</span>}
@@ -113,7 +115,7 @@ export default function ContactPageView({ basePath = "", content, isAdmin = fals
                 <span>Email</span>
                 <input name="email" type="email" placeholder="Enter email" aria-label="Enter email" required/>
               </label>
-              <label>
+              <label className="contact-form-message">
                 <span>Message</span>
                 <textarea name="message" aria-label="Message"/>
               </label>
@@ -126,7 +128,17 @@ export default function ContactPageView({ basePath = "", content, isAdmin = fals
             </form>)}
         </div>
 
-        {!isAdmin ? <NewsletterSignup /> : null}
+        </div>
+
+        {(isAdmin || Boolean((content.joinEmbedCode ?? "").trim())) ? (<div className="join-embed">
+            <p className="join-embed-kicker">STAY IN THE LOOP</p>
+            <p className="join-embed-copy">Events, openings, and the occasional dispatch from Willow.</p>
+            <div className={`join-embed-holder${isAdmin ? " admin-join-edit-target" : ""}`}>
+              <EmbedFrame embedCode={content.joinEmbedCode ?? ""} emptyMessage="Join embed not configured." heightBuffer={0} seamless />
+              {isAdmin ? <ContactEditButton field="joinEmbedCode" onEdit={onEdit}/> : null}
+            </div>
+          </div>) : null}
+        </div>
       </section>
     </HolderPage>);
 }

@@ -27,6 +27,7 @@ export type ContactContent = {
   phone: string;
   instagram: string;
   instagramLabel: string;
+  joinEmbedCode: string;
 };
 
 export type PrivateEventsContent = {
@@ -172,6 +173,7 @@ export const CONTACT_CONTENT_FIELDS: ContactContentField[] = [
   "phone",
   "instagram",
   "instagramLabel",
+  "joinEmbedCode",
 ];
 
 export const CONTACT_FIELD_LABELS: Record<ContactContentField, string> = {
@@ -180,6 +182,7 @@ export const CONTACT_FIELD_LABELS: Record<ContactContentField, string> = {
   phone: "Contact Phone",
   instagram: "Instagram Link",
   instagramLabel: "Instagram Name",
+  joinEmbedCode: "Join Embed Code",
 };
 
 export const PRIVATE_EVENTS_CONTENT_FIELDS: PrivateEventsContentField[] = ["title", "embedCode"];

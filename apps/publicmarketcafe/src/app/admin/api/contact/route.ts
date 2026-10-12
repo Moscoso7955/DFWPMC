@@ -14,7 +14,7 @@ export async function PATCH(request: Request) {
 
   const value = body.value.trim();
 
-  if (body.field !== "instagram" && body.field !== "instagramLabel" && value.length < 1) {
+  if (body.field !== "instagram" && body.field !== "instagramLabel" && body.field !== "joinEmbedCode" && value.length < 1) {
     return Response.json({ error: "Invalid contact value" }, { status: 400 });
   }
 

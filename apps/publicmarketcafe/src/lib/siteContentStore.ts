@@ -23,9 +23,16 @@ function readSeed(key: ContentKey): SiteContent {
 
 const DEFAULT_PRIVATE_EVENTS_EMBED = "";
 
+// The collective's Tipsy loyalty join form — one link for the whole LLC.
+const DEFAULT_JOIN_EMBED =
+  '<iframe src="https://tipsyapp.io/embed/join/fort-worth-public-market-collective" title="Join rewards" width="100%" height="560" style="border:0;max-width:420px" loading="lazy"></iframe>';
+
 function normalizeContent(content: SiteContent): SiteContent {
   if (content.contact && typeof content.contact.instagramLabel !== "string") {
     content.contact.instagramLabel = "";
+  }
+  if (content.contact && typeof content.contact.joinEmbedCode !== "string") {
+    content.contact.joinEmbedCode = DEFAULT_JOIN_EMBED;
   }
   if (content.privateEvents && typeof content.privateEvents.embedCode !== "string") {
     content.privateEvents.embedCode = DEFAULT_PRIVATE_EVENTS_EMBED;

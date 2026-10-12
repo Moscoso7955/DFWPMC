@@ -7402,3 +7402,102 @@ button.blackbook-photo--zoomable:focus-visible {
   margin: 0;
   border: 0;
 }
+
+/* ---- Contact: Tipsy loyalty join embed ("Stay in the loop") ---- */
+
+.contact-columns {
+  width: 100%;
+}
+
+.join-embed {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+}
+
+.join-embed-kicker {
+  margin: 0;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.join-embed-copy {
+  margin: 8px 0 14px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* The box is Tipsy's card: transparent page, card edge to edge with
+   16px rounded corners, height driven by tipsy-embed-height messages. */
+.join-embed-holder {
+  width: min(100%, 420px);
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.join-embed-holder iframe {
+  display: block;
+  width: 100%;
+  max-width: none !important;
+  min-height: 0;
+  margin: 0;
+  border: 0;
+}
+
+.admin-join-edit-target {
+  position: relative;
+}
+
+.admin-join-edit-target .admin-edit-hotspot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  transform: none;
+}
+
+@media (min-width: 900px) {
+  /* Two 420px columns + the 96px gutter need 936px; the page is
+     otherwise capped narrower for the single-column layout. */
+  .page--contact .contact-page {
+    width: min(100%, 936px);
+  }
+  .contact-columns {
+    --join-box: min(100%, 420px);
+    --join-pad: 24px;
+    --join-footnote: 79px;
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: "left kicker" "left copy" "left holder";
+    column-gap: 96px;
+    align-items: stretch;
+  }
+  .contact-columns::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; border-left: var(--frame-line); transform: translateX(-50%); }
+  .contact-columns .join-embed { display: contents; }
+  .contact-columns .join-embed-kicker { grid-area: kicker; justify-self: center; }
+  .contact-columns .join-embed-copy { grid-area: copy; justify-self: center; max-width: 420px; margin: 8px 0 14px; text-align: center; }
+  .contact-columns .join-embed-holder { grid-area: holder; justify-self: center; width: var(--join-box); }
+  .contact-left { grid-area: left; justify-self: center; width: calc(var(--join-box) - 2 * var(--join-pad)); display: flex; flex-direction: column; padding-bottom: calc(var(--join-pad) + var(--join-footnote)); }
+  .contact-columns .contact-details { width: 100%; padding: 0; gap: 8px; }
+  .contact-columns .contact-action { flex: 1; width: 100%; min-height: 0; display: flex; flex-direction: column; padding: 0; }
+  .contact-columns .contact-form { flex: 1; width: 100%; display: flex; flex-direction: column; margin-top: 20px; }
+  .contact-columns .contact-form label { justify-items: center; }
+  .contact-columns .contact-form-message { flex: 1; grid-template-rows: auto 1fr; }
+  .contact-columns .contact-form textarea { min-height: 120px; height: 100%; resize: none; }
+}
+
+@media (max-width: 899px) {
+  .contact-left { display: contents; }
+  .contact-columns { display: grid; gap: 28px; }
+  .contact-columns .contact-details { order: -2; }
+  .contact-columns .join-embed { order: -1; margin-top: 0; }
+  .contact-columns .contact-action { padding-top: 22px; border-top: var(--frame-line); }
+}
