@@ -4,6 +4,7 @@ import type { BlackbookEntry, BlackbookStatus } from "@/lib/blackbookStore";
 import PreviewNotice from "@/app/components/PreviewNotice";
 type BlackbookViewProps = {
     initialEntries: BlackbookEntry[];
+    connected?: boolean;
     canEdit: boolean;
 };
 type DraftState = {
@@ -14,7 +15,7 @@ type DraftState = {
     status: BlackbookStatus;
 };
 const EMPTY_DRAFT: DraftState = { id: null, name: "", photoUrl: "", notes: "", status: "vip" };
-export default function BlackbookView({ initialEntries, canEdit }: BlackbookViewProps) {
+export default function BlackbookView({ initialEntries, canEdit, connected = false }: BlackbookViewProps) {
     const [entries, setEntries] = useState(initialEntries);
     const [search, setSearch] = useState("");
     const [tab, setTab] = useState<BlackbookStatus>("vip");
@@ -143,7 +144,7 @@ export default function BlackbookView({ initialEntries, canEdit }: BlackbookView
         await fetch("/admin/api/logout", { method: "POST" });
         window.location.href = "/admin/login";
     };
-    return (<main className="blackbook-shell"><PreviewNotice />
+    return (<main className="blackbook-shell">{connected ? null : <PreviewNotice />}
       <div className="blackbook-topbar">
         <header className="blackbook-header">
           <div className="venue-app-identity"><img src="/assets/brand/pm-seal-bone.svg" alt="The Public Market" /><div><p>The Public Market</p>

@@ -1,7 +1,8 @@
-import { LOCAL_PREVIEW, disconnectedResponse } from "@/lib/venues";
+import { disconnectedResponse } from "@/lib/venues";
 import { hasBlackbookAdminSession } from "@/lib/blackbookAuth";
 import {
   deleteBlackbookEntry,
+  isBlackbookConnected,
   isBlackbookStatus,
   updateBlackbookEntry,
 } from "@/lib/blackbookStore";
@@ -15,7 +16,7 @@ async function parseId(context: RouteContext) {
 }
 
 export async function PATCH(request: Request, context: RouteContext) {
-  if (LOCAL_PREVIEW) return disconnectedResponse("Blackbook backend");
+  if (!isBlackbookConnected()) return disconnectedResponse("Blackbook backend");
 
   if (!(await hasBlackbookAdminSession())) {
     return Response.json({ error: "Read-only access" }, { status: 403 });
@@ -47,7 +48,7 @@ export async function PATCH(request: Request, context: RouteContext) {
 }
 
 export async function DELETE(_request: Request, context: RouteContext) {
-  if (LOCAL_PREVIEW) return disconnectedResponse("Blackbook backend");
+  if (!isBlackbookConnected()) return disconnectedResponse("Blackbook backend");
 
   if (!(await hasBlackbookAdminSession())) {
     return Response.json({ error: "Read-only access" }, { status: 403 });

@@ -1,5 +1,5 @@
 import { getBlackbookRole } from "@/lib/blackbookAuth";
-import { listBlackbookEntries } from "@/lib/blackbookStore";
+import { isBlackbookConnected, listBlackbookEntries } from "@/lib/blackbookStore";
 import { getPrincipal, homeFor } from "@/lib/session";
 import { redirect } from "next/navigation";
 import BlackbookView from "./BlackbookView";
@@ -13,5 +13,5 @@ export default async function BlackbookPage() {
         redirect((await homeFor(principal)) ?? "/admin/no-access");
     }
     const entries = await listBlackbookEntries();
-    return <BlackbookView initialEntries={entries} canEdit={role === "admin"}/>;
+    return <BlackbookView initialEntries={entries} canEdit={role === "admin"} connected={isBlackbookConnected()}/>;
 }

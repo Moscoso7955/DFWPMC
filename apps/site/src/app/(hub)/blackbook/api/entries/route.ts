@@ -1,7 +1,8 @@
-import { LOCAL_PREVIEW, disconnectedResponse } from "@/lib/venues";
+import { disconnectedResponse } from "@/lib/venues";
 import { hasBlackbookAdminSession, hasBlackbookSession } from "@/lib/blackbookAuth";
 import {
   createBlackbookEntry,
+  isBlackbookConnected,
   isBlackbookStatus,
   listBlackbookEntries,
 } from "@/lib/blackbookStore";
@@ -15,7 +16,7 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  if (LOCAL_PREVIEW) return disconnectedResponse("Blackbook backend");
+  if (!isBlackbookConnected()) return disconnectedResponse("Blackbook backend");
 
   if (!(await hasBlackbookAdminSession())) {
     return Response.json({ error: "Read-only access" }, { status: 403 });
