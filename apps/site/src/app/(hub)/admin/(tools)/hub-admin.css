@@ -1,0 +1,16 @@
+:root {
+  --venue-logo-url: url("/assets/brand/pm-seal-green.svg");
+  --home-desktop-hero-image: none;
+  --home-mobile-image-one: none;
+  --home-mobile-image-two: none;
+  --brand-primary: #355748; --brand-primary-rgb: 53, 87, 72;
+  --brand-accent: #cda787; --brand-accent-rgb: 205, 167, 135; --brand-on-accent: #222020;
+  --brand-paper: #f2f1eb; --brand-paper-rgb: 242, 241, 235; --brand-surface: #fbfaf6;
+  --brand-muted: #e6e3d8; --brand-secondary: #4c6e5d; --brand-ink: #222020; --brand-ink-rgb: 34, 32, 32;
+  --brand-line: #c9c4b4; --brand-radius: 8px; --brand-control-radius: 5px;
+  --font-venue-body: var(--font-mono), Arial, sans-serif; --font-venue-heading: var(--font-mono), Georgia, serif;
+  --black: var(--brand-ink); --cream: var(--brand-paper); --deep-red: var(--brand-primary);
+  --red: var(--brand-primary); --blue: var(--brand-primary); --yellow: var(--brand-muted);
+  --frame-line: 1px solid var(--brand-line);
+}
+body { background: var(--brand-paper); }

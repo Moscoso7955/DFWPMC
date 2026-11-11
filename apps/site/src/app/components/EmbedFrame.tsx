@@ -1,0 +1,122 @@
+"use client";
+
+import { LOCAL_PREVIEW } from "@/lib/venues";
+import { useEffect, useRef } from "react";
+
+// Embeds have their own switch so provider forms (Tipsy) can go live
+// without flipping LOCAL_PREVIEW, which also controls payments,
+// database and email. Set NEXT_PUBLIC_EMBEDS_ENABLED=true to load them.
+const EMBEDS_PAUSED =
+  LOCAL_PREVIEW && process.env.NEXT_PUBLIC_EMBEDS_ENABLED !== "true";
+
+const TIPSY_BOTTOM_BUFFER = 120;
+const TIPSY_EMBED_ORIGIN = "https://tipsyapp.io";
+const TIPSY_SUBMISSION_TYPE = "tipsy:booking_submitted";
+
+type EmbedFrameProps = {
+  embedCode: string;
+  emptyMessage?: string;
+  onSubmitted?: (bookingId: string) => void;
+  /** Pixels added under the provider's reported height. Booking embeds
+   *  keep the historical 120px; seamless embeds (careers) pass 0 so the
+   *  box ends exactly where the card does. */
+  heightBuffer?: number;
+  /** The box is the provider's card: no frame, 16px radius, no min-height. */
+  seamless?: boolean;
+};
+
+// Tipsy's booking form takes deposits with Apple Pay and Google Pay, and a
+// browser lets a frame from another site offer them only when the frame
+// is allowed the payment feature. Embed code pasted before Tipsy's snippet
+// carried allow="payment *" doesn't have it, so it is added here, to
+// Tipsy's frames only, before they load (a frame reads it as it loads).
+function withPaymentAllowed(html: string): DocumentFragment {
+  const template = document.createElement("template");
+  template.innerHTML = html;
+  for (const frame of Array.from(template.content.querySelectorAll("iframe"))) {
+    let origin = "";
+    try {
+      origin = new URL(frame.getAttribute("src") || "", window.location.href).origin;
+    } catch {
+      continue;
+    }
+    if (origin !== TIPSY_EMBED_ORIGIN) continue;
+    const allow = (frame.getAttribute("allow") || "").trim();
+    if (!/\bpayment\b/.test(allow)) frame.setAttribute("allow", allow ? `${allow}; payment *` : "payment *");
+  }
+  return template.content;
+}
+
+function activateScripts(container: HTMLElement) {
+  const scripts = Array.from(container.querySelectorAll("script"));
+  for (const oldScript of scripts) {
+    const newScript = document.createElement("script");
+    for (const attr of Array.from(oldScript.attributes)) {
+      newScript.setAttribute(attr.name, attr.value);
+    }
+    if (oldScript.textContent) newScript.textContent = oldScript.textContent;
+    oldScript.parentNode?.replaceChild(newScript, oldScript);
+  }
+}
+
+export default function EmbedFrame({
+  embedCode,
+  emptyMessage = "Embed not configured.",
+  onSubmitted,
+  heightBuffer = TIPSY_BOTTOM_BUFFER,
+  seamless = false,
+}: EmbedFrameProps) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const onSubmittedRef = useRef<EmbedFrameProps["onSubmitted"]>(onSubmitted);
+  const trimmed = embedCode.trim();
+
+  useEffect(() => {
+    onSubmittedRef.current = onSubmitted;
+  }, [onSubmitted]);
+
+  useEffect(() => {
+    if (EMBEDS_PAUSED) return;
+    const node = wrapRef.current;
+    if (!node) return;
+    node.replaceChildren(withPaymentAllowed(trimmed));
+    activateScripts(node);
+  }, [trimmed]);
+
+  useEffect(() => {
+    if (EMBEDS_PAUSED) return;
+    const handleMessage = (event: MessageEvent) => {
+      const iframe = wrapRef.current?.querySelector("iframe");
+      if (!iframe || event.source !== iframe.contentWindow) return;
+      const data = event.data;
+      if (!data || typeof data !== "object") return;
+
+      const type = (data as Record<string, unknown>).type;
+
+      if (type === "tipsy-embed-height") {
+        const nextHeight = Number((data as Record<string, unknown>).height);
+        if (Number.isFinite(nextHeight) && nextHeight > 0) {
+          iframe.style.height = `${nextHeight + heightBuffer}px`;
+        }
+        return;
+      }
+
+      if (event.origin !== TIPSY_EMBED_ORIGIN) return;
+      if (type !== TIPSY_SUBMISSION_TYPE) return;
+
+      const bookingId = (data as Record<string, unknown>).bookingId;
+      if (typeof bookingId !== "string" || bookingId.length === 0) return;
+
+      onSubmittedRef.current?.(bookingId);
+    };
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [heightBuffer]);
+
+  if (EMBEDS_PAUSED) return <div className="embed-empty local-embed-placeholder"><strong>Booking / form connection</strong><p>This form is not connected yet. Your client can add their provider later.</p>{trimmed ? <small>Embed code saved locally; provider loading is paused.</small> : null}</div>;
+
+  if (!trimmed) {
+    return <div className="embed-empty">{emptyMessage}</div>;
+  }
+
+  return <div className={`embed-frame${seamless ? " embed-frame--seamless" : ""}`} ref={wrapRef} />;
+}

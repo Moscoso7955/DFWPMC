@@ -1,0 +1,82 @@
+{
+  "homepage": {
+    "desktopHeroImage": "/assets/pmcafe/public-market-cafe-hero.png",
+    "mobileHeroImageOne": "/assets/pmcafe/public-market-cafe-hero.png",
+    "mobileHeroImageTwo": "/assets/pmcafe/public-market-cafe-hero.png",
+    "desktopLogo": "/assets/pmcafe/public-market-logo.svg",
+    "mobileLogo": "/assets/pmcafe/public-market-logo.svg"
+  },
+  "menu": {
+    "title": "MENU - COMING SOON",
+    "image": "/assets/pmcafe/public-market-menu-coming-soon.svg"
+  },
+  "story": {
+    "copy": "Add the approved Public Market Cafe & Goods story here.\n\nUpload approved venue photographs using the image editors.",
+    "imageShadow": "/assets/pmcafe/public-market-cafe-hero.png",
+    "imageNapkin": "/assets/brand/venue-photo-placeholder.svg",
+    "imageBar": "/assets/brand/venue-photo-placeholder.svg",
+    "imageLetter": "/assets/brand/venue-photo-placeholder.svg",
+    "imageCards": "/assets/brand/venue-photo-placeholder.svg",
+    "imagePhotoBooth": "/assets/brand/venue-photo-placeholder.svg"
+  },
+  "contact": {
+    "title": "CONTACT PUBLIC MARKET CAFE & GOODS",
+    "email": "",
+    "phone": "",
+    "instagram": "",
+    "instagramLabel": ""
+  },
+  "privateEvents": {
+    "title": "Private Event Booking Inquiry",
+    "embedCode": ""
+  },
+  "careers": {
+    "title": "Join the Public Market Cafe & Goods Team",
+    "embedCode": ""
+  },
+  "reservations": {
+    "title": "Reserve at Public Market Cafe & Goods",
+    "embedCode": ""
+  },
+  "calendar": {
+    "title": "PUBLIC MARKET CAFE & GOODS THIS MONTH",
+    "events": []
+  },
+  "operatingHours": {
+    "monday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "tuesday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "wednesday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "thursday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "friday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "saturday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    },
+    "sunday": {
+      "open": false,
+      "openTime": "09:00",
+      "closeTime": "17:00"
+    }
+  }
+}

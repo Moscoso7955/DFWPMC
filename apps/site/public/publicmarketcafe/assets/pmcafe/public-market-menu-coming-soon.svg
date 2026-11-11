@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1100"
+  height="1700"
+  viewBox="0 0 1100 1700"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Public Market Cafe &amp; Goods menu coming soon</title>
+  <desc id="description">A greige and black placeholder for the forthcoming menu.</desc>
+  <rect width="1100" height="1700" fill="#b7a99a" />
+  <rect x="24" y="24" width="1052" height="1652" fill="none" stroke="#0d0d0d" stroke-width="8" />
+
+  <text
+    x="550"
+    y="190"
+    fill="#0d0d0d"
+    font-family="'Overpass Mono', monospace"
+    font-size="32"
+    letter-spacing="12"
+    text-anchor="middle"
+  >MENU</text>
+  <line x1="120" y1="255" x2="980" y2="255" stroke="#0d0d0d" stroke-width="4" />
+
+  <text
+    x="550"
+    y="595"
+    fill="#0d0d0d"
+    font-family="'Overpass Mono', monospace"
+    font-size="64"
+    font-weight="500"
+    letter-spacing="5"
+    text-anchor="middle"
+  >PUBLIC MARKET</text>
+  <text
+    x="550"
+    y="675"
+    fill="#0d0d0d"
+    font-family="'Overpass Mono', monospace"
+    font-size="34"
+    font-weight="500"
+    letter-spacing="9"
+    text-anchor="middle"
+  >CAFE &amp; GOODS</text>
+  <line x1="260" y1="760" x2="840" y2="760" stroke="#0d0d0d" stroke-width="4" />
+
+  <text
+    x="550"
+    y="1010"
+    fill="#0d0d0d"
+    font-family="'Overpass Mono', monospace"
+    font-size="70"
+    letter-spacing="14"
+    text-anchor="middle"
+  >COMING SOON</text>
+
+  <line x1="260" y1="1090" x2="840" y2="1090" stroke="#0d0d0d" stroke-width="4" />
+  <text
+    x="550"
+    y="1510"
+    fill="#0d0d0d"
+    font-family="'Overpass Mono', monospace"
+    font-size="26"
+    letter-spacing="5"
+    text-anchor="middle"
+  >MENU DETAILS TO FOLLOW</text>
+</svg>

@@ -1,12 +1,12 @@
-// Render every page of every app before a deploy.
+// Render every page of the consolidated app before a deploy.
 //
-// Starts nothing itself: run the dev servers first (willow 3112,
-// madrone 3111, publicmarketcafe 3113, publicmarket 3100), then
+// Starts nothing itself: run the apps/site dev server first (port 3110),
+// then
 //   node scripts/render-pages.mjs [outDir]
 // Screenshots land in <outDir> (default ./page-renders, git-ignored),
-// one per app/route/viewport, full page. Tipsy embeds are served by a
+// one per section/route/viewport, full page. Tipsy embeds are served by a
 // local stand-in so provider outages never block a deploy. Admin pages
-// sign in with ADMIN_PASSWORD from each app's .env.local.
+// sign in with ADMIN_PASSWORD from apps/site/.env.local.
 //
 // Exits non-zero if any route fails to render (HTTP error, Next error
 // overlay, or an empty page).
@@ -27,17 +27,19 @@ const ADMIN_ROUTES = [
   "/admin", "/admin/analytics", "/admin/calendar", "/admin/careers",
   "/admin/contact", "/admin/hours", "/admin/mailing-list", "/admin/menu",
   "/admin/private-events", "/admin/reservations", "/admin/story",
-  "/admin/submissions", "/admin/visit", "/admin/settings",
-  "/admin/settings/access", "/admin/no-access",
+  "/admin/submissions", "/admin/visit",
 ];
 
+// One app serves the hub and every venue; /admin/* without a venue prefix
+// is the collective (selector, settings, people & access).
+const PORT = 3110;
 const APPS = [
-  { name: "willow", port: 3112, basePath: "/willow", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
-  { name: "madrone", port: 3111, basePath: "/madrone", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
-  { name: "pmcafe", port: 3113, basePath: "/publicmarketcafe", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
-  { name: "hub", port: 3100, basePath: "", routes: ["/", "/visit", "/admin/login"], adminLogin: false },
+  { name: "willow", port: PORT, basePath: "/willow", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
+  { name: "madrone", port: PORT, basePath: "/madrone", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
+  { name: "pmcafe", port: PORT, basePath: "/publicmarketcafe", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
+  { name: "hub", port: PORT, basePath: "", routes: ["/", "/visit", "/admin/login", "/admin", "/admin/settings", "/admin/settings/access", "/admin/no-access"], adminLogin: true },
 ];
-const APP_DIRS = { willow: "willow", madrone: "madrone", pmcafe: "publicmarketcafe", hub: "publicmarket" };
+const APP_DIRS = { willow: "site", madrone: "site", pmcafe: "site", hub: "site" };
 
 const VIEWPORTS = [
   { label: "1440", width: 1440, height: 900 },
@@ -86,7 +88,7 @@ for (const app of APPS) {
 
     if (password) {
       // Sign the context in once so /admin routes render the editors.
-      const res = await page.request.post(`${base}/admin/api/login`, {
+      const res = await page.request.post(`http://127.0.0.1:${app.port}/admin/api/login`, {
         form: { password },
         maxRedirects: 0,
       });

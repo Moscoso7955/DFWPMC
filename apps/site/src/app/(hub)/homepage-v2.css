@@ -1,0 +1,86 @@
+.pm-home-v2 {
+  color-scheme: only light;
+  --pm-editorial-font: "Avenir Next", "Century Gothic", Arial, sans-serif;
+  --pm-gold: #f3c967;
+}
+
+.pm-home-v2 .pm-skip-link { position: fixed; z-index: 30; top: 12px; left: 12px; padding: 12px 18px; background: white; color: var(--public-market-green); font-family: var(--pm-editorial-font); transform: translateY(-180%); }
+.pm-home-v2 .pm-skip-link:focus { transform: none; }
+.pm-home-content { font-family: var(--pm-editorial-font); font-weight: 400; }
+.pm-home-content section { scroll-margin-top: 90px; }
+.pm-editorial { background: #fff; padding: 8.8vw 3% 8%; }
+.pm-editorial-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 6.5vw; max-width: 1920px; margin: 0 auto; }
+.pm-editorial-copy { min-width: 0; }
+.pm-editorial-copy h2 { margin: 0 0 5vw; color: var(--public-market-green); font-size: clamp(28px, 3.12vw, 60px); font-weight: 500; line-height: 1.62; text-transform: uppercase; letter-spacing: -.015em; }
+.pm-editorial-copy p,
+.pm-concept-list { margin: 0; color: #111; font-size: clamp(18px, 1.92vw, 37px); line-height: 1.96; }
+.pm-photo-collage { position: relative; width: 100%; }
+.pm-photo-window { position: relative; overflow: hidden; }
+.pm-photo-window img { position: absolute; display: block; max-width: none; pointer-events: none; }
+.pm-landmark-collage { aspect-ratio: 956 / 955; }
+.pm-landmark-photo { position: absolute; top: 0; left: 0; width: 65.9%; }
+.pm-landmark-detail { position: absolute; top: 30.47%; left: 51.15%; width: 48.85%; }
+.pm-landmark-ornament { position: absolute; top: 5.65%; left: 59.4%; width: 15.16%; }
+.pm-history { padding: 6.7vw 6.5% 7.8vw; background: var(--public-market-green); color: var(--public-market-bone); text-align: center; }
+.pm-history > p { max-width: 1770px; margin: 0 auto; font-size: clamp(26px, 3.42vw, 66px); line-height: 1.51; font-weight: 500; text-transform: uppercase; letter-spacing: -.018em; }
+.pm-history > p span { color: var(--pm-gold); }
+.pm-history-ornament { width: clamp(45px, 5.1vw, 100px); margin: 4.3vw auto 0; }
+.pm-culture { padding-top: 4vw; padding-bottom: 7vw; background: var(--public-market-bone); }
+.pm-culture .pm-editorial-inner { align-items: start; }
+.pm-culture-collage { aspect-ratio: 955 / 839; margin-top: 10vw; }
+.pm-culture-photo { position: absolute; top: 0; left: 0; width: 83.04%; }
+.pm-culture-detail { position: absolute; top: 58.52%; left: 42.51%; width: 57.49%; }
+.pm-culture-ornament { position: absolute; top: 58.88%; left: 20.31%; width: 17.17%; }
+.pm-culture .pm-editorial-copy h2 { margin-bottom: 4.8vw; }
+.pm-concept-list { padding: 0; list-style: none; }
+.pm-concept-list a { text-underline-offset: .2em; text-decoration-thickness: 1px; }
+.pm-concept-list a:hover { text-decoration: underline; }
+.pm-home-v2 a:focus-visible,
+.pm-home-v2 input:focus-visible,
+.pm-home-v2 button:focus-visible { outline: 2px solid var(--pm-gold); outline-offset: 5px; }
+.pm-updates { padding: 6.4vw 24px 4.2vw; background: #dd5042; color: #fff; text-align: center; }
+.pm-updates h2 { margin: 0; font-size: clamp(26px, 2.7vw, 52px); font-weight: 500; line-height: 1.4; text-transform: uppercase; letter-spacing: -.02em; }
+.pm-updates-copy { margin: 2vw 0 0; font-size: clamp(17px, 1.8vw, 34px); line-height: 1.65; }
+.pm-updates-form { width: min(100%, 880px); margin: 4.4vw auto 0; }
+.pm-updates-row { display: grid; grid-template-columns: 2.15fr 1fr; gap: 16px; }
+.pm-updates input { width: 100%; min-width: 0; min-height: clamp(60px, 6.7vw, 108px); border: 2px solid #fff; border-radius: 0; padding: 18px 28px; background: #fff; color: #222; font: inherit; font-size: clamp(18px, 1.8vw, 30px); }
+.pm-updates input::placeholder { color: #848484; opacity: 1; }
+.pm-updates button { min-height: 60px; border: 2px solid #fff; border-radius: 0; padding: 16px 24px; background: transparent; color: #fff; font-family: inherit; font-size: clamp(18px, 1.8vw, 30px); font-weight: 500; cursor: pointer; transition: background 160ms, color 160ms; }
+.pm-updates button:hover { background: #fff; color: #9c2e23; }
+.pm-updates button:disabled { cursor: wait; opacity: .75; }
+.pm-updates-note { margin: 20px 0 0; font-size: 13px; line-height: 1.5; }
+.pm-updates-status { min-height: 1.5em; margin: 10px 0 0; font-size: 15px; line-height: 1.5; }
+.pm-home-footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 3% calc(28px + 100vw / 9); background: var(--public-market-bone); color: var(--public-market-green); font-size: 13px; line-height: 1.5; }
+.pm-home-footer p { margin: 0; }
+.pm-home-footer nav { display: flex; gap: 28px; }
+
+@media (max-width: 1000px) and (min-width: 761px) {
+  .pm-editorial-copy p, .pm-concept-list { font-size: 18px; line-height: 1.75; }
+  .pm-editorial-copy h2 { font-size: 30px; }
+}
+
+@media (max-width: 760px) {
+  .pm-editorial { padding: 56px 24px; }
+  .pm-editorial-inner { grid-template-columns: 1fr; gap: 38px; }
+  .pm-photo-collage { width: min(100%, 540px); margin-inline: auto; }
+  .pm-editorial-copy h2 { margin-bottom: 22px; font-size: clamp(27px, 7vw, 38px); line-height: 1.5; }
+  .pm-editorial-copy h2 br { display: none; }
+  .pm-editorial-copy p, .pm-concept-list { font-size: 18px; line-height: 1.85; }
+  .pm-history { padding: 52px 24px; }
+  .pm-history > p { font-size: clamp(24px, 6.1vw, 34px); line-height: 1.65; }
+  .pm-history-ornament { width: 48px; margin-top: 32px; }
+  .pm-culture-collage { margin-top: 0; }
+  .pm-concept-list li { margin-top: 14px; }
+  .pm-updates { padding: 52px 24px 38px; }
+  .pm-updates h2 { font-size: 27px; }
+  .pm-updates-copy { margin-top: 18px; font-size: 18px; line-height: 1.75; }
+  .pm-updates-form { margin-top: 28px; }
+  .pm-updates-row { grid-template-columns: 1fr; gap: 12px; }
+  .pm-updates input { min-height: 62px; padding: 16px 20px; font-size: 18px; }
+  .pm-updates button { min-height: 58px; font-size: 18px; }
+  .pm-home-footer { flex-direction: column; align-items: flex-start; gap: 18px; padding: 26px 24px 180px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pm-home-v2 *, .pm-home-v2 *::before { transition: none !important; }
+}
