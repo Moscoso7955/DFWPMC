@@ -27,6 +27,16 @@ const DEFAULT_PRIVATE_EVENTS_EMBED = "";
 const DEFAULT_JOIN_EMBED =
   '<iframe src="https://tipsyapp.io/embed/join/fort-worth-public-market-collective" title="Join rewards" width="100%" height="560" style="border:0;max-width:420px" loading="lazy"></iframe>';
 
+// Tipsy's full apply page (/apply/<slug>) keeps its own padding and
+// scrolls. The embed version (/apply/embed/<slug>) fills the frame and
+// posts its height. Point any careers embed at the embed version.
+export function toTipsyApplyEmbed(embedCode: string): string {
+  return embedCode.replace(
+    /(https?:\/\/(?:www\.)?tipsyapp\.io)\/apply\/(?!embed\/)([\w-]+)/g,
+    "$1/apply/embed/$2",
+  );
+}
+
 function normalizeContent(content: SiteContent): SiteContent {
   if (content.contact && typeof content.contact.instagramLabel !== "string") {
     content.contact.instagramLabel = "";
@@ -42,12 +52,19 @@ function normalizeContent(content: SiteContent): SiteContent {
   } else {
     if (typeof content.careers.title !== "string") content.careers.title = "Join the Willow Team";
     if (typeof content.careers.embedCode !== "string") content.careers.embedCode = "";
+    content.careers.embedCode = toTipsyApplyEmbed(content.careers.embedCode);
   }
   if (!content.reservations || typeof content.reservations !== "object") {
     content.reservations = { title: "Reserve at Willow", embedCode: "" };
   } else {
     if (typeof content.reservations.title !== "string") content.reservations.title = "Reserve at Willow";
     if (typeof content.reservations.embedCode !== "string") content.reservations.embedCode = "";
+  }
+  if (content.calendar && !Array.isArray(content.calendar.closedDates)) {
+    content.calendar.closedDates = [];
+  }
+  if (content.calendar && !Array.isArray(content.calendar.openDates)) {
+    content.calendar.openDates = [];
   }
   if (!content.operatingHours || typeof content.operatingHours !== "object") {
     content.operatingHours = { ...DEFAULT_OPERATING_HOURS };

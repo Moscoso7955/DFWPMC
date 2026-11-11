@@ -3,7 +3,7 @@ import { venuePath } from "@/lib/venue";
 import Link from "next/link";
 import CalendarPrototype from "./CalendarPrototype";
 import HolderPage from "./HolderPage";
-import type { CalendarContent, CalendarContentField } from "@/lib/siteContentSchema";
+import type { CalendarContent, CalendarContentField, OperatingHoursContent } from "@/lib/siteContentSchema";
 import { CALENDAR_FIELD_LABELS } from "@/lib/siteContentSchema";
 import type { TicketedEvent } from "@/lib/ticketingTypes";
 type TicketedEventPreview = Pick<TicketedEvent, "id" | "slug" | "title" | "startsAt" | "doorsAt" | "imageUrl" | "ageRestriction"> & {
@@ -13,6 +13,7 @@ type TicketedEventPreview = Pick<TicketedEvent, "id" | "slug" | "title" | "start
 type CalendarPageViewProps = {
     basePath?: string;
     content: CalendarContent;
+    operatingHours?: OperatingHoursContent;
     ticketedEvents?: TicketedEventPreview[];
     isAdmin?: boolean;
     onEdit?: (field: CalendarContentField) => void;
@@ -49,7 +50,7 @@ function formatEventTime(iso: string) {
         hour12: true,
     });
 }
-export default function CalendarPageView({ basePath = "", content, ticketedEvents = [], isAdmin = false, onEdit, onDayEdit, }: CalendarPageViewProps) {
+export default function CalendarPageView({ basePath = "", content, operatingHours, ticketedEvents = [], isAdmin = false, onEdit, onDayEdit, }: CalendarPageViewProps) {
     return (<HolderPage basePath={basePath} label="page 2 holder - calendar" pageClassName="page--calendar">
       <section className="calendar-page" aria-labelledby="calendar-page-title">
         <div className="calendar-heading">
@@ -91,7 +92,7 @@ export default function CalendarPageView({ basePath = "", content, ticketedEvent
           </section>) : null}
 
         <div className="calendar-prototype-band">
-          <CalendarPrototype events={content.events} isAdmin={isAdmin} onAdminDayEdit={onDayEdit}/>
+          <CalendarPrototype events={content.events} closedDates={content.closedDates} openDates={content.openDates} operatingHours={operatingHours} isAdmin={isAdmin} onAdminDayEdit={onDayEdit}/>
           <Link className="calendar-event-inquiry" href={`${basePath}/private-events`}>
             NEED TO INQUIRE ABOUT AN EVENT? <span>CLICK HERE</span>
           </Link>

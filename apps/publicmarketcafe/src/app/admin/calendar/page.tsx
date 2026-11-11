@@ -13,6 +13,6 @@ export default async function AdminCalendarPage() {
           Set Operating Hours
         </a>
       </div>
-      <AdminCalendarEditor initialContent={content.calendar}/>
+      <AdminCalendarEditor initialContent={content.calendar} operatingHours={content.operatingHours}/>
     </AdminShell>);
 }

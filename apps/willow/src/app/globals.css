@@ -697,15 +697,27 @@ body.drawer-open .hamburger {
   line-height: 1.15;
 }
 
-.calendar-note--royals {
-  background: #004687;
-  border-color: #bd9b60;
+.calendar-note--rangers {
+  background: #003278;
+  border-color: #c0111f;
   color: var(--cream);
 }
 
-.calendar-note--chiefs {
-  background: #e31837;
-  border-color: #ffb612;
+.calendar-note--cowboys {
+  background: #002a5c;
+  border-color: #b0b7bc;
+  color: var(--cream);
+}
+
+.calendar-note--mavs {
+  background: #0064b1;
+  border-color: #bbc4ca;
+  color: var(--cream);
+}
+
+.calendar-note--stars {
+  background: #20864c;
+  border-color: #111111;
   color: var(--cream);
 }
 
@@ -3521,20 +3533,6 @@ button.blackbook-photo--zoomable:focus-visible {
   text-transform: uppercase;
   font-size: 0.86rem;
   letter-spacing: 0.04em;
-}
-
-.admin-hours-table input[type="time"] {
-  min-height: 40px;
-  padding: 6px 10px;
-  border: 2px solid var(--black);
-  background: #fff;
-  color: var(--black);
-  font: inherit;
-}
-
-.admin-hours-table input[type="time"]:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
 }
 
 .admin-hours-row--closed th[scope="row"],
@@ -7510,3 +7508,346 @@ button.blackbook-photo--zoomable:focus-visible {
   .contact-columns .join-embed { order: -1; margin-top: 0; }
   .contact-columns .contact-action { padding-top: 22px; border-top: var(--frame-line); }
 }
+
+/* ---------- Closed day on the calendar ----------
+   One-off closures set per date in the admin day editor. Independent
+   of operating hours — the whole cell goes brand primary. */
+
+.calendar-day--closed,
+.calendar-day--closed:hover,
+.calendar-day--closed:focus-visible,
+.calendar-day--closed.calendar-day--today {
+  background: var(--deep-red);
+  color: var(--cream);
+}
+
+.calendar-day--closed.calendar-day--today {
+  box-shadow: none;
+}
+
+.calendar-day--closed .calendar-date,
+.calendar-day--closed.calendar-day--today .calendar-date {
+  color: var(--cream);
+}
+
+.calendar-day--closed .calendar-today-badge {
+  background: var(--cream);
+  color: var(--deep-red);
+  border-color: var(--cream);
+}
+
+.calendar-day--closed.calendar-day--outside {
+  opacity: 0.6;
+}
+
+.calendar-closed-note {
+  align-self: end;
+  color: var(--cream);
+  text-transform: uppercase;
+  font-size: clamp(0.58rem, 1vw, 0.74rem);
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+
+@media (max-width: 760px) {
+  .calendar-today-badge {
+    top: 3px;
+    right: 3px;
+    padding: 1px 3px;
+    font-size: 0.42rem;
+    letter-spacing: 0.06em;
+  }
+
+  .calendar-closed-note {
+    font-size: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+.admin-day-closed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 10px 0 18px;
+  padding: 12px 14px;
+  border: 2px solid var(--deep-red);
+  background: var(--cream);
+  color: var(--black);
+}
+
+.admin-day-closed p {
+  margin: 0;
+  flex: 1 1 200px;
+  font-size: 0.82rem;
+}
+
+.admin-day-closed button {
+  min-height: 38px;
+  padding: 10px 14px;
+  border: 2px solid var(--deep-red);
+  background: var(--deep-red);
+  color: var(--cream);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.admin-day-closed--on {
+  background: var(--deep-red);
+  color: var(--cream);
+}
+
+.admin-day-closed--on button {
+  background: var(--cream);
+  color: var(--deep-red);
+  border-color: var(--cream);
+}
+
+.admin-day-closed-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.admin-day-closed .admin-day-open-button {
+  border-color: var(--blue);
+  background: var(--blue);
+  color: var(--cream);
+}
+
+.admin-day-closed--open {
+  border-color: var(--blue);
+}
+
+.admin-day-closed--open > p {
+  color: var(--black);
+}
+
+/* Regular weekly day off (operating hours) — quiet, unlike a one-off
+   closed date which goes full brand color. */
+.calendar-day--off {
+  background: repeating-linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--brand-ink) 7%, var(--brand-paper)) 0,
+    color-mix(in srgb, var(--brand-ink) 7%, var(--brand-paper)) 6px,
+    var(--cream) 6px,
+    var(--cream) 12px
+  );
+}
+
+.calendar-day--off .calendar-date {
+  color: color-mix(in srgb, var(--brand-ink) 45%, transparent);
+}
+
+.calendar-day--off.calendar-day--today {
+  background: var(--yellow);
+}
+
+.calendar-off-note {
+  align-self: end;
+  color: var(--deep-red);
+  opacity: 0.6;
+  text-transform: uppercase;
+  font-size: clamp(0.55rem, 0.9vw, 0.66rem);
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 760px) {
+  .calendar-off-note {
+    font-size: 0.5rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+.admin-toolbar-unpublished {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 10px;
+  background: var(--yellow);
+  color: var(--deep-red);
+  border: 2px solid var(--deep-red);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  box-shadow: 0 2px 12px rgba(34, 32, 32, 0.18);
+}
+
+.admin-toolbar button.admin-toolbar-publish--pending {
+  border-color: var(--deep-red);
+  background: var(--deep-red);
+  color: var(--cream);
+}
+
+/* Date-only and time-only pickers (admin, upload). */
+.venue-picker-panel--date {
+  width: min(340px, calc(100vw - 32px));
+}
+
+.venue-picker-panel--time {
+  width: min(330px, calc(100vw - 32px));
+}
+
+.venue-picker-panel--date .venue-picker-body,
+.venue-picker-panel--time .venue-picker-body {
+  grid-template-columns: 1fr;
+}
+
+.venue-picker-panel--date .venue-picker-calendar {
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.venue-picker-panel--time .venue-picker-times {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  contain: none;
+  max-height: 300px;
+}
+
+.venue-picker-panel--time .venue-picker-slot {
+  border-right: 1px solid rgba(116, 4, 6, 0.2);
+}
+
+.venue-picker-slot--extra {
+  grid-column: 1 / -1;
+  background: var(--yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.venue-picker-day--marked {
+  position: relative;
+}
+
+.venue-picker-day--marked::after {
+  content: "★";
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: var(--red);
+}
+
+.venue-picker-day--selected.venue-picker-day--marked::after {
+  color: var(--yellow);
+}
+
+.venue-picker-legend {
+  color: var(--cream);
+  font-size: 0.72rem;
+}
+
+.venue-picker-legend span {
+  color: var(--yellow);
+}
+
+.venue-picker-trigger:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Keeps the browser's "fill in this field" bubble working, invisibly. */
+.venue-picker-required {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Light tone: white field with a deep-red line, like the admin inputs. */
+.venue-picker--light .venue-picker-trigger {
+  min-height: 40px;
+  padding: 0 10px;
+  border: 2px solid var(--deep-red);
+  background: #fff;
+  color: var(--black);
+  font-size: 0.82rem;
+}
+
+.venue-picker--light .venue-picker-trigger--empty {
+  color: rgba(34, 32, 32, 0.45);
+}
+
+.venue-picker--light .venue-picker-icon {
+  color: var(--deep-red);
+}
+
+.venue-picker--light .venue-picker-trigger:focus-visible,
+.venue-picker--light .venue-picker-trigger[aria-expanded="true"] {
+  outline: 2px solid var(--deep-red);
+  outline-offset: 1px;
+  border-color: var(--deep-red);
+  background: var(--yellow);
+}
+
+/* Match the inputs next to each picker. */
+.pb-editor .venue-picker-trigger {
+  min-height: 36px;
+  padding: 6px 8px;
+  font-size: 0.84rem;
+}
+
+.pb-mini-list .venue-picker-trigger,
+.pb-inline-add .venue-picker-trigger {
+  min-height: 34px;
+  padding: 5px 8px;
+  border: 1px solid rgba(116, 4, 6, 0.4);
+}
+
+.pb-inline-add .venue-picker {
+  flex: 0 0 180px;
+}
+
+.admin-upload-label .venue-picker-trigger,
+.admin-hours-table .venue-picker-trigger {
+  min-height: 44px;
+  padding: 9px 10px;
+  border: 2px solid var(--black);
+  font-size: inherit;
+}
+
+.admin-hours-table .venue-picker-trigger {
+  min-height: 40px;
+  padding: 6px 10px;
+  min-width: 128px;
+}
+
+.upload-field .venue-picker-trigger {
+  min-height: 46px;
+  padding: 0 12px;
+  border: var(--frame-line);
+  font-size: 0.86rem;
+}
+
+@media (max-width: 560px) {
+  .venue-picker-panel--time .venue-picker-times {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-height: min(52svh, 420px);
+  }
+
+  .venue-picker-panel--date,
+  .venue-picker-panel--time {
+    width: auto;
+  }
+
+  .admin-hours-table .venue-picker-trigger {
+    min-width: 0;
+    min-height: 36px;
+    padding: 4px 6px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .admin-hours-table .venue-picker-icon {
+    display: none;
+  }
+}
+

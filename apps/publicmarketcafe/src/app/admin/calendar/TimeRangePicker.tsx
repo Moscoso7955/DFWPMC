@@ -1,5 +1,7 @@
 "use client";
 
+import VenueDateTimeField from "@/app/components/VenueDateTimeField";
+
 // Start/end pickers for site calendar items. Stores the same text the
 // calendar already shows ("9PM-CLOSE", "8PM-11PM", "6:30PM"), which the
 // operating-hours filter reads the start time from.
@@ -10,16 +12,6 @@ type Props = {
 };
 
 type End = number | "close" | null;
-
-// 15-minute slots in bar order: noon through 11:45 AM the next morning.
-const SLOTS = Array.from({ length: 96 }, (_, i) => (720 + i * 15) % 1440);
-
-function label(minutes: number): string {
-  const h24 = Math.floor(minutes / 60);
-  const m = minutes % 60;
-  const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
-  return `${h12}:${String(m).padStart(2, "0")} ${h24 >= 12 ? "PM" : "AM"}`;
-}
 
 function compact(minutes: number): string {
   const h24 = Math.floor(minutes / 60);
@@ -59,46 +51,45 @@ export function formatTimeRange(start: number | null, end: End): string {
   return `${compact(start)}-${end === "close" ? "CLOSE" : compact(end)}`;
 }
 
+const toHHMM = (minutes: number) => `${String(Math.floor(minutes / 60)).padStart(2, "0")}:${String(minutes % 60).padStart(2, "0")}`;
+const fromHHMM = (value: string) => {
+  const [h, m] = value.split(":").map(Number);
+  return h * 60 + m;
+};
+
 export default function TimeRangePicker({ value, onChange }: Props) {
   const { start, end } = parseTimeRange(value);
   const unreadable = Boolean(value.trim()) && start === null;
-  const withCurrent = (slots: number[], current: number | null) =>
-    current !== null && !slots.includes(current) ? [current, ...slots] : slots;
 
   return (
     <div className="admin-time-range">
       <label className="admin-upload-label">
         <span>Start time</span>
-        <select
-          value={start ?? ""}
-          onChange={(e) => onChange(formatTimeRange(e.target.value === "" ? null : Number(e.target.value), end))}
-        >
-          <option value="">Pick a time</option>
-          {withCurrent(SLOTS, start).map((slot) => (
-            <option key={slot} value={slot}>
-              {label(slot)}
-            </option>
-          ))}
-        </select>
+        <VenueDateTimeField
+          mode="time"
+          tone="light"
+          ariaLabel="Start time"
+          value={start === null ? "" : toHHMM(start)}
+          dayStart={720}
+          defaultTime="21:00"
+          onChange={(v) => onChange(formatTimeRange(v ? fromHHMM(v) : null, end))}
+        />
       </label>
       <label className="admin-upload-label">
         <span>End time</span>
-        <select
-          value={end === null ? "" : String(end)}
+        <VenueDateTimeField
+          mode="time"
+          tone="light"
+          ariaLabel="End time"
+          value={end === null ? "" : end === "close" ? "close" : toHHMM(end)}
+          placeholder="No end time"
+          clearLabel="No end time"
+          extras={[{ value: "close", label: "Close" }]}
+          dayStart={720}
+          defaultTime="23:00"
           disabled={start === null}
-          onChange={(e) => {
-            const next = e.target.value;
-            onChange(formatTimeRange(start, next === "" ? null : next === "close" ? "close" : Number(next)));
-          }}
-        >
-          <option value="">No end time</option>
-          <option value="close">Close</option>
-          {withCurrent(SLOTS, typeof end === "number" ? end : null).map((slot) => (
-            <option key={slot} value={slot}>
-              {label(slot)}
-            </option>
-          ))}
-        </select>
+          onChange={(v) => onChange(formatTimeRange(start, v === "" ? null : v === "close" ? "close" : fromHHMM(v)))}
+        />
       </label>
       {unreadable ? (
         <p className="admin-time-range-note">Current time &ldquo;{value}&rdquo; isn&apos;t a clock time. Pick one to replace it.</p>

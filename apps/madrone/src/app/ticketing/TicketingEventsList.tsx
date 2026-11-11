@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { TicketedEvent } from "@/lib/ticketingTypes";
-import VenueDateTimeField from "./VenueDateTimeField";
+import VenueDateTimeField from "@/app/components/VenueDateTimeField";
 type Props = {
     initialEvents: TicketedEvent[];
 };

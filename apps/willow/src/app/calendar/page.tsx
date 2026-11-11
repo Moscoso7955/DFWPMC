@@ -70,7 +70,7 @@ export default async function CalendarPage() {
   // bypass the open-hours filter and always render.
   const gatedEvents = [...content.calendar.events, ...sportsEvents];
   const visibleEvents = [
-    ...filterEventsByHours(gatedEvents, content.operatingHours),
+    ...filterEventsByHours(gatedEvents, content.operatingHours, content.calendar.openDates),
     ...ticketedNotes,
   ];
 
@@ -80,6 +80,7 @@ export default async function CalendarPage() {
         ...content.calendar,
         events: visibleEvents,
       }}
+      operatingHours={content.operatingHours}
       ticketedEvents={ticketedPreviews}
     />
   );

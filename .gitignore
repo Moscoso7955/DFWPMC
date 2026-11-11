@@ -15,3 +15,5 @@
 *.pem
 .secrets/
 .vercel
+**/page-renders/
+node_modules

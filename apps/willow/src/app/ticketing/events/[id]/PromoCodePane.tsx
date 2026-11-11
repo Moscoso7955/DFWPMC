@@ -2,7 +2,7 @@
 import { venuePath } from "@/lib/venue";
 import { useState } from "react";
 import type { PromoCode } from "@/lib/ticketingTypes";
-import VenueDateTimeField from "../../VenueDateTimeField";
+import VenueDateTimeField from "@/app/components/VenueDateTimeField";
 type Props = {
     eventId: string;
     initialPromos: PromoCode[];

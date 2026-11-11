@@ -57,6 +57,11 @@ export type CalendarEventContent = {
 export type CalendarContent = {
   title: string;
   events: CalendarEventContent[];
+  // "YYYY-MM-DD" one-off overrides of the weekly operating hours.
+  // Closed hides everything that day; open shows every item that
+  // day even if it falls outside the weekly hours.
+  closedDates?: string[];
+  openDates?: string[];
 };
 
 export type WeekdayKey =

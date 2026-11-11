@@ -2,11 +2,13 @@
 import { venuePath } from "@/lib/venue";
 import { useState } from "react";
 import CalendarPageView from "@/app/components/CalendarPageView";
-import type { CalendarContent, CalendarContentField, CalendarEventContent } from "@/lib/siteContentSchema";
+import type { CalendarContent, CalendarContentField, CalendarEventContent, OperatingHoursContent } from "@/lib/siteContentSchema";
 import { CALENDAR_FIELD_LABELS } from "@/lib/siteContentSchema";
 import TimeRangePicker from "./TimeRangePicker";
+import VenueDateTimeField from "@/app/components/VenueDateTimeField";
 type AdminCalendarEditorProps = {
     initialContent: CalendarContent;
+    operatingHours?: OperatingHoursContent;
 };
 type EventDraft = {
     title: string;
@@ -36,7 +38,7 @@ function formatAdminDate(date: string) {
         year: "numeric",
     });
 }
-export default function AdminCalendarEditor({ initialContent }: AdminCalendarEditorProps) {
+export default function AdminCalendarEditor({ initialContent, operatingHours }: AdminCalendarEditorProps) {
     const [content, setContent] = useState(initialContent);
     const [activeField, setActiveField] = useState<CalendarContentField | null>(null);
     const [titleDraft, setTitleDraft] = useState(initialContent.title);
@@ -48,6 +50,8 @@ export default function AdminCalendarEditor({ initialContent }: AdminCalendarEdi
     const [deleteCandidate, setDeleteCandidate] = useState<CalendarEventContent | null>(null);
     const [status, setStatus] = useState("");
     const activeLabel = activeField ? CALENDAR_FIELD_LABELS[activeField] : "";
+    const selectedDateClosed = selectedDate ? (content.closedDates ?? []).includes(selectedDate) : false;
+    const selectedDateOpen = selectedDate ? (content.openDates ?? []).includes(selectedDate) : false;
     const selectedDateEvents = selectedDate
         ? content.events.filter((event) => event.date === selectedDate)
         : [];
@@ -164,6 +168,25 @@ export default function AdminCalendarEditor({ initialContent }: AdminCalendarEdi
         setMoveDraft(EMPTY_MOVE_DRAFT);
         window.setTimeout(() => setStatus(""), 450);
     };
+    const setDayStatus = async (dayStatus: "open" | "closed" | "default") => {
+        if (!selectedDate) return;
+        setStatus("Saving...");
+        const saveResponse = await fetch(venuePath("/admin/api/calendar"), {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ date: selectedDate, status: dayStatus }),
+        });
+        if (!saveResponse.ok) {
+            setStatus("Save failed.");
+            return;
+        }
+        const saveData = (await saveResponse.json()) as {
+            content: { calendar: CalendarContent };
+        };
+        setContent(saveData.content.calendar);
+        const label = { open: "Marked open", closed: "Marked closed", default: "Back to regular hours" }[dayStatus];
+        setStatus(`${label}. Publish to go live.`);
+    };
     const updateEventDraft = (field: keyof EventDraft, value: string) => {
         setEventDraft((currentDraft) => ({ ...currentDraft, [field]: value }));
     };
@@ -171,7 +194,7 @@ export default function AdminCalendarEditor({ initialContent }: AdminCalendarEdi
         setMoveDraft((currentDraft) => ({ ...currentDraft, [field]: value }));
     };
     return (<>
-      <CalendarPageView basePath="/admin" content={content} isAdmin onEdit={setActiveField} onDayEdit={openDayEditor}/>
+      <CalendarPageView basePath="/admin" content={content} operatingHours={operatingHours} isAdmin onEdit={setActiveField} onDayEdit={openDayEditor}/>
 
       {activeField ? (<div className="admin-modal" role="dialog" aria-modal="true" aria-label={`Edit ${activeLabel}`}>
           <div className="admin-modal-panel">
@@ -203,6 +226,26 @@ export default function AdminCalendarEditor({ initialContent }: AdminCalendarEdi
             </button>
             <p className="admin-modal-kicker">Calendar Page</p>
             <h2>{formatAdminDate(selectedDate)}</h2>
+            <div className={`admin-day-closed${selectedDateClosed ? " admin-day-closed--on" : ""}${selectedDateOpen ? " admin-day-closed--open" : ""}`}>
+              <p>
+                {selectedDateClosed
+                ? "Closed this day. The calendar shows “We are closed today” instead of events."
+                : selectedDateOpen
+                    ? "Open this day. Every event on this date shows, even outside regular hours."
+                    : "Following regular operating hours. Override just this date:"}
+              </p>
+              <div className="admin-day-closed-actions">
+                {selectedDateClosed || selectedDateOpen ? (<button type="button" onClick={() => setDayStatus("default")}>
+                    Use Regular Hours
+                  </button>) : null}
+                {!selectedDateOpen ? (<button type="button" className="admin-day-open-button" onClick={() => setDayStatus("open")}>
+                    Mark Day as Open
+                  </button>) : null}
+                {!selectedDateClosed ? (<button type="button" onClick={() => setDayStatus("closed")}>
+                    Mark Day as Closed
+                  </button>) : null}
+              </div>
+            </div>
             {selectedDateEvents.length ? (<div className="admin-day-events">
                 {selectedDateEvents.map((event) => (<article className="admin-day-event" key={event.id}>
                     <div>
@@ -222,7 +265,7 @@ export default function AdminCalendarEditor({ initialContent }: AdminCalendarEdi
                     {movingEventId === event.id ? (<div className="admin-move-event-form">
                         <label className="admin-upload-label">
                           <span>New date</span>
-                          <input type="date" value={moveDraft.date} onChange={(changeEvent) => updateMoveDraft("date", changeEvent.target.value)}/>
+                          <VenueDateTimeField mode="date" tone="light" ariaLabel="New date" value={moveDraft.date} allowClear={false} onChange={(value) => updateMoveDraft("date", value)}/>
                         </label>
                         <TimeRangePicker value={moveDraft.time} onChange={(value) => updateMoveDraft("time", value)}/>
                         <div className="admin-modal-actions admin-modal-actions--inline">

@@ -7,7 +7,7 @@ import CompModal from "./CompModal";
 import PromoCodePane from "./PromoCodePane";
 import SongField from "./SongField";
 import type { PromoCode, TicketTier, TicketedEvent } from "@/lib/ticketingTypes";
-import VenueDateTimeField from "../../VenueDateTimeField";
+import VenueDateTimeField from "@/app/components/VenueDateTimeField";
 type Props = {
     initialEvent: TicketedEvent;
     initialTiers: TicketTier[];

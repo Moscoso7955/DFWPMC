@@ -106,11 +106,15 @@ export function isEventWithinHours(
   return inWindow(eventMinutes, openMinutes, closeMinutes);
 }
 
+// `openDates` are one-off "Mark day as open" overrides: everything on
+// those dates shows regardless of the weekly hours.
 export function filterEventsByHours(
   events: CalendarEventContent[],
   hours: OperatingHoursContent,
+  openDates: string[] = [],
 ): CalendarEventContent[] {
-  return events.filter((event) => isEventWithinHours(event, hours));
+  const open = new Set(openDates);
+  return events.filter((event) => open.has(event.date) || isEventWithinHours(event, hours));
 }
 
 export { WEEKDAY_KEYS };

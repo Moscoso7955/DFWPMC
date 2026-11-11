@@ -2,7 +2,8 @@
 import { venuePath } from "@/lib/venue";
 import { useState } from "react";
 import { getCalendarNoteVariant } from "@/lib/sportsSchedule";
-import type { CalendarEventContent } from "@/lib/siteContentSchema";
+import type { CalendarEventContent, OperatingHoursContent, WeekdayKey } from "@/lib/siteContentSchema";
+const GET_DAY_TO_KEY: WeekdayKey[] = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 type CalendarCell = {
     date: Date;
@@ -12,6 +13,9 @@ type CalendarCell = {
 };
 type CalendarPrototypeProps = {
     events: CalendarEventContent[];
+    closedDates?: string[];
+    openDates?: string[];
+    operatingHours?: OperatingHoursContent;
     isAdmin?: boolean;
     onAdminDayEdit?: (date: string) => void;
 };
@@ -47,7 +51,16 @@ function getMonthGrid(date: Date, events: CalendarEventContent[]): CalendarCell[
         };
     });
 }
-export default function CalendarPrototype({ events, isAdmin = false, onAdminDayEdit }: CalendarPrototypeProps) {
+export default function CalendarPrototype({ events, closedDates = [], openDates = [], operatingHours, isAdmin = false, onAdminDayEdit }: CalendarPrototypeProps) {
+    const closed = new Set(closedDates);
+    const opened = new Set(openDates);
+    // Regular weekly day off (per operating hours) — shown subtly, unlike a
+    // one-off closed date. A day with something on it isn't treated as off.
+    const isWeeklyDayOff = (date: Date, hasEvents: boolean) => {
+        if (!operatingHours || hasEvents || opened.has(getDateKey(date)))
+            return false;
+        return operatingHours[GET_DAY_TO_KEY[date.getDay()]]?.open === false;
+    };
     const baseMonth = (() => {
         const today = new Date();
         return new Date(today.getFullYear(), today.getMonth(), 1);
@@ -83,7 +96,9 @@ export default function CalendarPrototype({ events, isAdmin = false, onAdminDayE
         {cells.map((cell) => {
             const cellKey = getDateKey(cell.date);
             const isToday = cellKey === todayKey();
-            return (<button type="button" className={`${cell.isCurrentMonth ? "calendar-day" : "calendar-day calendar-day--outside"}${isAdmin ? " calendar-day--admin" : ""}${isToday ? " calendar-day--today" : ""}`} key={cell.date.toISOString()} onClick={() => {
+            const isClosed = closed.has(cellKey);
+            const isDayOff = !isClosed && cell.isCurrentMonth && isWeeklyDayOff(cell.date, Boolean(cell.events));
+            return (<button type="button" className={`${cell.isCurrentMonth ? "calendar-day" : "calendar-day calendar-day--outside"}${isAdmin ? " calendar-day--admin" : ""}${isToday ? " calendar-day--today" : ""}${isClosed ? " calendar-day--closed" : ""}${isDayOff ? " calendar-day--off" : ""}`} key={cell.date.toISOString()} onClick={() => {
                     if (isAdmin && onAdminDayEdit) {
                         onAdminDayEdit(getDateKey(cell.date));
                         return;
@@ -92,7 +107,7 @@ export default function CalendarPrototype({ events, isAdmin = false, onAdminDayE
                 }}>
             {isToday ? <span className="calendar-today-badge" aria-hidden="true">Today</span> : null}
             <span className="calendar-date">{cell.dayNumber}</span>
-            {cell.events ? (<span className="calendar-notes">
+            {isClosed ? (<span className="calendar-closed-note">We are closed today</span>) : isDayOff ? (<span className="calendar-off-note">Closed</span>) : cell.events ? (<span className="calendar-notes">
                 {cell.events.map((event) => {
                         const variant = getCalendarNoteVariant(event.id);
                         const className = variant
@@ -114,7 +129,9 @@ export default function CalendarPrototype({ events, isAdmin = false, onAdminDayE
             </button>
             <p className="calendar-modal-kicker">Itinerary</p>
             <h2>{formatCalendarDate(selectedDay.date)}</h2>
-            {selectedDay.events?.length ? (<div className="calendar-modal-events">
+            {closed.has(getDateKey(selectedDay.date)) ? (<p className="calendar-modal-empty">We are closed today.</p>) : isWeeklyDayOff(selectedDay.date, Boolean(selectedDay.events)) ? (<p className="calendar-modal-empty">
+                Closed on {selectedDay.date.toLocaleDateString("en-US", { weekday: "long" })}s.
+              </p>) : selectedDay.events?.length ? (<div className="calendar-modal-events">
                 {selectedDay.events.map((event) => (<article className="calendar-modal-event" key={event.id}>
                     <dl>
                       <div>

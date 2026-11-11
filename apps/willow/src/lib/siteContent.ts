@@ -146,6 +146,43 @@ export async function moveDraftCalendarEvent(eventId: string, date: string, time
   return content;
 }
 
+function stableJson(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(stableJson).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${stableJson((value as Record<string, unknown>)[key])}`)
+      .join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+/** True when the admin draft differs from what the live site shows. */
+export async function hasUnpublishedChanges() {
+  try {
+    const [draft, published] = await Promise.all([getDraftSiteContent(), getPublishedSiteContent()]);
+    return stableJson(draft) !== stableJson(published);
+  } catch {
+    return false;
+  }
+}
+
+export type CalendarDayStatus = "open" | "closed" | "default";
+
+export async function setDraftCalendarDayStatus(date: string, status: CalendarDayStatus) {
+  const content = await getDraftSiteContent();
+  const closed = new Set(content.calendar.closedDates ?? []);
+  const open = new Set(content.calendar.openDates ?? []);
+  closed.delete(date);
+  open.delete(date);
+  if (status === "closed") closed.add(date);
+  if (status === "open") open.add(date);
+  content.calendar.closedDates = [...closed].sort();
+  content.calendar.openDates = [...open].sort();
+  await writeSiteContent("draft", content);
+  return content;
+}
+
 export async function publishDraftContent() {
   await copySiteContent("draft", "published");
   return getPublishedSiteContent();

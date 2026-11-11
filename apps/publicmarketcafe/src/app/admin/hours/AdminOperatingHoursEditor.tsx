@@ -1,49 +1,57 @@
 "use client";
+
 import { venuePath } from "@/lib/venue";
+
 import { useState } from "react";
 import { WEEKDAY_KEYS, WEEKDAY_LABELS, type OperatingHoursContent } from "@/lib/siteContentSchema";
 import AdminBackLink from "../AdminBackLink";
+import VenueDateTimeField from "@/app/components/VenueDateTimeField";
+
 type AdminOperatingHoursEditorProps = {
-    initialHours: OperatingHoursContent;
+  initialHours: OperatingHoursContent;
 };
+
 export default function AdminOperatingHoursEditor({ initialHours }: AdminOperatingHoursEditorProps) {
-    const [hours, setHours] = useState<OperatingHoursContent>(initialHours);
-    const [status, setStatus] = useState("");
-    const [saving, setSaving] = useState(false);
-    const updateDay = (key: (typeof WEEKDAY_KEYS)[number], patch: Partial<OperatingHoursContent[(typeof WEEKDAY_KEYS)[number]]>) => {
-        setHours((current) => ({
-            ...current,
-            [key]: { ...current[key], ...patch },
-        }));
-    };
-    const save = async () => {
-        setSaving(true);
-        setStatus("Saving draft...");
-        try {
-            const response = await fetch(venuePath("/admin/api/hours"), {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ hours }),
-            });
-            if (!response.ok) {
-                const data = (await response.json().catch(() => ({}))) as {
-                    error?: string;
-                };
-                setStatus(data.error ?? "Save failed.");
-                return;
-            }
-            setStatus("Draft saved. Publish changes to make them live.");
-        }
-        catch {
-            setStatus("Save failed.");
-        }
-        finally {
-            setSaving(false);
-        }
-    };
-    return (<section className="admin-operating-hours" aria-labelledby="operating-hours-title">
+  const [hours, setHours] = useState<OperatingHoursContent>(initialHours);
+  const [status, setStatus] = useState("");
+  const [saving, setSaving] = useState(false);
+
+  const updateDay = (
+    key: (typeof WEEKDAY_KEYS)[number],
+    patch: Partial<OperatingHoursContent[(typeof WEEKDAY_KEYS)[number]]>,
+  ) => {
+    setHours((current) => ({
+      ...current,
+      [key]: { ...current[key], ...patch },
+    }));
+  };
+
+  const save = async () => {
+    setSaving(true);
+    setStatus("Saving draft...");
+    try {
+      const response = await fetch(venuePath("/admin/api/hours"), {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ hours }),
+      });
+      if (!response.ok) {
+        const data = (await response.json().catch(() => ({}))) as { error?: string };
+        setStatus(data.error ?? "Save failed.");
+        return;
+      }
+      setStatus("Draft saved. Publish changes to make them live.");
+    } catch {
+      setStatus("Save failed.");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <section className="admin-operating-hours" aria-labelledby="operating-hours-title">
       <header className="admin-operating-hours-header">
-        <AdminBackLink fallbackHref="/admin/calendar"/>
+        <AdminBackLink fallbackHref="/admin/calendar" />
         <h1 id="operating-hours-title">Operating Hours</h1>
         <p>
           Events on the public calendar that fall outside these hours are hidden.
@@ -64,22 +72,46 @@ export default function AdminOperatingHoursEditor({ initialHours }: AdminOperati
         <tbody>
           {WEEKDAY_KEYS.map((key) => {
             const day = hours[key];
-            return (<tr key={key} className={day.open ? undefined : "admin-hours-row--closed"}>
+            return (
+              <tr key={key} className={day.open ? undefined : "admin-hours-row--closed"}>
                 <th scope="row">{WEEKDAY_LABELS[key]}</th>
                 <td>
                   <label className="admin-hours-toggle">
-                    <input type="checkbox" checked={day.open} onChange={(event) => updateDay(key, { open: event.target.checked })}/>
+                    <input
+                      type="checkbox"
+                      checked={day.open}
+                      onChange={(event) => updateDay(key, { open: event.target.checked })}
+                    />
                     <span>{day.open ? "Open" : "Closed"}</span>
                   </label>
                 </td>
                 <td>
-                  <input type="time" value={day.openTime} onChange={(event) => updateDay(key, { openTime: event.target.value })} disabled={!day.open}/>
+                  <VenueDateTimeField
+                    mode="time"
+                    tone="light"
+                    ariaLabel={`${key} opens`}
+                    value={day.openTime}
+                    onChange={(value) => updateDay(key, { openTime: value })}
+                    allowClear={false}
+                    dayStart={360}
+                    disabled={!day.open}
+                  />
                 </td>
                 <td>
-                  <input type="time" value={day.closeTime} onChange={(event) => updateDay(key, { closeTime: event.target.value })} disabled={!day.open}/>
+                  <VenueDateTimeField
+                    mode="time"
+                    tone="light"
+                    ariaLabel={`${key} closes`}
+                    value={day.closeTime}
+                    onChange={(value) => updateDay(key, { closeTime: value })}
+                    allowClear={false}
+                    dayStart={360}
+                    disabled={!day.open}
+                  />
                 </td>
-              </tr>);
-        })}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
 
@@ -90,5 +122,6 @@ export default function AdminOperatingHoursEditor({ initialHours }: AdminOperati
           {saving ? "Saving..." : "Save Draft"}
         </button>
       </div>
-    </section>);
+    </section>
+  );
 }

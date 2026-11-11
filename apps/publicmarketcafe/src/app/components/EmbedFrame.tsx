@@ -25,6 +25,28 @@ type EmbedFrameProps = {
   seamless?: boolean;
 };
 
+// Tipsy's booking form takes deposits with Apple Pay and Google Pay, and a
+// browser lets a frame from another site offer them only when the frame
+// is allowed the payment feature. Embed code pasted before Tipsy's snippet
+// carried allow="payment *" doesn't have it, so it is added here, to
+// Tipsy's frames only, before they load (a frame reads it as it loads).
+function withPaymentAllowed(html: string): DocumentFragment {
+  const template = document.createElement("template");
+  template.innerHTML = html;
+  for (const frame of Array.from(template.content.querySelectorAll("iframe"))) {
+    let origin = "";
+    try {
+      origin = new URL(frame.getAttribute("src") || "", window.location.href).origin;
+    } catch {
+      continue;
+    }
+    if (origin !== TIPSY_EMBED_ORIGIN) continue;
+    const allow = (frame.getAttribute("allow") || "").trim();
+    if (!/\bpayment\b/.test(allow)) frame.setAttribute("allow", allow ? `${allow}; payment *` : "payment *");
+  }
+  return template.content;
+}
+
 function activateScripts(container: HTMLElement) {
   const scripts = Array.from(container.querySelectorAll("script"));
   for (const oldScript of scripts) {
@@ -56,7 +78,7 @@ export default function EmbedFrame({
     if (EMBEDS_PAUSED) return;
     const node = wrapRef.current;
     if (!node) return;
-    node.innerHTML = trimmed;
+    node.replaceChildren(withPaymentAllowed(trimmed));
     activateScripts(node);
   }, [trimmed]);
 

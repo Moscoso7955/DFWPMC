@@ -5,6 +5,7 @@ import {
   deleteDraftCalendarEvent,
   isCalendarContentField,
   moveDraftCalendarEvent,
+  setDraftCalendarDayStatus,
   updateDraftCalendarField,
 } from "@/lib/siteContent";
 import type { CalendarEventContent } from "@/lib/siteContentSchema";
@@ -29,7 +30,18 @@ export async function PATCH(request: Request) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const body = (await request.json()) as { field?: unknown; value?: unknown };
+  const body = (await request.json()) as { field?: unknown; value?: unknown; date?: unknown; status?: unknown };
+
+  // Mark a single day open / closed / back to normal. Separate from the
+  // weekly operating hours on purpose: it only affects that one date.
+  if (typeof body.date === "string" && typeof body.status === "string") {
+    const date = body.date.trim();
+    if (!isValidDate(date) || !["open", "closed", "default"].includes(body.status)) {
+      return Response.json({ error: "Invalid day status" }, { status: 400 });
+    }
+    const content = await setDraftCalendarDayStatus(date, body.status as "open" | "closed" | "default");
+    return Response.json({ ok: true, content });
+  }
 
   if (!isCalendarContentField(body.field) || typeof body.value !== "string") {
     return Response.json({ error: "Invalid calendar draft update" }, { status: 400 });

@@ -4,8 +4,10 @@ import { venue, venuePath } from "@/lib/venue";
 import AdminToolbar from "./AdminToolbar";
 import AdminHomePages from "./AdminHomePages";
 import VersionBadge from "../components/VersionBadge";
+import { hasUnpublishedChanges } from "@/lib/siteContent";
 
-export default function AdminShell({ children, homepage = false }: { children: ReactNode; homepage?: boolean }) {
+export default async function AdminShell({ children, homepage = false }: { children: ReactNode; homepage?: boolean }) {
+  const unpublished = await hasUnpublishedChanges();
   return <div className={homepage ? "admin-shell admin-shell--venue-home" : "admin-shell admin-shell--venue-pages"}>
     <header className="venue-admin-header" aria-label={venue.name + " website editor"}>
       <Link className="venue-admin-brand" href="/admin">
@@ -15,7 +17,7 @@ export default function AdminShell({ children, homepage = false }: { children: R
       <nav className="venue-admin-nav" aria-label="Editor navigation">
         <Link href="/admin/analytics">Analytics</Link><AdminHomePages />
       </nav>
-      <AdminToolbar />
+      <AdminToolbar unpublished={unpublished} />
     </header>
     {children}<VersionBadge variant="light" />
   </div>;
