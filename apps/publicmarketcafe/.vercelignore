@@ -1,9 +1,0 @@
-.env*
-node_modules/
-.next/
-.vercel/
-content/local-data/
-docs/
-LOCAL_VERIFICATION.json
-VENUE_UI_INVENTORY.json
-*.log

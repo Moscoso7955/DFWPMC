@@ -1,44 +1,32 @@
 # Public Market architecture
 
-As of October 2, 2026, **`Moscoso7955/DFWPMC` owns the four applications**. Vercel builds each application from its own directory. The accepted October 1 blueprint is preserved at [apps/publicmarket/docs/architecture/project-blueprint.png](../apps/publicmarket/docs/architecture/project-blueprint.png).
+As of November 11, 2026, **`Moscoso7955/DFWPMC` owns one application: `apps/site`**, deployed by the Vercel project `fwpublicmarket` (Root Directory `apps/site`, production branch `main`) and serving fwpublicmarket.com. The original October 1 blueprint is preserved at [project-blueprint.png](architecture/project-blueprint.png); the November 11 consolidation replaced its four applications with one app that keeps every URL.
 
-| App directory / Vercel Root Directory | Existing Vercel project | Website | Portal | Login page owned by hub |
-| --- | --- | --- | --- | --- |
-| `apps/publicmarket` | `fwpublicmarket` | `/` | `/admin` selector | — |
-| `apps/madrone` | `fwpublicmarket-madrone` | `/madrone` | `/madrone/admin` | `/admin/login/madrone` |
-| `apps/willow` | `fwpublicmarket-willow` | `/willow` | `/willow/admin` | `/admin/login/willow` |
-| `apps/publicmarketcafe` | `fwpublicmarket-publicmarketcafe` | `/publicmarketcafe` | `/publicmarketcafe/admin` | `/admin/login/pmcafe` |
+## One app, three skins
 
-## Routing and UI ownership
+| Surface | Path | Source |
+| --- | --- | --- |
+| Hub (selector home, visit, admin entry, Apple Pay file) | `/`, `/visit`, `/admin*`, `/.well-known/...` | `src/app/(hub)` |
+| Willow website + editor + Blackbook | `/willow/...` | `src/app/(venues)/[venue]` |
+| Madrone website + editor + Blackbook | `/madrone/...` | `src/app/(venues)/[venue]` |
+| Public Market Cafe website + editor + Blackbook | `/publicmarketcafe/...` | `src/app/(venues)/[venue]` |
 
-`apps/publicmarket/src/features/admin-entry` contains the accepted selector and login components. `apps/publicmarket/src/brands` holds the shared brand registry. Public venue navigation and admin selection use that registry; preserve the accepted Willow → Madrone → PM cafe selector order.
+`src/lib/venues.ts` is the venue registry (brand, env prefix, base path). The venue route tree renders once per venue slug; skins come from `html[data-venue-theme]` token blocks in `venue-ui.css` plus per-venue homepage stylesheets. Static assets keep their old URLs under `public/<slug>/`. `src/features/admin-entry` holds the approved selector and login components; `src/brands` is the brand registry. Preserve the Willow → Madrone → PM cafe order everywhere.
 
-The hub's `next.config.ts` forwards the three venue prefixes to the stable aliases of their existing Vercel projects. Keep these external rewrites in `beforeFiles`: documents, assets, API requests and normalized RSC segment-prefetch requests must reach the venue app before the hub matches its own routes. Cross-app navigation and native login submissions establish the destination app's page and session.
+There are no venue rewrites: all paths are served internally by the one app. `src/proxy.ts` tags admin/blackbook/upload requests with their access area (venue prefix stripped) for the session checks.
 
-Each venue's `next.config.ts` supplies its own `basePath`. All 41 page routes per venue remain inside that application, including public pages, CMS editors, Ticketing, Blackbook, ticket detail, checkout and legal pages. The repository consolidation copies the currently deployed application code and assets without a UI change.
+## Sessions and access
 
-The root `/admin` is the selector. Legacy hub editor modules and `/admin/api/*` remain historical hub implementation; they do not own venue portal content. All admin entry routes retain `noindex, nofollow`.
+One collective staff list and one sign-in for the whole collective. The shared password (`ADMIN_PASSWORD`, with the hub's historical `COLLECTIVE_ADMIN_*` names accepted) mints the legacy session; Google invite-only sign-in (`GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`, single redirect URI `https://fwpublicmarket.com/auth/google/callback`) replaces it once the first Admin signs in. Cookies `pm_admin_session` and `pm_staff_session` live at path `/`, so one sign-in covers the selector and every venue portal; `/admin/enter/<brand>` is plain navigation. People, roles and the access grid live at `/admin/settings` (needs `POSTGRES_URL`). Blackbook keeps per-venue session cookies under `/<venue>/blackbook` and one shared `BLACKBOOK_*` credential set. All admin entry routes retain `noindex, nofollow`.
 
-## Sessions and content
+## Content and storage
 
-Each venue retains its own Vercel environment settings, private Blob store and session signing secrets. Venue-prefixed cookies prevent a session from becoming another venue's session. Each app keeps independent published content, drafts, uploads, contacts, subscribers and CMS statistics.
-
-Hosted CMS documents use the existing venue/production or venue/preview namespaces. Preserve the storage connections and both scopes. Uploaded website images are served through the venue's public media endpoint; private content records remain private. Local file-backed development uses the content directory inside the selected app.
-
-Git deployment does not overwrite published hosted content. The existing master login value remains in each venue's Vercel environment; never commit it or signing secrets.
+Each venue keeps its private Blob store, read through `CMS_<VENUE>_TOKEN` (fallback `CMS_STORAGE_READ_WRITE_TOKEN`), with production and preview namespaces chosen by `CMS_STORAGE_SCOPE`. Hosted documents keep the `{venueId}/{scope}/cms/{name}.json` layout, so no migration accompanied the consolidation. Local file-backed development uses `content/<slug>/`. One Postgres database (when connected via `POSTGRES_URL`) holds the collective's staff list, site-content rows (`site_content` keyed `venue:key`, hub rows unprefixed) and mailing lists. The collective analytics overview and master contact CSV on the selector read the venues' own record stores. Git deployment does not overwrite published hosted content; secrets live only in Vercel environment variables.
 
 ## External applications
 
-Ticketing and Blackbook retain labeled preview records and accessible detail pages. Tipsy, Callidus, Stripe, QuickBooks, email/wallet delivery, scheduled jobs and external tracking remain disconnected by each venue's preview guards. Callidus remains a separate application; the venue retains its subscriber connection points.
+Tipsy embeds load when `NEXT_PUBLIC_EMBEDS_ENABLED=true`; payments, database-backed features, email and external tracking stay disconnected behind the preview guards (`NEXT_PUBLIC_LOCAL_PREVIEW` unset or not `"false"`). Stripe's Apple Pay domain association is served at `/.well-known/apple-developer-merchantid-domain-association` for the collective's own Stripe account. Callidus remains a separate application. Ticketing was intentionally not carried into the consolidated app.
 
 ## Builds and releases
 
-Every app installs its own dependencies and builds using its own `package.json` and lockfile. The root package only supplies convenience commands. The client cutover connects each existing Vercel project to `Moscoso7955/DFWPMC`, with its app directory as Root Directory and `main` as production branch. At handoff, Vercel rejected the collaborator’s Git connection; the live Git links were restored to `alphacotv/fwpublicmarket`. The repository owner must complete the connection before client Git deployments can be validated. Independent deployments and settings preserve venue isolation while developers use a single repository. **Include files outside the Root Directory in the Build Step** is disabled for each project because the app is self-contained; this aligns Next.js tracing with Vercel’s build root. Shared packages would require a deliberate update to that setting and tracing configuration.
-
-The previous venue repositories remain available for history and rollback. [MONOREPO_SOURCE.json](../MONOREPO_SOURCE.json) records each imported repository and commit. Future application changes belong in the corresponding `apps/` directory here.
-
-## Client handoff boundary
-
-The October 2 handoff imports the approved snapshot `02440e5613f67fc64f0a423fc1db005f155cc8cd` from the private source without its Git history. The client’s archive and prior commits remain intact. Application authentication requires explicit environment values in every environment; live passwords, signing secrets and CMS storage values stay in the existing Vercel projects. No URL, cookie, API or content schema changes accompany the handoff.
-
-The root `vercel.json` keeps the older root-directory deployment paused. The four app-directory deployments retain their child configuration and existing Vercel team. The private source repository remains available for rollback.
+`apps/site` installs and builds with its own `package.json` and lockfile (`npm ci && npm run build`; dev server port 3110). Before any deploy, `node scripts/render-pages.mjs` must render every hub and venue route clean at 1440×900 and 390×844. Pushing `main` deploys the `fwpublicmarket` project; **Include files outside the Root Directory** stays disabled. The pre-consolidation applications (hub `apps/publicmarket` and the three venue apps) were removed from the working tree on November 11, 2026 and remain available in Git history and the former standalone repositories recorded in [MONOREPO_SOURCE.json](../MONOREPO_SOURCE.json); their Vercel sub-projects are retired.

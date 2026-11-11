@@ -1,11 +1,11 @@
 # Public Market repository
 
-This repository owns four independently deployed Next.js applications in `apps/`. Read `docs/architecture.md` before changing organization or routing and each app's local instructions before changing its code. Read the installed Next.js guides for affected APIs; these apps use Next.js 16.2.4.
+This repository owns one Next.js application, `apps/site`, deployed as the Vercel project `fwpublicmarket` (Root Directory `apps/site`, production branch `main`, domain fwpublicmarket.com). Read `docs/architecture.md` before changing organization or routing, `apps/site/README.md` before changing app code, and the installed Next.js guides for affected APIs; the app uses Next.js 16.2.4.
 
-- The hub in `apps/publicmarket` owns the website entry, selector, approved login screens and shared brand registry. Preserve Willow → Madrone → PM cafe selector order.
-- Each venue owns its complete public website and admin portal in its app directory. Keep package locks, environment files, session secrets, cookie paths, content and uploads independent.
-- Keep the hub's three external venue rewrites in `beforeFiles`, including nested asset and API paths. This ordering handles Next.js RSC segment prefetches correctly.
-- The client cutover targets four existing Vercel projects, each with its app directory as Root Directory and `main` as production branch. See README for the pending repository-owner Git connection; the active deployment source remains the private source until that connection is verified. Preserve existing domains, environment variables and private Blob stores. Keep `sourceFilesOutsideRootDirectory: false` while the apps are self-contained, so Next.js tracing uses the app build root.
-- Provider integrations remain disconnected behind the venue preview guards. Keep Callidus separate. A repository reorganization does not authorize enabling integrations or replacing persistent content.
-- Preserve the approved UI, all page routes and the selector/login flow. The three former venue repositories are historical sources; current edits belong in this repository.
+- One app serves the hub at `/` and the three venues as visual skins under `/willow`, `/madrone` and `/publicmarketcafe`. `src/lib/venues.ts` is the venue registry; venue pages live once under `src/app/(venues)/[venue]/` and are themed by `html[data-venue-theme]` tokens. Preserve every pre-consolidation URL, the approved UI, and the Willow → Madrone → PM cafe selector order.
+- One collective staff list and session (cookies at path `/`): the login at `/admin/login`, Google sign-in at `/auth/google/*` with the single redirect URI `/auth/google/callback`, and People & access at `/admin/settings`. Blackbook sessions stay per venue.
+- Storage stays per venue inside the one app: private Blob stores via `CMS_<VENUE>_TOKEN`, content and uploads under `content/<slug>/` and `public/<slug>/`. One Postgres serves the collective (staff, content rows, mailing lists).
+- Provider integrations remain disconnected behind the preview guards (`NEXT_PUBLIC_LOCAL_PREVIEW`). Keep Callidus separate. Ticketing was intentionally not carried over. A refactor does not authorize enabling integrations or replacing persistent content.
+- Render every page before a deploy: `node scripts/render-pages.mjs` against the dev server on port 3110 must pass.
+- The four pre-consolidation apps (hub + three venues) are history, recoverable from Git and the former venue repositories; current edits belong in `apps/site`.
 - Keep credentials, `.env.local`, `.vercel`, local records, dependencies, builds and deployment receipts out of Git. Preserve unrelated dirty checkouts and existing local previews.
