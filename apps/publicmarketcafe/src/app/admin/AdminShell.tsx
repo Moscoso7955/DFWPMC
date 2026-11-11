@@ -15,7 +15,7 @@ export default async function AdminShell({ children, homepage = false }: { child
         <span><strong>{venue.name}</strong><small>Website editor</small></span>
       </Link>
       <nav className="venue-admin-nav" aria-label="Editor navigation">
-        <Link href="/admin/analytics">Analytics</Link><AdminHomePages />
+        <Link href="/admin/analytics">Analytics</Link><Link href="/admin/settings">Settings</Link><AdminHomePages />
       </nav>
       <AdminToolbar unpublished={unpublished} />
     </header>

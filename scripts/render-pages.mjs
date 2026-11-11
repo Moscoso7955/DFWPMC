@@ -27,7 +27,8 @@ const ADMIN_ROUTES = [
   "/admin", "/admin/analytics", "/admin/calendar", "/admin/careers",
   "/admin/contact", "/admin/hours", "/admin/mailing-list", "/admin/menu",
   "/admin/private-events", "/admin/reservations", "/admin/story",
-  "/admin/submissions", "/admin/visit",
+  "/admin/submissions", "/admin/visit", "/admin/settings",
+  "/admin/settings/access", "/admin/no-access",
 ];
 
 const APPS = [

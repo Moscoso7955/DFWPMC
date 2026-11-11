@@ -7851,3 +7851,69 @@ button.blackbook-photo--zoomable:focus-visible {
   }
 }
 
+
+
+/* ---------- People & access (Settings) ---------- */
+
+.admin-photos-warning {
+  margin: 0;
+  padding: 10px 14px;
+  border: 2px solid var(--deep-red);
+  background: var(--yellow);
+  font-size: 0.8rem;
+}
+
+.pb { display: grid; gap: 14px; }
+.pb button { font: inherit; }
+.pb .is-quiet { background: #fff !important; color: var(--deep-red) !important; }
+.pb .is-danger { background: #fff !important; color: var(--red) !important; border-color: var(--red) !important; }
+.pb-tabs { display: flex; gap: 0; border-bottom: 3px solid var(--deep-red); overflow-x: auto; scrollbar-width: none; }
+.pb-tabs a { flex: none; padding: 10px 14px; color: var(--deep-red); text-decoration: none; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.pb-tabs a.is-active { background: var(--deep-red); color: var(--cream); }
+.pb-inline-add { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.pb-inline-add input { flex: 1 1 160px; width: auto; min-height: 38px; padding: 0 10px; border: 2px solid var(--deep-red); font: inherit; }
+.pb-inline-add button { padding: 8px 12px; border: 2px solid var(--deep-red); background: var(--deep-red); color: var(--cream); font: inherit; font-size: 0.72rem; text-transform: uppercase; cursor: pointer; }
+
+.access-signin-note, .access-signin-fine { margin: 0 0 16px; font-size: 0.84rem; line-height: 1.5; text-align: center; }
+.access-signin-fine { margin: 16px 0 0; opacity: 0.7; font-size: 0.76rem; }
+.access-signin-fine a { color: inherit; }
+.access-google { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 14px 18px; border: 2px solid var(--deep-red); background: #fff; color: #222; text-decoration: none; font-family: -apple-system, Helvetica, Arial, sans-serif; font-size: 1rem; font-weight: 500; }
+.access-google:hover { background: #fbf7ee; }
+.access-google svg { width: 22px; height: 22px; }
+.access-signout { display: flex; justify-content: center; }
+.access-signout button { padding: 10px 16px; border: 2px solid var(--deep-red); background: var(--deep-red); color: var(--cream); font: inherit; text-transform: uppercase; cursor: pointer; }
+.access-people { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.access-people li { display: grid; grid-template-columns: minmax(200px, 1fr) minmax(0, 2fr) 150px auto; gap: 12px; align-items: center; padding: 12px; border: var(--frame-line); background: var(--cream); }
+.access-people li.is-off { opacity: 0.55; }
+.access-person { display: grid; gap: 4px; }
+.access-person input { min-height: 30px; padding: 3px 6px; border: 1px solid transparent; background: transparent; font: inherit; font-size: 0.86rem; color: inherit; }
+.access-person input:first-child { font-weight: 500; }
+.access-person input:hover, .access-person input:focus { border-color: color-mix(in srgb, var(--brand-primary) 40%, transparent); background: #fff; }
+.access-person input:disabled { opacity: 0.8; }
+.access-people em { font-style: normal; font-size: 0.72rem; opacity: 0.75; }
+.access-person-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.access-person-status { display: grid; gap: 6px; }
+.access-updates { display: inline-flex; align-items: center; gap: 6px; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; }
+.access-updates input { width: 16px; height: 16px; margin: 0; accent-color: var(--deep-red); }
+.access-person-actions button, .access-invite > button { padding: 7px 11px; border: 2px solid var(--deep-red); background: var(--deep-red); color: var(--cream); font: inherit; font-size: 0.68rem; text-transform: uppercase; cursor: pointer; }
+.access-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.access-chip { padding: 4px 9px; border: 1px solid color-mix(in srgb, var(--brand-primary) 40%, transparent); background: #fff; color: var(--deep-red); font: inherit; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; }
+.access-chip.is-on { background: var(--deep-red); color: var(--cream); border-color: var(--deep-red); }
+.access-invite { display: grid; grid-template-columns: 1fr 1.4fr; gap: 8px; padding: 14px; border: 2px dashed var(--deep-red); }
+.access-invite strong { grid-column: 1 / -1; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.78rem; color: var(--deep-red); }
+.access-invite input { min-height: 38px; padding: 0 10px; border: 2px solid var(--deep-red); font: inherit; }
+.access-invite .access-chips, .access-invite p { grid-column: 1 / -1; }
+.access-invite > button { justify-self: start; }
+.access-grid-wrap { overflow-x: auto; border: var(--frame-line); background: var(--cream); }
+.access-grid { width: 100%; border-collapse: collapse; }
+.access-grid thead th { padding: 10px 6px; background: var(--deep-red); color: var(--cream); font-weight: 400; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
+.access-grid tbody th { display: grid; gap: 2px; padding: 10px 12px; text-align: left; font-weight: 400; }
+.access-grid tbody th strong { font-weight: 500; font-size: 0.86rem; }
+.access-grid tbody th em { font-style: normal; font-size: 0.72rem; opacity: 0.65; }
+.access-grid tbody tr { border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 20%, transparent); }
+.access-grid td { text-align: center; padding: 6px; }
+.access-tick { width: 26px; height: 26px; border: 2px solid var(--deep-red); background: #fff; color: var(--cream); font-size: 0.8rem; cursor: pointer; }
+.access-tick.is-on { background: var(--deep-red); }
+.access-tick.is-locked { opacity: 0.45; cursor: default; }
+.access-role-remove { margin-left: 6px; padding: 0 4px; border: 0; background: none; color: var(--cream); cursor: pointer; }
+.admin-pe-hint { margin: 0; font-size: 0.74rem; opacity: 0.75; }

@@ -39,9 +39,29 @@ export function verifyAdminSessionValue(value?: string) {
     const payload = `${parts[0]}.${parts[1]}`;
     return safeCompare(parts[2], signSessionPayload(payload));
 }
+/**
+ * Can the signed-in person use the page or API being served? Every admin
+ * route calls this; the area comes from the path (see src/proxy.ts and
+ * PATH_AREAS), so each route is checked against its own area. The legacy
+ * shared-password cookie counts as Admin until the venue's Admin first
+ * signs in with Google (see src/lib/session.ts).
+ */
 export async function hasAdminSession() {
-    const cookieStore = await cookies();
-    return verifyAdminSessionValue(cookieStore.get(ADMIN_SESSION_COOKIE)?.value);
+    const { can, currentArea } = await import("./session");
+    return can(await currentArea());
+}
+
+/** Signed in at all (any area). */
+export async function hasAnySession() {
+    const { getPrincipal } = await import("./session");
+    return (await getPrincipal()) !== null;
+}
+
+/** Where to go after signing in: only our own admin or blackbook pages. */
+export function safeAdminNext(value: unknown): string {
+    if (typeof value !== "string") return "/admin";
+    if (!/^\/(admin|blackbook|upload)(\/|$|\?)/.test(value) || value.startsWith("//")) return "/admin";
+    return value;
 }
 export const adminCookieOptions = {
     httpOnly: true,
