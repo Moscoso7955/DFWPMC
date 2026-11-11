@@ -1,5 +1,5 @@
 import { previewGuests } from "./previewData";
-import { LOCAL_PREVIEW, type VenueConfig } from "./venues";
+import { LOCAL_PREVIEW } from "./venues";
 import { sql } from "@vercel/postgres";
 
 const USE_DB = !LOCAL_PREVIEW && Boolean(process.env.POSTGRES_URL);
@@ -57,8 +57,8 @@ export type BlackbookStats = {
   banned: number;
 };
 
-export async function getBlackbookStats(venue: VenueConfig): Promise<BlackbookStats> {
-  if (LOCAL_PREVIEW) return { total: previewGuests(venue).length, vip: previewGuests(venue).filter(r => r.status === "vip").length, banned: previewGuests(venue).filter(r => r.status === "banned").length };
+export async function getBlackbookStats(): Promise<BlackbookStats> {
+  if (LOCAL_PREVIEW) return { total: previewGuests().length, vip: previewGuests().filter(r => r.status === "vip").length, banned: previewGuests().filter(r => r.status === "banned").length };
 
   if (!USE_DB) return { total: 0, vip: 0, banned: 0 };
   await ensureSchema();
@@ -77,8 +77,8 @@ export async function getBlackbookStats(venue: VenueConfig): Promise<BlackbookSt
   };
 }
 
-export async function listBlackbookEntries(venue: VenueConfig): Promise<BlackbookEntry[]> {
-  if (LOCAL_PREVIEW) return previewGuests(venue);
+export async function listBlackbookEntries(): Promise<BlackbookEntry[]> {
+  if (LOCAL_PREVIEW) return previewGuests();
 
   if (!USE_DB) return [];
   await ensureSchema();
@@ -90,7 +90,7 @@ export async function listBlackbookEntries(venue: VenueConfig): Promise<Blackboo
   return rows.map(rowToEntry);
 }
 
-export async function createBlackbookEntry(venue: VenueConfig, input: {
+export async function createBlackbookEntry(input: {
   name: string;
   photoUrl: string;
   notes: string;
@@ -106,8 +106,7 @@ export async function createBlackbookEntry(venue: VenueConfig, input: {
   return rows[0] ? rowToEntry(rows[0]) : null;
 }
 
-export async function updateBlackbookEntry(venue: VenueConfig, 
-  id: number,
+export async function updateBlackbookEntry(id: number,
   input: { name: string; photoUrl: string; notes: string; status: BlackbookStatus },
 ): Promise<BlackbookEntry | null> {
   if (!USE_DB) return null;
@@ -125,7 +124,7 @@ export async function updateBlackbookEntry(venue: VenueConfig,
   return rows[0] ? rowToEntry(rows[0]) : null;
 }
 
-export async function deleteBlackbookEntry(venue: VenueConfig, id: number) {
+export async function deleteBlackbookEntry(id: number) {
   if (!USE_DB) return;
   await ensureSchema();
   await sql`DELETE FROM blackbook_entries WHERE id = ${id}`;

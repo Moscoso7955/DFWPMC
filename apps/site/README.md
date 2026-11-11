@@ -25,8 +25,11 @@ signing secret are required), `npm run dev` (port 3110). The render gate —
 `node ../../scripts/render-pages.mjs` from the repo root — screenshots
 every route at two viewports and must pass before a deploy.
 
-Provider integrations (Tipsy payments, Callidus, Stripe beyond the Apple
-Pay association, QuickBooks) remain disconnected behind the preview guards
+The collective keeps one Blackbook at `/blackbook`, gated by the same
+sign-in (`door` area to view, `blackbook` area to edit); the old
+`/<venue>/blackbook` URLs redirect there. Provider integrations (Tipsy
+payments, Callidus, Stripe beyond the Apple Pay association, QuickBooks)
+remain disconnected behind the preview guards
 (`NEXT_PUBLIC_LOCAL_PREVIEW`). Ticketing was intentionally not carried
 over from the venue apps.
 

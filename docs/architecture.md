@@ -6,10 +6,11 @@ As of November 11, 2026, **`Moscoso7955/DFWPMC` owns one application: `apps/site
 
 | Surface | Path | Source |
 | --- | --- | --- |
-| Hub (selector home, visit, admin entry, Apple Pay file) | `/`, `/visit`, `/admin*`, `/.well-known/...` | `src/app/(hub)` |
-| Willow website + editor + Blackbook | `/willow/...` | `src/app/(venues)/[venue]` |
-| Madrone website + editor + Blackbook | `/madrone/...` | `src/app/(venues)/[venue]` |
-| Public Market Cafe website + editor + Blackbook | `/publicmarketcafe/...` | `src/app/(venues)/[venue]` |
+| Hub (selector home, visit, admin entry, Apple Pay file) | `/`, `/visit`, `/admin*`, `/blackbook`, `/.well-known/...` | `src/app/(hub)` |
+| The one collective Blackbook | `/blackbook` (old `/<venue>/blackbook` URLs redirect) | `src/app/(hub)/blackbook` |
+| Willow website + editor | `/willow/...` | `src/app/(venues)/[venue]` |
+| Madrone website + editor | `/madrone/...` | `src/app/(venues)/[venue]` |
+| Public Market Cafe website + editor | `/publicmarketcafe/...` | `src/app/(venues)/[venue]` |
 
 `src/lib/venues.ts` is the venue registry (brand, env prefix, base path). The venue route tree renders once per venue slug; skins come from `html[data-venue-theme]` token blocks in `venue-ui.css` plus per-venue homepage stylesheets. Static assets keep their old URLs under `public/<slug>/`. `src/features/admin-entry` holds the approved selector and login components; `src/brands` is the brand registry. Preserve the Willow → Madrone → PM cafe order everywhere.
 
@@ -17,7 +18,7 @@ There are no venue rewrites: all paths are served internally by the one app. `sr
 
 ## Sessions and access
 
-One collective staff list and one sign-in for the whole collective. The shared password (`ADMIN_PASSWORD`, with the hub's historical `COLLECTIVE_ADMIN_*` names accepted) mints the legacy session; Google invite-only sign-in (`GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`, single redirect URI `https://fwpublicmarket.com/auth/google/callback`) replaces it once the first Admin signs in. Cookies `pm_admin_session` and `pm_staff_session` live at path `/`, so one sign-in covers the selector and every venue portal; `/admin/enter/<brand>` is plain navigation. People, roles and the access grid live at `/admin/settings` (needs `POSTGRES_URL`). Blackbook keeps per-venue session cookies under `/<venue>/blackbook` and one shared `BLACKBOOK_*` credential set. All admin entry routes retain `noindex, nofollow`.
+One collective staff list and one sign-in for the whole collective. The shared password (`ADMIN_PASSWORD`, with the hub's historical `COLLECTIVE_ADMIN_*` names accepted) mints the legacy session; Google invite-only sign-in (`GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`, single redirect URI `https://fwpublicmarket.com/auth/google/callback`) replaces it once the first Admin signs in. Cookies `pm_admin_session` and `pm_staff_session` live at path `/`, so one sign-in covers the selector and every venue portal; `/admin/enter/<brand>` is plain navigation. People, roles and the access grid live at `/admin/settings` (needs `POSTGRES_URL`). The Blackbook has no credentials of its own: the one collective sign-in grants view access through the `door` area and edit access through the `blackbook` area, and its single entry list (`blackbook_entries` in Postgres, preview samples until connected) serves the whole collective. All admin entry and Blackbook routes retain `noindex, nofollow`.
 
 ## Content and storage
 

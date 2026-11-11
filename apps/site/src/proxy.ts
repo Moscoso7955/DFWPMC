@@ -21,6 +21,7 @@ export function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     "/admin/:path*",
+    "/blackbook/:path*",
     "/:venue(willow|madrone|publicmarketcafe)/admin/:path*",
     "/:venue(willow|madrone|publicmarketcafe)/blackbook/:path*",
     "/:venue(willow|madrone|publicmarketcafe)/upload/:path*",

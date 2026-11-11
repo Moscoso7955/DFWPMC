@@ -32,7 +32,7 @@ export default async function AdminAnalyticsPage({ params }: { params: Promise<{
     const [submissions, subscribers, blackbook, content, menuClicks] = await Promise.all([
         getContactSubmissionStats(venue),
         getSubscriberStats(venue),
-        getBlackbookStats(venue),
+        getBlackbookStats(),
         getDraftSiteContent(venue),
         getMenuClickStats(venue),
     ]);
@@ -94,7 +94,7 @@ export default async function AdminAnalyticsPage({ params }: { params: Promise<{
               <dt>Banned</dt>
               <dd>{formatNumber(blackbook.banned)}</dd>
             </dl>
-            <a className="admin-analytics-link" href={`${venue.basePath}/blackbook`} target="_blank" rel="noopener noreferrer">
+            <a className="admin-analytics-link" href="/blackbook" target="_blank" rel="noopener noreferrer">
               Open Blackbook ↗
             </a>
           </article>

@@ -54,3 +54,16 @@ export async function saveAdminUpload(venue: VenueConfig, file: File) {
   await writeFile(filePath, bytes);
   return `/assets/admin-uploads/${fileName}`;
 }
+
+/** Blackbook photo upload for the collective. Local preview only until the
+ * Phase 2b private photo store exists; production callers are gated by the
+ * preview guard before reaching this. */
+export async function saveCollectiveUpload(file: File) {
+  const safeName = slugifyFileName(file.name);
+  const fileName = `${Date.now()}-${randomUUID()}-${safeName}`;
+  if (process.env.VERCEL) throw new Error("Collective upload storage is not configured.");
+  await mkdir(UPLOAD_DIR, { recursive: true });
+  const bytes = Buffer.from(await file.arrayBuffer());
+  await writeFile(path.join(UPLOAD_DIR, fileName), bytes);
+  return `/assets/admin-uploads/${fileName}`;
+}

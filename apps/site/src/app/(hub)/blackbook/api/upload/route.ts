@@ -1,10 +1,9 @@
 import { hasBlackbookAdminSession } from "@/lib/blackbookAuth";
-import { saveAdminUpload, validateUploadFile } from "@/lib/adminFiles";
-import { getVenue, disconnectedResponse } from "@/lib/venues";
+import { saveCollectiveUpload, validateUploadFile } from "@/lib/adminFiles";
+import { LOCAL_PREVIEW, disconnectedResponse } from "@/lib/venues";
 
-export async function POST(request: Request, { params }: { params: Promise<{ venue: string }> }) {
-  const venue = getVenue((await params).venue);
-  if (venue.localPreview) return disconnectedResponse("Blackbook backend");
+export async function POST(request: Request) {
+  if (LOCAL_PREVIEW) return disconnectedResponse("Blackbook backend");
 
   if (!(await hasBlackbookAdminSession())) {
     return Response.json({ error: "Read-only access" }, { status: 403 });
@@ -17,6 +16,6 @@ export async function POST(request: Request, { params }: { params: Promise<{ ven
     return Response.json({ error: "Unsupported file" }, { status: 400 });
   }
 
-  const src = await saveAdminUpload(venue, file);
+  const src = await saveCollectiveUpload(file);
   return Response.json({ src });
 }

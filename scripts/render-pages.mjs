@@ -26,7 +26,7 @@ const ADMIN_ROUTES = [
   "/admin", "/admin/analytics", "/admin/calendar", "/admin/careers",
   "/admin/contact", "/admin/hours", "/admin/mailing-list", "/admin/menu",
   "/admin/private-events", "/admin/reservations", "/admin/story",
-  "/admin/submissions", "/admin/visit", "/blackbook",
+  "/admin/submissions", "/admin/visit",
 ];
 
 // One app serves the hub and every venue; /admin/* without a venue prefix
@@ -36,7 +36,7 @@ const APPS = [
   { name: "willow", port: PORT, basePath: "/willow", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
   { name: "madrone", port: PORT, basePath: "/madrone", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
   { name: "pmcafe", port: PORT, basePath: "/publicmarketcafe", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
-  { name: "hub", port: PORT, basePath: "", routes: ["/", "/visit", "/admin/login", "/admin", "/admin/settings", "/admin/settings/access", "/admin/no-access"], adminLogin: true },
+  { name: "hub", port: PORT, basePath: "", routes: ["/", "/visit", "/admin/login", "/admin", "/admin/settings", "/admin/settings/access", "/admin/no-access", "/blackbook"], adminLogin: true },
 ];
 const APP_DIRS = { willow: "site", madrone: "site", pmcafe: "site", hub: "site" };
 

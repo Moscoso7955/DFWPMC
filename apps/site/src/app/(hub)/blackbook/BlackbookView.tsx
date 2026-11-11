@@ -1,5 +1,4 @@
 "use client";
-import { useVenue } from "@/app/components/VenueProvider";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { BlackbookEntry, BlackbookStatus } from "@/lib/blackbookStore";
 import PreviewNotice from "@/app/components/PreviewNotice";
@@ -16,7 +15,6 @@ type DraftState = {
 };
 const EMPTY_DRAFT: DraftState = { id: null, name: "", photoUrl: "", notes: "", status: "vip" };
 export default function BlackbookView({ initialEntries, canEdit }: BlackbookViewProps) {
-    const { venue, venuePath } = useVenue();
     const [entries, setEntries] = useState(initialEntries);
     const [search, setSearch] = useState("");
     const [tab, setTab] = useState<BlackbookStatus>("vip");
@@ -70,7 +68,7 @@ export default function BlackbookView({ initialEntries, canEdit }: BlackbookView
         try {
             const formData = new FormData();
             formData.append("file", file);
-            const response = await fetch(venuePath("/blackbook/api/upload"), { method: "POST", body: formData });
+            const response = await fetch("/blackbook/api/upload", { method: "POST", body: formData });
             if (!response.ok) {
                 setStatus("Blackbook photo storage is not connected yet.");
                 return;
@@ -98,7 +96,7 @@ export default function BlackbookView({ initialEntries, canEdit }: BlackbookView
         const isUpdate = draft.id !== null;
         const url = isUpdate ? `/blackbook/api/entries/${draft.id}` : "/blackbook/api/entries";
         const method = isUpdate ? "PATCH" : "POST";
-        const response = await fetch(venuePath(url), {
+        const response = await fetch(url, {
             method,
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -133,7 +131,7 @@ export default function BlackbookView({ initialEntries, canEdit }: BlackbookView
         if (!window.confirm(`Remove ${draft.name} from the Blackbook?`))
             return;
         setStatus("Removing...");
-        const response = await fetch(venuePath(`/blackbook/api/entries/${draft.id}`), { method: "DELETE" });
+        const response = await fetch(`/blackbook/api/entries/${draft.id}`, { method: "DELETE" });
         if (!response.ok) {
             setStatus("Blackbook backend is not connected yet. No records were changed.");
             return;
@@ -148,7 +146,7 @@ export default function BlackbookView({ initialEntries, canEdit }: BlackbookView
     return (<main className="blackbook-shell"><PreviewNotice />
       <div className="blackbook-topbar">
         <header className="blackbook-header">
-          <div className="venue-app-identity"><img src={venuePath(venue.logo)} alt={venue.name} /><div><p>{venue.name}</p>
+          <div className="venue-app-identity"><img src="/assets/brand/pm-seal-bone.svg" alt="The Public Market" /><div><p>The Public Market</p>
           <h1>
             Blackbook
             {!canEdit ? <span className="blackbook-role-badge">View only</span> : null}
@@ -183,7 +181,7 @@ export default function BlackbookView({ initialEntries, canEdit }: BlackbookView
                   <span className="blackbook-photo" aria-hidden="true">
                     {entry.photoUrl ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
-                <img src={venuePath(entry.photoUrl)} alt=""/>) : (<span className="blackbook-photo-placeholder">{entry.name.charAt(0).toUpperCase()}</span>)}
+                <img src={entry.photoUrl} alt=""/>) : (<span className="blackbook-photo-placeholder">{entry.name.charAt(0).toUpperCase()}</span>)}
                   </span>
                   <span className="blackbook-card-meta">
                     <span className="blackbook-card-name">{entry.name}</span>
@@ -225,7 +223,7 @@ export default function BlackbookView({ initialEntries, canEdit }: BlackbookView
                 <div className="blackbook-photo-edit">
                   {draft.photoUrl ? (<button type="button" className="blackbook-photo blackbook-photo--large blackbook-photo--zoomable" onClick={() => setExpandedPhoto(draft.photoUrl)} aria-label="View photo full size">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={venuePath(draft.photoUrl)} alt=""/>
+                      <img src={draft.photoUrl} alt=""/>
                     </button>) : (<div className="blackbook-photo blackbook-photo--large" aria-hidden="true">
                       <span className="blackbook-photo-placeholder">
                         {draft.name ? draft.name.charAt(0).toUpperCase() : "?"}
@@ -259,7 +257,7 @@ export default function BlackbookView({ initialEntries, canEdit }: BlackbookView
                 <div className="blackbook-readonly">
                   {draft.photoUrl ? (<button type="button" className="blackbook-photo blackbook-photo--large blackbook-photo--zoomable" onClick={() => setExpandedPhoto(draft.photoUrl)} aria-label="View photo full size">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={venuePath(draft.photoUrl)} alt=""/>
+                      <img src={draft.photoUrl} alt=""/>
                     </button>) : (<div className="blackbook-photo blackbook-photo--large" aria-hidden="true">
                       <span className="blackbook-photo-placeholder">
                         {draft.name ? draft.name.charAt(0).toUpperCase() : "?"}
@@ -285,7 +283,7 @@ export default function BlackbookView({ initialEntries, canEdit }: BlackbookView
 
       {expandedPhoto ? (<div className="blackbook-lightbox" role="dialog" aria-modal="true" aria-label="Photo" onClick={() => setExpandedPhoto(null)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={venuePath(expandedPhoto)} alt=""/>
+          <img src={expandedPhoto} alt=""/>
         </div>) : null}
     </main>);
 }

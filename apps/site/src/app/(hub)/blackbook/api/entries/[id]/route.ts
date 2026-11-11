@@ -1,4 +1,4 @@
-import { getVenue, disconnectedResponse } from "@/lib/venues";
+import { LOCAL_PREVIEW, disconnectedResponse } from "@/lib/venues";
 import { hasBlackbookAdminSession } from "@/lib/blackbookAuth";
 import {
   deleteBlackbookEntry,
@@ -6,7 +6,7 @@ import {
   updateBlackbookEntry,
 } from "@/lib/blackbookStore";
 
-type RouteContext = { params: Promise<{ venue: string; id: string }> };
+type RouteContext = { params: Promise<{ id: string }> };
 
 async function parseId(context: RouteContext) {
   const { id } = await context.params;
@@ -15,8 +15,7 @@ async function parseId(context: RouteContext) {
 }
 
 export async function PATCH(request: Request, context: RouteContext) {
-  const venue = getVenue((await context.params).venue);
-  if (venue.localPreview) return disconnectedResponse("Blackbook backend");
+  if (LOCAL_PREVIEW) return disconnectedResponse("Blackbook backend");
 
   if (!(await hasBlackbookAdminSession())) {
     return Response.json({ error: "Read-only access" }, { status: 403 });
@@ -41,15 +40,14 @@ export async function PATCH(request: Request, context: RouteContext) {
     return Response.json({ error: "Name is required." }, { status: 400 });
   }
 
-  const entry = await updateBlackbookEntry(venue, id, { name, photoUrl, notes, status });
+  const entry = await updateBlackbookEntry(id, { name, photoUrl, notes, status });
   if (!entry) return Response.json({ error: "Not found" }, { status: 404 });
 
   return Response.json({ ok: true, entry });
 }
 
 export async function DELETE(_request: Request, context: RouteContext) {
-  const venue = getVenue((await context.params).venue);
-  if (venue.localPreview) return disconnectedResponse("Blackbook backend");
+  if (LOCAL_PREVIEW) return disconnectedResponse("Blackbook backend");
 
   if (!(await hasBlackbookAdminSession())) {
     return Response.json({ error: "Read-only access" }, { status: 403 });
@@ -58,6 +56,6 @@ export async function DELETE(_request: Request, context: RouteContext) {
   const id = await parseId(context);
   if (id === null) return Response.json({ error: "Invalid id" }, { status: 400 });
 
-  await deleteBlackbookEntry(venue, id);
+  await deleteBlackbookEntry(id);
   return Response.json({ ok: true });
 }

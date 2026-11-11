@@ -1,4 +1,4 @@
-import { getVenue, disconnectedResponse } from "@/lib/venues";
+import { LOCAL_PREVIEW, disconnectedResponse } from "@/lib/venues";
 import { hasBlackbookAdminSession, hasBlackbookSession } from "@/lib/blackbookAuth";
 import {
   createBlackbookEntry,
@@ -6,18 +6,16 @@ import {
   listBlackbookEntries,
 } from "@/lib/blackbookStore";
 
-export async function GET(_request: Request, { params }: { params: Promise<{ venue: string }> }) {
-  const venue = getVenue((await params).venue);
+export async function GET() {
   if (!(await hasBlackbookSession())) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const entries = await listBlackbookEntries(venue);
+  const entries = await listBlackbookEntries();
   return Response.json({ entries });
 }
 
-export async function POST(request: Request, { params }: { params: Promise<{ venue: string }> }) {
-  const venue = getVenue((await params).venue);
-  if (venue.localPreview) return disconnectedResponse("Blackbook backend");
+export async function POST(request: Request) {
+  if (LOCAL_PREVIEW) return disconnectedResponse("Blackbook backend");
 
   if (!(await hasBlackbookAdminSession())) {
     return Response.json({ error: "Read-only access" }, { status: 403 });
@@ -39,6 +37,6 @@ export async function POST(request: Request, { params }: { params: Promise<{ ven
     return Response.json({ error: "Name is required." }, { status: 400 });
   }
 
-  const entry = await createBlackbookEntry(venue, { name, photoUrl, notes, status });
+  const entry = await createBlackbookEntry({ name, photoUrl, notes, status });
   return Response.json({ ok: true, entry });
 }
