@@ -8,7 +8,7 @@ import {
 
 export async function GET(_request: Request, { params }: { params: Promise<{ venue: string }> }) {
   const venue = getVenue((await params).venue);
-  if (!(await hasBlackbookSession(venue))) {
+  if (!(await hasBlackbookSession())) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
   const entries = await listBlackbookEntries(venue);
@@ -19,7 +19,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ ven
   const venue = getVenue((await params).venue);
   if (venue.localPreview) return disconnectedResponse("Blackbook backend");
 
-  if (!(await hasBlackbookAdminSession(venue))) {
+  if (!(await hasBlackbookAdminSession())) {
     return Response.json({ error: "Read-only access" }, { status: 403 });
   }
 

@@ -6,7 +6,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ ven
   const venue = getVenue((await params).venue);
   if (venue.localPreview) return disconnectedResponse("Blackbook backend");
 
-  if (!(await hasBlackbookAdminSession(venue))) {
+  if (!(await hasBlackbookAdminSession())) {
     return Response.json({ error: "Read-only access" }, { status: 403 });
   }
 

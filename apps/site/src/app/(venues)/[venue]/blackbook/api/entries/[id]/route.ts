@@ -18,7 +18,7 @@ export async function PATCH(request: Request, context: RouteContext) {
   const venue = getVenue((await context.params).venue);
   if (venue.localPreview) return disconnectedResponse("Blackbook backend");
 
-  if (!(await hasBlackbookAdminSession(venue))) {
+  if (!(await hasBlackbookAdminSession())) {
     return Response.json({ error: "Read-only access" }, { status: 403 });
   }
 
@@ -51,7 +51,7 @@ export async function DELETE(_request: Request, context: RouteContext) {
   const venue = getVenue((await context.params).venue);
   if (venue.localPreview) return disconnectedResponse("Blackbook backend");
 
-  if (!(await hasBlackbookAdminSession(venue))) {
+  if (!(await hasBlackbookAdminSession())) {
     return Response.json({ error: "Read-only access" }, { status: 403 });
   }
 

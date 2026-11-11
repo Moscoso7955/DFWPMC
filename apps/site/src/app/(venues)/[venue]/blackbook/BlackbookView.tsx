@@ -142,8 +142,8 @@ export default function BlackbookView({ initialEntries, canEdit }: BlackbookView
         closeModal();
     };
     const logOut = async () => {
-        await fetch(venuePath("/blackbook/api/logout"), { method: "POST" });
-        window.location.href = venuePath("/blackbook/login");
+        await fetch("/admin/api/logout", { method: "POST" });
+        window.location.href = "/admin/login";
     };
     return (<main className="blackbook-shell"><PreviewNotice />
       <div className="blackbook-topbar">

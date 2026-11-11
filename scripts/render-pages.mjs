@@ -21,13 +21,12 @@ const CHROMIUM = process.env.CHROMIUM_PATH || "/opt/pw-browsers/chromium";
 const PUBLIC_ROUTES = [
   "/", "/menu", "/calendar", "/story", "/visit", "/contact", "/careers",
   "/reservations", "/private-events", "/privacy", "/terms", "/accessibility",
-  "/blackbook/login",
 ];
 const ADMIN_ROUTES = [
   "/admin", "/admin/analytics", "/admin/calendar", "/admin/careers",
   "/admin/contact", "/admin/hours", "/admin/mailing-list", "/admin/menu",
   "/admin/private-events", "/admin/reservations", "/admin/story",
-  "/admin/submissions", "/admin/visit",
+  "/admin/submissions", "/admin/visit", "/blackbook",
 ];
 
 // One app serves the hub and every venue; /admin/* without a venue prefix
