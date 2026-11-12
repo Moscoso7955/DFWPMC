@@ -10,6 +10,7 @@ type BottomMenuProps = {
     /** Sub-pages: a full-width "Return Home" row on top of the grid. */
     returnHome?: boolean;
     className?: string;
+    showLegalLinks?: boolean;
 };
 function getHref(basePath: string, href: string) {
     return `${basePath}${href}`;
@@ -53,7 +54,7 @@ const ROWS: Item[][] = [
         { label: "Careers", href: "/careers", target: "careers" },
     ],
 ];
-export default function BottomMenu({ basePath = "", source = "bottom", returnHome = false, className }: BottomMenuProps) {
+export default function BottomMenu({ basePath = "", source = "bottom", returnHome = false, className, showLegalLinks = true }: BottomMenuProps) {
     const { venue, venuePath } = useVenue();
     const pathname = usePathname() ?? "";
     const here = pathname.replace(/\/+$/, "") || "/";
@@ -74,6 +75,6 @@ export default function BottomMenu({ basePath = "", source = "bottom", returnHom
               {item.label}
             </Link>))}
         </div>))}
-      <LegalLinks className="legal-links legal-links--home"/>
+      {showLegalLinks ? <LegalLinks className="legal-links legal-links--home"/> : null}
     </nav>);
 }
