@@ -140,3 +140,13 @@ export const PREVIEW_MESSAGE = "Preview data. This service is not connected yet.
 export function disconnectedResponse(service: string) {
   return Response.json({ error: `${service}: ${PREVIEW_MESSAGE}`, code: "INTEGRATION_NOT_CONFIGURED" }, { status: 503 });
 }
+
+// The collective itself, for features that belong to the whole Public
+// Market rather than one venue (Playbook, Contacts, digest emails).
+export const COLLECTIVE = {
+  name: "The Public Market",
+  timeZone: "America/Chicago",
+  get siteUrl() {
+    return siteOrigin();
+  },
+};
