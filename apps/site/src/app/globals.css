@@ -8940,3 +8940,1149 @@ span.access-chip { cursor: default; }
 .pb-inline-add .venue-picker {
   flex: 0 0 180px;
 }
+
+
+/* ================================================================
+   MARKET NIGHTS: night photo streams
+   ================================================================ */
+
+/* --- Calendar: marker on nights with photos --- */
+
+.calendar-day--photos {
+  position: relative;
+}
+
+.calendar-photo-marker {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px 3px 5px;
+  background: var(--deep-red);
+  color: var(--cream);
+  text-transform: uppercase;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.calendar-photo-marker svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+
+.calendar-photo-marker:hover {
+  background: var(--black);
+}
+
+.calendar-modal .calendar-modal-photos {
+  display: inline-flex;
+  gap: 8px;
+  margin: 4px 0 18px;
+  padding: 12px 16px;
+  background: var(--deep-red);
+  color: var(--cream);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .calendar-photo-marker {
+    top: 3px;
+    right: 3px;
+    padding: 3px;
+  }
+
+  .calendar-photo-marker span {
+    display: none;
+  }
+
+  .calendar-photo-marker svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* --- Visit: list of nights, then Find us --- */
+
+.photo-nights {
+  display: grid;
+  gap: 14px;
+  padding-top: 22px;
+  border-top: var(--frame-line);
+}
+
+.photo-nights-header h2,
+.visit-find-us h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.photo-nights-header p {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.photo-nights-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--frame-line);
+}
+
+.photo-nights-list li {
+  border-bottom: var(--frame-line);
+}
+
+.photo-night {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 4px;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.photo-night:hover,
+.photo-night:focus-visible {
+  background: var(--yellow);
+  outline: 0;
+}
+
+.photo-night-stamp {
+  display: grid;
+  justify-items: center;
+  min-width: 64px;
+  padding: 6px 8px;
+  background: var(--deep-red);
+  color: var(--cream);
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.photo-night-stamp span {
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+.photo-night-stamp strong {
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.photo-night-body {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  text-align: left;
+}
+
+.photo-night-body strong {
+  font-weight: 500;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.photo-night-body span {
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+
+.photo-night-thumbs {
+  display: flex;
+  gap: 4px;
+}
+
+.photo-night-thumbs img {
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-night-arrow {
+  font-size: 1.1rem;
+}
+
+.visit-find-us {
+  display: grid;
+  gap: 14px;
+  padding-top: 10px;
+}
+
+@media (max-width: 760px) {
+  .photo-night {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 10px 12px;
+  }
+
+  .photo-night-thumbs {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .photo-night-thumbs img {
+    width: calc((100% - 8px) / 3);
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .photo-night-arrow {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+/* --- Public photo stream for one night --- */
+
+.photo-stream {
+  width: min(100%, 1080px);
+  display: grid;
+  gap: 22px;
+  padding: 96px 0 88px;
+}
+
+.photo-stream-back {
+  justify-self: start;
+  color: var(--black);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.photo-stream-header {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  text-align: center;
+  padding-bottom: 18px;
+  border-bottom: var(--frame-line);
+}
+
+.photo-stream-header h1 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.photo-stream-kicker,
+.photo-stream-meta,
+.photo-stream-credit {
+  margin: 0;
+}
+
+.photo-stream-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--deep-red);
+}
+
+.photo-stream-meta {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.photo-stream-credit {
+  max-width: 560px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.photo-stream-credit strong {
+  font-weight: 500;
+}
+
+.photo-stream-grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 3 260px;
+  column-gap: 8px;
+}
+
+.photo-stream-grid li {
+  break-inside: avoid;
+  margin-bottom: 8px;
+  background: #e4e1d6;
+}
+
+.photo-stream-grid button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.photo-stream-grid img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 760px) {
+  .photo-stream {
+    padding-top: 84px;
+  }
+
+  .photo-stream-grid {
+    columns: 2;
+    column-gap: 6px;
+  }
+
+  .photo-stream-grid li {
+    margin-bottom: 6px;
+  }
+}
+
+.photo-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  background: #161212;
+  color: var(--cream);
+}
+
+.photo-viewer-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.photo-viewer-bar button,
+.photo-viewer-nav {
+  border: 0;
+  background: none;
+  color: var(--cream);
+  font: inherit;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.photo-viewer-stage {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 56px;
+  align-items: center;
+  min-height: 0;
+}
+
+.photo-viewer-stage img {
+  justify-self: center;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.photo-viewer-nav:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.photo-viewer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 16px 20px;
+  font-size: 0.72rem;
+  opacity: 0.95;
+}
+
+.photo-viewer-actions a {
+  padding: 12px 22px;
+  background: var(--deep-red);
+  color: var(--cream);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 760px) {
+  .photo-viewer-stage {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+  }
+}
+
+/* --- Admin: Photos --- */
+
+.admin-photos-section {
+  margin: 18px 0 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.admin-photos-section span {
+  margin-left: 6px;
+  padding: 1px 7px;
+  background: var(--deep-red);
+  color: var(--cream);
+  font-size: 0.72rem;
+}
+
+.admin-photos-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.admin-photos-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 130px auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: var(--frame-line);
+  background: var(--cream);
+  color: var(--black);
+  text-decoration: none;
+}
+
+a.admin-photos-row:hover {
+  background: var(--yellow);
+}
+
+.admin-photos-row--live {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.admin-photos-night {
+  display: grid;
+  gap: 2px;
+}
+
+.admin-photos-night strong {
+  font-weight: 500;
+}
+
+.admin-photos-night span,
+.admin-photos-reviewer {
+  font-size: 0.78rem;
+}
+
+.admin-photos-reviewer {
+  display: grid;
+  gap: 2px;
+}
+
+.admin-photos-reviewer em {
+  font-style: normal;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+}
+
+.admin-photos-done {
+  color: #2f6b3a;
+}
+
+.admin-photos-muted {
+  opacity: 0.6;
+}
+
+.admin-photos-action {
+  justify-self: end;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.admin-photos-live-links {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.admin-photos-live-links a {
+  color: var(--black);
+}
+
+.admin-photos-live-links button,
+.admin-photos-contributors button {
+  padding: 6px 10px;
+  border: 2px solid var(--deep-red);
+  background: none;
+  color: var(--deep-red);
+  font: inherit;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin-photos-contributors {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: var(--frame-line);
+  background: var(--cream);
+}
+
+.admin-photos-contributors ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-photos-contributors li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 12px;
+  align-items: center;
+  font-size: 0.82rem;
+}
+
+.admin-photos-contributors li strong {
+  font-weight: 500;
+}
+
+.admin-photos-add {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 8px;
+}
+
+.admin-photos-add input {
+  min-height: 40px;
+  padding: 0 10px;
+  border: 2px solid var(--deep-red);
+  background: #fff;
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.admin-photos-add button {
+  background: var(--deep-red);
+  color: var(--cream);
+}
+
+.admin-photos-contributors p {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .admin-photos-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .admin-photos-night,
+  .admin-photos-action {
+    grid-column: 1 / -1;
+  }
+
+  .admin-photos-action {
+    justify-self: start;
+  }
+
+  .admin-photos-add {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Admin: reviewing one night --- */
+
+.admin-photo-review {
+  width: min(100%, 1180px);
+  margin-top: 72px;
+  padding-bottom: 150px;
+}
+
+.admin-review-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  font-size: 0.78rem;
+}
+
+.admin-review-filters button {
+  padding: 7px 12px;
+  border: 2px solid var(--deep-red);
+  background: var(--cream);
+  color: var(--deep-red);
+  font: inherit;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin-review-filters button.is-on {
+  background: var(--deep-red);
+  color: var(--cream);
+}
+
+.admin-review-grid {
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+}
+
+.admin-review-tile {
+  position: relative;
+  outline: 4px solid transparent;
+  outline-offset: -4px;
+  background: #e4e1d6;
+}
+
+.admin-review-tile img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.admin-review-tile.is-pass {
+  outline-color: var(--blue);
+}
+
+.admin-review-tile.is-fail img {
+  opacity: 0.28;
+  filter: grayscale(1);
+}
+
+.admin-review-tile.is-fail {
+  outline-color: var(--deep-red);
+}
+
+.admin-review-star {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 6px;
+  background: var(--yellow);
+  color: var(--black);
+  font-size: 0.82rem;
+}
+
+.admin-review-actions {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  border-top: 2px solid var(--deep-red);
+}
+
+.admin-review-actions button {
+  padding: 8px 10px;
+  border: 0;
+  border-left: 2px solid var(--deep-red);
+  background: var(--cream);
+  color: var(--deep-red);
+  font: inherit;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin-review-actions button:first-child {
+  border-left: 0;
+}
+
+.admin-review-actions button.is-on {
+  background: var(--deep-red);
+  color: var(--cream);
+}
+
+.admin-review-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 18px;
+  align-items: center;
+  padding: 12px max(24px, calc((100vw - 1180px) / 2 + 24px));
+  border-top: var(--frame-line);
+  background: var(--cream);
+  font-size: 0.8rem;
+}
+
+.admin-review-progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+}
+
+.admin-review-progress strong {
+  font-weight: 500;
+}
+
+.admin-review-footer button {
+  padding: 12px 18px;
+  border: 0;
+  background: var(--deep-red);
+  color: var(--cream);
+  font: inherit;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.admin-review-footer button:disabled {
+  opacity: 0.45;
+}
+
+.admin-review-footer p {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.72rem;
+  opacity: 0.7;
+}
+
+/* --- Contributor upload --- */
+
+.upload-login-note {
+  margin: 4px 0 0;
+  font-size: 0.75rem;
+  text-align: center;
+  opacity: 0.75;
+}
+
+.upload-page {
+  min-height: 100svh;
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: 18px;
+  padding: 24px 16px 64px;
+  background: var(--cream);
+  color: var(--black);
+}
+
+.upload-header {
+  width: min(100%, 640px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+}
+
+.upload-header .admin-login-logo {
+  width: 110px;
+  background-image: url("/logos/phoebe-black.png");
+  filter: none;
+}
+
+.upload-header a {
+  color: var(--deep-red);
+}
+
+.upload-card {
+  width: min(100%, 640px);
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+  border: var(--frame-line);
+  background: #f7f6f1;
+}
+
+.upload-card h1,
+.upload-card h2 {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+}
+
+.upload-field {
+  display: grid;
+  gap: 8px;
+  font-size: 0.82rem;
+}
+
+.upload-field > span {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.upload-field select {
+  min-height: 46px;
+  padding: 0 12px;
+  border: var(--frame-line);
+  background: #fff;
+  font: inherit;
+  font-size: 0.86rem;
+}
+
+.upload-drop {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  padding: 34px 16px;
+  border: 2px dashed var(--deep-red);
+  background: #fff;
+  text-align: center;
+  font-size: 0.86rem;
+}
+
+.upload-drop strong {
+  font-weight: 500;
+}
+
+.upload-note {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  opacity: 0.75;
+}
+
+.upload-progress {
+  display: grid;
+  gap: 10px;
+}
+
+.upload-progress-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+}
+
+.upload-progress-head strong {
+  font-weight: 500;
+}
+
+.upload-bar {
+  display: block;
+  height: 8px;
+  background: #e4e1d6;
+}
+
+.upload-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--deep-red);
+}
+
+.upload-progress ul,
+.upload-history {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.upload-progress li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 120px 56px;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.74rem;
+}
+
+.upload-progress li img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.upload-bar--small {
+  height: 5px;
+}
+
+.upload-progress li em,
+.upload-history em {
+  font-style: normal;
+  text-align: right;
+}
+
+.upload-history li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(116, 4, 6, 0.25);
+  font-size: 0.8rem;
+}
+
+.upload-history em.is-live {
+  color: #2f6b3a;
+}
+
+.upload-header form {
+  margin: 0;
+}
+
+.upload-header form button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--deep-red);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.upload-field input {
+  min-height: 46px;
+  padding: 0 12px;
+  border: var(--frame-line);
+  background: #fff;
+  color: var(--black);
+  font: inherit;
+  font-size: 0.86rem;
+}
+
+button.upload-drop {
+  width: 100%;
+  color: var(--black);
+  font: inherit;
+  cursor: pointer;
+}
+
+.upload-drop.is-dragging,
+button.upload-drop:hover {
+  background: var(--yellow);
+}
+
+.upload-drop:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.upload-start {
+  justify-self: start;
+  padding: 12px 20px;
+  border: 0;
+  background: var(--deep-red);
+  color: var(--cream);
+  font: inherit;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.upload-error {
+  margin: 0;
+  color: var(--deep-red);
+  font-size: 0.8rem;
+}
+
+.upload-progress li.is-failed em {
+  color: var(--deep-red);
+}
+
+.upload-thumb-empty {
+  width: 40px;
+  height: 40px;
+  background: #e4e1d6;
+}
+
+@media (max-width: 760px) {
+  .upload-progress li {
+    grid-template-columns: 40px minmax(0, 1fr) 56px;
+  }
+
+  .upload-progress li .upload-bar--small {
+    display: none;
+  }
+}
+
+.admin-photos-warning {
+  margin: 0;
+  padding: 10px 14px;
+  border: 2px solid var(--deep-red);
+  background: var(--yellow);
+  font-size: 0.8rem;
+}
+
+.admin-photos-password {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--yellow);
+  font-size: 0.82rem;
+}
+
+.admin-photos-password strong {
+  font-weight: 500;
+}
+
+.admin-photos-password code {
+  font-size: 0.95rem;
+  user-select: all;
+}
+
+.admin-photos-password button {
+  justify-self: start;
+  margin-top: 6px;
+}
+
+.admin-photos-contributors li.is-off {
+  opacity: 0.6;
+}
+
+.admin-photos-contributor-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.admin-photos-night {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.admin-photos-action {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.admin-review-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.admin-review-tip {
+  margin: 0;
+  font-size: 0.74rem;
+}
+
+.admin-review-live {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.admin-review-viewer-actions button {
+  padding: 10px 16px;
+  border: 2px solid var(--cream);
+  background: none;
+  color: var(--cream);
+  font: inherit;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin-review-viewer-actions button.is-on {
+  background: var(--cream);
+  color: var(--black);
+}
+
+.admin-review-manage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-review-manage button,
+.admin-photos-action button {
+  padding: 6px 10px;
+  border: 2px solid var(--deep-red);
+  background: none;
+  color: var(--deep-red);
+  font: inherit;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin-review-manage button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.admin-photos-action {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.admin-photos-action a {
+  color: var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.admin-review-live-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+/* Takedown links on the photo pages */
+.photo-stream-takedown {
+  margin: 0;
+  font-size: 0.76rem;
+}
+
+.photo-stream-takedown a,
+.photo-viewer-takedown {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.photo-viewer-code {
+  opacity: 0.7;
+  letter-spacing: 0.06em;
+}
+
+.admin-review-find {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.admin-review-find input {
+  min-height: 34px;
+  width: 160px;
+  padding: 0 10px;
+  border: 2px solid var(--deep-red);
+  background: #fff;
+  font: inherit;
+  text-transform: uppercase;
+}
+
+.admin-review-code {
+  position: absolute;
+  bottom: 44px;
+  left: 8px;
+  padding: 1px 6px;
+  background: rgba(34, 32, 32, 0.72);
+  color: var(--cream);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+}
+

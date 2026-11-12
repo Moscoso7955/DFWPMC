@@ -1,3 +1,4 @@
+import "@/app/globals.css";
 import "@/app/venue-ui.css";
 import "./hub-admin.css";
 

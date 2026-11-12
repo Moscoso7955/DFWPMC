@@ -1,7 +1,7 @@
 import { sendDueDigest } from "@/lib/releaseDigest";
 
 // Vercel Cron hits this hourly; it only sends during the 8 AM hour in
-// Kansas City, so the email lands at the same local time all year.
+// Fort Worth, so the email lands at the same local time all year.
 // Vercel sends Authorization: Bearer <CRON_SECRET>.
 
 export const dynamic = "force-dynamic";
@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   if (cronSecret && bearer !== cronSecret) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
   const hour = new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hourCycle: "h23" });
-  if (Number(hour) !== 8) return Response.json({ ok: true, skipped: "Not 8 AM in Kansas City." });
+  if (Number(hour) !== 8) return Response.json({ ok: true, skipped: "Not 8 AM in Fort Worth." });
 
   try {
     return Response.json({ ok: true, ...(await sendDueDigest()) });

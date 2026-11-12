@@ -8,6 +8,7 @@
     "start": "next start --hostname 127.0.0.1 --port 3110"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/blob": "^2.4.0",
     "@vercel/postgres": "^0.10.0",
