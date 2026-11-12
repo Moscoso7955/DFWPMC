@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { notFound } from "next/navigation";
 import TrackingScripts from "../../components/TrackingScripts";
 import { VenueProvider } from "../../components/VenueProvider";
@@ -59,6 +60,7 @@ export default async function VenueLayout({ children, params }: VenueLayoutProps
         <VenueProvider venue={venue}>
           <TrackingScripts />
           {children}
+          <Analytics />
         </VenueProvider>
       </body>
     </html>
