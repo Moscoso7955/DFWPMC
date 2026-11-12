@@ -32,7 +32,7 @@
   cursor: pointer;
 }
 .pm-home-v2 .public-market-topbar > .hamburger.topbar-hamburger span { width: 28px; height: 1.5px; }
-.pm-home-v2 .drawer-primary-links { grid-template-rows: repeat(4, minmax(78px, 1fr)); }
+.pm-home-v2 .drawer-primary-links { grid-template-rows: repeat(5, minmax(78px, 1fr)); }
 .pm-home-v2 .hero { min-height: 0; }
 .pm-home-v2 .hero-panel--photo { min-height: 0; aspect-ratio: 2.25; }
 .pm-home-v2 .hero-photo-bleed { background-position: center 45%; }
@@ -134,7 +134,7 @@
   .pm-home-v2 .public-market-topbar > .hamburger.topbar-hamburger { left: 14px; grid-template-rows: repeat(3, 1.5px); gap: 5px; }
   .pm-home-v2 .public-market-topbar > .hamburger.topbar-hamburger span { width: 24px; }
   .pm-home-v2 .drawer-menu { width: min(88vw, 360px); }
-  .pm-home-v2 .drawer-primary-links { flex: 0 1 auto; grid-template-rows: repeat(4, minmax(86px, auto)); }
+  .pm-home-v2 .drawer-primary-links { flex: 0 1 auto; grid-template-rows: repeat(5, minmax(86px, auto)); }
   .pm-home-v2 .drawer-close { flex-basis: 72px; height: 72px; margin-right: 18px; }
   .pm-home-v2 .drawer-close span { top: 35px; left: 12px; width: 28px; }
   .pm-home-v2 .drawer-menu-link { padding: 20px 28px; }

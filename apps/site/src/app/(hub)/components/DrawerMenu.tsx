@@ -253,6 +253,9 @@ export default function DrawerMenu({
               <span className="drawer-link-title">{item.label}</span>
             </Link>
           ))}
+          <button className="drawer-menu-link" type="button">
+            <span className="drawer-link-title">HISTORY</span>
+          </button>
         </div>
       </nav>
     </>
