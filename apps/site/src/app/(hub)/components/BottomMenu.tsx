@@ -27,7 +27,7 @@ function VenueCards({ variant = "main" }: { variant?: "main" | "sticky" }) {
 
 export default function BottomMenu({ midpointRef }: { midpointRef?: Ref<HTMLSpanElement> }) {
   return (
-    <nav className="bottom-menu" aria-label="Local venue projects">
+    <nav className="bottom-menu" aria-label="Explore our venues">
       <VenueCards />
       <span className="venue-menu-midpoint-sentinel" ref={midpointRef} aria-hidden="true" />
     </nav>
@@ -38,8 +38,9 @@ export function StickyVenueMenu({ isVisible }: { isVisible: boolean }) {
   return (
     <nav
       className={`sticky-venue-menu${isVisible ? " is-visible" : ""}`}
-      aria-label="Sticky local venue projects"
+      aria-label="Explore our venues while scrolling"
       aria-hidden={!isVisible}
+      inert={!isVisible}
     >
       <VenueCards variant="sticky" />
     </nav>

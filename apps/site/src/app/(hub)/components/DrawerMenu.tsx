@@ -246,16 +246,13 @@ export default function DrawerMenu({
           {primaryItems.map((item) => (
             <Link
               className="drawer-menu-link"
-              href={getMenuHref(basePath, item.href)}
+              href={inTopbar && !basePath ? "#location" : getMenuHref(basePath, item.href)}
               key={item.href}
               onClick={closeMenu}
             >
               <span className="drawer-link-title">{item.label}</span>
             </Link>
           ))}
-          <a className="drawer-menu-link" href={`${basePath || "/"}#updates`} onClick={closeMenu}>
-            <span className="drawer-link-title">News &amp; updates</span>
-          </a>
         </div>
       </nav>
     </>
