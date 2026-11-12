@@ -69,7 +69,7 @@ export default function SiteHomePage({
   onEdit,
 }: SiteHomePageProps) {
   const { venue, venuePath } = useVenue();
-  const usesCompactHomepage = venue.slug === "madrone" || venue.slug === "publicmarketcafe";
+  const hasHeroEventBar = venue.slug === "madrone" || venue.slug === "publicmarketcafe";
 
   useEffect(() => {
     if (isAdmin || venue.slug !== "publicmarketcafe") return;
@@ -115,7 +115,7 @@ export default function SiteHomePage({
   return (
     <div className={isAdmin ? "site-shell venue-homepage admin-editable-site" : "site-shell venue-homepage"} style={style}>
       <DrawerMenu adaptive basePath={base} hideOnDesktop />
-      {usesCompactHomepage ? null : (
+      {hasHeroEventBar ? null : (
         <Link className="top-event-bar" href={`${base}/private-events`}>
           <span>Book an Event</span>
         </Link>
@@ -125,7 +125,7 @@ export default function SiteHomePage({
         <section className="hero-panel hero-panel--full" aria-label={`${venue.name} dining space`}>
           <div className="hero-photo-bleed" aria-hidden="true" />
           <div className="hero-overlay" aria-hidden="true" />
-          {usesCompactHomepage ? (
+          {hasHeroEventBar ? (
             <Link className="hero-event-bar" href={`${base}/private-events`}>
               Book an Event
             </Link>
@@ -138,16 +138,12 @@ export default function SiteHomePage({
         </section>
       </main>
 
-      {usesCompactHomepage ? (
-        <footer className="home-navigation">
-          <BottomMenu basePath={base} showLegalLinks={false} />
-          <nav aria-label="Policies">
-            <LegalLinks className="home-policy" />
-          </nav>
-        </footer>
-      ) : (
-        <BottomMenu basePath={base} />
-      )}
+      <footer className="home-navigation">
+        <BottomMenu basePath={base} showLegalLinks={false} />
+        <nav aria-label="Policies">
+          <LegalLinks className="home-policy" />
+        </nav>
+      </footer>
     </div>
   );
 }

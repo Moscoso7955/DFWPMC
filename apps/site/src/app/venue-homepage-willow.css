@@ -10,7 +10,9 @@ html[data-venue-theme="willow"] {
   --blue: var(--brand-primary);
   --yellow: var(--brand-muted);
   --frame-line: 1px solid var(--brand-line);
-  --menu-height: 106px;
+  --home-menu-row: 50px;
+  --home-policy-height: 29px;
+  --menu-height: calc(4 * var(--home-menu-row) + 15px);
 
   /* Willow brand system: source is docs/brand/Willow_BrandStyleGuide.pdf. */
   --willow-dark-green: #22372b;
@@ -39,7 +41,7 @@ html[data-venue-theme="willow"] {
   min-height: 100svh;
   border: 0;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: minmax(420px, 1fr) auto;
   background: var(--cream);
 }
 
@@ -48,7 +50,7 @@ html[data-venue-theme="willow"] {
 }
 
 .venue-homepage .hero {
-  min-height: calc(100svh - var(--menu-height));
+  min-height: max(420px, calc(100svh - var(--menu-height)));
   border-bottom: 0;
   display: grid;
 }
@@ -194,10 +196,23 @@ html[data-venue-theme="willow"] {
     0 12px 30px rgba(5, 12, 8, 0.18);
 }
 
+.venue-homepage .home-navigation {
+  min-width: 0;
+  background: var(--willow-bronze);
+  color: var(--willow-dark-green);
+}
+
 .venue-homepage .bottom-menu {
-  --willow-menu-badge: url("/willow/assets/willow/willow-badge-radial-dark-green-rgb.svg");
+  position: static;
+  height: var(--menu-height);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(4, var(--home-menu-row));
+  gap: 3px;
   background: var(--willow-dark-green);
   border: 3px solid var(--willow-dark-green);
+  box-shadow: none;
   color: var(--willow-dark-green);
   font-family: var(--font-venue-body);
   font-weight: 400;
@@ -209,13 +224,11 @@ html[data-venue-theme="willow"] {
 }
 
 .venue-homepage .menu-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  min-height: 50px;
+  display: contents;
 }
 
 .venue-homepage .menu-row + .menu-row {
-  border-top: 3px solid var(--willow-dark-green);
+  border-top: 0;
 }
 
 .venue-homepage .menu-row a {
@@ -223,73 +236,84 @@ html[data-venue-theme="willow"] {
   display: grid;
   place-items: center;
   position: relative;
-  isolation: isolate;
   overflow: hidden;
   padding: 15px clamp(30px, 3.5vw, 48px) 13px;
+  border: 0;
   background-color: var(--willow-bronze);
-  box-shadow:
-    inset 0 2px 0 var(--willow-dark-green),
-    inset 0 -2px 0 var(--willow-dark-green);
+  box-shadow: none;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  white-space: nowrap;
   transition:
     background-color 180ms ease,
-    box-shadow 180ms ease,
-    color 180ms ease,
-    letter-spacing 180ms ease;
+    color 180ms ease;
 }
 
 .venue-homepage .menu-row a::before, .venue-homepage .menu-row a::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  width: auto;
-  height: 100%;
-  aspect-ratio: 1 / 2;
-  background-image: var(--willow-menu-badge);
-  background-repeat: no-repeat;
-  background-size: auto 125%;
-  pointer-events: none;
-}
-
-.venue-homepage .menu-row a::before {
-  left: 0;
-  background-position: right center;
-}
-
-.venue-homepage .menu-row a::after {
-  right: 0;
-  background-position: left center;
-}
-
-.venue-homepage .menu-row a span {
-  position: relative;
-  z-index: 1;
-  white-space: nowrap;
+  content: none;
 }
 
 .venue-homepage .menu-row a + a {
-  border-left: 3px solid var(--willow-dark-green);
+  border-left: 0;
 }
 
-.venue-homepage .menu-row a:only-child {
-  grid-column: 1 / -1;
-}
-
-.venue-homepage .menu-row:last-child a {
-  box-shadow:
-    inset 0 2px 0 var(--willow-dark-green),
-    inset 0 -4px 0 var(--willow-dark-green);
-}
-
-.venue-homepage .menu-row a:hover, .venue-homepage .menu-row a:focus-visible {
+.venue-homepage .menu-row a:hover {
   background-color: var(--willow-dark-green);
   color: var(--willow-bronze);
-  box-shadow:
-    inset 0 0 0 2px var(--willow-bronze),
-    inset 0 3px 0 var(--willow-dark-green),
-    inset 0 -3px 0 var(--willow-dark-green);
-  letter-spacing: 0.075em;
-  outline: 0;
+}
+
+.venue-homepage .menu-row a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -6px;
+}
+
+.venue-homepage .home-policy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--home-policy-height) + env(safe-area-inset-bottom, 0px));
+  padding: 0 12px env(safe-area-inset-bottom, 0px);
+  border: 3px solid var(--willow-dark-green);
+  border-top: 0;
+  background: var(--willow-bronze);
+  color: var(--willow-dark-green);
+  font-family: var(--font-venue-body);
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.venue-homepage .home-policy > span {
+  display: none;
+}
+
+.venue-homepage .home-policy a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  align-self: stretch;
+  padding: 0 12px;
+  color: inherit;
+}
+
+.venue-homepage .home-policy a ~ a::before {
+  content: "·";
+  position: absolute;
+  left: -1px;
+  pointer-events: none;
+}
+
+.venue-homepage .home-policy a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.venue-homepage .home-policy a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -3px;
 }
 
 .venue-homepage .hero-panel--full .admin-edit-hotspot--desktopHeroImage {
@@ -309,18 +333,25 @@ html[data-venue-theme="willow"] {
 
 @media (max-width: 760px) {
 
-  .venue-homepage { --menu-height: 108px; }
+  .venue-homepage .homepage-hamburger {
+    top: 16px;
+    left: 16px;
+    width: 24px;
+    height: 16px;
+    grid-template-rows: repeat(3, 2px);
+    gap: 5px;
+    color: var(--willow-bronze);
+  }
+
+  .venue-homepage .homepage-hamburger::after {
+    inset: -14px -10px;
+  }
 
   .venue-homepage.site-shell {
-    display: block;
     min-height: 100svh;
     padding-bottom: 0;
     border: 0;
     background: var(--black);
-  }
-
-  .venue-homepage .hero {
-    min-height: calc(100svh - var(--menu-height));
   }
 
   .venue-homepage .hero-panel--full {
@@ -362,16 +393,8 @@ html[data-venue-theme="willow"] {
   }
 
   .venue-homepage .bottom-menu {
-    position: fixed;
-    z-index: 5;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-color: var(--willow-dark-green);
-    border-bottom: 0;
     font-size: clamp(0.72rem, 3.6vw, 0.94rem);
     letter-spacing: 0.025em;
-    box-shadow: 0 8px 0 var(--willow-dark-green);
   }
 
   .venue-homepage .top-event-bar {
@@ -381,20 +404,7 @@ html[data-venue-theme="willow"] {
     letter-spacing: 0.1em;
   }
 
-  .venue-homepage .menu-row {
-    grid-template-columns: 1fr 1fr;
-    min-height: 50px;
-  }
 
-  .venue-homepage .menu-row a {
-    padding-inline: min(28px, 7vw);
-  }
-
-  .venue-homepage .menu-row:last-child a {
-    box-shadow:
-      inset 0 2px 0 var(--willow-dark-green),
-      inset 0 -6px 0 var(--willow-dark-green);
-  }
 }
 
 
