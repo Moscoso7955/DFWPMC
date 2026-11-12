@@ -2,7 +2,7 @@
 import { useVenue } from "./VenueProvider";
 
 import Link from "next/link";
-import type { CSSProperties, ReactNode } from "react";
+import { useEffect, type CSSProperties, type ReactNode } from "react";
 import type { HomepageContent, HomepageContentField } from "@/lib/siteContentSchema";
 import BottomMenu from "./BottomMenu";
 import DrawerMenu from "./DrawerMenu";
@@ -69,7 +69,38 @@ export default function SiteHomePage({
   onEdit,
 }: SiteHomePageProps) {
   const { venue, venuePath } = useVenue();
-  const isMadrone = venue.slug === "madrone";
+  const usesCompactHomepage = venue.slug === "madrone" || venue.slug === "publicmarketcafe";
+
+  useEffect(() => {
+    if (isAdmin || venue.slug !== "publicmarketcafe") return;
+
+    const previousScrollRestoration = window.history.scrollRestoration;
+    let firstFrame = 0;
+    let secondFrame = 0;
+    const scrollToTop = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    const resetScroll = () => {
+      window.cancelAnimationFrame(firstFrame);
+      window.cancelAnimationFrame(secondFrame);
+      scrollToTop();
+      // Finish after navigation and browser history restoration have settled.
+      firstFrame = window.requestAnimationFrame(() => {
+        scrollToTop();
+        secondFrame = window.requestAnimationFrame(scrollToTop);
+      });
+    };
+
+    window.history.scrollRestoration = "manual";
+    resetScroll();
+    window.addEventListener("pageshow", resetScroll);
+
+    return () => {
+      window.cancelAnimationFrame(firstFrame);
+      window.cancelAnimationFrame(secondFrame);
+      window.removeEventListener("pageshow", resetScroll);
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, [isAdmin, venue.slug]);
+
   const base = basePath ? venuePath(basePath) : venue.basePath;
   const style: HomePageStyle = {
     "--home-desktop-hero-image": imageUrl(venuePath, content.desktopHeroImage),
@@ -84,7 +115,7 @@ export default function SiteHomePage({
   return (
     <div className={isAdmin ? "site-shell venue-homepage admin-editable-site" : "site-shell venue-homepage"} style={style}>
       <DrawerMenu adaptive basePath={base} hideOnDesktop />
-      {isMadrone ? null : (
+      {usesCompactHomepage ? null : (
         <Link className="top-event-bar" href={`${base}/private-events`}>
           <span>Book an Event</span>
         </Link>
@@ -94,7 +125,7 @@ export default function SiteHomePage({
         <section className="hero-panel hero-panel--full" aria-label={`${venue.name} dining space`}>
           <div className="hero-photo-bleed" aria-hidden="true" />
           <div className="hero-overlay" aria-hidden="true" />
-          {isMadrone ? (
+          {usesCompactHomepage ? (
             <Link className="hero-event-bar" href={`${base}/private-events`}>
               Book an Event
             </Link>
@@ -107,7 +138,7 @@ export default function SiteHomePage({
         </section>
       </main>
 
-      {isMadrone ? (
+      {usesCompactHomepage ? (
         <footer className="home-navigation">
           <BottomMenu basePath={base} showLegalLinks={false} />
           <nav aria-label="Policies">
