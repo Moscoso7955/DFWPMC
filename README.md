@@ -9,7 +9,7 @@ One Next.js application serves the whole collective from **`Moscoso7955/DFWPMC`*
 | Madrone | `/madrone` | `/madrone/admin` |
 | Public Market Cafe & Goods | `/publicmarketcafe` | `/publicmarketcafe/admin` |
 
-The live entry point is [fwpublicmarket.com/admin](https://fwpublicmarket.com/admin): one collective sign-in opens the approved selector, and choosing a brand enters its editor directly. See `apps/site/README.md` for the app's layout and environment, and `docs/architecture.md` for routing, sessions and storage.
+The live entry point is [fwpublicmarket.com/admin](https://fwpublicmarket.com/admin): one Google sign-in (invite-only) opens the portal under the one admin bar, and choosing a brand enters its editor directly. The collective's services are connected in production — Neon Postgres, Resend email, the `fwpm-photos` R2 bucket for Market Nights photos, and Claude for contest screening — while payments and tracking pixels stay behind the preview guards. See `apps/site/README.md` for the app's layout and environment, and `docs/architecture.md` for routing, sessions and storage.
 
 ## Local development
 

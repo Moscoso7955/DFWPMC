@@ -1,7 +1,7 @@
 # Business-wide tracking (GA4, Meta Pixel, Google Ads)
 
-The collective is one LLC, so all four apps share **one GA4 property, one
-Meta pixel and one Google Ads account**. Every event carries a `venue`
+The collective is one LLC, so the one app shares **one GA4 property, one
+Meta pixel and one Google Ads account** across the hub and the venues. Every event carries a `venue`
 parameter (`willow`, `madrone`, `publicmarketcafe`, or `publicmarket` for
 the hub) and GA4 page views set `content_group` to the venue, so each unit
 can be broken out in reports while the data rolls up to the business.
@@ -10,13 +10,13 @@ so the one pixel sees all traffic.
 
 ## How it loads
 
-Each app mounts `<TrackingScripts />` (from `src/app/components/`) in its
-root layout, driven by `src/lib/tracking.ts`. Nothing loads unless
+Both root layouts (hub and venues) mount `<TrackingScripts />` (from
+`src/app/components/`), driven by `src/lib/tracking.ts`. Nothing loads unless
 `NEXT_PUBLIC_TRACKING_ENABLED=true` **and** at least one tag id is set.
 This switch is deliberately independent of `venue.localPreview`, so pixels
 can launch without enabling payments/database/email at the same time.
 
-Environment variables (set per Vercel project; same ids on all four):
+Environment variables (on the one `fwpublicmarket` Vercel project):
 
 | Variable | Value |
 |---|---|
@@ -52,8 +52,8 @@ from the Stripe webhook and exclude the confirmation page from tags.
 | Contact form | venue + hub contact pages | `generate_lead` | `Contact` |
 | Newsletter signup | venue + hub forms | `sign_up` | `CompleteRegistration` |
 | Tipsy booking | venue reservations / private events (postMessage) | `generate_lead` | `Schedule` |
-| Ticket drawer opened | venue event pages | `begin_checkout` | `InitiateCheckout` |
-| Ticket purchase | venue confirmation page (paid, deduped per order) | `purchase` | `Purchase` |
+| Ticket drawer opened | dormant (ticketing was not carried over) | `begin_checkout` | `InitiateCheckout` |
+| Ticket purchase | dormant (ticketing was not carried over) | `purchase` | `Purchase` |
 
 The pre-existing Google Ads booking conversion (`fireBookingConversion`)
 still fires on Tipsy bookings and remains gated by `localPreview` + its two
@@ -62,14 +62,14 @@ env vars. The ticket purchase additionally fires an Ads conversion when
 
 ## Go-live checklist
 
-1. Publish real privacy/terms text (all pages are placeholders today; the
-   hub has no legal pages at all) — both ad platforms require a privacy
-   policy, and it must disclose Google/Meta cookies.
+1. Done November 12, 2026: real policies live at `/privacy`, `/terms` and
+   `/accessibility` (DFW Public Market Collective, LLC). Before enabling
+   tags, add the Google/Meta cookie disclosure to the privacy policy.
 2. Make the contact form's mailing-list enrolment an explicit opt-in (it
    currently subscribes silently and re-subscribes unsubscribed people).
 3. Create the GA4 property and Meta pixel for the LLC; in GA4, register a
    custom dimension for the `venue` event parameter.
-4. Set the env vars above on all four Vercel projects (preview first).
+4. Set the env vars above on the `fwpublicmarket` project (preview first).
 5. Verify on a preview deployment with Google Tag Assistant and Meta Pixel
    Helper, then set `NEXT_PUBLIC_TRACKING_ENABLED=true` in production.
 
