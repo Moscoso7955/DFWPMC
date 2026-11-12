@@ -411,7 +411,8 @@ type NeonMonth = { siteHours: number; totalHours: number; computePrice: number; 
 
 async function refreshNeon() {
   if (!process.env.VERCEL_API_TOKEN) return;
-  const site = process.env.NEON_PROJECT_ID;
+  // The Neon integration injects POSTGRES_NEON_PROJECT_ID on its own.
+  const site = process.env.NEON_PROJECT_ID ?? process.env.POSTGRES_NEON_PROJECT_ID;
   if (!site) return;
   const res = await fetch(`${VERCEL_API}/v1/integrations/configurations?view=account&installationType=marketplace&teamId=${encodeURIComponent(VERCEL_TEAM_ID)}`, {
     headers: { Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}` },
@@ -556,7 +557,7 @@ async function monthLines(m: Month, fixed: FixedCost[], partial: boolean): Promi
       ? `The Market ${neon.siteHours.toFixed(1)} of ${neon.totalHours.toFixed(1)} compute hours × $${neon.computePrice.toFixed(3)} (account total ${money(neon.totalUsd)})`
       : !process.env.VERCEL_API_TOKEN
         ? "Not connected yet"
-        : !process.env.NEON_PROJECT_ID
+        : !(process.env.NEON_PROJECT_ID ?? process.env.POSTGRES_NEON_PROJECT_ID)
           ? "Add NEON_PROJECT_ID in Vercel to track this"
           : m.end.getTime() <= Date.UTC(2026, 10, 1)
             ? "Not tracked before November 2026"
