@@ -56,7 +56,10 @@ function buildGroups(venue: AdminBarVenue | null): Group[] {
       NIGHTS,
       {
         title: "Reports",
-        items: [{ href: "/admin/analytics", label: "Analytics", area: "reports" }],
+        items: [
+          { href: "/admin/analytics", label: "Analytics", area: "reports" },
+          { href: "/admin/api/master-list", label: "Download master contact list", area: "customers" },
+        ],
       },
       SETTINGS,
     ];

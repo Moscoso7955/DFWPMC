@@ -117,32 +117,6 @@ export default async function CollectiveOverview() {
           </section>
         ))}
       </div>
-      <div className={styles.toolRow}>
-        <a className={styles.toolButton} href="/admin/analytics">
-          Analytics
-        </a>
-        <a className={styles.toolButton} href="/admin/playbook">
-          Playbook
-        </a>
-        <a className={styles.toolButton} href="/admin/contacts">
-          Contacts
-        </a>
-        <a className={styles.toolButton} href="/admin/photos">
-          Photos
-        </a>
-        <a className={styles.toolButton} href="/blackbook">
-          Blackbook
-        </a>
-        <a className={styles.toolButton} href="/admin/settings">
-          Settings
-        </a>
-        <a className={styles.toolButton} href="/admin/api/master-list">
-          Download master contact list
-        </a>
-        <a className={styles.toolButton} href="/admin/logout">
-          Log out
-        </a>
-      </div>
     </>
   );
 }
