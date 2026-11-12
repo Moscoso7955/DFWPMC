@@ -1,4 +1,4 @@
-import DropPin from "@/app/components/DropPin";
+import DropPin, { VisitAddress } from "@/app/components/DropPin";
 import HolderPage from "@/app/components/HolderPage";
 import { getVenue } from "@/lib/venues";
 
@@ -12,6 +12,7 @@ export function VisitPageView({ basePath = "", venueName }: PageViewProps) {
     <HolderPage basePath={basePath} label="page 6 holder - visit" pageClassName="page--visit">
       <section className="visit-page" aria-labelledby="visit-page-title">
         <h1 id="visit-page-title">{venueName.toUpperCase()} — VISIT</h1>
+        <VisitAddress />
         <DropPin />
       </section>
     </HolderPage>

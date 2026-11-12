@@ -82,7 +82,7 @@ export default function PhotoEventDashboard({ initial, checkReady }: Props) {
           <span>{entry.reason ?? "Held"}</span>
         ) : (
           <>
-            {entry.wins.length ? <b className="admin-pe-win">🏆 {entry.wins.join(" & ")}</b> : null}
+            {entry.wins.length ? <b className="admin-pe-win">Winner: {entry.wins.join(" & ")}</b> : null}
             <em>
               {entry.total} vote{entry.total === 1 ? "" : "s"}
               {contest.categories.length > 1 && entry.total
@@ -184,7 +184,7 @@ export default function PhotoEventDashboard({ initial, checkReady }: Props) {
       ))}
 
       <h2 className="admin-photos-section">
-        Held for review <span>{data.held.length}</span>
+        Held for review <span className={Number(data.held.length) ? undefined : "is-zero"}>{data.held.length}</span>
       </h2>
       {data.held.length ? (
         <ul className="admin-pe-held">{data.held.map((entry) => entryRow(entry, true))}</ul>
@@ -221,7 +221,7 @@ export default function PhotoEventDashboard({ initial, checkReady }: Props) {
       ) : null}
 
       <h2 className="admin-photos-section">
-        {voting === "after" ? "All entries" : "Leaderboard (staff only)"} <span>{data.live.length}</span>
+        {voting === "after" ? "All entries" : "Leaderboard (staff only)"} <span className={Number(data.live.length) ? undefined : "is-zero"}>{data.live.length}</span>
       </h2>
       {data.live.length ? (
         <ol className="admin-pe-leaders">{data.live.map((entry) => entryRow(entry, false))}</ol>

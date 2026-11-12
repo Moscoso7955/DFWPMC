@@ -1,4 +1,5 @@
 import AdminShell from "../AdminShell";
+import MailingListFilter from "./MailingListFilter";
 import { listSubscribers } from "@/lib/subscribersStore";
 import { requireAdminSession } from "@/lib/requireAdmin";
 import { getVenue } from "@/lib/venues";
@@ -17,9 +18,6 @@ export default async function AdminMailingListPage({ params }: { params: Promise
     const subscribers = await listSubscribers(venue);
     return (<AdminShell venue={venue} layout="tool">
       <section className="admin-mailing-list">
-        <a className="admin-back-link" href={`${venue.basePath}/admin/analytics`}>
-          <span aria-hidden="true">←</span> Analytics
-        </a>
         <div className="admin-mailing-list-header">
           <h1>Mailing List</h1>
           <a className="admin-mailing-list-export" href={`${venue.basePath}/admin/api/mailing-list-export`}>
@@ -30,7 +28,7 @@ export default async function AdminMailingListPage({ params }: { params: Promise
           {subscribers.length} subscriber{subscribers.length === 1 ? "" : "s"}. Includes the newsletter signup on the
           contact page and anyone who submits the contact form.
         </p>
-        {subscribers.length === 0 ? (<p>No subscribers yet.</p>) : (<table className="admin-mailing-list-table">
+        {subscribers.length === 0 ? (<p>No subscribers yet.</p>) : (<><MailingListFilter tableId="mailing-list-table" total={subscribers.length} /><div className="admin-table-scroll"><table className="admin-mailing-list-table" id="mailing-list-table">
             <thead>
               <tr>
                 <th>Name</th>
@@ -50,10 +48,10 @@ export default async function AdminMailingListPage({ params }: { params: Promise
                     {subscriber.phone ? (<a href={(`tel:${subscriber.phone.replace(/[^\d+]/g, "")}`)}>{subscriber.phone}</a>) : ("—")}
                   </td>
                   <td>{SOURCE_LABELS[subscriber.source] ?? subscriber.source}</td>
-                  <td>{formatDate(subscriber.createdAt)}</td>
+                  <td className="admin-nowrap">{formatDate(subscriber.createdAt)}</td>
                 </tr>))}
             </tbody>
-          </table>)}
+          </table></div></>)}
       </section>
     </AdminShell>);
 }

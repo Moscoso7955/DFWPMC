@@ -4,7 +4,6 @@ import { useVenue } from "@/app/components/VenueProvider";
 
 import { useState } from "react";
 import { WEEKDAY_KEYS, WEEKDAY_LABELS, type OperatingHoursContent } from "@/lib/siteContentSchema";
-import AdminBackLink from "../AdminBackLink";
 import VenueDateTimeField from "@/app/components/VenueDateTimeField";
 
 type AdminOperatingHoursEditorProps = {
@@ -52,7 +51,6 @@ export default function AdminOperatingHoursEditor({ initialHours }: AdminOperati
   return (
     <section className="admin-operating-hours" aria-labelledby="operating-hours-title">
       <header className="admin-operating-hours-header">
-        <AdminBackLink fallbackHref="/admin/calendar" />
         <h1 id="operating-hours-title">Operating Hours</h1>
         <p>
           Events on the public calendar that fall outside these hours are hidden.
@@ -83,7 +81,7 @@ export default function AdminOperatingHoursEditor({ initialHours }: AdminOperati
                       checked={day.open}
                       onChange={(event) => updateDay(key, { open: event.target.checked })}
                     />
-                    <span>{day.open ? "Open" : "Closed"}</span>
+                    <span>Open</span>
                   </label>
                 </td>
                 <td>
@@ -94,7 +92,6 @@ export default function AdminOperatingHoursEditor({ initialHours }: AdminOperati
                     value={day.openTime}
                     onChange={(value) => updateDay(key, { openTime: value })}
                     allowClear={false}
-                    dayStart={360}
                     disabled={!day.open}
                   />
                 </td>
@@ -106,7 +103,6 @@ export default function AdminOperatingHoursEditor({ initialHours }: AdminOperati
                     value={day.closeTime}
                     onChange={(value) => updateDay(key, { closeTime: value })}
                     allowClear={false}
-                    dayStart={360}
                     disabled={!day.open}
                   />
                 </td>

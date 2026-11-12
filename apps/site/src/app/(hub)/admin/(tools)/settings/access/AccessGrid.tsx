@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ADMIN_ROLE, AREAS, type AreaId, type Role } from "@/lib/accessShared";
 import SettingsNav from "../SettingsNav";
+import { noteSaveFailed, noteSaved } from "@/app/components/SaveNote";
 
 export default function AccessGrid({ roles: initial }: { roles: Role[] }) {
   const router = useRouter();
@@ -21,9 +22,10 @@ export default function AccessGrid({ roles: initial }: { roles: Role[] }) {
       body: JSON.stringify({ area, on }),
     });
     if (!res.ok) {
+      noteSaveFailed();
       setError("That didn't save. Reload and try again.");
       router.refresh();
-    }
+    } else noteSaved();
   };
 
   return (
@@ -41,6 +43,9 @@ export default function AccessGrid({ roles: initial }: { roles: Role[] }) {
           {error}
         </p>
       ) : null}
+      <p className="access-grid-hint" aria-hidden="true">
+        Swipe sideways to see every role →
+      </p>
       <div className="access-grid-wrap">
         <table className="access-grid">
           <thead>
@@ -85,6 +90,7 @@ export default function AccessGrid({ roles: initial }: { roles: Role[] }) {
                         className={`access-tick${on ? " is-on" : ""}${locked ? " is-locked" : ""}`}
                         aria-pressed={on}
                         aria-label={`${r.name}: ${area.label}`}
+                        title={locked ? "The Admin role always sees everything, so it can't be changed." : undefined}
                         disabled={locked}
                         onClick={() => toggle(r, area.id)}
                       >

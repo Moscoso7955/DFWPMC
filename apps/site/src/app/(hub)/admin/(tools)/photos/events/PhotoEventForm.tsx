@@ -11,6 +11,12 @@ type Props = {
   onSubmit: (form: ContestForm) => Promise<string | null>;
 };
 
+/** Today in the browser's calendar, "YYYY-MM-DD": a new event can't be in the past. */
+const todayKey = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
+
 export default function PhotoEventForm({ initial, submitLabel, dateLocked, onSubmit }: Props) {
   const [form, setForm] = useState(initial);
   const [busy, setBusy] = useState(false);
@@ -41,28 +47,28 @@ export default function PhotoEventForm({ initial, submitLabel, dateLocked, onSub
     >
       <label className="admin-pe-wide">
         <span>Name</span>
-        <input value={form.title} onChange={(e) => set("title", e.target.value)} maxLength={80} required />
+        <input value={form.title} onChange={(e) => set("title", e.target.value)} placeholder="e.g. Costume Contest" maxLength={80} required />
       </label>
       <label>
         <span>Date (the night it happens)</span>
-        <VenueDateTimeField mode="date" tone="light" ariaLabel="Date" value={form.date} onChange={(v) => set("date", v)} allowClear={false} disabled={dateLocked} required />
+        <VenueDateTimeField mode="date" tone="light" ariaLabel="Date" value={form.date} onChange={(v) => set("date", v)} allowClear={false} disabled={dateLocked} min={dateLocked ? undefined : todayKey()} required />
       </label>
       <p className="admin-pe-hint">Guests use fwpublicmarket.com/contest, and the calendar day links to it.</p>
       <label>
         <span>Entries open</span>
-        <VenueDateTimeField mode="time" tone="light" ariaLabel="Entries open" value={form.uploadOpen} onChange={(v) => set("uploadOpen", v)} allowClear={false} dayStart={720} required />
+        <VenueDateTimeField mode="time" tone="light" ariaLabel="Entries open" value={form.uploadOpen} onChange={(v) => set("uploadOpen", v)} allowClear={false} required />
       </label>
       <label>
         <span>Entries close{nextDay(form.uploadOpen, form.uploadClose) ? " (next morning)" : ""}</span>
-        <VenueDateTimeField mode="time" tone="light" ariaLabel="Entries close" value={form.uploadClose} onChange={(v) => set("uploadClose", v)} allowClear={false} dayStart={720} required />
+        <VenueDateTimeField mode="time" tone="light" ariaLabel="Entries close" value={form.uploadClose} onChange={(v) => set("uploadClose", v)} allowClear={false} required />
       </label>
       <label>
         <span>Voting opens</span>
-        <VenueDateTimeField mode="time" tone="light" ariaLabel="Voting opens" value={form.voteOpen} onChange={(v) => set("voteOpen", v)} allowClear={false} dayStart={720} required />
+        <VenueDateTimeField mode="time" tone="light" ariaLabel="Voting opens" value={form.voteOpen} onChange={(v) => set("voteOpen", v)} allowClear={false} required />
       </label>
       <label>
         <span>Voting closes{nextDay(form.voteOpen, form.voteClose) ? " (next morning)" : ""}</span>
-        <VenueDateTimeField mode="time" tone="light" ariaLabel="Voting closes" value={form.voteClose} onChange={(v) => set("voteClose", v)} allowClear={false} dayStart={720} required />
+        <VenueDateTimeField mode="time" tone="light" ariaLabel="Voting closes" value={form.voteClose} onChange={(v) => set("voteClose", v)} allowClear={false} required />
       </label>
       <p className="admin-pe-hint admin-pe-wide">
         Kansas City time. A closing time earlier than its opening time means after midnight, so 9:00 PM to 1:00 AM

@@ -63,7 +63,7 @@ function TaskEditor({ play, people, draft: initial, phases, p, onClose, contacts
       </label>
       <label>
         <span>Due</span>
-        <VenueDateTimeField mode="date" tone="light" ariaLabel="Due" value={due} allowClear={false} marks={{ [play.targetDate]: "the day it builds to" }} onChange={(v) => v && set("offsetDays", daysBetween(play.targetDate, v))} />
+        <VenueDateTimeField mode="date" tone="light" ariaLabel="Due" value={due} allowClear={false} onChange={(v) => v && set("offsetDays", daysBetween(play.targetDate, v))} />
         <small>{offsetLabel(d.offsetDays)} from the day</small>
       </label>
       <label>
@@ -233,9 +233,9 @@ export default function CountdownTab({ play, people, today, p, contacts, canCont
                       {t.title}
                       <em>
                         {t.team}
-                        {taskContacts(t.id).length ? ` · 📇 ${taskContacts(t.id).join(", ")}` : ""}
-                        {t.links.length ? ` · 🔗 ${t.links.length}` : ""}
-                        {t.notes ? " · 📝" : ""}
+                        {taskContacts(t.id).length ? ` · Contact: ${taskContacts(t.id).join(", ")}` : ""}
+                        {t.links.length ? ` · ${t.links.length} link${t.links.length === 1 ? "" : "s"}` : ""}
+                        {t.notes ? " · notes" : ""}
                         {t.costCents ? ` · ${money(t.costCents)}` : ""}
                       </em>
                     </button>
@@ -304,7 +304,7 @@ export default function CountdownTab({ play, people, today, p, contacts, canCont
               <li key={d.id}>
                 <b>{shortDate(addDays(play.targetDate, d.offsetDays))}</b>
                 <span>
-                  {d.kind === "hours" ? "🕑 " : d.kind === "party" ? "🎉 " : ""}
+                  {d.kind === "hours" ? "Hours: " : d.kind === "party" ? "Party: " : ""}
                   {d.label}
                 </span>
               </li>

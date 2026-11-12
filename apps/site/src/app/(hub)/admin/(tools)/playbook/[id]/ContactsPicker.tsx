@@ -35,8 +35,8 @@ export default function ContactsPicker({ playId, taskId, attached, all, canEdit,
             <strong>{a.contact.name}</strong>
             <em>{[a.contact.company !== a.contact.name ? a.contact.company : "", a.contact.what].filter(Boolean).join(" · ")}</em>
           </div>
-          {a.contact.phone ? <a href={telHref(a.contact.phone)}>📞 Call</a> : null}
-          {a.contact.email ? <a href={`mailto:${a.contact.email}`}>✉️ Email</a> : null}
+          {a.contact.phone ? <a href={telHref(a.contact.phone)}>Call</a> : null}
+          {a.contact.email ? <a href={`mailto:${a.contact.email}`}>Email</a> : null}
           {canEdit ? (
             <button type="button" className="is-quiet" aria-label={`Remove ${a.contact.name}`} onClick={() => p.run(() => api("DELETE", `${base}/${a.linkId}`))}>
               ✕

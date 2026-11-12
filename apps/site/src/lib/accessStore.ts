@@ -48,6 +48,7 @@ function ensureSchema(): Promise<void> {
       `;
     }
     await sql`alter table venue_users add column if not exists update_emails boolean not null default false`;
+    await sql`alter table venue_users add column if not exists photo_alerts boolean not null default false`;
     // The Admin starts with the morning feature emails switched on; everyone
     // else opts in from the People page.
     const { rows: seeded } = await sql`select value from venue_settings where key = 'update_emails_seeded'`;
@@ -55,6 +56,21 @@ function ensureSchema(): Promise<void> {
       const owner = ownerEmail();
       if (owner) await sql`update venue_users set update_emails = true where lower(email) = ${owner}`;
       await sql`insert into venue_settings (key, value) values ('update_emails_seeded', ${new Date().toISOString()}) on conflict (key) do nothing`;
+    }
+    // Once: the people who already review photos (the photo_review area)
+    // and the Admin start with the new-photo alerts on; new people start off.
+    const { rows: alertsSeeded } = await sql`select value from venue_settings where key = 'photo_alerts_seeded'`;
+    if (!alertsSeeded[0]) {
+      const owner = ownerEmail();
+      await sql`
+        update venue_users set photo_alerts = true
+        where status <> 'disabled' and (
+          lower(email) = ${owner}
+          or ${ADMIN_ROLE} = any(roles)
+          or exists (select 1 from venue_roles r where r.id = any(venue_users.roles) and 'photo_review' = any(r.areas))
+        )
+      `;
+      await sql`insert into venue_settings (key, value) values ('photo_alerts_seeded', ${new Date().toISOString()}) on conflict (key) do nothing`;
     }
   })().catch((error) => {
     schemaReady = null;
@@ -86,6 +102,7 @@ function toUser(r: Record<string, unknown>): VenueUser {
     lastSignInAt: iso(r.last_sign_in_at),
     isOwner,
     updateEmails: Boolean(r.update_emails),
+    photoAlerts: Boolean(r.photo_alerts),
   };
 }
 
@@ -237,6 +254,26 @@ export async function setUpdateEmails(id: string, on: boolean): Promise<{ ok: bo
   return { ok: true };
 }
 
+/** Switch someone's "new photos to review" emails on or off. */
+export async function setPhotoAlerts(id: string, on: boolean): Promise<{ ok: boolean; error?: string }> {
+  await ensureSchema();
+  const { rows } = await sql`update venue_users set photo_alerts = ${on} where id = ${id} returning email`;
+  if (!rows[0]) return { ok: false, error: "Not found." };
+  if (on && !rows[0].email) return { ok: true, error: "Add their email so the alerts can reach them." };
+  return { ok: true };
+}
+
+/** Who gets the new-photo alerts: switched on, has an email, not turned off. */
+export async function listPhotoAlertRecipients(): Promise<{ name: string; email: string }[]> {
+  await ensureSchema();
+  const { rows } = await sql`
+    select name, email from venue_users
+    where photo_alerts and email <> '' and status <> 'disabled'
+    order by lower(name)
+  `;
+  return rows.map((r) => ({ name: String(r.name).trim().split(/\s+/)[0] || String(r.name), email: String(r.email) }));
+}
+
 /** Who gets the feature emails: switched on, has an email, not turned off. First names for the greeting. */
 export async function listUpdateRecipients(): Promise<{ name: string; email: string }[]> {
   await ensureSchema();
@@ -327,7 +364,7 @@ export async function completeSignIn(input: { email: string; sub: string; name: 
   let row = rows[0];
   const isOwner = email === ownerEmail() && Boolean(email);
   if (!row && isOwner) {
-    const created = await sql`insert into venue_users (name, email, roles, status, update_emails) values (${input.name || email}, ${email}, array['admin']::text[], 'active', true) returning *`;
+    const created = await sql`insert into venue_users (name, email, roles, status, update_emails, photo_alerts) values (${input.name || email}, ${email}, array['admin']::text[], 'active', true, true) returning *`;
     row = created.rows[0];
   }
   if (!row) return { ok: false, reason: "not_invited" };

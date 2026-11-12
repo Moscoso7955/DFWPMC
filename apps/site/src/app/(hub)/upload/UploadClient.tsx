@@ -203,10 +203,11 @@ export default function UploadClient({ options, nights, storageReady }: { option
             }}
             disabled={running}
           >
-            <strong>Drop your exported photos here</strong>
-            <span>
+            <strong className="upload-drop-desktop">Drop your exported photos here</strong>
+            <span className="upload-drop-desktop">
               or <u>choose files</u>
             </span>
+            <strong className="upload-drop-phone">Choose photos</strong>
           </button>
           <input ref={inputRef} type="file" accept="image/jpeg,image/png,image/webp" multiple hidden onChange={(e) => addFiles(e.target.files)} />
           <p className="upload-note">

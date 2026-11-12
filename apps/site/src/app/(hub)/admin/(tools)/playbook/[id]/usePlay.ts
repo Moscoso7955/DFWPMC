@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { api } from "../playbookClient";
+import { noteSaveFailed, noteSaved } from "@/app/components/SaveNote";
 
 export type Collection = "tasks" | "budget" | "items" | "photos" | "dates" | "run";
 
@@ -19,9 +20,11 @@ export function usePlay(playId: string) {
       setError("");
       try {
         const result = await fn();
+        noteSaved();
         router.refresh();
         return result;
       } catch (err) {
+        noteSaveFailed();
         setError(err instanceof Error ? err.message : "That didn't save. Try again.");
         return null;
       } finally {

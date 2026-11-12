@@ -17,14 +17,15 @@ function getPhoneHref(phone: string) {
     const digits = phone.replace(/[^\d+]/g, "");
     return `tel:${digits}`;
 }
-function ContactEditButton({ field, onEdit, }: {
+function ContactEditButton({ field, label, onEdit, }: {
     field: ContactContentField;
+    label?: string;
     onEdit?: (field: ContactContentField) => void;
 }) {
     if (!onEdit)
         return null;
     return (<button className={`admin-edit-hotspot admin-edit-hotspot--contact-${field}`} type="button" onClick={() => onEdit(field)}>
-      <span>Edit {CONTACT_FIELD_LABELS[field]}</span>
+      <span>{label ?? `Edit ${CONTACT_FIELD_LABELS[field]}`}</span>
     </button>);
 }
 export default function ContactPageView({ basePath = "", content, isAdmin = false, onEdit, }: ContactPageViewProps) {
@@ -80,27 +81,26 @@ export default function ContactPageView({ basePath = "", content, isAdmin = fals
 
         <div className="contact-columns">
         <div className="contact-left">
-        <div className="contact-details" aria-label="Willow contact details">
-          <p className={isAdmin ? "admin-contact-edit-target admin-contact-edit-target--email" : undefined}>
+        <div className={`contact-details${isAdmin ? " admin-contact-edit-target admin-contact-edit-target--details" : ""}`} aria-label="Contact details">
+          <p>
             {content.email ? <a href={venuePath(`mailto:${content.email}`)}>{content.email}</a> : <span>Email to be added</span>}
-            {isAdmin ? <ContactEditButton field="email" onEdit={onEdit}/> : null}
           </p>
-          <p className={isAdmin ? "admin-contact-edit-target admin-contact-edit-target--phone" : undefined}>
+          <p>
             {content.phone ? <a href={venuePath(getPhoneHref(content.phone))}>{content.phone}</a> : <span>Phone to be added</span>}
-            {isAdmin ? <ContactEditButton field="phone" onEdit={onEdit}/> : null}
           </p>
           {(() => {
             const href = getInstagramHref(content.instagram);
             const linkText = (content.instagramLabel ?? "").trim();
             if (!linkText && !isAdmin)
                 return null;
-            return (<p className={isAdmin ? "admin-contact-edit-target admin-contact-edit-target--instagram" : undefined}>
+            return (<p>
                 {linkText ? (href ? (<a href={venuePath(href)} target="_blank" rel="noopener noreferrer">
                       {linkText}
                     </a>) : (<span>{linkText}</span>)) : (<span>Instagram name not set</span>)}
-                {isAdmin ? <ContactEditButton field="instagram" onEdit={onEdit}/> : null}
               </p>);
         })()}
+          {/* One box for email, phone and Instagram, so their edit spots can't pile up. */}
+          {isAdmin ? <ContactEditButton field="email" label="Edit contact info" onEdit={onEdit}/> : null}
         </div>
 
         <div className="contact-action">

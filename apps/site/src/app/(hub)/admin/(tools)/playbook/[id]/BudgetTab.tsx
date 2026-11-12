@@ -61,11 +61,20 @@ export default function BudgetTab({ play, p }: { play: Play; p: PlayApi }) {
         </div>
         {play.budget.map((b) => (
           <div key={b.id} className="pb-table-row" role="row">
-            <InlineInput value={b.category} list="pb-budget-cats" aria-label="Category" onSave={(v) => save(b, { category: v })} />
-            <InlineInput value={b.label} aria-label="Item" onSave={(v) => save(b, { label: v })} />
-            <InlineInput value={dollars(b.plannedCents)} inputMode="decimal" placeholder="$" aria-label="Planned" onSave={(v) => save(b, { plannedCents: parseMoney(v) })} />
-            <InlineInput value={dollars(b.actualCents)} inputMode="decimal" placeholder="$" aria-label="Spent" onSave={(v) => save(b, { actualCents: parseMoney(v) })} />
-            <span className="pb-vendor">
+            {/* On phones the column headings are hidden, so each field shows its own label. */}
+            <span className="pb-cell" data-label="Category">
+              <InlineInput value={b.category} list="pb-budget-cats" aria-label="Category" onSave={(v) => save(b, { category: v })} />
+            </span>
+            <span className="pb-cell" data-label="Item">
+              <InlineInput value={b.label} aria-label="Item" onSave={(v) => save(b, { label: v })} />
+            </span>
+            <span className="pb-cell" data-label="Planned">
+              <InlineInput value={dollars(b.plannedCents)} inputMode="decimal" placeholder="$" aria-label="Planned" onSave={(v) => save(b, { plannedCents: parseMoney(v) })} />
+            </span>
+            <span className="pb-cell" data-label="Spent">
+              <InlineInput value={dollars(b.actualCents)} inputMode="decimal" placeholder="$" aria-label="Spent" onSave={(v) => save(b, { actualCents: parseMoney(v) })} />
+            </span>
+            <span className="pb-vendor" data-label="Vendor / link">
               <InlineInput value={b.vendor} placeholder="Vendor" aria-label="Vendor" onSave={(v) => save(b, { vendor: v })} />
               <InlineInput value={b.url} placeholder="Link" aria-label="Link" onSave={(v) => save(b, { url: v })} />
               {b.url ? (
@@ -74,9 +83,14 @@ export default function BudgetTab({ play, p }: { play: Play; p: PlayApi }) {
                 </a>
               ) : null}
             </span>
-            <InlineInput value={b.notes} placeholder="Notes" aria-label="Notes" onSave={(v) => save(b, { notes: v })} />
-            <button type="button" className="is-quiet" aria-label="Remove line" onClick={() => window.confirm(`Remove “${b.label}”?`) && p.remove("budget", b.id)}>
-              ✕
+            <span className="pb-cell" data-label="Notes">
+              <InlineInput value={b.notes} placeholder="Notes" aria-label="Notes" onSave={(v) => save(b, { notes: v })} />
+            </span>
+            <button type="button" className="is-quiet pb-remove" aria-label="Remove line" onClick={() => window.confirm(`Remove “${b.label}”?`) && p.remove("budget", b.id)}>
+              <span aria-hidden="true">✕</span>
+              <span className="pb-remove-word" aria-hidden="true">
+                Remove line
+              </span>
             </button>
           </div>
         ))}

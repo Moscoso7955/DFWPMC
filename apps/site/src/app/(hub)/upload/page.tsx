@@ -45,7 +45,7 @@ export default async function UploadPage() {
       <header className="upload-header">
         <div className="admin-login-logo" role="img" aria-label="The Public Market" />
         <form action="/upload/api/logout" method="post">
-          Signed in as <strong>{contributor.name}</strong> · <button type="submit">Log out</button>
+          Signed in as <strong>{contributor.name}</strong> · <button type="submit" className="upload-logout">Log out</button>
         </form>
       </header>
       <UploadClient options={options} nights={nights} storageReady={isPhotoStorageConfigured()} />

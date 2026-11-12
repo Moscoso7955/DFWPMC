@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { BlackbookEntry, BlackbookStatus } from "@/lib/blackbookStore";
 import PreviewNotice from "@/app/components/PreviewNotice";
+import AdminTips from "@/app/components/AdminTips";
 type BlackbookViewProps = {
     initialEntries: BlackbookEntry[];
     connected?: boolean;
@@ -141,12 +142,18 @@ export default function BlackbookView({ initialEntries, canEdit, connected = fal
         closeModal();
     };
     const logOut = async () => {
+        // The door phone gets tapped in a hurry: make sure.
+        if (!window.confirm("Log out of the door app?"))
+            return;
         await fetch("/admin/api/logout", { method: "POST" });
         window.location.href = "/admin/login";
     };
-    return (<main className="blackbook-shell">{connected ? null : <PreviewNotice />}
+    return (<main className="blackbook-shell"><AdminTips />{connected ? null : <PreviewNotice />}
       <div className="blackbook-topbar">
         <header className="blackbook-header">
+          <a className="blackbook-back" href="/admin">
+            <span aria-hidden="true">←</span> Admin
+          </a>
           <div className="venue-app-identity"><img src="/assets/brand/pm-seal-bone.svg" alt="The Public Market" /><div><p>The Public Market</p>
           <h1>
             Blackbook

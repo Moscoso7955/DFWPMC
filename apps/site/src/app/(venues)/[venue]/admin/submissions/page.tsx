@@ -16,9 +16,6 @@ export default async function AdminSubmissionsPage({ params }: { params: Promise
     const submissions = await listContactSubmissions(venue);
     return (<AdminShell venue={venue} layout="tool">
       <section className="admin-submissions">
-        <a className="admin-back-link" href={`${venue.basePath}/admin/analytics`}>
-          <span aria-hidden="true">←</span> Analytics
-        </a>
         <h1>Contact Submissions</h1>
         <p className="admin-submissions-note">
           Form submissions saved locally from this venue’s contact page. Email delivery is not connected.
@@ -27,8 +24,11 @@ export default async function AdminSubmissionsPage({ params }: { params: Promise
             {submissions.map((submission) => (<li key={submission.id} className="admin-submission">
                 <div className="admin-submission-meta">
                   <span>{submission.name || "—"}</span>
-                  <a href={(`mailto:${submission.email}`)}>{submission.email}</a>
+                  <a className="admin-submission-email" href={(`mailto:${submission.email}`)}>{submission.email}</a>
                   <span>{formatDate(submission.createdAt)}</span>
+                  <a className="admin-submission-reply" href={`mailto:${submission.email}?subject=${encodeURIComponent(`Re: your message to ${venue.name}`)}`}>
+                    Reply
+                  </a>
                 </div>
                 {submission.message ? <p className="admin-submission-message">{submission.message}</p> : null}
               </li>))}

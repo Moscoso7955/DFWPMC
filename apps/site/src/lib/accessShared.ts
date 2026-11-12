@@ -67,6 +67,8 @@ export type VenueUser = {
   isOwner: boolean;
   /** Gets the morning "new on the site" feature emails. */
   updateEmails: boolean;
+  /** Gets the "new photos to review" emails. */
+  photoAlerts: boolean;
 };
 
 /** The admin pages and APIs each area covers (longest match wins). */

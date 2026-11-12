@@ -1,25 +1,17 @@
 import { C, MONO, SANS, SITE, emailButton, emailShell, esc, sendEach, type VenueEmail } from "./venueEmail";
 
-// The photo reviewers are whoever's roles include the photo_review area —
-// no hard-coded list.
-async function listReviewers(): Promise<{ name: string; email: string }[]> {
-  const { listUsersWithAreas } = await import("./accessStore");
-  const users = await listUsersWithAreas();
-  return users
-    .filter((u) => u.status !== "disabled" && u.areas.has("photo_review") && u.email)
-    .map((u) => ({ name: u.name.trim().split(/\s+/)[0] || u.name, email: u.email }));
-}
 import { claimUploadAlert, listUploadsToAnnounce, releaseUploadAlert, type UploadToAnnounce } from "./photoStore";
 
-// "New photos to review" emails for Victoria and Chloe, the two directors
-// who say yes or no to every photo. A cron checks every 10 minutes and
-// sends one email per night once its upload has gone quiet; photos added
-// to the same night later get a short "more photos" email.
+// "New photos to review" emails for everyone with Photo alerts on in
+// Settings → People. Each person gets their own copy, greeted by first
+// name; the tips name the others on the list. A cron checks every 10
+// minutes and sends one email per night once its upload has gone quiet;
+// photos added to the same night later get a short "more photos" email.
 
 const dayLabel = (date: string) =>
   new Date(`${date}T12:00:00`).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
 
-export function renderUploadAlert(u: UploadToAnnounce, name: string = "there"): VenueEmail {
+export function renderUploadAlert(u: UploadToAnnounce, name: string = "there", others: string[] = []): VenueEmail {
   const when = dayLabel(u.date);
   const more = u.newCount < u.total;
   const count = `${u.newCount} ${more ? "more " : "new "}photo${u.newCount === 1 ? "" : "s"}`;
@@ -49,12 +41,14 @@ export function renderUploadAlert(u: UploadToAnnounce, name: string = "there"): 
         .join("")}</table>`
     : "";
 
-  const partner = "another reviewer";
+  const partner = others.length ? others.join(" or ") : "anyone else on the team";
   const tips = [
     "On your phone it's one photo at a time: swipe right for yes, left for no, and double-tap to highlight a favorite (that counts as a yes).",
     u.published
-      ? `This night is already live. The new photos go up as soon as you or ${partner} says yes.`
-      : `You and ${partner} share one review, so whoever gets there first can do it. The night goes live once it's marked done, showing the photos that got a yes.`,
+      ? `This night is already live. The new photos go up as soon as ${others.length ? `you or ${partner}` : "you"} say${others.length ? "s" : ""} yes.`
+      : others.length
+        ? `You and ${partner} share one review, so whoever gets there first can do it. The night goes live once it's marked done, showing the photos that got a yes.`
+        : "The night goes live once you mark the review done, showing the photos that got a yes.",
   ];
 
   const rows = `
@@ -98,13 +92,14 @@ export async function sendDueUploadAlerts(): Promise<UploadAlertResult> {
       continue;
     }
     try {
-      const reviewers = await listReviewers();
-      if (reviewers.length === 0) {
+      const { listPhotoAlertRecipients } = await import("./accessStore");
+      const people = await listPhotoAlertRecipients();
+      if (people.length === 0) {
         await releaseUploadAlert(upload.nightId, claim.previous);
         skipped++;
         continue;
       }
-      await sendEach(reviewers, (name) => renderUploadAlert(upload, name));
+      await sendEach(people, (name) => renderUploadAlert(upload, name, people.filter((x) => x.name !== name).map((x) => x.name)));
       sent.push(renderUploadAlert(upload).subject);
     } catch (error) {
       await releaseUploadAlert(upload.nightId, claim.previous);

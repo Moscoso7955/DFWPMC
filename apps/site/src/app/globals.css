@@ -3560,15 +3560,55 @@ button.blackbook-photo--zoomable:focus-visible {
     padding: 0 14px;
   }
 
-  .admin-hours-table th,
-  .admin-hours-table td {
-    padding: 10px 8px;
+  /* Phones: one block per day, From and To on their own line. */
+  .admin-hours-table thead {
+    display: none;
   }
 
-  .admin-hours-table input[type="time"] {
-    min-height: 36px;
-    padding: 4px 6px;
-    font-size: 0.86rem;
+  .admin-hours-table,
+  .admin-hours-table tbody {
+    display: block;
+  }
+
+  .admin-hours-table tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 10px;
+    align-items: center;
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(34, 32, 32, 0.15);
+  }
+
+  .admin-hours-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .admin-hours-table th,
+  .admin-hours-table td {
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  .admin-hours-table td:nth-child(2) {
+    justify-self: end;
+  }
+
+  .admin-hours-table td:nth-child(3)::before,
+  .admin-hours-table td:nth-child(4)::before {
+    display: block;
+    margin: 0 0 4px;
+    color: var(--deep-red);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .admin-hours-table td:nth-child(3)::before {
+    content: "From";
+  }
+
+  .admin-hours-table td:nth-child(4)::before {
+    content: "To";
   }
 }
 
@@ -5305,21 +5345,36 @@ button.blackbook-photo--zoomable:focus-visible {
   border-color: var(--yellow);
 }
 
-/* ---------- Date/time picker (styled after the /calendar grid) ---------- */
+/* ---------- Date/time pickers (built like Tipsy's, in brand colors) ---------- */
 
 .venue-picker {
   position: relative;
 }
 
-.venue-picker-trigger {
+.venue-picker-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.venue-picker-row .venue-date {
+  flex: 1 1 150px;
+}
+
+.venue-date {
+  position: relative;
+}
+
+/* Closed date field: reads "Nov 6, 2026". */
+.venue-date-trigger {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
   width: 100%;
+  min-width: 140px;
   min-height: 42px;
   padding: 8px 12px;
-  border: 1px solid rgba(var(--brand-paper-rgb), 0.3);
+  border: 1px solid rgba(243, 234, 217, 0.3);
   background: rgba(0, 0, 0, 0.4);
   color: var(--cream);
   font: inherit;
@@ -5330,244 +5385,258 @@ button.blackbook-photo--zoomable:focus-visible {
   cursor: pointer;
 }
 
-.venue-picker-trigger--empty {
-  color: rgba(var(--brand-paper-rgb), 0.5);
+.venue-date-trigger.is-empty {
+  color: rgba(243, 234, 217, 0.5);
 }
 
-.venue-picker-trigger:focus-visible,
-.venue-picker-trigger[aria-expanded="true"] {
+.venue-date-trigger:focus-visible,
+.venue-date-trigger[aria-expanded="true"] {
   outline: 1px solid var(--yellow);
   outline-offset: 2px;
   border-color: var(--yellow);
 }
 
-.venue-picker-icon {
-  color: var(--yellow);
-  font-size: 0.8rem;
+.venue-date-trigger:disabled,
+.venue-time-select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
-/* Portaled to <body>; top/left come from the trigger's position. */
-.venue-picker-panel {
+/* The month popover: portaled to <body>, placed under the field. */
+.venue-date-panel {
   position: fixed;
   z-index: 1000;
-  width: min(470px, calc(100vw - 32px));
+  width: min(320px, calc(100vw - 16px));
+  padding: 8px 10px 10px;
   border: var(--frame-line);
-  background: var(--black);
+  background: var(--cream);
   color: var(--black);
-  text-transform: none;
-  letter-spacing: 0;
   font-size: 0.9rem;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.18), 0 8px 10px -6px rgba(0, 0, 0, 0.18);
 }
 
-.venue-picker-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 118px;
-}
-
-.venue-picker-calendar {
-  border-right: var(--frame-line);
-}
-
-.venue-picker-month {
-  position: relative;
-  min-height: 46px;
+.venue-date-head {
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-bottom: var(--frame-line);
-  background: var(--yellow);
-  text-transform: uppercase;
-  font-size: 0.85rem;
+  justify-content: space-between;
+  margin: 0 0 4px;
 }
 
-.venue-picker-nav {
-  position: absolute;
-  padding: 4px;
-  border: 0;
-  background: transparent;
-  color: var(--black);
-  font: inherit;
-  font-size: 0.72rem;
+.venue-date-head strong {
+  font-weight: 500;
+  font-size: 0.86rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--deep-red);
+}
+
+.venue-date-head button {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: var(--deep-red);
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
   cursor: pointer;
 }
 
-.venue-picker-nav--back {
-  left: 8px;
+.venue-date-head button:hover,
+.venue-date-head button:focus-visible {
+  background: var(--yellow);
+  outline: 0;
 }
 
-.venue-picker-nav--next {
-  right: 8px;
-}
-
-.venue-picker-nav:hover,
-.venue-picker-nav:focus-visible {
-  color: var(--deep-red);
-  outline: 1px solid currentColor;
-}
-
-.venue-picker-grid {
+.venue-date-grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 2px;
 }
 
-.venue-picker-weekday {
-  display: grid;
-  place-items: center;
-  min-height: 30px;
-  background: var(--deep-red);
-  color: var(--cream);
-  text-transform: uppercase;
-  font-size: 0.66rem;
+.venue-date-dow {
+  padding: 4px 0;
+  text-align: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: rgba(34, 32, 32, 0.55);
 }
 
-.venue-picker-day {
-  min-height: 38px;
+.venue-date-day {
+  height: 38px;
   border: 0;
-  border-right: 1px solid rgba(var(--brand-primary-rgb), 0.35);
-  border-bottom: 1px solid rgba(var(--brand-primary-rgb), 0.35);
-  background: var(--cream);
+  background: none;
   color: var(--black);
   font: inherit;
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   cursor: pointer;
 }
 
-.venue-picker-day:nth-child(7n) {
-  border-right: 0;
-}
-
-.venue-picker-day:hover,
-.venue-picker-day:focus-visible {
+.venue-date-day:hover,
+.venue-date-day:focus-visible {
   background: var(--yellow);
   outline: 0;
 }
 
-.venue-picker-day--outside {
-  background: var(--brand-muted);
-  color: rgba(var(--brand-ink-rgb), 0.35);
-}
-
-.venue-picker-day--today {
-  color: var(--deep-red);
+.venue-date-day.is-today {
+  color: var(--red);
   font-weight: 700;
-  box-shadow: inset 0 0 0 2px var(--deep-red);
 }
 
-.venue-picker-day--selected,
-.venue-picker-day--selected:hover {
+.venue-date-day.is-selected,
+.venue-date-day.is-selected:hover {
   background: var(--deep-red);
   color: var(--cream);
   font-weight: 700;
 }
 
-/* contain: size keeps the 96-slot list from setting the row height,
-   so the column matches the calendar and scrolls inside it. */
-.venue-picker-times {
-  display: grid;
-  align-content: start;
-  contain: size;
-  overflow-y: auto;
-  background: var(--cream);
-  overscroll-behavior: contain;
-}
-
-.venue-picker-slot {
-  min-height: 36px;
-  padding: 6px 8px;
-  border: 0;
-  border-bottom: 1px solid rgba(var(--brand-primary-rgb), 0.2);
-  background: transparent;
-  color: var(--black);
-  font: inherit;
-  font-size: 0.82rem;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.venue-picker-slot:hover,
-.venue-picker-slot:focus-visible {
-  background: var(--yellow);
-  outline: 0;
-}
-
-.venue-picker-slot[aria-pressed="true"] {
-  background: var(--deep-red);
-  color: var(--cream);
-  font-weight: 700;
-}
-
-.venue-picker-slot[data-default="true"] {
-  box-shadow: inset 3px 0 0 var(--deep-red);
-}
-
-.venue-picker-footer {
-  display: flex;
-  justify-content: space-between;
+/* Time: hour : minute AM/PM selects, so phones show their own wheel. */
+.venue-time {
+  display: inline-flex;
   align-items: center;
-  padding: 8px 10px;
-  border-top: var(--frame-line);
-  background: var(--black);
+  gap: 6px;
 }
 
-.venue-picker-clear,
-.venue-picker-done {
-  min-height: 34px;
-  padding: 6px 16px;
-  border: 1px solid rgba(var(--brand-paper-rgb), 0.4);
-  background: transparent;
+.venue-time-select {
+  min-height: 42px;
+  padding: 0 10px;
+  border: 1px solid rgba(243, 234, 217, 0.3);
+  background: rgba(0, 0, 0, 0.4);
   color: var(--cream);
   font: inherit;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: none;
+  appearance: none;
+  -webkit-appearance: none;
   cursor: pointer;
 }
 
-.venue-picker-done {
+.venue-time-select:focus-visible {
+  outline: 1px solid var(--yellow);
+  outline-offset: 1px;
   border-color: var(--yellow);
-  background: var(--yellow);
+}
+
+.venue-time-colon {
+  font-weight: 700;
+}
+
+.venue-time-clear {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--yellow);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Keeps the browser's "fill in this field" bubble working, invisibly. */
+.venue-picker-required {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Light tone: white fields with a deep-red line, like the admin inputs. */
+.venue-picker--light .venue-date-trigger,
+.venue-picker--light .venue-time-select {
+  width: auto;
+  min-height: 40px;
+  padding: 0 10px;
+  border: 2px solid var(--deep-red);
+  background: #fff;
   color: var(--black);
+  font-size: 0.82rem;
 }
 
-/* Phones: open as a bottom sheet, times under the calendar. */
-@media (max-width: 560px) {
-  .venue-picker-panel {
-    position: fixed;
-    top: auto;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    width: auto;
-    max-height: calc(100svh - 24px);
-    overflow-y: auto;
+.venue-picker--light .venue-date-trigger {
+  width: 100%;
+}
+
+.venue-picker--light .venue-date-trigger.is-empty {
+  color: rgba(34, 32, 32, 0.45);
+}
+
+.venue-picker--light .venue-date-trigger:focus-visible,
+.venue-picker--light .venue-date-trigger[aria-expanded="true"],
+.venue-picker--light .venue-time-select:focus-visible {
+  outline: 2px solid var(--deep-red);
+  outline-offset: 1px;
+  border-color: var(--deep-red);
+  background: var(--yellow);
+}
+
+.venue-picker--light .venue-time-colon,
+.venue-picker--light .venue-time-clear {
+  color: var(--deep-red);
+}
+
+/* Match the inputs next to each picker. */
+.pb-editor .venue-picker--light .venue-date-trigger,
+.pb-editor .venue-picker--light .venue-time-select {
+  min-height: 36px;
+  font-size: 0.84rem;
+}
+
+.pb-mini-list .venue-picker--light .venue-date-trigger,
+.pb-inline-add .venue-picker--light .venue-date-trigger {
+  min-height: 34px;
+  border: 1px solid rgba(116, 4, 6, 0.4);
+}
+
+.pb-inline-add .venue-picker {
+  flex: 0 0 160px;
+}
+
+.admin-upload-label .venue-picker--light .venue-date-trigger,
+.admin-hours-table .venue-picker--light .venue-time-select {
+  min-height: 44px;
+  border: 2px solid var(--black);
+  font-size: inherit;
+}
+
+.admin-hours-table .venue-picker--light .venue-time-select {
+  min-height: 40px;
+}
+
+.upload-field .venue-picker--light .venue-date-trigger {
+  min-height: 46px;
+  padding: 0 12px;
+  border: var(--frame-line);
+  font-size: 0.86rem;
+}
+
+@media (max-width: 620px) {
+  .admin-hours-table .venue-time {
+    gap: 3px;
   }
 
-  .venue-picker-body {
-    grid-template-columns: 1fr;
-  }
-
-  .venue-picker-calendar {
-    border-right: 0;
-    border-bottom: var(--frame-line);
-  }
-
-  .venue-picker-day {
-    min-height: 42px;
-  }
-
-  .venue-picker-times {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    contain: none;
-    max-height: 168px;
-  }
-
-  .venue-picker-slot {
-    border-right: 1px solid rgba(var(--brand-primary-rgb), 0.2);
-    font-size: 0.78rem;
+  .admin-hours-table .venue-picker--light .venue-time-select {
+    min-height: 40px;
+    padding: 0 6px;
+    font-size: 16px;
   }
 }
+
+.ticketing-portal-field-hint {
+  margin: -6px 0 0;
+  font-size: 0.78rem;
+  color: rgba(34, 32, 32, 0.65);
+}
+
 
 /* ---------- Song link (link-preview audio) ---------- */
 
@@ -9690,7 +9759,7 @@ a.admin-photos-row:hover {
 
 .upload-header .admin-login-logo {
   width: 110px;
-  background-image: url("/logos/phoebe-black.png");
+  background-image: url("/assets/brand/pm-seal-green.svg");
   filter: none;
 }
 
@@ -12252,4 +12321,308 @@ span.access-chip { cursor: default; }
   background: var(--brand-ink);
   border-color: var(--brand-ink);
   color: var(--brand-paper);
+}
+
+/* ================================================================
+   Phones (audit step 3): nothing wider than the screen, readable
+   fields that don't make iPhones zoom, and fingertip-sized controls.
+   ================================================================ */
+
+/* Grid pages: let long content shrink instead of widening the page. */
+.admin-mailing-list,
+.admin-submissions,
+.upload-card,
+.ticketing-portal-main {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.admin-mailing-list > *,
+.admin-submissions > *,
+.upload-card > *,
+.ticketing-portal-main > * {
+  min-width: 0;
+}
+
+/* Tables scroll inside their own box, never the page. */
+.admin-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Inside a table, keep words whole (the box scrolls instead). */
+.admin-table-scroll th,
+.admin-table-scroll td {
+  overflow-wrap: normal;
+}
+
+.admin-table-scroll th {
+  white-space: nowrap;
+}
+
+.upload-field select,
+.upload-field input {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Hidden on desktop: the phone-only labels and hints. */
+.pb-cell {
+  display: contents;
+}
+
+.pb-remove-word,
+.access-grid-hint {
+  display: none;
+}
+
+/* A bigger invisible tap area round the site's hamburger. */
+.hamburger::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+}
+
+@media (max-width: 760px) {
+  /* Long emails, links and IDs wrap instead of pushing the page wide. */
+  .admin-shell--tool,
+  .ticketing-portal,
+  .upload-page {
+    overflow-wrap: anywhere;
+  }
+
+  .admin-mailing-list {
+    padding: 0 16px;
+  }
+
+  /* 16px text in fields, so iPhones don't zoom in when one is tapped. */
+  .admin-shell input:not([type="checkbox"]):not([type="radio"]),
+  .admin-shell select,
+  .admin-shell textarea,
+  .ticketing-portal input:not([type="checkbox"]):not([type="radio"]),
+  .ticketing-portal select,
+  .ticketing-portal textarea,
+  .upload-page input:not([type="checkbox"]):not([type="radio"]),
+  .upload-page select,
+  .blackbook-shell input:not([type="checkbox"]):not([type="radio"]),
+  .blackbook-shell select,
+  .blackbook-shell textarea,
+  .venue-picker--light .venue-time-select,
+  .venue-picker--light .venue-date-trigger {
+    font-size: 16px;
+  }
+
+  /* Fingertip-sized controls (about 40px). */
+  .admin-shell .admin-back-link,
+  .admin-photos-live-links a,
+  .admin-photos-live-links button,
+  .admin-photos-action a,
+  .admin-photos-action button,
+  .access-chip,
+  .admin-review-actions button,
+  .access-person-actions button {
+    min-height: 40px;
+  }
+
+  .admin-shell .admin-back-link {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .admin-shell input[type="checkbox"],
+  .admin-shell input[type="radio"] {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Photo review: the footer scrolls with the page instead of staying
+     pinned, so the photos get the screen. */
+  .admin-review-footer {
+    position: static;
+    margin-top: 16px;
+    padding: 12px 0;
+    border-top: var(--frame-line);
+  }
+
+  .admin-shell--tool .admin-photo-review {
+    padding-bottom: 32px;
+  }
+
+  /* Playbook Budget: each field shows what it is. */
+  .pb-cell {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .pb-cell::before,
+  .pb-vendor[data-label]::before {
+    content: attr(data-label);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--deep-red);
+  }
+
+  .pb-remove {
+    grid-column: 1 / -1;
+    display: inline-flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .pb-remove-word {
+    display: inline;
+  }
+
+  /* Calendar day pop-up: buttons under the event, not squeezing it. */
+  .admin-day-event {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .admin-day-event-actions {
+    justify-content: flex-start;
+  }
+
+  /* Photo event entries: Hide and Remove side by side under the text. */
+  .admin-pe-held li,
+  .admin-pe-leaders li {
+    grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .admin-pe-held li > :first-child,
+  .admin-pe-leaders li > :first-child {
+    grid-row: 1 / span 2;
+  }
+
+  .admin-pe-held li > div,
+  .admin-pe-leaders li > div {
+    grid-column: 2 / -1;
+  }
+
+  .admin-pe-held li > button,
+  .admin-pe-leaders li > button,
+  .admin-pe-held li > button.is-danger,
+  .admin-pe-leaders li > button.is-danger {
+    grid-row: 2;
+    grid-column: auto;
+    justify-self: stretch;
+    min-height: 40px;
+  }
+
+  /* Roles & access: say the grid scrolls; keep descriptions short. */
+  .access-grid-hint {
+    display: block;
+    margin: 0 0 6px;
+    font-size: 0.72rem;
+    color: var(--deep-red);
+  }
+
+  .access-grid tbody th em {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  /* Door app: Log out bigger and further from the Scan tab. */
+  .blackbook-topbar {
+    gap: 14px;
+  }
+
+  .blackbook-logout {
+    min-height: 40px;
+  }
+
+  /* Form submissions: name, email and date stacked, not squeezed side by side. */
+  .admin-submission-meta {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  /* Upload logins: room between people. */
+  .admin-photos-contributors li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(116, 4, 6, 0.2);
+  }
+}
+
+@media (max-width: 560px) {
+  /* Playbook Countdown: phase dates on their own line; the due date sits
+     under the task instead of squeezing it. */
+  .pb-phase h2 {
+    flex-wrap: wrap;
+    gap: 2px 10px;
+  }
+
+  .pb-phase h2 span {
+    flex-basis: 100%;
+  }
+
+  .pb-phase li {
+    grid-template-columns: 22px minmax(0, 1fr);
+    row-gap: 4px;
+  }
+
+  .pb-phase li .pb-due,
+  .pb-phase li .pb-who {
+    grid-column: 2;
+    grid-row: auto;
+    font-size: 0.72rem;
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   Visit: the address itself opens directions; pinch to zoom in the
+   photo viewer is handled by ZoomStage, not the browser.
+   ---------------------------------------------------------------- */
+
+.visit-address {
+  color: inherit;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.visit-address:hover,
+.visit-address:focus-visible {
+  color: var(--deep-red);
+}
+
+.photo-viewer-stage {
+  overflow: hidden;
+  touch-action: none;
+}
+
+.photo-viewer-stage img {
+  position: relative;
+  z-index: 0;
+  transform: var(--zoom-transform, none);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.photo-viewer-nav {
+  position: relative;
+  z-index: 1;
+}
+
+.photo-viewer-stage[data-zoomed] .photo-viewer-nav {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The Blackbook keeps its deep-green shell, so the way back reads in paper. */
+.blackbook-shell .blackbook-back {
+  color: var(--brand-paper);
+  opacity: 0.85;
+}
+
+.blackbook-shell .blackbook-back:hover,
+.blackbook-shell .blackbook-back:focus-visible {
+  color: var(--brand-paper);
+  opacity: 1;
 }

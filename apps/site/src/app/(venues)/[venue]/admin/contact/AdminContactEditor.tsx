@@ -12,23 +12,26 @@ export default function AdminContactEditor({ initialContent }: AdminContactEdito
     const [content, setContent] = useState(initialContent);
     const [activeField, setActiveField] = useState<ContactContentField | null>(null);
     const [draftValue, setDraftValue] = useState("");
-    const [draftLabel, setDraftLabel] = useState("");
     const [status, setStatus] = useState("");
-    const isInstagram = activeField === "instagram";
+    // Email, phone and Instagram are edited together in one "Contact info" form.
+    const [details, setDetails] = useState({ email: "", phone: "", instagramLabel: "", instagram: "" });
+    const isDetails = activeField === "email" || activeField === "phone" || activeField === "instagram" || activeField === "instagramLabel";
     const isEmbedField = activeField === "joinEmbedCode";
-    const activeLabel = activeField ? (isInstagram ? "Instagram" : CONTACT_FIELD_LABELS[activeField]) : "";
+    const activeLabel = activeField ? (isDetails ? "Contact info" : CONTACT_FIELD_LABELS[activeField]) : "";
     const openEditor = (field: ContactContentField) => {
         setActiveField(field);
         setDraftValue(content[field] ?? "");
-        if (field === "instagram") {
-            setDraftLabel(content.instagramLabel ?? "");
-        }
+        setDetails({
+            email: content.email ?? "",
+            phone: content.phone ?? "",
+            instagramLabel: content.instagramLabel ?? "",
+            instagram: content.instagram ?? "",
+        });
         setStatus("");
     };
     const closeModal = () => {
         setActiveField(null);
         setDraftValue("");
-        setDraftLabel("");
         setStatus("");
     };
     const patchField = async (field: ContactContentField, value: string) => {
@@ -50,17 +53,26 @@ export default function AdminContactEditor({ initialContent }: AdminContactEdito
         if (!activeField)
             return;
         setStatus("Saving draft...");
-        let nextContact = await patchField(activeField, draftValue);
+        if (isDetails) {
+            let next: ContactContent | null = content;
+            for (const field of ["email", "phone", "instagramLabel", "instagram"] as const) {
+                if ((content[field] ?? "") === details[field])
+                    continue;
+                next = await patchField(field, details[field]);
+                if (!next) {
+                    setStatus("Draft save failed.");
+                    return;
+                }
+            }
+            setContent(next ?? content);
+            setStatus("Draft saved.");
+            window.setTimeout(closeModal, 450);
+            return;
+        }
+        const nextContact = await patchField(activeField, draftValue);
         if (!nextContact) {
             setStatus("Draft save failed.");
             return;
-        }
-        if (isInstagram) {
-            nextContact = await patchField("instagramLabel", draftLabel);
-            if (!nextContact) {
-                setStatus("Draft save failed.");
-                return;
-            }
         }
         setContent(nextContact);
         setStatus("Draft saved.");
@@ -76,14 +88,22 @@ export default function AdminContactEditor({ initialContent }: AdminContactEdito
             </button>
             <p className="admin-modal-kicker">Contact Page</p>
             <h2>{activeLabel}</h2>
-            {isInstagram ? (<>
+            {isDetails ? (<>
                 <label className="admin-upload-label">
-                  <span>Name</span>
-                  <input value={draftLabel} placeholder="@venue" onChange={(event) => setDraftLabel(event.target.value)}/>
+                  <span>Email</span>
+                  <input type="email" value={details.email} onChange={(e) => setDetails({ ...details, email: e.target.value })}/>
                 </label>
                 <label className="admin-upload-label">
-                  <span>Link</span>
-                  <input value={draftValue} placeholder="https://instagram.com/venue" onChange={(event) => setDraftValue(event.target.value)}/>
+                  <span>Phone</span>
+                  <input type="tel" value={details.phone} onChange={(e) => setDetails({ ...details, phone: e.target.value })}/>
+                </label>
+                <label className="admin-upload-label">
+                  <span>Instagram name</span>
+                  <input value={details.instagramLabel} placeholder="@venue" onChange={(e) => setDetails({ ...details, instagramLabel: e.target.value })}/>
+                </label>
+                <label className="admin-upload-label">
+                  <span>Instagram link</span>
+                  <input value={details.instagram} placeholder="https://instagram.com/venue" onChange={(e) => setDetails({ ...details, instagram: e.target.value })}/>
                 </label>
               </>) : isEmbedField ? (<label className="admin-upload-label">
                 <span>{activeLabel}</span>

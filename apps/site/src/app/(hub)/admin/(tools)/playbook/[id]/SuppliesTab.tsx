@@ -18,7 +18,7 @@ function ItemRow({ play, item, p, storageReady }: { play: Play; item: Item; p: P
           // eslint-disable-next-line @next/next/no-img-element
           <img src={item.photo.thumb} alt="" />
         ) : (
-          <span>{uploading ? "…" : "📷"}</span>
+          <span>{uploading ? "…" : "+ Photo"}</span>
         )}
       </button>
       <input
@@ -37,8 +37,14 @@ function ItemRow({ play, item, p, storageReady }: { play: Play; item: Item; p: P
         }}
       />
       <div className="pb-item-main">
-        <InlineInput className="pb-item-name" value={item.name} aria-label="Item" onSave={(v) => save({ name: v })} />
-        <InlineArea value={item.notes} rows={2} placeholder="Notes: where it goes, what broke, how many we use…" aria-label="Notes" onSave={(v) => save({ notes: v })} />
+        <label className="pb-field">
+          <span>Item</span>
+          <InlineInput className="pb-item-name" value={item.name} onSave={(v) => save({ name: v })} />
+        </label>
+        <label className="pb-field">
+          <span>Notes</span>
+          <InlineArea value={item.notes} rows={2} placeholder="Where it goes, what broke, how many we use…" onSave={(v) => save({ notes: v })} />
+        </label>
       </div>
       <dl>
         <div>
@@ -62,7 +68,10 @@ function ItemRow({ play, item, p, storageReady }: { play: Play; item: Item; p: P
         </div>
       </dl>
       <div className="pb-item-buy">
-        <InlineInput value={item.url} placeholder="Link to buy" aria-label="Link to buy" onSave={(v) => save({ url: v })} />
+        <label className="pb-field pb-field--grow">
+          <span>Link to buy</span>
+          <InlineInput value={item.url} placeholder="https://…" onSave={(v) => save({ url: v })} />
+        </label>
         {item.url ? (
           <a className="pb-buy" href={item.url} target="_blank" rel="noreferrer">
             Buy at {hostOf(item.url)} ↗

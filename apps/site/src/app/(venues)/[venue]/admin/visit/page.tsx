@@ -9,7 +9,13 @@ export default async function AdminVisitPage({ params }: { params: Promise<{ ven
   const venue = getVenue((await params).venue);
   await requireAdminSession();
   return (
-    <AdminShell venue={venue}>
+    <AdminShell
+      venue={venue}
+      shortcuts={[{ href: `${venue.basePath}/admin/hours`, label: "Hours" }]}
+    >
+      <p className="admin-preview-note" role="note">
+        Nothing to edit on this page: the hours come from Hours.
+      </p>
       <VisitPageView basePath={`${venue.basePath}/admin`} venueName={venue.name} />
     </AdminShell>
   );

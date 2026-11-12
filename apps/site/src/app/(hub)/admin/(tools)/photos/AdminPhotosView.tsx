@@ -154,9 +154,6 @@ export default function AdminPhotosView({
 
   return (
     <section className="admin-mailing-list admin-photos">
-      <a className="admin-back-link" href="/admin/analytics">
-        <span aria-hidden="true">←</span> Analytics
-      </a>
       <div className="admin-mailing-list-header">
         <h1>Photos</h1>
         <a className="admin-photos-events-link" href="/admin/photos/events">
@@ -177,7 +174,7 @@ export default function AdminPhotosView({
       {error ? <p className="admin-photos-warning">{error}</p> : null}
 
       <h2 className="admin-photos-section">
-        Needs review <span>{review.length}</span>
+        Needs review <span className={Number(review.length) ? undefined : "is-zero"}>{review.length}</span>
       </h2>
       {review.length ? (
         <ul className="admin-photos-list">
@@ -190,7 +187,7 @@ export default function AdminPhotosView({
       )}
 
       <h2 className="admin-photos-section">
-        Live <span>{live.length}</span>
+        Live <span className={Number(live.length) ? undefined : "is-zero"}>{live.length}</span>
       </h2>
       {live.length ? (
         <ul className="admin-photos-list">
@@ -205,7 +202,7 @@ export default function AdminPhotosView({
       {hidden.length ? (
         <>
           <h2 className="admin-photos-section">
-            Unpublished <span>{hidden.length}</span>
+            Unpublished <span className={Number(hidden.length) ? undefined : "is-zero"}>{hidden.length}</span>
           </h2>
           <ul className="admin-photos-list">
             {hidden.map((n) => (

@@ -131,7 +131,7 @@ export default function PlaybookHome({ plays, due, today, venue, canPeople }: Pr
       ) : null}
 
       <h2 className="admin-photos-section">
-        Plays <span>{live.length}</span>
+        Plays <span className={Number(live.length) ? undefined : "is-zero"}>{live.length}</span>
       </h2>
       {live.length ? (
         <ul className="pb-plays">{live.map(card)}</ul>
@@ -140,7 +140,7 @@ export default function PlaybookHome({ plays, due, today, venue, canPeople }: Pr
       )}
 
       <h2 className="admin-photos-section">
-        Templates <span>{templates.length}</span>
+        Templates <span className={Number(templates.length) ? undefined : "is-zero"}>{templates.length}</span>
       </h2>
       {templates.length ? <ul className="pb-plays">{templates.map(card)}</ul> : null}
       {!templates.some((t) => /christmas/i.test(t.title)) ? (
@@ -153,7 +153,7 @@ export default function PlaybookHome({ plays, due, today, venue, canPeople }: Pr
       {archived.length ? (
         <>
           <h2 className="admin-photos-section">
-            Past plays <span>{archived.length}</span>
+            Past plays <span className={Number(archived.length) ? undefined : "is-zero"}>{archived.length}</span>
           </h2>
           <ul className="pb-plays">{archived.map(card)}</ul>
         </>

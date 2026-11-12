@@ -8,7 +8,7 @@ export default async function NoAccessPage() {
   return (
     <main className="admin-login-page">
       <div className="admin-login-logo" role="img" aria-label="" />
-      <section className="admin-login-card">
+      <section className="admin-login-card admin-login-card--center">
         <h1>Nothing here yet</h1>
         <p className="access-signin-note">
           {principal?.kind === "user" ? `You're signed in as ${principal.user.email}, ` : "You're signed in, "}

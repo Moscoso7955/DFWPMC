@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 const BAR_NAME = "The Public Market";
 const BAR_ADDRESS = "1400 Henderson St, Fort Worth, TX 76102";
 const MAP_TEXT = `${BAR_NAME} - ${BAR_ADDRESS}`;
@@ -41,8 +43,7 @@ export default function DropPin() {
   };
 
   return (
-    <section className="visit-card" aria-label="Visit The Public Market">
-      <p>{BAR_ADDRESS}</p>
+    <section className="visit-card" aria-label="Share our location">
       <button type="button" onClick={dropPin}>
         <span>Drop A Pin</span>
         <svg className="visit-pin-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -50,6 +51,23 @@ export default function DropPin() {
           <path d="M12 12.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z" />
         </svg>
       </button>
+    </section>
+  );
+}
+
+// The address at the top of Visit: tap it to open directions in the
+// phone's own maps app (Apple Maps on Apple devices, Google Maps
+// otherwise), with both map links underneath.
+export function VisitAddress() {
+  const [mapsUrl, setMapsUrl] = useState(GOOGLE_MAPS_URL);
+  useEffect(() => {
+    if (getIsAppleDevice()) setMapsUrl(APPLE_MAPS_URL);
+  }, []);
+  return (
+    <section className="visit-card" aria-label="Visit The Public Market">
+      <a className="visit-address" href={mapsUrl} target="_blank" rel="noopener noreferrer">
+        {BAR_ADDRESS}
+      </a>
       <div className="visit-map-links" aria-label="Map links">
         <a href={APPLE_MAPS_URL}>Apple Maps</a>
         <a href={GOOGLE_MAPS_URL}>Google Maps</a>

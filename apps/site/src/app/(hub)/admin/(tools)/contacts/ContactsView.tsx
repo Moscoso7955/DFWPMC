@@ -105,7 +105,7 @@ export default function ContactsView({ contacts, plays }: Props) {
     if (!file) return;
     const cards = parseVCards(await file.text());
     if (!cards.length) {
-      setMessage("No contacts found in that file. Share the contact as a contact card (.vcf).");
+      setMessage("No contacts found in that file. Share the contact as a contact card file.");
       return;
     }
     let summary = "";
@@ -118,9 +118,6 @@ export default function ContactsView({ contacts, plays }: Props) {
 
   return (
     <section className="admin-mailing-list pb">
-      <a className="admin-back-link" href="/admin/playbook">
-        <span aria-hidden="true">←</span> Playbook
-      </a>
       <div className="admin-mailing-list-header">
         <h1>Contacts</h1>
       </div>
@@ -133,7 +130,7 @@ export default function ContactsView({ contacts, plays }: Props) {
           + Add contact
         </button>
         <button className="pb-btn pb-btn--quiet" type="button" onClick={() => fileRef.current?.click()}>
-          📇 Add from my phone
+          Add from my phone
         </button>
         <input ref={fileRef} type="file" accept=".vcf,text/vcard,text/x-vcard,text/directory" hidden onChange={(e) => { importFile(e.target.files?.[0]); e.target.value = ""; }} />
         <input className="ct-search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search name, company, what they do…" />
@@ -210,7 +207,7 @@ export default function ContactsView({ contacts, plays }: Props) {
       )}
 
       <div className="ct-phone-tip">
-        <strong>📇 Add from my phone</strong>
+        <strong>Add from my phone</strong>
         <span>
           On iPhone: open the contact, tap Share Contact, then Save to Files. On Android: open the contact, Share, then save the .vcf file.
           Then tap Add from my phone here and pick it. Name, company, phone, email and website fill in.

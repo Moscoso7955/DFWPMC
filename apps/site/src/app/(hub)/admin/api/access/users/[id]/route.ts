@@ -1,4 +1,4 @@
-import { cancelInvite, createInvite, deleteUser, listRoles, setUpdateEmails, setUserDisabled, updateUser } from "@/lib/accessStore";
+import { cancelInvite, createInvite, deleteUser, listRoles, setPhotoAlerts, setUpdateEmails, setUserDisabled, updateUser } from "@/lib/accessStore";
 import { sendInvite } from "@/lib/inviteEmail";
 import { accessActor } from "../../guard";
 
@@ -9,6 +9,10 @@ export async function PATCH(request: Request, { params }: Ctx) {
   const { id } = await params;
   const body = (await request.json().catch(() => ({}))) as Record<string, unknown>;
   // { updateEmails: boolean } switches the morning feature emails on or off.
+  if (typeof body.photoAlerts === "boolean") {
+    const result = await setPhotoAlerts(id, body.photoAlerts);
+    return result.ok ? Response.json({ ok: true, warning: result.error }) : Response.json({ error: result.error }, { status: 400 });
+  }
   if (typeof body.updateEmails === "boolean") {
     const result = await setUpdateEmails(id, body.updateEmails);
     return result.ok ? Response.json({ ok: true, warning: result.error }) : Response.json({ error: result.error }, { status: 400 });

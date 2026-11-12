@@ -16,11 +16,11 @@ export default function ContactCard({ contact, compact = false }: { contact: Con
         </div>
       </div>
       <div className="ct-actions">
-        {contact.phone ? <a href={telHref(contact.phone)}>📞 {compact ? "Call" : contact.phone}</a> : null}
-        {contact.email ? <a href={`mailto:${contact.email}`}>✉️ {compact ? "Email" : contact.email}</a> : null}
+        {contact.phone ? <a href={telHref(contact.phone)}>{compact ? "Call" : contact.phone}</a> : null}
+        {contact.email ? <a href={`mailto:${contact.email}`}>{compact ? "Email" : contact.email}</a> : null}
         {contact.website && !compact ? (
           <a href={webHref(contact.website)} target="_blank" rel="noreferrer">
-            🌐 {contact.website}
+            {contact.website}
           </a>
         ) : null}
       </div>

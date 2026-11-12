@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import type { LivePhoto } from "@/lib/photoStore";
+import ZoomStage from "./ZoomStage";
 
 type Props = { title: string; when: string; by: string | null; date: string; photos: LivePhoto[] };
 
 export default function PhotoStream({ title, when, by, date, photos }: Props) {
   const [view, setView] = useState<number | null>(null);
-  const touchX = useRef<number | null>(null);
 
   useEffect(() => {
     if (view === null) return;
@@ -64,16 +64,6 @@ export default function PhotoStream({ title, when, by, date, photos }: Props) {
           role="dialog"
           aria-modal="true"
           aria-label={`Photo ${view! + 1} of ${photos.length}`}
-          onTouchStart={(e) => {
-            touchX.current = e.touches[0]?.clientX ?? null;
-          }}
-          onTouchEnd={(e) => {
-            const start = touchX.current;
-            const end = e.changedTouches[0]?.clientX;
-            touchX.current = null;
-            if (start === null || end === undefined || Math.abs(end - start) < 50) return;
-            setView((v) => (v === null ? v : end < start ? Math.min(photos.length - 1, v + 1) : Math.max(0, v - 1)));
-          }}
         >
           <div className="photo-viewer-bar">
             <span>
@@ -83,7 +73,12 @@ export default function PhotoStream({ title, when, by, date, photos }: Props) {
               ×
             </button>
           </div>
-          <div className="photo-viewer-stage">
+          <ZoomStage
+            className="photo-viewer-stage"
+            photoKey={current.id}
+            onPrev={() => setView((v) => (v === null ? v : Math.max(0, v - 1)))}
+            onNext={() => setView((v) => (v === null ? v : Math.min(photos.length - 1, v + 1)))}
+          >
             <button type="button" className="photo-viewer-nav" disabled={view === 0} onClick={() => setView(view! - 1)} aria-label="Previous">
               ←
             </button>
@@ -98,7 +93,7 @@ export default function PhotoStream({ title, when, by, date, photos }: Props) {
             >
               →
             </button>
-          </div>
+          </ZoomStage>
           {current.caption ? <p className="photo-viewer-caption">{current.caption}</p> : null}
           <div className="photo-viewer-actions">
             <a href={current.full} download={`public-market-${date}-${view! + 1}.jpg`}>

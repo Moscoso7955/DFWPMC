@@ -22,7 +22,7 @@ function statusOf(c: ContestSummary) {
 export default function PhotoEventsView({ contests, checkReady }: { contests: ContestSummary[]; checkReady: boolean }) {
   const router = useRouter();
   const blank: ContestForm = {
-    title: "Costume Contest",
+    title: "",
     date: nextSaturday(),
     uploadOpen: "21:00",
     uploadClose: "23:30",

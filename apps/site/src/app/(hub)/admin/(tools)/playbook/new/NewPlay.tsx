@@ -114,7 +114,7 @@ export default function NewPlay({ sources, people, today, initialSource }: Props
         </label>
         <label>
           <span>Planning starts (kickoff email)</span>
-          <VenueDateTimeField mode="date" tone="light" ariaLabel="Planning starts" value={shownStart} onChange={setPlanStart} marks={targetDate ? { [targetDate]: "the day it builds to" } : undefined} />
+          <VenueDateTimeField mode="date" tone="light" ariaLabel="Planning starts" value={shownStart} onChange={setPlanStart} />
         </label>
         <label>
           <span>Kind</span>

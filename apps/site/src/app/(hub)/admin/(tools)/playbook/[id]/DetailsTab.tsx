@@ -47,7 +47,7 @@ export default function DetailsTab({ play, people, p }: { play: Play; people: Pe
         </label>
         <label>
           <span>Planning starts (kickoff email)</span>
-          <VenueDateTimeField mode="date" tone="light" ariaLabel="Planning starts" value={d.planStart ?? ""} onChange={(v) => setD({ ...d, planStart: v })} marks={{ [d.targetDate]: "the day it builds to" }} />
+          <VenueDateTimeField mode="date" tone="light" ariaLabel="Planning starts" value={d.planStart ?? ""} onChange={(v) => setD({ ...d, planStart: v })} />
         </label>
         <label>
           <span>Kind</span>
@@ -100,7 +100,7 @@ export default function DetailsTab({ play, people, p }: { play: Play; people: Pe
                   ariaLabel={`${k.label} date`}
                   value={addDays(play.targetDate, k.offsetDays)}
                   allowClear={false}
-                  marks={{ [play.targetDate]: "the day it builds to" }}
+                 
                   onChange={(v) => v && p.update("dates", k.id, { offsetDays: daysBetween(play.targetDate, v) })}
                 />
                 <select value={k.kind} aria-label="Kind" onChange={(e) => p.update("dates", k.id, { kind: e.target.value })}>
@@ -125,7 +125,7 @@ export default function DetailsTab({ play, people, p }: { play: Play; people: Pe
               if (await p.add("dates", { offsetDays: daysBetween(play.targetDate, date.on), kind: date.kind, label: date.label, sort: play.dates.length })) setDate({ ...date, label: "" });
             }}
           >
-            <VenueDateTimeField mode="date" tone="light" ariaLabel="New key date" value={date.on} allowClear={false} marks={{ [play.targetDate]: "the day it builds to" }} onChange={(v) => setDate({ ...date, on: v })} />
+            <VenueDateTimeField mode="date" tone="light" ariaLabel="New key date" value={date.on} allowClear={false} onChange={(v) => setDate({ ...date, on: v })} />
             <select value={date.kind} onChange={(e) => setDate({ ...date, kind: e.target.value as KeyDate["kind"] })}>
               {KINDS.map((x) => (
                 <option key={x.id} value={x.id}>
@@ -161,7 +161,7 @@ export default function DetailsTab({ play, people, p }: { play: Play; people: Pe
               if (await p.add("run", { offsetDays: daysBetween(play.targetDate, run.on), timeLabel: run.time, what: run.what, sort: play.run.length })) setRun({ ...run, time: "", what: "" });
             }}
           >
-            <VenueDateTimeField mode="date" tone="light" ariaLabel="Run of show date" value={run.on} allowClear={false} marks={{ [play.targetDate]: "the day it builds to" }} onChange={(v) => setRun({ ...run, on: v })} />
+            <VenueDateTimeField mode="date" tone="light" ariaLabel="Run of show date" value={run.on} allowClear={false} onChange={(v) => setRun({ ...run, on: v })} />
             <input value={run.time} onChange={(e) => setRun({ ...run, time: e.target.value })} placeholder="8:00 PM" />
             <input value={run.what} onChange={(e) => setRun({ ...run, what: e.target.value })} placeholder="What happens" />
             <button type="submit">+ Add</button>

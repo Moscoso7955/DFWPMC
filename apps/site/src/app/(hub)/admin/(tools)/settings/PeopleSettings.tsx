@@ -63,7 +63,8 @@ export default function PeopleSettings({ users, roles, venue, google, ownerSet, 
       <p className="admin-mailing-list-note">
         Who can sign in to {venue}&apos;s admin, and as what. People sign in with Google using the email you invite. Turn
         someone off or remove them and they&apos;re signed out everywhere right away. Tick Update emails for anyone who should get
-        the 8 AM email about new features; it greets each of them by name.
+        the 8 AM email about new features, and Photo alerts for anyone who reviews new photos. Each email greets them
+        by name.
       </p>
       {!google ? (
         <p className="admin-photos-warning">
@@ -98,6 +99,7 @@ export default function PeopleSettings({ users, roles, venue, google, ownerSet, 
                 type="email"
                 placeholder="Google email"
                 aria-label="Email"
+                title={u.email || undefined}
                 disabled={u.isOwner}
                 onBlur={(e) => e.target.value !== u.email && run(() => call("PATCH", `/admin/api/access/users/${u.id}`, { email: e.target.value }))}
               />
@@ -128,6 +130,15 @@ export default function PeopleSettings({ users, roles, venue, google, ownerSet, 
                 onChange={(e) => run(() => call("PATCH", `/admin/api/access/users/${u.id}`, { updateEmails: e.target.checked }))}
               />
               <span>Update emails</span>
+            </label>
+            <label className="access-updates access-alerts" title="An email when new photos are uploaded for review">
+              <input
+                type="checkbox"
+                checked={u.photoAlerts}
+                disabled={busy || u.status === "disabled"}
+                onChange={(e) => run(() => call("PATCH", `/admin/api/access/users/${u.id}`, { photoAlerts: e.target.checked }))}
+              />
+              <span>Photo alerts</span>
             </label>
             </div>
             <div className="access-person-actions">

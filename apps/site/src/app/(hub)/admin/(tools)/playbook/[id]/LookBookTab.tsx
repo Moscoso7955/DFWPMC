@@ -46,15 +46,21 @@ export default function LookBookTab({ play, p, storageReady }: { play: Play; p: 
 
       {storageReady ? (
         <div className="pb-look-form">
-          <input value={area} onChange={(e) => setArea(e.target.value)} list="pb-areas" placeholder="Area, e.g. Front window · the tree" />
+          <label className="pb-field pb-field--grow">
+            <span>Area</span>
+            <input value={area} onChange={(e) => setArea(e.target.value)} list="pb-areas" placeholder="e.g. Front window · the tree" />
+          </label>
           <datalist id="pb-areas">
             {areas.map((a) => (
               <option key={a} value={a} />
             ))}
           </datalist>
-          <input value={caption} onChange={(e) => setCaption(e.target.value)} placeholder="How it should be, e.g. gold only, lights wrapped vertically" />
+          <label className="pb-field pb-field--grow">
+            <span>How it should look</span>
+            <input value={caption} onChange={(e) => setCaption(e.target.value)} placeholder="e.g. gold only, lights wrapped vertically" />
+          </label>
           <button type="button" onClick={() => fileRef.current?.click()} disabled={uploading}>
-            {uploading ? "Uploading…" : `📷 Add ${year} photo`}
+            {uploading ? "Uploading…" : `+ Add ${year} photo`}
           </button>
           <input ref={fileRef} type="file" accept="image/*" multiple hidden onChange={(e) => { upload(e.target.files); e.target.value = ""; }} />
         </div>
@@ -70,8 +76,14 @@ export default function LookBookTab({ play, p, storageReady }: { play: Play; p: 
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={ph.thumb} alt={ph.area} loading="lazy" />
               </button>
-              <InlineInput className="pb-look-area" value={ph.area} placeholder="Area" aria-label="Area" onSave={(v) => p.update("photos", ph.id, { area: v })} />
-              <InlineArea value={ph.caption} rows={3} placeholder="How it should look" aria-label="How it should look" onSave={(v) => p.update("photos", ph.id, { caption: v })} />
+              <label className="pb-field">
+                <span>Area</span>
+                <InlineInput className="pb-look-area" value={ph.area} onSave={(v) => p.update("photos", ph.id, { area: v })} />
+              </label>
+              <label className="pb-field">
+                <span>How it should look</span>
+                <InlineArea value={ph.caption} rows={3} onSave={(v) => p.update("photos", ph.id, { caption: v })} />
+              </label>
               <button type="button" className="is-quiet" onClick={() => window.confirm("Remove this photo?") && p.remove("photos", ph.id)}>
                 Remove
               </button>
