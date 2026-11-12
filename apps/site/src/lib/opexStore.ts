@@ -116,6 +116,12 @@ function ensureSchema() {
         await sql`delete from opex_fixed where name = 'Apple Developer (Wallet passes)' and amount_cents = 9900`;
         await sql`insert into opex_cache (key, value) values ('starters_fixed', 'true'::jsonb) on conflict (key) do nothing`;
       }
+      // Once: Neon is now pulled by usage, so the typed-in Neon row goes.
+      const { rows: neonMoved } = await sql`select 1 from opex_cache where key = 'neon_auto'`;
+      if (!neonMoved.length) {
+        await sql`delete from opex_fixed where name ilike 'Neon%'`;
+        await sql`insert into opex_cache (key, value) values ('neon_auto', 'true'::jsonb) on conflict (key) do nothing`;
+      }
       // Vercel days split three ways: this site's project, team-wide costs
       // (plan, seats, untagged usage) and the team's other projects. Days
       // stored before the split are refetched.
@@ -387,6 +393,7 @@ export async function refreshOpex({ force = false, vercelDays = 12 } = {}) {
   await run("Vercel", async () => {
     vercel = await refreshVercel(now, vercelDays);
   });
+  await run("Neon", () => refreshNeon());
   for (const m of await refreshMonths(now)) {
     await run("Anthropic", () => refreshAnthropic(m, now, force));
   }
@@ -394,6 +401,50 @@ export async function refreshOpex({ force = false, vercelDays = 12 } = {}) {
   await cacheSet("failed_sources", failed);
   if (errors.length) console.error("Operating costs refresh:", errors.join("; "));
   return { ok: errors.length === 0, vercelDays: vercel, errors };
+}
+
+// ---------------------------------------------------------------------------
+// Neon, through Vercel's Marketplace: compute hours per database this month.
+// ---------------------------------------------------------------------------
+
+type NeonMonth = { siteHours: number; totalHours: number; computePrice: number; siteUsd: number; totalUsd: number };
+
+async function refreshNeon() {
+  if (!process.env.VERCEL_API_TOKEN) return;
+  const site = process.env.NEON_PROJECT_ID;
+  if (!site) return;
+  const res = await fetch(`${VERCEL_API}/v1/integrations/configurations?view=account&installationType=marketplace&teamId=${encodeURIComponent(VERCEL_TEAM_ID)}`, {
+    headers: { Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}` },
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error(`Vercel integrations ${res.status}`);
+  const list = (await res.json()) as unknown;
+  const configs = (Array.isArray(list) ? list : ((list as { configurations?: unknown[] })?.configurations ?? [])) as {
+    slug?: string;
+    billingData?: {
+      spending?: { periodStart?: string; totalCent?: number; items?: { name?: string; price?: string; quantity?: number; total?: string }[] };
+      usage?: { periodStart?: string; items?: { name?: string; resourceId?: string; periodValue?: number }[] };
+    };
+  }[];
+  const neon = configs.find((c) => c.slug === "neon");
+  const billing = neon?.billingData;
+  if (!billing?.spending || !billing.usage) return;
+  const compute = (billing.spending.items ?? []).find((i) => /compute/i.test(i.name ?? ""));
+  const hours = (billing.usage.items ?? []).filter((i) => /compute/i.test(i.name ?? ""));
+  const totalHours = hours.reduce((n, i) => n + (Number(i.periodValue) || 0), 0);
+  const siteHours = hours.filter((i) => i.resourceId === site).reduce((n, i) => n + (Number(i.periodValue) || 0), 0);
+  const computePrice = Number(compute?.price) || (compute?.quantity ? Number(compute.total) / compute.quantity : 0);
+  const period = billing.spending.periodStart ?? billing.usage.periodStart;
+  if (!period) return;
+  const month: NeonMonth = {
+    siteHours,
+    totalHours,
+    computePrice,
+    // Storage isn't split by database; this site's is tiny (MBs), so it counts compute only.
+    siteUsd: siteHours * computePrice,
+    totalUsd: (Number(billing.spending.totalCent) || 0) / 100,
+  };
+  await cacheSet(`neon:${period.slice(0, 7)}`, month);
 }
 
 // ---------------------------------------------------------------------------
@@ -491,6 +542,26 @@ async function monthLines(m: Month, fixed: FixedCost[], partial: boolean): Promi
           ? `The Market ${money(siteUsd)} + team plan & shared ${money(Number(v[0]?.team ?? 0))} ÷ ${projects} projects${filling}`
           : "Waiting for first update",
     usd: vercelDays ? siteUsd + teamShare : null,
+    how: "auto",
+  });
+
+  // Neon (the database), billed through Vercel's Marketplace. Its compute
+  // is metered per database, so this site counts its own hours. Vercel only
+  // reports the current month, so each month is saved as it goes.
+  const neon = (await cacheGet(`neon:${m.key}`))?.value as NeonMonth | undefined;
+  lines.push({
+    key: "neon",
+    label: "Neon database",
+    detail: neon
+      ? `The Market ${neon.siteHours.toFixed(1)} of ${neon.totalHours.toFixed(1)} compute hours × $${neon.computePrice.toFixed(3)} (account total ${money(neon.totalUsd)})`
+      : !process.env.VERCEL_API_TOKEN
+        ? "Not connected yet"
+        : !process.env.NEON_PROJECT_ID
+          ? "Add NEON_PROJECT_ID in Vercel to track this"
+          : m.end.getTime() <= Date.UTC(2026, 10, 1)
+            ? "Not tracked before November 2026"
+            : "Waiting for first update",
+    usd: neon ? neon.siteUsd : null,
     how: "auto",
   });
 
