@@ -26,19 +26,29 @@ export default async function UploadPage() {
     listContributorNights(contributor.id),
   ]);
 
-  // Recent nights from the calendar (last 60 days, through today).
+  // Recent nights from each venue's calendar (last 60 days, through today).
+  // One option per venue and date, so picking one tags the night's venue.
   const today = chicagoDateKey(new Date());
   const earliest = chicagoDateKey(new Date(Date.now() - 60 * DAY_MS));
-  const byDate = new Map<string, string[]>();
+  const byVenueDate = new Map<string, { venue: string; venueName: string; date: string; titles: string[] }>();
   for (const { venue, content } of venueContents) {
-  for (const event of content.calendar.events.map((e) => ({ ...e, title: `${venue.name} — ${e.title}` }))) {
-    if (event.date > today || event.date < earliest) continue;
-    byDate.set(event.date, [...(byDate.get(event.date) ?? []), event.title]);
+    for (const event of content.calendar.events) {
+      if (event.date > today || event.date < earliest) continue;
+      const key = `${event.date}:${venue.slug}`;
+      const entry = byVenueDate.get(key) ?? { venue: venue.slug, venueName: venue.name, date: event.date, titles: [] };
+      entry.titles.push(event.title);
+      byVenueDate.set(key, entry);
     }
   }
-  const options: NightOption[] = [...byDate.entries()]
-    .sort((a, b) => (a[0] < b[0] ? 1 : -1))
-    .map(([date, titles]) => ({ date, title: cleanTitle(titles[0]), label: titles.join(" + ") }));
+  const options: NightOption[] = [...byVenueDate.values()]
+    .sort((a, b) => (a.date === b.date ? a.venueName.localeCompare(b.venueName) : a.date < b.date ? 1 : -1))
+    .map((e) => ({
+      key: `${e.date}:${e.venue}`,
+      date: e.date,
+      venue: e.venue,
+      title: cleanTitle(e.titles[0]),
+      label: `${e.venueName} — ${e.titles.map(cleanTitle).join(" + ")}`,
+    }));
 
   return (
     <main className="upload-page">

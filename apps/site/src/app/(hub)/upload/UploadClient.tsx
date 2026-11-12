@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 import type { ContributorNight } from "@/lib/photoStore";
 import { makeCopies, postJson, putFile } from "@/lib/photoClient";
 import VenueDateTimeField from "@/app/components/VenueDateTimeField";
+import { VENUES } from "@/lib/venues";
 
-export type NightOption = { date: string; title: string; label: string };
+export type NightOption = { key: string; date: string; venue: string | null; title: string; label: string };
 
 type Status = "waiting" | "processing" | "uploading" | "done" | "failed";
 type Item = { key: string; file: File; status: Status; progress: number; error?: string; preview?: string };
@@ -19,8 +20,9 @@ const fmtDate = (date: string) =>
 
 export default function UploadClient({ options, nights, storageReady }: { options: NightOption[]; nights: ContributorNight[]; storageReady: boolean }) {
   const router = useRouter();
-  const [choice, setChoice] = useState(options[0]?.date ?? "other");
+  const [choice, setChoice] = useState(options[0]?.key ?? "other");
   const [otherDate, setOtherDate] = useState("");
+  const [otherVenue, setOtherVenue] = useState("");
   const [title, setTitle] = useState(options[0]?.title ?? "");
   const [items, setItems] = useState<Item[]>([]);
   const [running, setRunning] = useState(false);
@@ -29,11 +31,14 @@ export default function UploadClient({ options, nights, storageReady }: { option
   const inputRef = useRef<HTMLInputElement>(null);
   const startedAt = useRef(0);
 
-  const date = choice === "other" ? otherDate : choice;
+  const picked = options.find((o) => o.key === choice);
+  const date = choice === "other" ? otherDate : (picked?.date ?? "");
+  // The calendar option names the venue; a typed-in date picks it below.
+  const venue = choice === "other" ? otherVenue || null : (picked?.venue ?? null);
 
   const pickNight = (value: string) => {
     setChoice(value);
-    const option = options.find((o) => o.date === value);
+    const option = options.find((o) => o.key === value);
     if (option) setTitle(option.title);
     else if (value === "other") setTitle("");
   };
@@ -76,7 +81,7 @@ export default function UploadClient({ options, nights, storageReady }: { option
 
     let nightId: string;
     try {
-      const { night } = await postJson<{ night: { id: string } }>("/upload/api/nights", { date, title: title.trim() });
+      const { night } = await postJson<{ night: { id: string } }>("/upload/api/nights", { date, title: title.trim(), venue });
       nightId = night.id;
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Couldn't start the upload.");
@@ -167,7 +172,7 @@ export default function UploadClient({ options, nights, storageReady }: { option
           <span>1. Which night?</span>
           <select value={choice} onChange={(e) => pickNight(e.target.value)} disabled={running}>
             {options.map((o) => (
-              <option key={o.date} value={o.date}>
+              <option key={o.key} value={o.key}>
                 {fmtDate(o.date)} · {o.label}
               </option>
             ))}
@@ -175,10 +180,23 @@ export default function UploadClient({ options, nights, storageReady }: { option
           </select>
         </label>
         {choice === "other" ? (
-          <label className="upload-field">
-            <span>Date</span>
-            <VenueDateTimeField mode="date" tone="light" ariaLabel="Date" value={otherDate} onChange={setOtherDate} allowClear={false} disabled={running} />
-          </label>
+          <>
+            <label className="upload-field">
+              <span>Date</span>
+              <VenueDateTimeField mode="date" tone="light" ariaLabel="Date" value={otherDate} onChange={setOtherDate} allowClear={false} disabled={running} />
+            </label>
+            <label className="upload-field">
+              <span>Where was it?</span>
+              <select value={otherVenue} onChange={(e) => setOtherVenue(e.target.value)} disabled={running}>
+                <option value="">The whole market</option>
+                {VENUES.map((v) => (
+                  <option key={v.slug} value={v.slug}>
+                    {v.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </>
         ) : null}
         <label className="upload-field">
           <span>Name of the night</span>

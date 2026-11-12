@@ -225,20 +225,21 @@ export async function verifyContributorLogin(email: string, password: string): P
 // ---------------------------------------------------------------------------
 
 /** The night for a date, created on first upload. Title is set by the first upload. */
-export async function getOrCreateNight(date: string, title: string, contributorId: string) {
+export async function getOrCreateNight(date: string, title: string, contributorId: string, venue: string | null = null) {
   await ensureSchema();
   // A night left with no photos (e.g. a deleted test) starts over fresh:
-  // new title and uploader, not reviewed, not live.
+  // new title, uploader and venue, not reviewed, not live.
   await sql`
-    update photo_nights set title = ${title.trim()}, contributor_id = ${contributorId},
+    update photo_nights set title = ${title.trim()}, contributor_id = ${contributorId}, venue = ${venue},
       cd_done_at = null, md_done_at = null, published_at = null, hidden = false
     where night_date = ${date} and contest_id is null
       and not exists (select 1 from photo_items i where i.night_id = photo_nights.id)
   `;
   const { rows } = await sql`
-    insert into photo_nights (night_date, title, contributor_id)
-    values (${date}, ${title.trim()}, ${contributorId})
-    on conflict (night_date) where contest_id is null do update set title = photo_nights.title
+    insert into photo_nights (night_date, title, contributor_id, venue)
+    values (${date}, ${title.trim()}, ${contributorId}, ${venue})
+    on conflict (night_date) where contest_id is null
+      do update set title = photo_nights.title, venue = coalesce(photo_nights.venue, excluded.venue)
     returning id, night_date::text as date, title
   `;
   return { id: rows[0].id as string, date: rows[0].date as string, title: rows[0].title as string };
