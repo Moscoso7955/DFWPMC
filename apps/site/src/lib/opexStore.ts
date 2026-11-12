@@ -1,14 +1,16 @@
 import { sql } from "@vercel/postgres";
 
-// Operating costs for the Analytics card: what it costs to run the site
-// each month. Some lines are pulled from the service itself (Vercel's
-// bill, Stripe's fees, Anthropic's cost report), some are worked out from
-// what the site records (Claude photo checks, emails sent, photo storage),
-// and the rest are fixed amounts entered in the card (Google Workspace per
-// person, Apple Developer per year, and so on).
+// Operating costs for the Analytics card: what it costs to run the market's
+// site each month. Some lines are pulled from the service itself (Vercel's
+// bill, Anthropic's cost report), some are worked out from what the site
+// records (Claude photo checks, emails sent, photo storage), and the rest
+// are fixed amounts entered in the card (Google Workspace per person, the
+// domain per year, and so on).
 
 const USE_DB = Boolean(process.env.POSTGRES_URL);
 const VERCEL_TEAM_ID = process.env.VERCEL_BILLING_TEAM_ID || "team_ZtKzyUJEnKp68kFvqIr0KIf4";
+// This site's project; the team's bill also covers its other projects.
+const VERCEL_PROJECT_ID = process.env.VERCEL_BILLING_PROJECT_ID || "prj_0yiKHqxRALEof3COgN3z7z3kQmXO";
 const VERCEL_API = (process.env.VERCEL_API_BASE_URL || "https://api.vercel.com").replace(/\/$/, "");
 const ANTHROPIC_API = (process.env.ANTHROPIC_BASE_URL || "https://api.anthropic.com").replace(/\/$/, "");
 
@@ -25,7 +27,8 @@ const R2_FREE_GB = 10;
 const R2_PER_GB = 0.015;
 
 export type FixedPer = "month" | "year" | "user";
-export type FixedCost = { id: string; name: string; per: FixedPer; amountCents: number; users: number };
+/** `split`: how many apps or businesses share the bill; this site counts its share. */
+export type FixedCost = { id: string; name: string; per: FixedPer; amountCents: number; users: number; split: number };
 
 export type OpexLine = {
   key: string;
@@ -38,10 +41,16 @@ export type OpexMonth = { key: string; label: string; lines: OpexLine[]; total: 
 export type OpexSummary = {
   thisMonth: OpexMonth;
   lastMonth: OpexMonth;
+  /** Year to date: the months above added together. */
+  ytd: OpexMonth;
   fixed: FixedCost[];
   updatedAt: string | null;
   vercelConnected: boolean;
   anthropicExact: boolean;
+  /** Problems the self-check found; empty when everything adds up. */
+  issues: string[];
+  /** The day software costs start counting (YYYY-MM-DD), or null for the site's launch. */
+  costsStart: string | null;
 };
 
 let schemaReady: Promise<void> | null = null;
@@ -89,8 +98,7 @@ function ensureSchema() {
       if (!seeded.length && Number(rows[0]?.n) === 0) {
         const starters: [string, FixedPer, number, number][] = [
           ["Google Workspace", "user", 0, 1],
-          ["Apple Developer (Wallet passes)", "year", 9900, 1],
-          ["Domain (barphoebe.com)", "year", 0, 1],
+          ["Domain (fwpublicmarket.com)", "year", 0, 1],
           ["Resend email plan", "month", 0, 1],
           ["Neon database plan", "month", 0, 1],
         ];
@@ -99,6 +107,22 @@ function ensureSchema() {
         }
       }
       await sql`insert into opex_cache (key, value) values ('fixed_seeded', 'true'::jsonb) on conflict (key) do nothing`;
+      await sql`alter table opex_fixed add column if not exists split int not null default 1`;
+      // Once: the first starter list carried two lines copied from another
+      // site; rename the domain and drop the Apple row if nobody touched them.
+      const { rows: starterFix } = await sql`select 1 from opex_cache where key = 'starters_fixed'`;
+      if (!starterFix.length) {
+        await sql`update opex_fixed set name = 'Domain (fwpublicmarket.com)' where name = 'Domain (barphoebe.com)'`;
+        await sql`delete from opex_fixed where name = 'Apple Developer (Wallet passes)' and amount_cents = 9900`;
+        await sql`insert into opex_cache (key, value) values ('starters_fixed', 'true'::jsonb) on conflict (key) do nothing`;
+      }
+      // Vercel days split three ways: this site's project, team-wide costs
+      // (plan, seats, untagged usage) and the team's other projects. Days
+      // stored before the split are refetched.
+      await sql`alter table opex_vercel_days add column if not exists site_usd numeric`;
+      await sql`alter table opex_vercel_days add column if not exists team_usd numeric`;
+      await sql`alter table opex_vercel_days add column if not exists other_usd numeric`;
+      await sql`delete from opex_vercel_days where site_usd is null`;
     })().catch((error) => {
       schemaReady = null;
       throw error;
@@ -150,6 +174,7 @@ export async function listFixedCosts(): Promise<FixedCost[]> {
     per: (["month", "year", "user"].includes(String(r.per)) ? r.per : "month") as FixedPer,
     amountCents: Number(r.amount_cents),
     users: Number(r.users),
+    split: Math.max(1, Number(r.split ?? 1)),
   }));
 }
 
@@ -166,22 +191,25 @@ export async function saveFixedCosts(input: unknown): Promise<{ ok: boolean; err
     const users = Math.round(Number(raw.users));
     if (!Number.isFinite(amountCents) || amountCents < 0 || amountCents > 100_000_00) return { ok: false, error: `Check the price for ${name}.` };
     if (per === "user" && (!Number.isFinite(users) || users < 0 || users > 500)) return { ok: false, error: `Check the number of people for ${name}.` };
+    const split = Math.round(Number(raw.split ?? 1));
+    if (!Number.isFinite(split) || split < 1 || split > 50) return { ok: false, error: `Check how many share ${name}.` };
     const id = typeof raw.id === "string" && /^[0-9a-f-]{36}$/.test(raw.id) ? raw.id : crypto.randomUUID();
-    clean.push({ id, name, per, amountCents, users: per === "user" ? users : 1 });
+    clean.push({ id, name, per, amountCents, users: per === "user" ? users : 1, split });
   }
   await ensureSchema();
   await sql`delete from opex_fixed`;
   for (const [i, c] of clean.entries()) {
-    await sql`insert into opex_fixed (id, name, per, amount_cents, users, sort) values (${c.id}, ${c.name}, ${c.per}, ${c.amountCents}, ${c.users}, ${i})`;
+    await sql`insert into opex_fixed (id, name, per, amount_cents, users, split, sort) values (${c.id}, ${c.name}, ${c.per}, ${c.amountCents}, ${c.users}, ${c.split}, ${i})`;
   }
   return { ok: true };
 }
 
 /** A fixed cost as a monthly amount in dollars. */
-export function fixedMonthly(c: FixedCost) {
-  if (c.per === "year") return c.amountCents / 100 / 12;
-  if (c.per === "user") return (c.amountCents * c.users) / 100;
-  return c.amountCents / 100;
+export function fixedMonthly(c: Pick<FixedCost, "per" | "amountCents" | "users"> & { split?: number }) {
+  const share = Math.max(1, c.split ?? 1);
+  if (c.per === "year") return c.amountCents / 100 / 12 / share;
+  if (c.per === "user") return (c.amountCents * c.users) / 100 / share;
+  return c.amountCents / 100 / share;
 }
 
 // ---------------------------------------------------------------------------
@@ -207,7 +235,9 @@ const day = (d: Date) => d.toISOString().slice(0, 10);
 // Pulling from the services (run by the cron and the card's Refresh)
 // ---------------------------------------------------------------------------
 
-async function fetchVercelDay(date: string): Promise<number> {
+type VercelDay = { total: number; site: number; team: number; other: number };
+
+async function fetchVercelDay(date: string): Promise<VercelDay> {
   const from = `${date}T00:00:00.000Z`;
   const next = new Date(Date.parse(from) + 86_400_000).toISOString();
   const url = `${VERCEL_API}/v1/billing/charges?teamId=${encodeURIComponent(VERCEL_TEAM_ID)}&from=${encodeURIComponent(from)}&to=${encodeURIComponent(next)}`;
@@ -215,10 +245,16 @@ async function fetchVercelDay(date: string): Promise<number> {
   if (!res.ok) throw new Error(`Vercel billing ${res.status}`);
   const text = await res.text();
   // The charges come as one JSON record per line (or, defensively, one array).
-  let total = 0;
+  const out: VercelDay = { total: 0, site: 0, team: 0, other: 0 };
   const add = (r: unknown) => {
-    const cost = Number((r as { BilledCost?: unknown })?.BilledCost);
-    if (Number.isFinite(cost)) total += cost;
+    const rec = r as { BilledCost?: unknown; Tags?: { ProjectId?: string; ProjectName?: string } | null };
+    const cost = Number(rec?.BilledCost);
+    if (!Number.isFinite(cost)) return;
+    out.total += cost;
+    const project = rec.Tags?.ProjectId;
+    if (!project) out.team += cost;
+    else if (project === VERCEL_PROJECT_ID || rec.Tags?.ProjectName === "fwpublicmarket") out.site += cost;
+    else out.other += cost;
   };
   const trimmed = text.trim();
   if (trimmed.startsWith("[")) (JSON.parse(trimmed) as unknown[]).forEach(add);
@@ -231,12 +267,30 @@ async function fetchVercelDay(date: string): Promise<number> {
         // Skip a malformed line rather than lose the day.
       }
     }
-  return total;
+  return out;
+}
+
+/** How many projects share the team's costs, from Vercel's own list. */
+async function fetchVercelProjectCount(): Promise<number> {
+  let count = 0;
+  let until: string | null = null;
+  for (let i = 0; i < 5; i++) {
+    const url = `${VERCEL_API}/v9/projects?teamId=${encodeURIComponent(VERCEL_TEAM_ID)}&limit=100${until ? `&until=${until}` : ""}`;
+    const res = await fetch(url, { headers: { Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}` }, cache: "no-store" });
+    if (!res.ok) throw new Error(`Vercel projects ${res.status}`);
+    const body = (await res.json()) as { projects?: unknown[]; pagination?: { next?: number | null } };
+    count += body.projects?.length ?? 0;
+    if (!body.pagination?.next) break;
+    until = String(body.pagination.next);
+  }
+  return Math.max(1, count);
 }
 
 async function refreshVercel(now: Date, budget: number) {
   if (!process.env.VERCEL_API_TOKEN) return 0;
-  const start = monthOf(-1, now).start;
+  await cacheSet("vercel_projects", await fetchVercelProjectCount());
+  await recordSiteStart();
+  const start = (await refreshMonths(now))[0].start;
   const today = day(now);
   const yesterday = day(new Date(now.getTime() - 86_400_000));
   const { rows } = await sql`select to_char(day, 'YYYY-MM-DD') as day, fetched_at from opex_vercel_days where day >= ${day(start)}`;
@@ -249,25 +303,34 @@ async function refreshVercel(now: Date, budget: number) {
     const settled = fetched && fetched.getTime() > Date.parse(`${key}T00:00:00Z`) + 3 * 86_400_000;
     if (!fetched || (!settled && (key === today || key === yesterday || now.getTime() - fetched.getTime() > 6 * 3_600_000))) due.push(key);
   }
-  // Newest first so today's number is always fresh.
+  // Newest first so today's number is always fresh. A few days at a time,
+  // and stop starting new ones near the function's time limit.
+  const started = Date.now();
+  const queue = due.reverse().slice(0, budget);
   let done = 0;
-  for (const key of due.reverse().slice(0, budget)) {
-    const billed = await fetchVercelDay(key);
-    await sql`
-      insert into opex_vercel_days (day, billed_usd, fetched_at) values (${key}, ${billed}, now())
-      on conflict (day) do update set billed_usd = excluded.billed_usd, fetched_at = now()
-    `;
-    done++;
-  }
+  const worker = async () => {
+    while (queue.length && Date.now() - started < 40_000) {
+      const key = queue.shift()!;
+      const d = await fetchVercelDay(key);
+      await sql`
+        insert into opex_vercel_days (day, billed_usd, site_usd, team_usd, other_usd, fetched_at)
+        values (${key}, ${d.total}, ${d.site}, ${d.team}, ${d.other}, now())
+        on conflict (day) do update set billed_usd = excluded.billed_usd, site_usd = excluded.site_usd,
+          team_usd = excluded.team_usd, other_usd = excluded.other_usd, fetched_at = now()
+      `;
+      done++;
+    }
+  };
+  await Promise.all([worker(), worker(), worker(), worker()]);
   return done;
 }
 
-async function cacheGet(key: string): Promise<{ value: unknown; fetchedAt: Date } | null> {
+export async function cacheGet(key: string): Promise<{ value: unknown; fetchedAt: Date } | null> {
   const { rows } = await sql`select value, fetched_at from opex_cache where key = ${key}`;
   return rows[0] ? { value: rows[0].value, fetchedAt: new Date(rows[0].fetched_at as string) } : null;
 }
 
-async function cacheSet(key: string, value: unknown) {
+export async function cacheSet(key: string, value: unknown) {
   await sql`
     insert into opex_cache (key, value, fetched_at) values (${key}, ${JSON.stringify(value)}::jsonb, now())
     on conflict (key) do update set value = excluded.value, fetched_at = now()
@@ -310,23 +373,87 @@ export async function refreshOpex({ force = false, vercelDays = 12 } = {}) {
   await ensureSchema();
   const now = new Date();
   const errors: string[] = [];
+  const failed: Record<string, string> = {};
   const run = async (name: string, fn: () => Promise<unknown>) => {
     try {
       await fn();
     } catch (error) {
-      errors.push(`${name}: ${error instanceof Error ? error.message : "failed"}`);
+      const message = error instanceof Error ? error.message : "failed";
+      errors.push(`${name}: ${message}`);
+      failed[name] = message;
     }
   };
   let vercel = 0;
   await run("Vercel", async () => {
     vercel = await refreshVercel(now, vercelDays);
   });
-  for (const m of [monthOf(0, now), monthOf(-1, now)]) {
+  for (const m of await refreshMonths(now)) {
     await run("Anthropic", () => refreshAnthropic(m, now, force));
   }
   await cacheSet("updated_at", now.toISOString());
+  await cacheSet("failed_sources", failed);
   if (errors.length) console.error("Operating costs refresh:", errors.join("; "));
   return { ok: errors.length === 0, vercelDays: vercel, errors };
+}
+
+// ---------------------------------------------------------------------------
+// Year to date: from January, or from the month the site started if later
+// (read from when Vercel created the project).
+// ---------------------------------------------------------------------------
+
+async function recordSiteStart() {
+  if ((await cacheGet("site_started"))?.value) return;
+  const res = await fetch(`${VERCEL_API}/v9/projects/${encodeURIComponent(VERCEL_PROJECT_ID)}?teamId=${encodeURIComponent(VERCEL_TEAM_ID)}`, {
+    headers: { Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}` },
+    cache: "no-store",
+  });
+  if (!res.ok) return;
+  const body = (await res.json()) as { createdAt?: number };
+  if (body.createdAt) await cacheSet("site_started", new Date(body.createdAt).toISOString());
+}
+
+/** The months year-to-date covers, oldest first. */
+async function yearMonths(now = new Date()): Promise<Month[]> {
+  // The start date set in the card wins; otherwise when Vercel created the project.
+  const set = (await cacheGet("costs_start"))?.value;
+  const started = typeof set === "string" ? `${set}T00:00:00Z` : (await cacheGet("site_started"))?.value;
+  const startedAt = typeof started === "string" ? Date.parse(started) : NaN;
+  const jan = Date.UTC(now.getUTCFullYear(), 0, 1);
+  const from = Number.isFinite(startedAt) && startedAt > jan ? startedAt : jan;
+  const out: Month[] = [];
+  for (let offset = 0; offset > -12; offset--) {
+    const m = monthOf(offset, now);
+    if (m.end.getTime() <= from) break;
+    out.unshift(m);
+  }
+  return out;
+}
+
+export async function getCostsStart(): Promise<string | null> {
+  const v = (await cacheGet("costs_start"))?.value;
+  return typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : null;
+}
+
+/** Sets the day costs start counting; null goes back to the site's launch date. */
+export async function saveCostsStart(input: unknown): Promise<{ ok: boolean; error?: string }> {
+  if (input === undefined) return { ok: true };
+  await ensureSchema();
+  if (input === null || input === "") {
+    await sql`delete from opex_cache where key = 'costs_start'`;
+    return { ok: true };
+  }
+  if (typeof input !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(input) || !Number.isFinite(Date.parse(input))) return { ok: false, error: "Check the start date." };
+  if (Date.parse(input) > Date.now()) return { ok: false, error: "The start date can't be in the future." };
+  await cacheSet("costs_start", input);
+  return { ok: true };
+}
+
+/** Year to date plus last month (which is last year's in January). */
+async function refreshMonths(now = new Date()): Promise<Month[]> {
+  const months = await yearMonths(now);
+  const last = monthOf(-1, now);
+  if (!months.some((m) => m.key === last.key)) months.unshift(last);
+  return months;
 }
 
 // ---------------------------------------------------------------------------
@@ -340,14 +467,30 @@ async function monthLines(m: Month, fixed: FixedCost[], partial: boolean): Promi
   const s = day(m.start);
   const e = day(m.end);
 
-  // Vercel hosting.
-  const { rows: v } = await sql`select coalesce(sum(billed_usd), 0)::float as usd, count(*)::int as days from opex_vercel_days where day >= ${s} and day < ${e}`;
+  // Vercel hosting: this site's own usage, plus its share of the team-wide
+  // costs (plan, seats, untagged usage) split across the team's projects.
+  const { rows: v } = await sql`
+    select coalesce(sum(site_usd), 0)::float as site, coalesce(sum(team_usd), 0)::float as team,
+           coalesce(sum(billed_usd), 0)::float as total, count(*)::int as days
+    from opex_vercel_days where day >= ${s} and day < ${e}
+  `;
   const vercelDays = Number(v[0]?.days ?? 0);
+  const projects = Math.max(1, Number((await cacheGet("vercel_projects"))?.value) || 1);
+  const siteUsd = Number(v[0]?.site ?? 0);
+  const teamShare = Number(v[0]?.team ?? 0) / projects;
+  // Days the month should have so far: all of a past month, up to today for this one.
+  const expectedDays = Math.round((Math.min(m.end.getTime(), Date.parse(`${day(new Date())}T00:00:00Z`) + 86_400_000) - m.start.getTime()) / 86_400_000);
+  const filling = vercelDays < expectedDays ? ` · ${vercelDays} of ${expectedDays} days so far` : "";
   lines.push({
     key: "vercel",
     label: "Vercel hosting",
-    detail: !process.env.VERCEL_API_TOKEN && !vercelDays ? "Not connected yet" : vercelDays ? `Billed, ${vercelDays} day${vercelDays === 1 ? "" : "s"}` : "Waiting for first update",
-    usd: vercelDays ? Number(v[0].usd) : null,
+    detail:
+      !process.env.VERCEL_API_TOKEN && !vercelDays
+        ? "Not connected yet"
+        : vercelDays
+          ? `The Market ${money(siteUsd)} + team plan & shared ${money(Number(v[0]?.team ?? 0))} ÷ ${projects} projects${filling}`
+          : "Waiting for first update",
+    usd: vercelDays ? siteUsd + teamShare : null,
     how: "auto",
   });
 
@@ -389,10 +532,11 @@ async function monthLines(m: Month, fixed: FixedCost[], partial: boolean): Promi
         : f.per === "year"
           ? `${money(f.amountCents / 100)} a year`
           : "Monthly";
+    const shared = f.split > 1 ? ` ÷ ${f.split} apps` : "";
     lines.push({
       key: `fixed:${f.id}`,
       label: f.name,
-      detail: f.amountCents ? (/resend/i.test(f.name) ? `${detail} · ${emails} sent` : detail) : "Add the price",
+      detail: f.amountCents ? (/resend/i.test(f.name) ? `${detail}${shared} · ${emails} sent` : `${detail}${shared}`) : "Add the price",
       usd: f.amountCents ? usd : null,
       how: "fixed",
     });
@@ -421,20 +565,98 @@ async function monthLines(m: Month, fixed: FixedCost[], partial: boolean): Promi
   };
 }
 
+// ---------------------------------------------------------------------------
+// Self-check: are the automatic numbers fresh and complete?
+// ---------------------------------------------------------------------------
+
+const daysIn = (m: Month) => Math.round((m.end.getTime() - m.start.getTime()) / 86_400_000);
+
+export async function opexIssues(now = new Date()): Promise<string[]> {
+  if (!USE_DB) return [];
+  await ensureSchema();
+  const issues: string[] = [];
+  const updated = (await cacheGet("updated_at"))?.value;
+  const updatedAt = typeof updated === "string" ? Date.parse(updated) : NaN;
+
+  // 1. The refresh runs every 6 hours; 13 hours without one means it stopped.
+  if (!Number.isFinite(updatedAt)) issues.push("The costs have never updated. Press Refresh.");
+  else if (now.getTime() - updatedAt > 13 * 3_600_000) issues.push(`The costs haven't updated since ${new Date(updatedAt).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short", timeZone: "America/Chicago" })}.`);
+
+  // 2. A service that refused or failed on the last refresh.
+  const failed = ((await cacheGet("failed_sources"))?.value ?? {}) as Record<string, string>;
+  for (const [name, message] of Object.entries(failed)) issues.push(`Couldn't get ${name}'s numbers (${message}).`);
+
+  // 3. Every day of Vercel's bill is in: all of last month, and this month up to yesterday.
+  if (process.env.VERCEL_API_TOKEN) {
+    const last = monthOf(-1, now);
+    const thisMonth = monthOf(0, now);
+    const { rows } = await sql`
+      select count(*) filter (where day >= ${day(last.start)} and day < ${day(last.end)})::int as last_days,
+             count(*) filter (where day >= ${day(thisMonth.start)} and day < ${day(now)})::int as this_days
+      from opex_vercel_days
+    `;
+    const lastDays = Number(rows[0]?.last_days ?? 0);
+    const thisDays = Number(rows[0]?.this_days ?? 0);
+    const thisExpected = Math.round((Date.parse(`${day(now)}T00:00:00Z`) - thisMonth.start.getTime()) / 86_400_000);
+    if (lastDays < daysIn(last)) issues.push(`Vercel hosting for ${last.label} has ${lastDays} of ${daysIn(last)} days so far.`);
+    if (thisDays < thisExpected) issues.push(`Vercel hosting for ${thisMonth.label} is missing ${thisExpected - thisDays} day${thisExpected - thisDays === 1 ? "" : "s"}.`);
+  }
+  return issues;
+}
+
+/** Adds months together line by line (same keys, same order). */
+function sumMonths(months: OpexMonth[], range: Month[]): OpexMonth {
+  const now = new Date();
+  const first = range[0] ?? monthOf(0, now);
+  const short = (m: Month) => m.start.toLocaleDateString("en-US", { month: "short", timeZone: "UTC" });
+  const span = range.length > 1 ? `${short(first)}–${short(range[range.length - 1])}` : short(first);
+  const byKey = new Map<string, OpexLine & { n: number }>();
+  for (const month of months) {
+    for (const l of month.lines) {
+      const prev = byKey.get(l.key);
+      if (!prev) byKey.set(l.key, { ...l, n: l.usd === null ? 0 : 1 });
+      else {
+        prev.usd = prev.usd === null && l.usd === null ? null : (prev.usd ?? 0) + (l.usd ?? 0);
+        if (l.usd !== null) prev.n++;
+        prev.how = prev.how === "estimate" || l.how === "estimate" ? "estimate" : prev.how;
+      }
+    }
+  }
+  const lines = [...byKey.values()].map(({ n, ...l }) => ({
+    ...l,
+    detail: l.usd === null ? l.detail : `${span} · ${n} month${n === 1 ? "" : "s"}`,
+  }));
+  return {
+    key: `ytd-${now.getUTCFullYear()}`,
+    label: `${now.getUTCFullYear()} so far`,
+    lines,
+    total: lines.reduce((t, l) => t + (l.usd ?? 0), 0),
+    tickets: months.reduce((t, m) => t + m.tickets, 0),
+  };
+}
+
 export async function getOpexSummary(): Promise<OpexSummary | null> {
   if (!USE_DB) return null;
   try {
     await ensureSchema();
     const fixed = await listFixedCosts();
     const [thisMonth, lastMonth] = await Promise.all([monthLines(monthOf(0), fixed, true), monthLines(monthOf(-1), fixed, false)]);
+    const year = await yearMonths();
+    const months = await Promise.all(
+      year.map((m) => (m.key === thisMonth.key ? thisMonth : m.key === lastMonth.key ? lastMonth : monthLines(m, fixed, false))),
+    );
+    const ytd = sumMonths(months, year);
     const updated = (await cacheGet("updated_at"))?.value;
     return {
       thisMonth,
       lastMonth,
+      ytd,
       fixed,
       updatedAt: typeof updated === "string" ? updated : null,
       vercelConnected: Boolean(process.env.VERCEL_API_TOKEN),
       anthropicExact: Boolean(process.env.ANTHROPIC_ADMIN_KEY),
+      issues: await opexIssues(),
+      costsStart: await getCostsStart(),
     };
   } catch (error) {
     console.error("Operating costs summary failed", error);

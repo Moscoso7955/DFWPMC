@@ -10157,9 +10157,7 @@ button.upload-drop:hover {
 
 
 
-/* --- Operating costs card (ported from the Bar Phoebe finance panel) --- */
-
-/* --- Analytics: Operating costs --- */
+/* --- Analytics: Operating costs (from the Bar Phoebe finance panel) --- */
 
 .admin-opex-totals {
   display: grid;
@@ -10313,7 +10311,7 @@ button.upload-drop:hover {
 .admin-opex-edit-head,
 .admin-opex-edit-row {
   display: grid;
-  grid-template-columns: minmax(160px, 2fr) 110px 170px 80px 90px 32px;
+  grid-template-columns: minmax(160px, 2fr) 110px 170px 72px 64px 90px 32px;
   gap: 8px;
   align-items: center;
 }
@@ -10431,6 +10429,125 @@ button.upload-drop:hover {
   }
 }
 
+/* Cards hold their content at the top instead of spreading it when a
+   neighbour in the row is taller. */
+.admin-analytics-card {
+  align-content: start;
+}
+
+.admin-opex-side,
+.admin-opex-main {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  min-width: 0;
+}
+
+/* Phones and narrow screens: the five biggest, the rest behind Show all. */
+.admin-opex-lines li.is-extra {
+  display: none;
+}
+
+.admin-opex-lines.is-all li.is-extra {
+  display: flex;
+}
+
+@media (min-width: 900px) {
+  .admin-opex.admin-analytics-card--wide {
+    grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  /* Room for every cost, in two columns. */
+  .admin-opex-lines {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+    border-top: 0;
+  }
+
+  .admin-opex-lines li,
+  .admin-opex-lines li.is-extra {
+    display: flex;
+  }
+
+  .admin-opex-lines li:nth-child(-n + 2) {
+    border-top: 1px solid rgba(26, 25, 25, 0.12);
+  }
+
+  .admin-opex .admin-opex-more {
+    display: none;
+  }
+}
+
+.admin-opex-issues {
+  display: grid;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 2px solid #b7791f;
+  background: rgba(183, 121, 31, 0.12);
+  color: #5c3a06;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.admin-opex-issues strong {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.72rem;
+}
+
+.admin-opex-issues ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+/* Year to date sits under the two months, full width. */
+.admin-opex-totals button.is-ytd {
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+}
+
+.admin-opex-start {
+  display: grid;
+  gap: 4px;
+  max-width: 360px;
+  margin-top: 12px;
+}
+
+.admin-opex-start > span {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--deep-red);
+}
+
+.admin-opex-start input {
+  min-height: 38px;
+  padding: 0 8px;
+  border: 1px solid rgba(26, 25, 25, 0.35);
+  background: #fff;
+  color: var(--black);
+  font: inherit;
+  font-size: 0.86rem;
+}
+
+.admin-opex-start small {
+  font-size: 0.72rem;
+  opacity: 0.7;
+}
+
+.admin-opex-status {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 3px;
+  font-size: 0.74rem;
+  line-height: 1.4;
+  opacity: 0.75;
+}
 
 /* ================================================================
    THE SLIM ADMIN BAR AND TOOL PAGES (ported from the Bar Phoebe
