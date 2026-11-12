@@ -1,5 +1,6 @@
 import AdminShell from "../AdminShell";
 import { VisitPageView } from "../../visit/page";
+import { listLiveNights } from "@/lib/photoStore";
 import { requireAdminSession } from "@/lib/requireAdmin";
 import { getVenue } from "@/lib/venues";
 
@@ -16,7 +17,7 @@ export default async function AdminVisitPage({ params }: { params: Promise<{ ven
       <p className="admin-preview-note" role="note">
         Nothing to edit on this page: the hours come from Hours.
       </p>
-      <VisitPageView basePath={`${venue.basePath}/admin`} venueName={venue.name} />
+      <VisitPageView basePath={`${venue.basePath}/admin`} venueName={venue.name} nights={await listLiveNights(venue.slug)} />
     </AdminShell>
   );
 }

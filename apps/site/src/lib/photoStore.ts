@@ -85,6 +85,8 @@ function ensureSchema(): Promise<void> {
     // Upload alerts: photos added after this have not been emailed about yet.
     // Existing nights start "already announced".
     await sql`alter table photo_nights add column if not exists notified_through timestamptz default now()`;
+    // Which venue a night shows at; null means the whole market.
+    await sql`alter table photo_nights add column if not exists venue text`;
     // Fold the old second review into the shared one: a no from either
     // stays a no, a star from either stays a star, either one done is done.
     await sql`
@@ -316,6 +318,8 @@ export type AdminNight = {
   contest: boolean;
   title: string;
   contributor: string | null;
+  /** The venue the night shows at, or null for the whole market. */
+  venue: string | null;
   photos: number;
   reviewed: Record<Reviewer, number>;
   done: Record<Reviewer, boolean>;
@@ -329,7 +333,7 @@ export async function listNightsForAdmin(options: { includeEmpty?: boolean } = {
   await ensureSchema();
   const { rows } = await sql`
     select n.id, n.night_date::text as date, n.title, n.cd_done_at, n.md_done_at, n.published_at, n.hidden,
-      n.contest_id, n.slug, c.name as contributor,
+      n.contest_id, n.slug, n.venue, c.name as contributor,
       count(i.id) as photos,
       count(i.id) filter (where i.cd_mark is not null) as cd_reviewed,
       count(i.id) filter (where i.md_mark is not null) as md_reviewed,
@@ -354,6 +358,7 @@ export async function listNightsForAdmin(options: { includeEmpty?: boolean } = {
         contest: Boolean(r.contest_id),
         title: r.title as string,
         contributor: (r.contributor as string | null) ?? null,
+        venue: (r.venue as string | null) ?? null,
         photos,
         reviewed: { cd, md },
         done: { cd: Boolean(r.cd_done_at), md: Boolean(r.md_done_at) },
@@ -464,6 +469,12 @@ export async function reopenNightReview(nightId: string) {
   `;
 }
 
+/** Which venue the night shows at; null puts it back to the whole market. */
+export async function setNightVenue(nightId: string, venue: string | null) {
+  await ensureSchema();
+  await sql`update photo_nights set venue = ${venue} where id = ${nightId}`;
+}
+
 export async function setNightHidden(nightId: string, hidden: boolean) {
   await ensureSchema();
   await sql`update photo_nights set hidden = ${hidden} where id = ${nightId} and published_at is not null`;
@@ -506,7 +517,7 @@ export async function deleteNight(nightId: string): Promise<string[]> {
 // Public
 // ---------------------------------------------------------------------------
 
-export type LiveNight = { date: string; path: string; title: string; count: number; previews: string[] };
+export type LiveNight = { date: string; path: string; title: string; count: number; previews: string[]; venue: string | null };
 
 export type LivePhoto = {
   id: string;
@@ -529,17 +540,18 @@ export function photoCode(photoId: string) {
   return photoId.replace(/-/g, "").slice(0, 8).toUpperCase();
 }
 
-export async function listLiveNights(): Promise<LiveNight[]> {
+export async function listLiveNights(venue: string | null = null): Promise<LiveNight[]> {
   if (!process.env.POSTGRES_URL) return [];
   try {
     await ensureSchema();
     const { rows } = await sql`
-      select n.night_date::text as date, n.title, n.contest_id, n.slug,
+      select n.night_date::text as date, n.title, n.contest_id, n.slug, n.venue,
         count(i.id) as count,
         (array_agg(i.id order by (i.cd_star or i.md_star) desc, (i.cd_star and i.md_star) desc, i.original_name))[1:3] as preview_ids
       from photo_nights n
       join photo_items i on i.night_id = n.id and i.uploaded and (i.cd_mark = 'pass' or i.md_mark = 'pass') and coalesce(i.cd_mark, '') <> 'fail' and coalesce(i.md_mark, '') <> 'fail'
       where n.published_at is not null and not n.hidden
+        and (${venue}::text is null or n.venue = ${venue})
       group by n.id
       order by n.night_date desc, n.contest_id nulls first
     `;
@@ -549,6 +561,7 @@ export async function listLiveNights(): Promise<LiveNight[]> {
       title: r.title as string,
       count: Number(r.count),
       previews: ((r.preview_ids as string[]) ?? []).map((id) => publicPhotoUrl(photoKey(r.date as string, id, "thumb"))),
+      venue: (r.venue as string | null) ?? null,
     }));
   } catch (error) {
     // The photo section is extra; never take the Visit page or calendar down with it.

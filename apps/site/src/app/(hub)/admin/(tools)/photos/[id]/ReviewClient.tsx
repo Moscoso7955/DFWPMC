@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SHARED_REVIEW, isShown, type Mark } from "@/lib/photoShared";
 import type { ReviewNight, ReviewPhoto } from "@/lib/photoStore";
+import { VENUES } from "@/lib/venues";
 import SwipeReview from "./SwipeReview";
 
 type Filter = "all" | "todo" | "pass" | "fail" | "star";
@@ -137,6 +138,25 @@ export default function ReviewClient({ night }: { night: ReviewNight }) {
     }
   };
 
+  const setVenue = async (venue: string) => {
+    setBusy(true);
+    setError("");
+    try {
+      const res = await fetch(`/admin/api/photos/nights/${night.id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "venue", venue: venue || null }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) throw new Error(data.error || "Couldn't save.");
+      router.refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Couldn't save.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
   const failedCount = photos.filter((p) => p.marks[reviewer] === "fail").length;
 
   const nightAction = async (body: object | null, confirmText: string, after: (data: { nightDeleted?: boolean }) => void) => {
@@ -199,6 +219,17 @@ export default function ReviewClient({ night }: { night: ReviewNight }) {
       </p>
 
       <div className="admin-review-manage">
+        <label className="admin-review-venue" title="Where this night's photos are listed on the site">
+          <span>Shows at</span>
+          <select value={night.venue ?? ""} disabled={busy} onChange={(e) => void setVenue(e.target.value)}>
+            <option value="">The whole market</option>
+            {VENUES.map((v) => (
+              <option key={v.slug} value={v.slug}>
+                {v.name}
+              </option>
+            ))}
+          </select>
+        </label>
         <button type="button" onClick={deleteFailed} disabled={busy || failedCount === 0}>
           Delete {failedCount} failed photo{failedCount === 1 ? "" : "s"}
         </button>

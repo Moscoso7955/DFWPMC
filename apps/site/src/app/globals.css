@@ -12776,3 +12776,28 @@ span.access-chip { cursor: default; }
   background: var(--deep-red);
   color: var(--cream);
 }
+
+/* ----------------------------------------------------------------
+   Photo nights carry a venue: the review page picks where a night
+   shows (the whole market or one venue).
+   ---------------------------------------------------------------- */
+
+.admin-review-venue {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: auto;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-review-venue select {
+  min-height: 36px;
+  padding: 4px 8px;
+  border: 1px solid var(--black);
+  background: var(--cream);
+  color: var(--black);
+  font: inherit;
+  text-transform: none;
+}

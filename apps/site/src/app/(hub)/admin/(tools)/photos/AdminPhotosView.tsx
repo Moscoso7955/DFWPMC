@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { findVenue } from "@/lib/venues";
 import { useRouter } from "next/navigation";
 import type { AdminNight, ContributorSummary } from "@/lib/photoStore";
 
@@ -88,6 +89,7 @@ export default function AdminPhotosView({
           <span>
             {fmt(n.date)} · {n.published ? `${n.liveCount} of ${n.photos} photos live` : `${n.photos} photos`}
             {n.contributor ? ` · from ${n.contributor}` : ""}
+            {n.venue ? ` · at ${findVenue(n.venue)?.name ?? n.venue}` : ""}
           </span>
         </a>
         {n.needsReview ? (
