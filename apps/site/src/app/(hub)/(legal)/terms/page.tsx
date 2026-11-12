@@ -20,8 +20,10 @@ export default function TermsPage() {
 
         <section>
           <p>
-            These terms govern fwpublicmarket.com, including the venue pages for Willow, Madrone,
-            and Public Market Cafe &amp; Goods. By using the site you agree to them. If you
+            These terms are an agreement between you and DFW Public Market Collective, LLC, a
+            Texas limited liability company doing business as the Fort Worth Public Market. They
+            govern fwpublicmarket.com, including the venue pages for Willow, Madrone, and Public
+            Market Cafe &amp; Goods. By using the site you agree to them. If you
             don&apos;t agree, please don&apos;t use the site.
           </p>
         </section>
@@ -119,7 +121,9 @@ export default function TermsPage() {
         <section>
           <h2>How to reach us</h2>
           <p>
-            Fort Worth Public Market
+            DFW Public Market Collective, LLC
+            <br />
+            d/b/a Fort Worth Public Market
             <br />
             1400 Henderson St
             <br />

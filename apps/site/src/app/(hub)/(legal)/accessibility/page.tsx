@@ -61,7 +61,8 @@ export default function AccessibilityPage() {
           <h2>Tell us if something isn&apos;t working</h2>
           <p>
             If any part of the site is hard to use with assistive technology, we want to know.
-            Email <a href="mailto:info@fwpublicmarket.com">info@fwpublicmarket.com</a> and tell us
+            Email <a href="mailto:info@fwpublicmarket.com">info@fwpublicmarket.com</a> (DFW Public
+            Market Collective, LLC, d/b/a Fort Worth Public Market) and tell us
             the page and what happened. We&apos;ll do our best to fix it quickly and to get you the
             information you were after in the meantime.
           </p>

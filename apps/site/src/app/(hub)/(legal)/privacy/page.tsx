@@ -20,8 +20,9 @@ export default function PrivacyPage() {
 
         <section>
           <p>
-            The Fort Worth Public Market (&ldquo;the Public Market,&rdquo; &ldquo;we,&rdquo; or
-            &ldquo;us&rdquo;) operates fwpublicmarket.com and the venues inside the historic Public
+            DFW Public Market Collective, LLC, a Texas limited liability company doing business
+            as the Fort Worth Public Market (&ldquo;the Public Market,&rdquo; &ldquo;we,&rdquo; or
+            &ldquo;us&rdquo;), operates fwpublicmarket.com and the venues inside the historic Public
             Market building in Fort Worth, Texas — Willow, Madrone, and Public Market Cafe &amp;
             Goods. This policy covers the whole site, including each venue&apos;s pages. It explains
             what we collect, how we use it, and who we share it with.
@@ -306,7 +307,9 @@ export default function PrivacyPage() {
         <section>
           <h2>How to reach us</h2>
           <p>
-            Fort Worth Public Market
+            DFW Public Market Collective, LLC
+            <br />
+            d/b/a Fort Worth Public Market
             <br />
             1400 Henderson St
             <br />
