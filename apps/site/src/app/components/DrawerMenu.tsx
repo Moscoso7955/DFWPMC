@@ -85,14 +85,16 @@ export default function DrawerMenu({ adaptive = false, basePath = "", hideOnDesk
         if (hideOnDesktop)
             return;
         const updateHeader = () => {
-            document.body.classList.toggle("holder-header-compact", window.scrollY > 24);
+            // In the admin site preview the page scrolls inside a frame, not the window.
+            const scrolled = document.getElementById("admin-site-scroll")?.scrollTop ?? window.scrollY;
+            document.body.classList.toggle("holder-header-compact", scrolled > 24);
         };
         updateHeader();
-        window.addEventListener("scroll", updateHeader, { passive: true });
+        window.addEventListener("scroll", updateHeader, { passive: true, capture: true });
         window.addEventListener("resize", updateHeader);
         return () => {
             document.body.classList.remove("holder-header-compact");
-            window.removeEventListener("scroll", updateHeader);
+            window.removeEventListener("scroll", updateHeader, { capture: true });
             window.removeEventListener("resize", updateHeader);
         };
     }, [hideOnDesktop]);
@@ -153,13 +155,13 @@ export default function DrawerMenu({ adaptive = false, basePath = "", hideOnDesk
             }
         };
         updateColor();
-        window.addEventListener("scroll", updateColor, { passive: true });
+        window.addEventListener("scroll", updateColor, { passive: true, capture: true });
         window.addEventListener("resize", updateColor);
         document.querySelectorAll(".mobile-image-panel img").forEach((image) => {
             image.addEventListener("load", updateColor);
         });
         return () => {
-            window.removeEventListener("scroll", updateColor);
+            window.removeEventListener("scroll", updateColor, { capture: true });
             window.removeEventListener("resize", updateColor);
             document.querySelectorAll(".mobile-image-panel img").forEach((image) => {
                 image.removeEventListener("load", updateColor);
@@ -173,7 +175,7 @@ export default function DrawerMenu({ adaptive = false, basePath = "", hideOnDesk
         <span />
       </button>
 
-      <nav className={`drawer-menu${hideOnDesktop ? " homepage-drawer" : ""}${isOpen ? " is-open" : ""}`} id="site-menu" aria-label="Site menu" aria-hidden={!isOpen} ref={navRef}>
+      <nav className={`drawer-menu${hideOnDesktop ? " homepage-drawer" : ""}${isOpen ? " is-open" : ""}`} id="site-menu" aria-label="Site menu" aria-hidden={!isOpen} inert={!isOpen} ref={navRef}>
         <div className="venue-drawer-heading"><Link href={base || "/"}><img src={venuePath(venue.logo)} alt={venue.name} /></Link>
         <button className="drawer-close" type="button" aria-label="Close menu" onClick={() => setIsOpen(false)}>
           <span />

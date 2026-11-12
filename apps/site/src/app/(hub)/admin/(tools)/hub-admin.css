@@ -14,6 +14,3 @@
   --frame-line: 1px solid var(--brand-line);
 }
 body { background: var(--brand-paper); }
-
-/* Until the slim admin bar lands: tool pages start below the fixed header. */
-.admin-shell--tool { padding-top: 94px; }

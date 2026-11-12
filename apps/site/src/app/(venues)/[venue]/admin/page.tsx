@@ -14,7 +14,7 @@ export default async function AdminHomePage({ params }: { params: Promise<{ venu
   const assetDetails = getHomepageAssetDetails(content.homepage);
 
   return (
-    <AdminShell venue={venue} homepage>
+    <AdminShell venue={venue}>
       <AdminHomeEditor initialAssetDetails={assetDetails} initialContent={content.homepage} />
     </AdminShell>
   );

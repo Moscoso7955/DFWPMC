@@ -40,7 +40,7 @@ export default async function AdminAnalyticsPage({ params }: { params: Promise<{
     const nowIso = new Date().toISOString().slice(0, 10);
     const upcomingEvents = content.calendar.events.filter((event) => event.date >= nowIso).length;
     const pastEvents = content.calendar.events.length - upcomingEvents;
-    return (<AdminShell venue={venue}>
+    return (<AdminShell venue={venue} layout="tool">
       <section className="admin-analytics">
         <header className="admin-analytics-header">
           <h1>Analytics</h1>

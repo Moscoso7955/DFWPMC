@@ -59,37 +59,6 @@ button:not(.admin-edit-hotspot):not(.hamburger):not(.drawer-close),
 .apple-wallet-button, .google-wallet-button { border-radius: var(--brand-control-radius); }
 input::placeholder, textarea::placeholder { color: currentColor; opacity: .55; }
 
-/* One clear editor header across the entire CMS. */
-.venue-admin-header {
-  position: fixed; z-index: 35; top: 0; right: 0; left: 0;
-  min-height: 78px; padding: 12px 24px; display: flex; align-items: center;
-  gap: 20px; background: var(--brand-primary); color: var(--brand-paper);
-  border-bottom: 1px solid rgba(var(--brand-accent-rgb), .55);
-}
-.venue-admin-brand { display: flex; align-items: center; gap: 14px; min-width: 210px; }
-.venue-admin-brand img { width: 104px; height: 40px; object-fit: contain; }
-.venue-admin-brand span { display: grid; gap: 4px; }
-.venue-admin-brand strong { font-size: 14px; font-weight: 400; }
-.venue-admin-brand small { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; opacity: .72; }
-.venue-admin-nav { display: flex; align-items: center; gap: 8px; margin-left: auto; font-size: 12px; }
-.venue-admin-nav > a, .venue-admin-header .admin-home-pages summary { padding: 9px 12px; border: 1px solid rgba(var(--brand-paper-rgb), .3); border-radius: var(--brand-control-radius); background: transparent; color: var(--brand-paper); }
-.venue-admin-header .admin-home-pages { position: relative; z-index: 40; top: auto; left: auto; font-size: 12px; }
-.venue-admin-header .admin-home-pages summary { cursor: pointer; text-transform: none; }
-.venue-admin-header .admin-home-pages nav { position: absolute; top: calc(100% + 10px); left: 0; width: min(380px, calc(100vw - 32px)); background: var(--brand-paper); border: 1px solid var(--brand-line); border-radius: var(--brand-radius); padding: 10px; color: var(--brand-ink); box-shadow: 0 12px 30px rgba(var(--brand-ink-rgb), .15); text-transform: none; }
-.venue-admin-header .admin-home-pages nav a { padding: 10px; border-radius: var(--brand-control-radius); }
-.venue-admin-header .admin-home-pages nav a:hover { background: var(--brand-muted); color: var(--brand-primary); }
-.venue-admin-header .admin-toolbar { position: static; inset: auto; display: flex; align-items: center; gap: 6px; max-width: none; flex-wrap: nowrap; }
-.venue-admin-header .admin-toolbar :is(button, a) { min-height: 36px; padding: 8px 11px; border: 1px solid rgba(var(--brand-paper-rgb), .3); border-radius: var(--brand-control-radius); background: transparent; color: var(--brand-paper); font-size: 11px; letter-spacing: .02em; text-transform: none; white-space: nowrap; }
-.venue-admin-header .admin-toolbar button:first-of-type { background: var(--brand-accent); border-color: var(--brand-accent); color: var(--brand-on-accent); }
-.venue-admin-header :is(button, a, summary):hover { filter: brightness(1.06); }
-.admin-shell--venue-home .venue-admin-header { top: 64px; min-height: 64px; background: rgba(var(--brand-primary-rgb), .95); }
-.admin-shell--venue-home .venue-admin-brand img { width: 86px; height: 34px; }
-.admin-shell--venue-pages .holder-home-icon,
-.admin-shell--venue-pages .holder-mobile-header-bg,
-.admin-shell--venue-pages .hamburger { display: none; }
-.admin-shell--venue-pages .page { min-height: 100svh; padding: 126px 24px 90px; }
-.admin-shell--venue-pages :is(.visit-page, .menu-page-intro) { padding-top: 0; }
-.admin-shell--venue-pages :is(.admin-analytics, .admin-operating-hours, .admin-submissions, .admin-mailing-list) { padding-top: 124px; }
 
 /* Public pages and compact editorial content. */
 .holder-mobile-header-bg { display: block; position: fixed; z-index: 8; top: 0; left: 0; right: 0; height: 90px; background: var(--brand-paper); border-bottom: 1px solid var(--brand-line); }
@@ -216,32 +185,13 @@ input::placeholder, textarea::placeholder { color: currentColor; opacity: .55; }
 .ticketing-portal-primary.ticketing-portal-danger { background: #923c35; color: #fff; }
 
 @media (max-width: 1000px) {
-  .venue-admin-header { flex-wrap: wrap; gap: 9px 16px; padding: 12px 16px; }
-  .venue-admin-brand { min-width: 0; margin-right: auto; }
-  .venue-admin-nav { margin-left: 0; }
-  .venue-admin-header .admin-toolbar { width: 100%; justify-content: flex-end; }
-  .admin-shell--venue-pages .page { padding-top: 160px; }
-  .admin-shell--venue-pages :is(.admin-analytics, .admin-operating-hours, .admin-submissions, .admin-mailing-list) { padding-top: 160px; }
-  .admin-shell--venue-home .venue-admin-header { top: 60px; }
   .venue-homepage .hero-panel--full .admin-edit-hotspot--desktopHeroImage { inset-block-start: 186px; }
   .venue-homepage .hero-panel--full .admin-edit-hotspot--desktopLogo { width: min(86vw, 720px); height: clamp(150px, 28vw, 280px); }
 }
 @media (max-width: 760px) {
-  .venue-admin-header { gap: 8px 12px; }
-  .venue-admin-brand img { width: 80px; height: 32px; }
-  .venue-admin-brand strong { font-size: 12px; }
-  .venue-admin-brand small { font-size: 9px; }
-  .venue-admin-nav > a, .venue-admin-header .admin-home-pages summary { font-size: 11px; padding: 8px; }
-  .venue-admin-header .admin-home-pages nav { left: auto; right: 0; }
-  .venue-admin-header .admin-toolbar { flex-wrap: wrap; justify-content: center; gap: 5px; }
-  .venue-admin-header .admin-toolbar :is(button, a) { padding: 7px 10px; min-height: 33px; font-size: 10px; }
-  .admin-shell--venue-home .venue-admin-header { top: 50px; }
   .page { padding: 124px 16px 78px; }
-  .admin-shell--venue-pages .page { padding: 154px 16px 78px; }
-  .admin-shell--venue-pages :is(.admin-analytics, .admin-operating-hours, .admin-submissions, .admin-mailing-list) { padding-top: 154px; }
   .venue-homepage .hero-panel--full .admin-edit-hotspot--desktopHeroImage { inset: 185px 12px 12px; }
   .venue-homepage .hero-panel--full .admin-edit-hotspot--desktopLogo { width: min(86vw, 520px); height: clamp(140px, 46vw, 230px); }
-  .venue-admin-brand span { display: none; }
   .story-layout { gap: 14px; }
   .story-copy { padding: 20px; font-size: 14px; }
   .story-media-column { display: grid; }

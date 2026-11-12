@@ -7,71 +7,135 @@ import { usePathname } from "next/navigation";
 // Wide screens show the main sections inline; everything else (and, on
 // phones, everything) is in the Menu panel, grouped, with the version,
 // who's signed in, Discard and Log out at the bottom. Publish shows only
-// on the site-editing pages.
+// on a venue's site-editing pages.
+//
+// The same bar serves the collective tools (no venue) and each venue's
+// website editor (venue set): venue pages get that venue's Website and
+// Guests sections and publish against that venue's content store, while
+// the collective sections (Nights, Reports, Settings) are market-wide.
 
 type Item = { href: string; label: string; area: string; exact?: boolean; hideIf?: string };
 type Group = { title: string; items: Item[] };
 
-const GROUPS: Group[] = [
-  {
-    title: "Website",
-    items: [
-      { href: "/admin", label: "Home page", area: "site", exact: true },
-      { href: "/admin/menu", label: "Menu", area: "site" },
-      { href: "/admin/calendar", label: "Calendar", area: "calendar" },
-      { href: "/admin/hours", label: "Operating hours", area: "calendar" },
-      { href: "/admin/story", label: "Story", area: "site" },
-      { href: "/admin/visit", label: "Visit", area: "site" },
-      { href: "/admin/contact", label: "Contact", area: "site" },
-      { href: "/admin/careers", label: "Careers", area: "site" },
-      { href: "/admin/private-events", label: "Book an event", area: "site" },
-      { href: "/admin/reservations", label: "Reservations", area: "site" },
-    ],
-  },
-  {
-    title: "Nights",
-    items: [
-      { href: "/ticketing", label: "Ticketing", area: "ticketing" },
-      { href: "/blackbook", label: "Door", area: "door", hideIf: "ticketing" },
-      { href: "/admin/photos", label: "Photos", area: "photo_review" },
-      { href: "/admin/photos/events", label: "Photo events", area: "photo_events" },
-      { href: "/upload", label: "Upload photos", area: "photo_upload", hideIf: "photo_review" },
-      { href: "/admin/playbook", label: "Playbook", area: "playbook" },
-      { href: "/admin/contacts", label: "Vendor contacts", area: "contacts" },
-    ],
-  },
-  {
-    title: "Guests",
-    items: [
-      { href: "/admin/customers", label: "Customers", area: "customers" },
-      { href: "/admin/mailing-list", label: "Mailing list", area: "customers" },
-      { href: "/admin/submissions", label: "Form submissions", area: "customers" },
-    ],
-  },
-  {
-    title: "Reports",
-    items: [
-      { href: "/admin/analytics", label: "Analytics", area: "reports" },
-      { href: "/admin/attribution", label: "Sales by source", area: "reports" },
-    ],
-  },
-  {
-    title: "Settings",
-    items: [
-      { href: "/admin/settings", label: "People", area: "people", exact: true },
-      { href: "/admin/settings/access", label: "Roles & access", area: "people" },
-    ],
-  },
+export type AdminBarVenue = { name: string; basePath: string };
+
+/** The other venues' editors, so every admin page can reach every site. */
+const VENUE_LINKS: AdminBarVenue[] = [
+  { name: "Willow", basePath: "/willow" },
+  { name: "Madrone", basePath: "/madrone" },
+  { name: "PM Cafe", basePath: "/publicmarketcafe" },
 ];
 
-/** The sections shown inline on wide screens. */
-const INLINE = ["/admin", "/ticketing", "/admin/photos", "/admin/playbook", "/admin/contacts", "/admin/hours", "/admin/analytics", "/admin/settings"];
-const INLINE_LABELS: Record<string, string> = { "/admin": "Site", "/admin/hours": "Hours", "/admin/settings": "Settings", "/admin/contacts": "Vendors" };
+const NIGHTS: Group = {
+  title: "Nights",
+  items: [
+    { href: "/blackbook", label: "Blackbook", area: "door" },
+    { href: "/admin/photos", label: "Photos", area: "photo_review" },
+    { href: "/admin/photos/events", label: "Photo events", area: "photo_events" },
+    { href: "/upload", label: "Upload photos", area: "photo_upload", hideIf: "photo_review" },
+    { href: "/admin/playbook", label: "Playbook", area: "playbook" },
+    { href: "/admin/contacts", label: "Vendor contacts", area: "contacts" },
+  ],
+};
+
+const SETTINGS: Group = {
+  title: "Settings",
+  items: [
+    { href: "/admin/settings", label: "People", area: "people", exact: true },
+    { href: "/admin/settings/access", label: "Roles & access", area: "people" },
+  ],
+};
+
+function buildGroups(venue: AdminBarVenue | null): Group[] {
+  if (!venue) {
+    return [
+      {
+        title: "Venues",
+        items: VENUE_LINKS.map((v) => ({ href: `${v.basePath}/admin`, label: `${v.name} site`, area: "site" })),
+      },
+      NIGHTS,
+      {
+        title: "Reports",
+        items: [{ href: "/admin/analytics", label: "Analytics", area: "reports" }],
+      },
+      SETTINGS,
+    ];
+  }
+  const base = venue.basePath;
+  return [
+    {
+      title: "Website",
+      items: [
+        { href: `${base}/admin`, label: "Home page", area: "site", exact: true },
+        { href: `${base}/admin/menu`, label: "Menu", area: "site" },
+        { href: `${base}/admin/calendar`, label: "Calendar", area: "calendar" },
+        { href: `${base}/admin/hours`, label: "Operating hours", area: "calendar" },
+        { href: `${base}/admin/story`, label: "Story", area: "site" },
+        { href: `${base}/admin/visit`, label: "Visit", area: "site" },
+        { href: `${base}/admin/contact`, label: "Contact", area: "site" },
+        { href: `${base}/admin/careers`, label: "Careers", area: "site" },
+        { href: `${base}/admin/private-events`, label: "Book an event", area: "site" },
+        { href: `${base}/admin/reservations`, label: "Reservations", area: "site" },
+      ],
+    },
+    NIGHTS,
+    {
+      title: "Guests",
+      items: [
+        { href: `${base}/admin/mailing-list`, label: "Mailing list", area: "customers" },
+        { href: `${base}/admin/submissions`, label: "Form submissions", area: "customers" },
+      ],
+    },
+    {
+      title: "Reports",
+      items: [
+        { href: "/admin/analytics", label: "Market analytics", area: "reports" },
+        { href: `${base}/admin/analytics`, label: `${venue.name} analytics`, area: "reports" },
+      ],
+    },
+    SETTINGS,
+    {
+      title: "Other venues",
+      items: VENUE_LINKS.filter((v) => v.basePath !== base).map((v) => ({
+        href: `${v.basePath}/admin`,
+        label: `${v.name} site`,
+        area: "site",
+      })),
+    },
+  ];
+}
+
+/** The sections shown inline on wide screens, and their short labels. */
+function buildInline(venue: AdminBarVenue | null): { hrefs: string[]; labels: Record<string, string> } {
+  if (!venue) {
+    return {
+      hrefs: [...VENUE_LINKS.map((v) => `${v.basePath}/admin`), "/admin/photos", "/admin/playbook", "/admin/contacts", "/admin/analytics", "/admin/settings"],
+      labels: Object.fromEntries([
+        ...VENUE_LINKS.map((v) => [`${v.basePath}/admin`, v.name]),
+        ["/admin/contacts", "Vendors"],
+        ["/admin/settings", "Settings"],
+      ]),
+    };
+  }
+  const base = venue.basePath;
+  return {
+    hrefs: [`${base}/admin`, "/admin/photos", "/admin/playbook", "/admin/contacts", `${base}/admin/hours`, "/admin/analytics", "/admin/settings"],
+    labels: {
+      [`${base}/admin`]: "Site",
+      [`${base}/admin/hours`]: "Hours",
+      "/admin/contacts": "Vendors",
+      "/admin/analytics": "Analytics",
+      "/admin/settings": "Settings",
+    },
+  };
+}
 
 type Props = {
   areas: string[];
   who: string | null;
   version: string;
+  /** Set on a venue's admin pages; the bar publishes against this venue. */
+  venue?: AdminBarVenue | null;
   /** Site-editing pages: show Publish, and Discard in the menu. */
   editing: boolean;
   unpublished: boolean;
@@ -79,7 +143,7 @@ type Props = {
   shortcuts?: { href: string; label: string }[];
 };
 
-export default function AdminBar({ areas, who, version, editing, unpublished: initialUnpublished, shortcuts = [] }: Props) {
+export default function AdminBar({ areas, who, version, venue = null, editing, unpublished: initialUnpublished, shortcuts = [] }: Props) {
   const pathname = usePathname() ?? "";
   const [open, setOpen] = useState(false);
   const [unpublished, setUnpublished] = useState(initialUnpublished);
@@ -87,20 +151,23 @@ export default function AdminBar({ areas, who, version, editing, unpublished: in
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const has = (area: string) => areas.includes(area);
+  const apiBase = venue ? venue.basePath : "";
 
-  const groups = GROUPS.map((g) => ({ ...g, items: g.items.filter((i) => has(i.area) && !(i.hideIf && has(i.hideIf))) })).filter((g) => g.items.length);
+  const groups = buildGroups(venue).map((g) => ({ ...g, items: g.items.filter((i) => has(i.area) && !(i.hideIf && has(i.hideIf))) })).filter((g) => g.items.length);
   const all = groups.flatMap((g) => g.items);
   // The page you're on: the longest matching section.
   const current = all
     .filter((i) => (i.exact ? pathname === i.href : pathname === i.href || pathname.startsWith(`${i.href}/`)))
     .sort((a, b) => b.href.length - a.href.length)[0];
   const isCurrent = (i: Item) => current?.href === i.href;
-  const inline = INLINE.map((href) => all.find((i) => i.href === href)).filter((i): i is Item => Boolean(i));
+  const { hrefs: inlineHrefs, labels: inlineLabels } = buildInline(venue);
+  const inline = inlineHrefs.map((href) => all.find((i) => i.href === href)).filter((i): i is Item => Boolean(i));
   // Inline links stand for their whole group: Site for any website page, Photos for photo events, and so on.
   const groupOf = (href?: string) => groups.find((g) => g.items.some((i) => i.href === href))?.title;
   const inlineCurrent = (i: Item) => {
     if (!current) return false;
-    if (i.href === "/admin") return groupOf(current.href) === "Website" && current.href !== "/admin/hours";
+    if (venue && i.href === `${venue.basePath}/admin`) return groupOf(current.href) === "Website" && current.href !== `${venue.basePath}/admin/hours`;
+    if (!venue && i.href.endsWith("/admin")) return current.href.startsWith(`${i.href.slice(0, -"/admin".length)}/`);
     if (i.href === "/admin/photos") return current.href.startsWith("/admin/photos");
     if (i.href === "/admin/analytics") return groupOf(current.href) === "Reports";
     if (i.href === "/admin/settings") return groupOf(current.href) === "Settings";
@@ -114,7 +181,7 @@ export default function AdminBar({ areas, who, version, editing, unpublished: in
     const check = async () => {
       if (document.visibilityState !== "visible") return;
       try {
-        const res = await fetch("/admin/api/publish-status", { cache: "no-store" });
+        const res = await fetch(`${apiBase}/admin/api/publish-status`, { cache: "no-store" });
         if (!res.ok) return;
         const data = (await res.json()) as { unpublished?: boolean };
         if (!stopped) setUnpublished(Boolean(data.unpublished));
@@ -127,7 +194,7 @@ export default function AdminBar({ areas, who, version, editing, unpublished: in
       window.clearInterval(timer);
       window.removeEventListener("focus", check);
     };
-  }, [editing]);
+  }, [editing, apiBase]);
 
   // Menu: Escape and outside clicks close it; focus goes in, and back out.
   useEffect(() => {
@@ -160,7 +227,7 @@ export default function AdminBar({ areas, who, version, editing, unpublished: in
     }
   };
   const discard = () => {
-    if (window.confirm("Discard all unpublished changes to the website? This puts the site editor back to what's live now.")) void post("/admin/api/discard");
+    if (window.confirm("Discard all unpublished changes to this venue's website? This puts the site editor back to what's live now.")) void post(`${apiBase}/admin/api/discard`);
   };
   const logOut = async () => {
     await fetch("/admin/api/logout", { method: "POST" });
@@ -169,8 +236,8 @@ export default function AdminBar({ areas, who, version, editing, unpublished: in
 
   return (
     <header className={`admin-bar${editing ? " admin-bar--editing" : ""}${inline.some(inlineCurrent) ? "" : " admin-bar--named"}`}>
-      <a className="admin-bar-brand" href={has("site") ? "/admin" : (all[0]?.href ?? "/admin")}>
-        Admin
+      <a className="admin-bar-brand" href="/admin">
+        {venue ? venue.name : "Admin"}
       </a>
       <span className="admin-bar-page" aria-hidden="true">
         {current?.label ?? ""}
@@ -179,7 +246,7 @@ export default function AdminBar({ areas, who, version, editing, unpublished: in
       <nav className="admin-bar-links" aria-label="Admin sections">
         {inline.map((i) => (
           <a key={i.href} href={i.href} aria-current={inlineCurrent(i) ? "page" : undefined}>
-            {INLINE_LABELS[i.href] ?? i.label}
+            {inlineLabels[i.href] ?? i.label}
           </a>
         ))}
       </nav>
@@ -197,7 +264,7 @@ export default function AdminBar({ areas, who, version, editing, unpublished: in
           type="button"
           className={`admin-bar-publish${unpublished ? " is-pending" : ""}`}
           disabled={busy || !unpublished}
-          onClick={() => void post("/admin/api/publish")}
+          onClick={() => void post(`${apiBase}/admin/api/publish`)}
         >
           {unpublished ? "Publish changes" : "All live"}
         </button>

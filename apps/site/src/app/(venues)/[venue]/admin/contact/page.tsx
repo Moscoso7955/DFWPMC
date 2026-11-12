@@ -8,7 +8,7 @@ export default async function AdminContactPage({ params }: { params: Promise<{ v
   const venue = getVenue((await params).venue);
     await requireAdminSession();
     const content = await getDraftSiteContent(venue);
-    return (<AdminShell venue={venue}>
+    return (<AdminShell venue={venue} shortcuts={[{ href: `${venue.basePath}/admin/submissions`, label: "Form submissions" }, { href: `${venue.basePath}/admin/mailing-list`, label: "Mailing list" }]}>
       <div className="admin-contact-toolbar">
         <a className="admin-contact-toolbar-link" href={`${venue.basePath}/admin/submissions`}>
           View Form Submissions

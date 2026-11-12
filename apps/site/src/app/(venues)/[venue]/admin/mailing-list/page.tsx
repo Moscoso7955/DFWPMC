@@ -15,7 +15,7 @@ export default async function AdminMailingListPage({ params }: { params: Promise
   const venue = getVenue((await params).venue);
     await requireAdminSession();
     const subscribers = await listSubscribers(venue);
-    return (<AdminShell venue={venue}>
+    return (<AdminShell venue={venue} layout="tool">
       <section className="admin-mailing-list">
         <a className="admin-back-link" href={`${venue.basePath}/admin/analytics`}>
           <span aria-hidden="true">←</span> Analytics

@@ -8,7 +8,7 @@ export default async function AdminCalendarPage({ params }: { params: Promise<{ 
   const venue = getVenue((await params).venue);
     await requireAdminSession();
     const content = await getDraftSiteContent(venue);
-    return (<AdminShell venue={venue}>
+    return (<AdminShell venue={venue} shortcuts={[{ href: `${venue.basePath}/admin/hours`, label: "Set operating hours" }]}>
       <div className="admin-contact-toolbar">
         <a className="admin-contact-toolbar-link" href={`${venue.basePath}/admin/hours`}>
           Set Operating Hours

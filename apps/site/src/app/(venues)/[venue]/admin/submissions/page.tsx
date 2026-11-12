@@ -14,7 +14,7 @@ export default async function AdminSubmissionsPage({ params }: { params: Promise
   const venue = getVenue((await params).venue);
     await requireAdminSession();
     const submissions = await listContactSubmissions(venue);
-    return (<AdminShell venue={venue}>
+    return (<AdminShell venue={venue} layout="tool">
       <section className="admin-submissions">
         <a className="admin-back-link" href={`${venue.basePath}/admin/analytics`}>
           <span aria-hidden="true">←</span> Analytics

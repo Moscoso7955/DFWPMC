@@ -12,7 +12,7 @@ export default async function AdminOperatingHoursPage({ params }: { params: Prom
   const content = await getDraftSiteContent(venue);
 
   return (
-    <AdminShell venue={venue}>
+    <AdminShell venue={venue} layout="tool">
       <AdminOperatingHoursEditor initialHours={content.operatingHours} />
     </AdminShell>
   );

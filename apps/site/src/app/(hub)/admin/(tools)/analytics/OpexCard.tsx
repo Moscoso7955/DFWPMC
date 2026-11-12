@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { FixedCost, FixedPer, OpexMonth, OpexSummary } from "@/lib/opexStore";
-import { noteSaved, noteSaveFailed } from "../SaveNote";
+import { noteSaved, noteSaveFailed } from "@/app/components/SaveNote";
 
 // The Analytics "Operating costs" card: this month so far and last month,
 // the biggest costs, cost per ticket sold, and an editor for the fixed
