@@ -12743,3 +12743,36 @@ span.access-chip { cursor: default; }
   color: var(--brand-paper);
   opacity: 1;
 }
+
+/* ----------------------------------------------------------------
+   Every venue page ends in the same button grid as its home page,
+   with a Return Home row on top; the button for the page you're on
+   is filled. The old fixed Return Home band stays for the hub.
+   ---------------------------------------------------------------- */
+
+.bottom-menu--page {
+  border-top: var(--frame-line);
+}
+
+.menu-row--home {
+  grid-template-columns: 1fr;
+}
+
+.menu-row--home a {
+  display: flex;
+  gap: 0.45em;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-row--home a span {
+  font-size: 1.2em;
+  line-height: 0;
+  transform: translateY(-0.03em);
+}
+
+.menu-row a[aria-current="page"],
+.menu-row a[aria-current="page"]:hover {
+  background: var(--deep-red);
+  color: var(--cream);
+}

@@ -4,7 +4,7 @@ import { useVenue } from "./VenueProvider";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import type { HomepageContent, HomepageContentField } from "@/lib/siteContentSchema";
-import BottomMenu from "./VenueHomeMenu";
+import BottomMenu from "./BottomMenu";
 import DrawerMenu from "./DrawerMenu";
 
 type HomePageStyle = CSSProperties & {

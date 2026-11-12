@@ -1,11 +1,15 @@
 "use client";
 import { useVenue } from "./VenueProvider";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import LegalLinks from "./LegalLinks";
 import type { MenuClickTarget } from "@/lib/menuClicksStore";
 type BottomMenuProps = {
     basePath?: string;
     source?: string;
+    /** Sub-pages: a full-width "Return Home" row on top of the grid. */
+    returnHome?: boolean;
+    className?: string;
 };
 function getHref(basePath: string, href: string) {
     return `${basePath}${href}`;
@@ -49,13 +53,20 @@ const ROWS: Item[][] = [
         { label: "Careers", href: "/careers", target: "careers" },
     ],
 ];
-export default function BottomMenu({ basePath = "", source = "bottom" }: BottomMenuProps) {
+export default function BottomMenu({ basePath = "", source = "bottom", returnHome = false, className }: BottomMenuProps) {
     const { venue, venuePath } = useVenue();
+    const pathname = usePathname() ?? "";
+    const here = pathname.replace(/\/+$/, "") || "/";
     const base = basePath ? venuePath(basePath) : venue.basePath;
     const skipTracking = base.includes("/admin");
-    return (<nav className="bottom-menu" aria-label="Primary">
+    return (<nav className={className ? `bottom-menu ${className}` : "bottom-menu"} aria-label="Primary">
+      {returnHome ? (<div className="menu-row menu-row--home">
+          <Link href={base || "/"}>
+            <span aria-hidden="true">←</span> Return Home
+          </Link>
+        </div>) : null}
       {ROWS.map((row, index) => (<div className="menu-row" key={index}>
-          {row.map((item) => (<Link key={item.href} href={getHref(base, item.href)} onClick={() => {
+          {row.map((item) => (<Link key={item.href} href={getHref(base, item.href)} aria-current={here === getHref(base, item.href) ? "page" : undefined} onClick={() => {
                     if (skipTracking)
                         return;
                     trackClick(venuePath("/api/track-click"), item.target, source);

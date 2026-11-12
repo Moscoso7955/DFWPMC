@@ -3,6 +3,7 @@ import { useVenue } from "./VenueProvider";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import DrawerMenu from "./DrawerMenu";
+import BottomMenu from "./BottomMenu";
 type HolderPageProps = {
     basePath?: string;
     children?: ReactNode;
@@ -21,10 +22,6 @@ export default function HolderPage({ basePath = "", children, label, pageClassNa
       <main className={pageClassName ? `page ${pageClassName}` : "page"}>
         {children ?? <h1>{label}</h1>}
       </main>
-      <nav className="page-menu" aria-label="Return">
-        <Link href={base || "/"}>
-          <span aria-hidden="true">←</span> Return Home
-        </Link>
-      </nav>
+      <BottomMenu basePath={basePath} source="page" returnHome className="bottom-menu--page"/>
     </>);
 }

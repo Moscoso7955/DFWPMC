@@ -74,9 +74,6 @@ input::placeholder, textarea::placeholder { color: currentColor; opacity: .55; }
 .drawer-menu .legal-links { color: var(--brand-paper); border-top: 0; }
 .page { background: var(--brand-paper); padding: 128px 24px 86px; color: var(--brand-ink); }
 .page h1, .admin-analytics h1, .admin-operating-hours h1, .admin-submissions h1, .admin-mailing-list h1 { font-family: var(--font-venue-heading); font-size: clamp(24px, 3vw, 34px); font-weight: 400; line-height: 1.25; letter-spacing: .025em; color: var(--brand-primary); text-transform: none; }
-.page-menu { z-index: 20; background: var(--brand-primary); color: var(--brand-paper); border-top: 1px solid rgba(var(--brand-accent-rgb), .4); font-size: 13px; letter-spacing: .06em; }
-.page-menu a { min-height: 48px; }
-.page-menu a:hover { background: var(--brand-accent); color: var(--brand-on-accent); }
 .visit-page { max-width: 780px; margin: 0 auto; gap: 28px; padding: 0 0 34px; }
 .visit-card, .contact-completion, .ticket-confirmation-ticket, .ticket-page-card, .admin-analytics-card, .admin-submission { border: 1px solid var(--brand-line); border-radius: var(--brand-radius); background: var(--brand-surface); box-shadow: none; }
 .visit-card { padding: 40px 28px; gap: 24px; text-transform: none; }
