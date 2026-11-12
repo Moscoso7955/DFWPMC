@@ -23,7 +23,7 @@ export default async function PhotoEventsPage() {
 
   const contests = await listContests();
   return (
-    <CollectiveShell layout="tool">
+    <CollectiveShell layout="tool" title="Photos">
       <PhotoEventsView contests={contests} checkReady={isPhotoCheckConfigured()} />
     </CollectiveShell>
   );

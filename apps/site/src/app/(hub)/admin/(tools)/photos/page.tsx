@@ -23,7 +23,7 @@ export default async function AdminPhotosPage() {
 
   const [nights, contributors] = await Promise.all([listNightsForAdmin(), listContributors()]);
   return (
-    <CollectiveShell layout="tool">
+    <CollectiveShell layout="tool" title="Photos">
       <AdminPhotosView nights={nights} contributors={contributors} storageReady={isPhotoStorageConfigured()} />
     </CollectiveShell>
   );

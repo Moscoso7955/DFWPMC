@@ -25,7 +25,7 @@ export default async function AdminPhotoReviewPage({ params }: { params: Promise
   const night = /^[0-9a-f-]{36}$/i.test(id) ? await getNightForReview(id) : null;
   if (!night) notFound();
   return (
-    <CollectiveShell layout="tool">
+    <CollectiveShell layout="tool" title="Photos">
       <ReviewClient night={night} />
     </CollectiveShell>
   );

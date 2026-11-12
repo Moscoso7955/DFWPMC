@@ -26,7 +26,7 @@ export default async function PhotoEventPage({ params }: { params: Promise<{ id:
   const dashboard = await getContestDashboard(id);
   if (!dashboard) notFound();
   return (
-    <CollectiveShell layout="tool">
+    <CollectiveShell layout="tool" title="Photos">
       <PhotoEventDashboard initial={dashboard} checkReady={isPhotoCheckConfigured()} />
     </CollectiveShell>
   );
