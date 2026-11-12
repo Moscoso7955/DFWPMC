@@ -14,7 +14,7 @@ function secret() {
   const value = process.env.ADMIN_SESSION_SECRET ?? process.env.COLLECTIVE_ADMIN_SESSION_SECRET;
   if (value) return `contributor:${value}`;
   if (process.env.NODE_ENV !== "production") return "contributor:local-dev-secret";
-  throw new Error("PHOEBE_ADMIN_SESSION_SECRET must be configured.");
+  throw new Error("ADMIN_SESSION_SECRET must be configured.");
 }
 
 function sign(payload: string) {

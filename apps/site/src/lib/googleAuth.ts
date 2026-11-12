@@ -18,7 +18,7 @@ const AUTHORIZE_URL = () => process.env.GOOGLE_OAUTH_AUTHORIZE_URL ?? "https://a
 const TOKEN_URL = () => process.env.GOOGLE_OAUTH_TOKEN_URL ?? "https://oauth2.googleapis.com/token";
 
 function secret() {
-  const value = process.env.ADMIN_SESSION_SECRET;
+  const value = process.env.ADMIN_SESSION_SECRET ?? process.env.COLLECTIVE_ADMIN_SESSION_SECRET;
   if (value) return `oauth:${value}`;
   if (process.env.NODE_ENV !== "production") return "oauth:local-dev-secret";
   throw new Error("ADMIN_SESSION_SECRET must be configured.");
