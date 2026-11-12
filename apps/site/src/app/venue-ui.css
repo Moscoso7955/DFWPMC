@@ -154,7 +154,7 @@ input::placeholder, textarea::placeholder { color: currentColor; opacity: .55; }
 .admin-hours-table input[type="time"] { background: var(--brand-paper); border: 1px solid var(--brand-line); padding: 9px; }
 .admin-analytics-card { padding: 22px; }
 .admin-analytics-card h2, .admin-mailing-list-table th { font-family: var(--font-venue-body); font-weight: 400; }
-.admin-analytics-link, .admin-mailing-list-export { color: var(--brand-primary); }
+.admin-analytics-link:not(.admin-analytics-link--button), .admin-mailing-list-export { color: var(--brand-primary); }
 .version-badge { position: fixed; z-index: 22; right: 10px; bottom: 7px; padding: 3px 7px; border: 0; border-radius: 4px; background: rgba(var(--brand-primary-rgb), .9); color: var(--brand-paper); opacity: .7; pointer-events: none; font-family: var(--font-venue-body); font-size: 9px; }
 
 /* Ticketing, Blackbook, their forms, detail pages, and date picker. */

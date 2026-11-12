@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import PageViewTracker from "@/app/components/PageViewTracker";
 import TrackingScripts from "@/app/components/TrackingScripts";
 import "./hub-globals.css";
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Analytics />
         <TrackingScripts />
+        <PageViewTracker />
       </body>
     </html>
   );

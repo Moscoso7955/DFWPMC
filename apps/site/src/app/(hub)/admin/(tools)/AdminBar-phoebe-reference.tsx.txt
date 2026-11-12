@@ -1,0 +1,256 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+
+// The one admin bar, on every admin page: a slim strip across the top.
+// Wide screens show the main sections inline; everything else (and, on
+// phones, everything) is in the Menu panel, grouped, with the version,
+// who's signed in, Discard and Log out at the bottom. Publish shows only
+// on the site-editing pages.
+
+type Item = { href: string; label: string; area: string; exact?: boolean; hideIf?: string };
+type Group = { title: string; items: Item[] };
+
+const GROUPS: Group[] = [
+  {
+    title: "Website",
+    items: [
+      { href: "/admin", label: "Home page", area: "site", exact: true },
+      { href: "/admin/menu", label: "Menu", area: "site" },
+      { href: "/admin/calendar", label: "Calendar", area: "calendar" },
+      { href: "/admin/hours", label: "Operating hours", area: "calendar" },
+      { href: "/admin/story", label: "Story", area: "site" },
+      { href: "/admin/visit", label: "Visit", area: "site" },
+      { href: "/admin/contact", label: "Contact", area: "site" },
+      { href: "/admin/careers", label: "Careers", area: "site" },
+      { href: "/admin/private-events", label: "Book an event", area: "site" },
+      { href: "/admin/reservations", label: "Reservations", area: "site" },
+    ],
+  },
+  {
+    title: "Nights",
+    items: [
+      { href: "/ticketing", label: "Ticketing", area: "ticketing" },
+      { href: "/blackbook", label: "Door", area: "door", hideIf: "ticketing" },
+      { href: "/admin/photos", label: "Photos", area: "photo_review" },
+      { href: "/admin/photos/events", label: "Photo events", area: "photo_events" },
+      { href: "/upload", label: "Upload photos", area: "photo_upload", hideIf: "photo_review" },
+      { href: "/admin/playbook", label: "Playbook", area: "playbook" },
+      { href: "/admin/contacts", label: "Vendor contacts", area: "contacts" },
+    ],
+  },
+  {
+    title: "Guests",
+    items: [
+      { href: "/admin/customers", label: "Customers", area: "customers" },
+      { href: "/admin/mailing-list", label: "Mailing list", area: "customers" },
+      { href: "/admin/submissions", label: "Form submissions", area: "customers" },
+    ],
+  },
+  {
+    title: "Reports",
+    items: [
+      { href: "/admin/analytics", label: "Analytics", area: "reports" },
+      { href: "/admin/attribution", label: "Sales by source", area: "reports" },
+    ],
+  },
+  {
+    title: "Settings",
+    items: [
+      { href: "/admin/settings", label: "People", area: "people", exact: true },
+      { href: "/admin/settings/access", label: "Roles & access", area: "people" },
+    ],
+  },
+];
+
+/** The sections shown inline on wide screens. */
+const INLINE = ["/admin", "/ticketing", "/admin/photos", "/admin/playbook", "/admin/contacts", "/admin/hours", "/admin/analytics", "/admin/settings"];
+const INLINE_LABELS: Record<string, string> = { "/admin": "Site", "/admin/hours": "Hours", "/admin/settings": "Settings", "/admin/contacts": "Vendors" };
+
+type Props = {
+  areas: string[];
+  who: string | null;
+  version: string;
+  /** Site-editing pages: show Publish, and Discard in the menu. */
+  editing: boolean;
+  unpublished: boolean;
+  /** Page-specific links, e.g. "Set operating hours" on the calendar. */
+  shortcuts?: { href: string; label: string }[];
+};
+
+export default function AdminBar({ areas, who, version, editing, unpublished: initialUnpublished, shortcuts = [] }: Props) {
+  const pathname = usePathname() ?? "";
+  const [open, setOpen] = useState(false);
+  const [unpublished, setUnpublished] = useState(initialUnpublished);
+  const [busy, setBusy] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const has = (area: string) => areas.includes(area);
+
+  const groups = GROUPS.map((g) => ({ ...g, items: g.items.filter((i) => has(i.area) && !(i.hideIf && has(i.hideIf))) })).filter((g) => g.items.length);
+  const all = groups.flatMap((g) => g.items);
+  // The page you're on: the longest matching section.
+  const current = all
+    .filter((i) => (i.exact ? pathname === i.href : pathname === i.href || pathname.startsWith(`${i.href}/`)))
+    .sort((a, b) => b.href.length - a.href.length)[0];
+  const isCurrent = (i: Item) => current?.href === i.href;
+  const inline = INLINE.map((href) => all.find((i) => i.href === href)).filter((i): i is Item => Boolean(i));
+  // Inline links stand for their whole group: Site for any website page, Photos for photo events, and so on.
+  const groupOf = (href?: string) => groups.find((g) => g.items.some((i) => i.href === href))?.title;
+  const inlineCurrent = (i: Item) => {
+    if (!current) return false;
+    if (i.href === "/admin") return groupOf(current.href) === "Website" && current.href !== "/admin/hours";
+    if (i.href === "/admin/photos") return current.href.startsWith("/admin/photos");
+    if (i.href === "/admin/analytics") return groupOf(current.href) === "Reports";
+    if (i.href === "/admin/settings") return groupOf(current.href) === "Settings";
+    return isCurrent(i);
+  };
+
+  // Most edits save without a page load, so re-check now and then.
+  useEffect(() => {
+    if (!editing) return;
+    let stopped = false;
+    const check = async () => {
+      if (document.visibilityState !== "visible") return;
+      try {
+        const res = await fetch("/admin/api/publish-status", { cache: "no-store" });
+        if (!res.ok) return;
+        const data = (await res.json()) as { unpublished?: boolean };
+        if (!stopped) setUnpublished(Boolean(data.unpublished));
+      } catch {}
+    };
+    const timer = window.setInterval(check, 6000);
+    window.addEventListener("focus", check);
+    return () => {
+      stopped = true;
+      window.clearInterval(timer);
+      window.removeEventListener("focus", check);
+    };
+  }, [editing]);
+
+  // Menu: Escape and outside clicks close it; focus goes in, and back out.
+  useEffect(() => {
+    if (!open) return;
+    menuRef.current?.querySelector<HTMLElement>("a, button")?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      buttonRef.current?.focus();
+    };
+    const onPointer = (e: PointerEvent) => {
+      const t = e.target as Node;
+      if (menuRef.current?.contains(t) || buttonRef.current?.contains(t)) return;
+      setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [open]);
+
+  const post = async (url: string) => {
+    setBusy(true);
+    try {
+      await fetch(url, { method: "POST" });
+    } finally {
+      window.location.reload();
+    }
+  };
+  const discard = () => {
+    if (window.confirm("Discard all unpublished changes to the website? This puts the site editor back to what's live now.")) void post("/admin/api/discard");
+  };
+  const logOut = async () => {
+    await fetch("/admin/api/logout", { method: "POST" });
+    window.location.href = "/admin/login";
+  };
+
+  return (
+    <header className={`admin-bar${editing ? " admin-bar--editing" : ""}${inline.some(inlineCurrent) ? "" : " admin-bar--named"}`}>
+      <a className="admin-bar-brand" href={has("site") ? "/admin" : (all[0]?.href ?? "/admin")}>
+        Admin
+      </a>
+      <span className="admin-bar-page" aria-hidden="true">
+        {current?.label ?? ""}
+      </span>
+
+      <nav className="admin-bar-links" aria-label="Admin sections">
+        {inline.map((i) => (
+          <a key={i.href} href={i.href} aria-current={inlineCurrent(i) ? "page" : undefined}>
+            {INLINE_LABELS[i.href] ?? i.label}
+          </a>
+        ))}
+      </nav>
+
+      <span className="admin-bar-spacer" />
+
+      {shortcuts.map((s) => (
+        <a key={s.href} className="admin-bar-shortcut" href={s.href}>
+          {s.label}
+        </a>
+      ))}
+
+      {editing ? (
+        <button
+          type="button"
+          className={`admin-bar-publish${unpublished ? " is-pending" : ""}`}
+          disabled={busy || !unpublished}
+          onClick={() => void post("/admin/api/publish")}
+        >
+          {unpublished ? "Publish changes" : "All live"}
+        </button>
+      ) : null}
+
+      <button
+        ref={buttonRef}
+        type="button"
+        className="admin-bar-menu-button"
+        aria-expanded={open}
+        aria-controls="admin-bar-menu"
+        onClick={() => setOpen((o) => !o)}
+      >
+        Menu <span aria-hidden="true">{open ? "▴" : "▾"}</span>
+      </button>
+
+      {open ? (
+        <div className="admin-bar-menu" id="admin-bar-menu" ref={menuRef}>
+          {shortcuts.length ? (
+            <section>
+              <h2>On this page</h2>
+              {shortcuts.map((s) => (
+                <a key={s.href} href={s.href}>
+                  {s.label}
+                </a>
+              ))}
+            </section>
+          ) : null}
+          {groups.map((g) => (
+            <section key={g.title}>
+              <h2>{g.title}</h2>
+              {g.items.map((i) => (
+                <a key={i.href} href={i.href} aria-current={isCurrent(i) ? "page" : undefined}>
+                  {i.label}
+                </a>
+              ))}
+            </section>
+          ))}
+          <section className="admin-bar-menu-foot">
+            {editing ? (
+              <button type="button" className="admin-bar-discard" onClick={discard} disabled={busy || !unpublished}>
+                Discard unpublished changes
+              </button>
+            ) : null}
+            <button type="button" onClick={logOut}>
+              Log out
+            </button>
+            <p>
+              {who ? `Signed in as ${who}` : "Signed in"} · {version}
+            </p>
+          </section>
+        </div>
+      ) : null}
+    </header>
+  );
+}

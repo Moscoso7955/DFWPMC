@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { notFound } from "next/navigation";
+import PageViewTracker from "../../components/PageViewTracker";
 import TrackingScripts from "../../components/TrackingScripts";
 import { VenueProvider } from "../../components/VenueProvider";
 import { VENUE_SLUGS, findVenue, siteOrigin, venuePathFor } from "@/lib/venues";
@@ -61,6 +62,7 @@ export default async function VenueLayout({ children, params }: VenueLayoutProps
           <TrackingScripts />
           {children}
           <Analytics />
+          <PageViewTracker />
         </VenueProvider>
       </body>
     </html>

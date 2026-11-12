@@ -1,4 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { recordClaudeUsage } from "@/lib/opexStore";
 
 // Automatic safety check for photo event entries. Claude looks at each
 // photo before it can show on the vote page; anything it flags (or any
@@ -68,6 +69,7 @@ export async function checkContestPhoto(imageUrl: string, caption: { name: strin
       ],
     });
 
+    await recordClaudeUsage(response.model ?? "claude-opus-5-5", response.usage);
     if (response.stop_reason === "refusal") return { allow: false, reason: "Automatic check declined; needs a look" };
     const text = response.content.find((block) => block.type === "text");
     if (!text || text.type !== "text") return { allow: false, reason: "Automatic check gave no answer" };

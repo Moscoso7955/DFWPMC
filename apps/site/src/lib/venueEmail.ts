@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { recordEmailsSent } from "./opexStore";
 
 // Shared look and sending for the venue's own emails (invites, and later
 // the feature digest and photo alerts): the venue's colors, its name in
@@ -78,6 +79,7 @@ export async function sendEach(people: { name: string; email: string }[], render
       text: email.text,
     });
     if (error) throw new Error(error.message);
+    await recordEmailsSent(1).catch(() => {});
   }
 }
 
@@ -95,4 +97,5 @@ export async function sendEmail(input: VenueEmail & { to: string[]; bcc?: string
     text: input.text,
   });
   if (error) throw new Error(error.message);
+    await recordEmailsSent(1).catch(() => {});
 }

@@ -118,6 +118,9 @@ export default async function CollectiveOverview() {
         ))}
       </div>
       <div className={styles.toolRow}>
+        <a className={styles.toolButton} href="/admin/analytics">
+          Analytics
+        </a>
         <a className={styles.toolButton} href="/admin/playbook">
           Playbook
         </a>

@@ -2,6 +2,7 @@
   "crons": [
     { "path": "/api/cron/release-digest", "schedule": "24 * * * *" },
     { "path": "/api/cron/playbook", "schedule": "24 * * * *" },
-    { "path": "/api/cron/photo-uploads", "schedule": "*/10 * * * *" }
+    { "path": "/api/cron/photo-uploads", "schedule": "*/10 * * * *" },
+    { "path": "/api/cron/opex", "schedule": "24 */6 * * *" }
   ]
 }

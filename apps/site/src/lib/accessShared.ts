@@ -93,6 +93,7 @@ export const PATH_AREAS: [prefix: string, area: AreaId | "public"][] = [
   ["/admin/mailing-list", "customers"],
   ["/admin/api/mailing-list-export", "customers"],
   ["/admin/api/master-list", "customers"],
+  ["/admin/api/opex", "reports"],
   ["/admin/submissions", "customers"],
   ["/admin/analytics", "reports"],
   ["/admin", "site"],

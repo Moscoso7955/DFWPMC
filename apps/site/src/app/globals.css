@@ -10086,3 +10086,278 @@ button.upload-drop:hover {
   letter-spacing: 0.08em;
 }
 
+
+
+/* --- Operating costs card (ported from the Bar Phoebe finance panel) --- */
+
+/* --- Analytics: Operating costs --- */
+
+.admin-opex-totals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.admin-opex-totals button {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid rgba(117, 4, 4, 0.35);
+  background: #fff;
+  color: var(--black);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin-opex-totals button span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
+}
+
+.admin-opex-totals button strong {
+  font-size: 1.25rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-opex-totals button.is-active {
+  border: 2px solid var(--deep-red);
+  padding: 9px 11px;
+  background: rgba(117, 4, 4, 0.06);
+}
+
+.admin-opex-per {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.admin-opex-per span {
+  opacity: 0.7;
+}
+
+.admin-opex-lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  border-top: 1px solid rgba(26, 25, 25, 0.12);
+}
+
+.admin-opex-lines li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(26, 25, 25, 0.12);
+  font-size: 0.86rem;
+}
+
+.admin-opex-name {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.admin-opex-name small {
+  font-size: 0.72rem;
+  opacity: 0.68;
+}
+
+.admin-opex-amount {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.admin-opex-lines li.is-missing .admin-opex-amount {
+  opacity: 0.5;
+}
+
+.admin-opex .admin-opex-more {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--deep-red);
+  background: none;
+  color: var(--deep-red);
+  font: inherit;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.admin-opex-note,
+.admin-opex-help {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  opacity: 0.75;
+}
+
+.admin-opex-error {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #8f1d17;
+}
+
+.admin-opex-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-opex-actions button,
+.admin-opex-add {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 2px solid var(--deep-red);
+  background: var(--deep-red);
+  color: var(--cream);
+  font: inherit;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.admin-opex-actions button.is-quiet,
+.admin-opex-add {
+  background: #fff;
+  color: var(--deep-red);
+}
+
+.admin-opex-actions button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.admin-opex-edit {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.admin-opex-edit-head,
+.admin-opex-edit-row {
+  display: grid;
+  grid-template-columns: minmax(160px, 2fr) 110px 170px 80px 90px 32px;
+  gap: 8px;
+  align-items: center;
+}
+
+.admin-opex-edit-head span {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--deep-red);
+}
+
+.admin-opex-edit-row label {
+  display: grid;
+  min-width: 0;
+}
+
+.admin-opex-edit-row label > span:first-child,
+.admin-opex-monthly > span {
+  display: none;
+}
+
+.admin-opex-edit-row input,
+.admin-opex-edit-row select {
+  width: 100%;
+  min-height: 38px;
+  padding: 0 8px;
+  border: 1px solid rgba(26, 25, 25, 0.35);
+  background: #fff;
+  color: var(--black);
+  font: inherit;
+  font-size: 0.86rem;
+}
+
+.admin-opex-dollar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.admin-opex-edit-row label.is-off input {
+  background: rgba(26, 25, 25, 0.05);
+}
+
+.admin-opex-monthly {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.86rem;
+  text-align: right;
+}
+
+.admin-opex-remove {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(117, 4, 4, 0.45);
+  background: #fff;
+  color: var(--deep-red);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.admin-opex-add {
+  justify-self: start;
+}
+
+.admin-opex-total-edit {
+  margin: 14px 0 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 760px) {
+  .admin-opex-edit-head {
+    display: none;
+  }
+
+  .admin-opex-edit-row {
+    grid-template-columns: 1fr 1fr;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(26, 25, 25, 0.12);
+  }
+
+  .admin-opex-edit-row label:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .admin-opex-edit-row label > span:first-child,
+  .admin-opex-monthly > span {
+    display: block;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--deep-red);
+    margin-bottom: 3px;
+  }
+
+  .admin-opex-edit-row label.is-off {
+    display: none;
+  }
+
+  .admin-opex-monthly {
+    text-align: left;
+    align-self: end;
+  }
+
+  .admin-opex-edit-row {
+    position: relative;
+  }
+
+  .admin-opex-edit-row label:first-child {
+    margin-right: 44px;
+  }
+
+  .admin-opex-remove {
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+}
