@@ -86,7 +86,7 @@ export default function HomepageSections() {
       <HomepageNewsletter />
       <footer className="pm-home-footer">
         <p>The Public Market · Fort Worth, Texas</p>
-        <nav aria-label="Footer"><a href="/visit">Location</a><a href="#page-top">Back to top</a></nav>
+        <nav aria-label="Footer"><a href="/visit">Location</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/accessibility">Accessibility</a><a href="#page-top">Back to top</a></nav>
       </footer>
     </>
   );

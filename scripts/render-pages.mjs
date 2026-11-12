@@ -36,7 +36,7 @@ const APPS = [
   { name: "willow", port: PORT, basePath: "/willow", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
   { name: "madrone", port: PORT, basePath: "/madrone", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
   { name: "pmcafe", port: PORT, basePath: "/publicmarketcafe", routes: [...PUBLIC_ROUTES, ...ADMIN_ROUTES], adminLogin: true },
-  { name: "hub", port: PORT, basePath: "", routes: ["/", "/visit", "/admin/login", "/admin", "/admin/settings", "/admin/settings/access", "/admin/no-access", "/blackbook", "/admin/contacts", "/admin/playbook", "/admin/playbook/new", "/admin/playbook/people", "/admin/photos", "/admin/photos/events", "/contest", "/upload/login"], adminLogin: true },
+  { name: "hub", port: PORT, basePath: "", routes: ["/", "/visit", "/admin/login", "/admin", "/admin/settings", "/admin/settings/access", "/admin/no-access", "/blackbook", "/admin/contacts", "/admin/playbook", "/admin/playbook/new", "/admin/playbook/people", "/admin/photos", "/admin/photos/events", "/contest", "/upload/login", "/privacy", "/terms", "/accessibility"], adminLogin: true },
 ];
 const APP_DIRS = { willow: "site", madrone: "site", pmcafe: "site", hub: "site" };
 
