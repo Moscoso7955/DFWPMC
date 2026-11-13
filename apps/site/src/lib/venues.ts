@@ -62,7 +62,7 @@ export const VENUES: VenueConfig[] = [
     envPrefix: "MADRONE",
     brand: {
       primary: "#79242e",
-      accent: "#debbb0",
+      accent: "#ecdacd",
       paper: "#f5eee9",
       ink: "#542d33",
       heroImage: "/madrone/assets/madrone/madrone-hero-tree-room.png",

@@ -16,7 +16,7 @@ html[data-venue-theme="madrone"] {
 
   /* Madrone primary brand system from the supplied production SVG assets. */
   --madrone-berry: #79242e;
-  --madrone-ballet-pink: #debbb0;
+  --madrone-cream: var(--brand-accent);
   --madrone-font-display: "Roxbury Egoism", "Bodoni 72", Didot, serif;
   --madrone-font-body: var(--font-madrone-big-bird), "Arial Narrow", Arial, sans-serif;
   --holder-header-center-y: clamp(38px, 5.25vw, 57px);
@@ -92,11 +92,11 @@ html[data-venue-theme="madrone"] {
   display: grid;
   place-items: center;
   padding: 14px clamp(58px, 7vw, 96px) 12px;
-  border-bottom: 1px solid rgba(222, 187, 176, 0.55);
+  border-bottom: 1px solid rgba(var(--brand-accent-rgb), 0.55);
   background: rgba(121, 36, 46, 0.22);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  color: var(--madrone-ballet-pink);
+  color: var(--madrone-cream);
   font-family: var(--font-venue-body);
   font-size: clamp(0.78rem, 1.7vw, 1.15rem);
   font-weight: 400;
@@ -112,7 +112,7 @@ html[data-venue-theme="madrone"] {
 }
 
 .venue-homepage .hero-event-bar:hover, .venue-homepage .hero-event-bar:focus-visible {
-  border-bottom-color: var(--madrone-ballet-pink);
+  border-bottom-color: var(--madrone-cream);
   background: rgba(121, 36, 46, 0.42);
   letter-spacing: 0.12em;
   outline: 0;
@@ -156,7 +156,7 @@ html[data-venue-theme="madrone"] {
   width: 100%;
   height: 1em;
   margin-top: clamp(12px, 1.7vw, 22px);
-  color: var(--madrone-ballet-pink);
+  color: var(--madrone-cream);
   font-family: var(--font-venue-body);
   font-size: clamp(0.72rem, 1.55vw, 1.22rem);
   font-weight: 400;
@@ -194,13 +194,13 @@ html[data-venue-theme="madrone"] {
 }
 
 .venue-homepage .brand-mark-link:focus-visible {
-  outline: 2px solid var(--madrone-ballet-pink);
+  outline: 2px solid var(--madrone-cream);
   outline-offset: 6px;
 }
 
 .venue-homepage .home-navigation {
   min-width: 0;
-  background: var(--madrone-ballet-pink);
+  background: var(--madrone-cream);
   color: var(--madrone-berry);
 }
 
@@ -241,7 +241,7 @@ html[data-venue-theme="madrone"] {
   overflow: hidden;
   padding: 15px clamp(30px, 3.5vw, 48px) 13px;
   border: 0;
-  background-color: var(--madrone-ballet-pink);
+  background-color: var(--madrone-cream);
   box-shadow: none;
   font: inherit;
   letter-spacing: inherit;
@@ -262,7 +262,7 @@ html[data-venue-theme="madrone"] {
 
 .venue-homepage .menu-row a:hover {
   background-color: var(--madrone-berry);
-  color: var(--madrone-ballet-pink);
+  color: var(--madrone-cream);
 }
 
 .venue-homepage .menu-row a:focus-visible {
@@ -278,7 +278,7 @@ html[data-venue-theme="madrone"] {
   padding: 0 12px env(safe-area-inset-bottom, 0px);
   border: 3px solid var(--madrone-berry);
   border-top: 0;
-  background: var(--madrone-ballet-pink);
+  background: var(--madrone-cream);
   color: var(--madrone-berry);
   font-family: var(--font-venue-body);
   font-size: 9px;
@@ -346,7 +346,7 @@ html[data-venue-theme="madrone"] {
     height: 16px;
     grid-template-rows: repeat(3, 2px);
     gap: 5px;
-    color: var(--madrone-ballet-pink);
+    color: var(--madrone-cream);
   }
 
   .venue-homepage .homepage-hamburger::after {

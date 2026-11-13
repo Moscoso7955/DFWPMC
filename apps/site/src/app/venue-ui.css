@@ -19,10 +19,10 @@ html[data-venue-theme="madrone"] {
   --home-mobile-image-one: url("/madrone/assets/madrone/madrone-hero-tree-room.png");
   --home-mobile-image-two: url("/madrone/assets/madrone/madrone-hero-tree-room.png");
   --brand-primary: #79242e; --brand-primary-rgb: 121, 36, 46;
-  --brand-accent: #debbb0; --brand-accent-rgb: 222, 187, 176; --brand-on-accent: #79242e;
+  --brand-accent: #ecdacd; --brand-accent-rgb: 236, 218, 205; --brand-on-accent: #79242e;
   --brand-paper: #f5eee9; --brand-paper-rgb: 245, 238, 233; --brand-surface: #fff9f5;
-  --brand-muted: #ead5cd; --brand-secondary: #9a5760; --brand-ink: #542d33; --brand-ink-rgb: 84, 45, 51;
-  --brand-line: #d8bdb5; --brand-radius: 12px; --brand-control-radius: 7px;
+  --brand-muted: #ecdacd; --brand-secondary: #9a5760; --brand-ink: #542d33; --brand-ink-rgb: 84, 45, 51;
+  --brand-line: #ecdacd; --brand-radius: 12px; --brand-control-radius: 7px;
   --font-venue-body: var(--font-madrone-big-bird), Arial, sans-serif; --font-venue-heading: var(--font-madrone-big-bird), Arial, sans-serif;
   --black: var(--brand-ink); --cream: var(--brand-paper); --deep-red: var(--brand-primary);
   --red: var(--brand-primary); --blue: var(--brand-primary); --yellow: var(--brand-muted); --frame-line: 1px solid var(--brand-line);
